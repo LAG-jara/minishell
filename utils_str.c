@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 17:11:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/14 18:07:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,39 @@ size_t	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+// Copies the 'src' string into 'dst', ensuring NUL-termination of the string.
+// If the return value is >= dstsize, the output string has been truncated.
+// It is the caller's responsibility to handle this.
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	srclen;
+	size_t	i;
+
+	srclen = ft_strlen(src);
+	if (dstsize == 0)
+		return (srclen);
+	i = 0;
+	while (src[i] && i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (srclen);
+}
+
+// Allocates and returns a copy of the given string.
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	char	*s2;
+
+	len = ft_strlen(s1);
+	s2 = malloc((len + 1) * sizeof(char));
+	if (s2 == NULL)
+		return (NULL);
+	ft_strlcpy(s2, s1, len + 1);
+	return (s2);
 }
