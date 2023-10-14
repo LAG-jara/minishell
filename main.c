@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 13:50:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:34:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int ac, char **av, char **env)
 		commands = parse(tokens);
 		commands = expand(commands, env);
 		commands = remove_quotes(commands);
-		commands = redirect(commands, env);
-		exit_status = execute(commands, &env);
+		exit_status = redirect_and_execute(commands, &env);
 		set_exit_status(exit_status, &env);
 	}
 	return (exit_status);
