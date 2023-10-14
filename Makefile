@@ -49,12 +49,10 @@ BYELLOW		= \033[1;33m
 
 all:		makelib $(NAME)
 
-makelib:					# THIS IS UNTESTED
-			cd $(RL_DIR)
-			./configure --prefix=$(pwd)
-			make
-			make install
-			cd ..
+makelib		# THIS IS UNTESTED  ##########################
+			$(RL_DIR)/configure --prefix=$(pwd)/$(RL_DIR)
+			make -sC $(RL_DIR)
+			make install -sC $(RL_sDIR)
 
 $(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
@@ -65,10 +63,6 @@ $(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
 
 $(NAME):	$(OBJS)
 			@$(CC) $(OBJS) -o $(NAME) $(INC)
-			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
-
-$(NAME_B):	$(OBJS_B)
-			@$(CC) $(OBJS_B) -o $(NAME_B) $(INC)
 			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
 
 clean:
@@ -88,4 +82,4 @@ norm:
 
 -include $(DEPS)
 
-.PHONY: 	clean fclean re norm makelib bonus
+.PHONY: 	clean fclean re norm makelib
