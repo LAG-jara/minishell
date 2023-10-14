@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:00:59 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 15:08:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:12:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include <readline/history.h>
 
 # define PROMPT "minish$ "
+
+char	*get_input(void);
 
 #endif
