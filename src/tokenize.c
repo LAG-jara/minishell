@@ -12,7 +12,6 @@
 
 #include "../inc/definitions.h"
 #include "../inc/utils.h"
-#include <stdio.h>
 
 // Returns TRUE if c is the char ' ' or '\t', returns FALSE otherwise.
 int	is_blankchr(int c)
@@ -64,10 +63,10 @@ int quote_skip(char *in, int i)
 	int 	dist;
 
 	dist = 1;
-	target = in[i++];
-	while (in[i + dist] != '\n' && in[i + dist] != target)
+	target = in[i];
+	while (in[i + dist] && in[i + dist] != target)
 		++dist;
-	if(in[i + dist] == '\n')
+	if(!in[i + dist])
 		--dist;
 	return(dist);
 }
@@ -89,9 +88,9 @@ int	count_tokens(char *in)
 			if (is_operatorchr(in[i]))
 				++count;
 		}
-		else if (is_quotechr(in[i]))
+		if (is_quotechr(in[i]))
 			i += quote_skip(in, i);
-		else if (is_metachr(in[i + 1]))
+		else if (!is_metachr(in[i]) && (is_metachr(in[i + 1]) || !in[i + 1]))
 			++count;
 	}
 	return (count);
@@ -145,7 +144,10 @@ char **fill_tokens(char *in, char **tok)
 		ft_strlcpy(tok[idx_tok], &in[idx_in], len);
 		tok[idx_tok][len] = '\0';
 	}
-
+	tok[++idx_tok] = (char *)malloc(sizeof(char) * 1);
+		if (!tok[idx_tok])
+			exit(1);
+	*tok[idx_tok] = '\0'
 	return (tok);
 }
 
@@ -164,15 +166,15 @@ char	**tokenize(char *input)
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
 }
-
+/*
 // DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
 #include <stdio.h>
 #include <unistd.h>
 
 int main()
 {
-	char *s=">dse <dsad | || >> << a'a'a ";
-	int n=count_tokens(s);
-	write(1,&n,1);
+	char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+	int n = toklen(s,6);
+	printf("%d", n);
 	return (0);
-}
+}*/
