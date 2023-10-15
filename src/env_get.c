@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 17:58:29 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:08:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*find_var_line(char *varname, char **env)
 	int		name_len;
 
 	if (*varname == '$')
-		varname++;
+		++varname;
 	name_len = get_name_len(varname);
 	if (name_len == 0)
 		return (NULL);
@@ -27,7 +27,7 @@ char	*find_var_line(char *varname, char **env)
 	{
 		if (ft_strncmp(*env, varname, name_len) == 0)
 			return (*env);
-		env++;
+		++env;
 	}
 	return (NULL);
 }
@@ -41,7 +41,7 @@ int	get_name_len(char *str)
 	if (str[i] == '$')
 		i = 1;
 	while (str[i] && ft_isspace(str[i]) == 0 && ft_isalnum(str[i]) == 1)
-		i++;
+		++i;
 	return (i);
 }
 
@@ -53,7 +53,7 @@ char	*get_var(char *varname, char **env)
 
 	var_line = find_var_line(varname, env);
 	if (*varname == '$')
-		varname++;
+		++varname;
 	name_len = get_name_len(varname);
 	if (var_line == NULL)
 		return (NULL);
