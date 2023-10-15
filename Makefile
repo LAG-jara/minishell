@@ -26,7 +26,7 @@ DEPDIR		= .dep/
 DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
 # Includes
-INC			=	-I ./includes/\
+INC			=	-I ./inc/\
 
 RM			= rm -fr
 CC			= cc
