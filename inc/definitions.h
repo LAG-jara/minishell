@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef DEFINITIONS_H
-# define DEFINITION_H
+# define DEFINITIONS_H
 
 # define TRUE 1
 # define FALSE 0

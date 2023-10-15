@@ -10,34 +10,69 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_metachar(int c)
+#include "../inc/definitions.h"
+#include "../inc/utils.h"
+#include <stdio.h>
+
+// Returns TRUE if c is the char ' ' or '\t', returns FALSE otherwise.
+int	is_blankchr(int c)
 {
-	if(c == ' ' || c == '\t' || is_operator(c))
-		return (1);
-	return (0);
+	if(c == ' ' || c == '\t')
+		return (TRUE);
+	return (FALSE);
 }
 
-int	is_operator(int c)
+// Returns TRUE if c is the char '<' or '>', returns FALSE otherwise.
+int is_redirectionchr(int c)
 {
-	if(c == '<' || c == '>' || c == '|')
-		return (1);
-	return (0);
+	if(c == '<' || c == '>')
+		return (TRUE);
+	return (FALSE);
 }
 
+// Returns TRUE if c is the char '<', '>' or '|', returns FALSE otherwise.
+int	is_operatorchr(int c)
+{
+	if(is_redirectionchr(c) || c == '|')
+		return (TRUE);
+	return (FALSE);
+}
+
+// Returns TRUE if c is the char ' ', '\t', '<', '>' or '|', 
+// returns FALSE otherwise.
+int	is_metachr(int c)
+{
+	if(c == ' ' || c == '\t' || is_operatorchr(c))
+		return (TRUE);
+	return (FALSE);
+}
+
+// Returns TRUE if c is the char '\'' or '"', returns FALSE otherwise.
+int is_quotechr(int c)
+{
+	if(c == '\'' || c == '"')
+		return (TRUE);
+	return (FALSE);
+}
+
+// Get the string of the input(in) and the index(i) of the current quote and 
+// returns the distance(dist) to the next ocurrence of the same type of quote.
+// If no quote is found returns the distance until the char before '\0'.
 int quote_skip(char *in, int i)
 {
-	char target;
+	char	target;
+	int 	dist;
 
+	dist = 1;
 	target = in[i++];
-	while (in[i] != '\n' && in[i] != target)
-		i++;
-	return(i);
+	while (in[i + dist] != '\n' && in[i + dist] != target)
+		++dist;
+	if(in[i + dist] == '\n')
+		--dist;
+	return(dist);
 }
 
-// A sequence of characters treated as a unit by the shell.
-// Both operators and words are tokens.
-// A sequence of characters treated as a unit by the shell (excluding operators).
-// Words may not include unquoted metacharacters.
+// Recives the input(in) and returns how many tokens there are. 
 int	count_tokens(char *in)
 {
 	int	i;
@@ -45,34 +80,99 @@ int	count_tokens(char *in)
 
 	count = 0;
 	i = -1;
-	while (in[++i] && in[i] != '\n')
+	while (in[++i])
 	{
-		while (is_metachar(in[i]))
+		if (is_metachr(in[i]))
 		{
-			if (in[i] == '>' || in[i] == '<' && in[i] == in[++i])
-				i++;
-			if (is_operator(in[i])
-				count++;
-			i++;
+			if (is_redirectionchr(in[i]) && is_redirectionchr(in[i + 1]))
+				++i;
+			if (is_operatorchr(in[i]))
+				++count;
 		}
-		if (in[i] == '\'' || in[i] == '"')
-			i = quote_skip(in, i);
-		if (is_metachar(in[i + 1]))
-			count++;
+		else if (is_quotechr(in[i]))
+			i += quote_skip(in, i);
+		else if (is_metachr(in[i + 1]))
+			++count;
 	}
 	return (count);
 }
 
-// Splits the recived 'input' into a NULL-terminated array of tokens.
+// TOKEN
+// A sequence of characters treated as a unit by the shell.
+// Both operators and words are tokens.
+
+// WORD
+// A sequence of characters treated as a unit by the shell
+// (excluding operators).
+// Words may not include unquoted metacharacters.
+
+// Returns the length of the next token of the input.
+int toklen(char *in, int i)
+{
+	int	len;
+
+	len = 0;
+	if (is_redirectionchr(in[i]) && in[i] == in[i + 1])
+		return (2);
+	if (is_operatorchr(in[i]))
+		return (1);
+	while (in[i + len] && !is_metachr(in[i + len]))
+	{
+		if (is_quotechr(in[i + len]))
+			len += quote_skip(in, i + len);
+		++len;
+	}
+	return (len);
+}
+
+// Recives the input(in) and fill the allocated spaces for the tokens.
+char **fill_tokens(char *in, char **tok)
+{
+	int idx_in;
+	int len;
+	int idx_tok;
+
+	idx_in = -1;
+	idx_tok = -1;
+	while (in[++idx_in])
+	{
+		while (is_blankchr(in[idx_in]))
+			++idx_in;
+		len = toklen(in, idx_in);
+		tok[++idx_tok] = (char *)malloc(sizeof(char) * len + 1);
+		if (!tok[idx_tok])
+			exit(1);
+		ft_strlcpy(tok[idx_tok], &in[idx_in], len);
+		tok[idx_tok][len] = '\0';
+	}
+
+	return (tok);
+}
+
+// Splits the recived 'input' into an array of strings NULL-terminated interpretable as tokens.
+// And return it allocated.
 char	**tokenize(char *input)
 {
-	int		nb_tokens;
+	int		num_tokens;
 	char	**tokens;
 
-	nb_tokens = count_tokens(input);
-	tokens = (char **)malloc(sizeof(char *) * nb_tokens)
+
+	num_tokens = count_tokens(input);
+	tokens = (char **)malloc(sizeof(char *) * num_tokens + 1);
 		if(!tokens)
-			return (NULL);
+			exit(1);
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
+}
+
+// DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+	char *s=">dse <dsad | || >> << a'a'a ";
+	int n=count_tokens(s);
+	write(1,&n,1);
+	return (0);
 }
