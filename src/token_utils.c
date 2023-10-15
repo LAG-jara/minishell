@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 19:10:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:23:30 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	is_word(char *str)
 }
 
 // Given a token, returns its token type.
-t_token_type	token_type(char *token)
+int	token_type(char *token)
 {
 	if (!token)
 		return (INVALID);
