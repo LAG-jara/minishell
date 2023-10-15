@@ -11,24 +11,52 @@
 /* ************************************************************************** */
 
 #include "input_utils.h"
+#include "token_utils.h"
+#include "basic_utils.h"
 
-// Remove pairs of unclosed quotes form left 
-char *remove_quotes_from_token(char *tok)
+// Gives how many qutes will need to be removed
+int	quotes_to_remove(char *tok)
 {
 	int i;
 	int to_remove;
 
 	i = -1;
 	to_remove = 0;
-	if (is_operatorchr(*tok))
-		return (tok);
 	while (tok[++i])
 	{
-		if (is_quotechrtok(tok[i]))
+		if (is_quotechr(tok[i]))
 		{
 			to_remove += 2;
-			qu
+			i += quote_skip(tok, i);
 		}
+	}
+}
+
+
+
+// Remove pairs of unclosed quotes form left 
+char *remove_quotes_from_token(char *tok)
+{
+	int q2r;
+	int dist;
+	int i;
+
+	i = ft_strlen(tok);
+	q2r = quotes_to_remove(tok);
+	if (!q2r)
+		return (tok);
+	new_tok = (char *)malloc(strlen(tok) - q2r + 1);
+	if (!new_tok)
+		exit (1);
+	while (i--)
+	{
+		if (is_quotechr(tok[i]))
+		{
+			dist = quote_skip(tok);
+			
+		}
+		else
+			new_tok[i - q2r] = tok[i];
 	}
 }
 
