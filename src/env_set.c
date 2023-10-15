@@ -6,11 +6,10 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 13:41:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 15:42:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
 #include "env.h"
 
 // Allocates and returns a string consisting of 'varname' + "=" + 'value'.
@@ -18,38 +17,69 @@ static char	*join_varline(char *varname, char *value)
 {
 	char	*varline;
 	size_t	varline_len;
+	char	*varline_cpy;
 
 	varline_len = ft_strlen(varname) + ft_strlen(value) + 2;
 	varline = (char *) malloc(sizeof(char) * varline_len);
+	if (varline == NULL)
+		exit(EXIT_FAILURE);
+	varline_cpy = varline;
 	while (*varname)
 		*varline++ = *varname++;
 	*varline++ = '=';
 	while (*value)
 		*varline++ = *value++;
 	*varline = '\0';
-	return (varline);
-}
-
-// Returns a copy of the 'env' NULL-terminated array with the environment
-// variable 'varname' added at the end with the value 'value'.
-char	**add_env_var(char *varname, char *value, char **env)
-{
-	char	**new_env;
-	char	*varline;
-
-	varline = join_varline(varname, value);
-	new_env = add_strarr2(varline, env);
+	return (varline_cpy);
 }
 
 // Sets the environment variable 'varname' to 'value', creating it if needed.
 void	set_env_var(char *varname, char *value, char ***env)
 {
-	char	*var_line;
+	int		var_index;
+	char	*varline;
 
-	var_line = find_var_line(varname, *env);
-	if (var_line == NULL)
-	{
-		*env = add_env_var(varname, value, *env);
-	}
-	
+	varline = join_varline(varname, value);
+	var_index = find_var_index(varname, *env);
+	if (var_index == -1)
+		*env = add_strarr2(*env, varline);
+	else
+		*env = set_strarr2(*env, varline, var_index);
 }
+
+void	rm_env_var(char *varname, char ***env)
+{
+	int		var_index;
+
+	var_index = find_var_index(varname, *env);
+	if (var_index >= 0)
+		*env = rm_strarr2(*env, var_index);
+}
+
+// #include <stdio.h>
+
+// static void	print_arrstr2(char **arr)
+// {
+// 	int i = 0;
+// 	while (arr[i])
+// 	{
+// 		printf("[%d] : %s\n", i, arr[i]);
+// 		++i;
+// 	}
+// }
+
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = dup_strarr2(e);
+
+// 	// char *str = get_var("USER", env);
+// 	// printf("Result: %s\n", str);
+
+// 	set_env_var("USER", "Albert Lajara", &env);
+// 	print_arrstr2(env);
+
+// 	// rm_env_var("HOME", &env);
+// 	// print_arrstr2(env);
+
+// 	return (0);
+// }

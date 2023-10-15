@@ -6,31 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 13:08:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:59:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-
-// Returns a pointer to the first character of the line containing the
-// environment variable 'varname'. If 'varname' is not found returns NULL.
-char	*find_var_line(char *varname, char **env)
-{
-	int		name_len;
-
-	if (*varname == '$')
-		++varname;
-	name_len = get_name_len(varname);
-	if (name_len == 0)
-		return (NULL);
-	while (*env)
-	{
-		if (ft_strncmp(*env, varname, name_len) == 0)
-			return (*env);
-		++env;
-	}
-	return (NULL);
-}
 
 // If 'str' points to the begginning of a variable name, returns its lenght.
 int	get_name_len(char *str)

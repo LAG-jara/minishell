@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:01:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:38:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 15:38:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ char	**rm_strarr2(char **arr, int i)
 }
 
 // #include <printf.h>
-// void	print_arrstr2(char **arr)
+// static void	print_arrstr2(char **arr)
 // {
 // 	int i = 0;
 // 	while (arr[i])
