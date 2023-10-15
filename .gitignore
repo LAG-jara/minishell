@@ -1,14 +1,11 @@
 # Output
-pipex
+minish*
 
 # Hidden macOS files
 .DS_Store
 
 # VS Code
 .vscode
-
-# Any hidden file
-.*
 
 # Other stuff
 *.o
