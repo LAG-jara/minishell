@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:59:18 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:39:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_name_len(char *str)
 	i = 0;
 	if (str[i] == '$')
 		i = 1;
-	while (str[i] && ft_isspace(str[i]) == 0 && ft_isalnum(str[i]) == 1)
+	while (str[i] && !ft_isspace(str[i]) && ft_isalnum(str[i]))
 		++i;
 	return (i);
 }
