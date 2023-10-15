@@ -10,49 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/definitions.h"
 #include "../inc/utils.h"
-
-// Returns TRUE if c is the char ' ' or '\t', returns FALSE otherwise.
-int	is_blankchr(int c)
-{
-	if(c == ' ' || c == '\t')
-		return (TRUE);
-	return (FALSE);
-}
-
-// Returns TRUE if c is the char '<' or '>', returns FALSE otherwise.
-int is_redirectionchr(int c)
-{
-	if(c == '<' || c == '>')
-		return (TRUE);
-	return (FALSE);
-}
-
-// Returns TRUE if c is the char '<', '>' or '|', returns FALSE otherwise.
-int	is_operatorchr(int c)
-{
-	if(is_redirectionchr(c) || c == '|')
-		return (TRUE);
-	return (FALSE);
-}
-
-// Returns TRUE if c is the char ' ', '\t', '<', '>' or '|', 
-// returns FALSE otherwise.
-int	is_metachr(int c)
-{
-	if(c == ' ' || c == '\t' || is_operatorchr(c))
-		return (TRUE);
-	return (FALSE);
-}
-
-// Returns TRUE if c is the char '\'' or '"', returns FALSE otherwise.
-int is_quotechr(int c)
-{
-	if(c == '\'' || c == '"')
-		return (TRUE);
-	return (FALSE);
-}
 
 // Get the string of the input(in) and the index(i) of the current quote and 
 // returns the distance(dist) to the next ocurrence of the same type of quote.
@@ -147,7 +105,7 @@ char **fill_tokens(char *in, char **tok)
 	tok[++idx_tok] = (char *)malloc(sizeof(char) * 1);
 		if (!tok[idx_tok])
 			exit(1);
-	*tok[idx_tok] = '\0'
+	*tok[idx_tok] = '\0';
 	return (tok);
 }
 
