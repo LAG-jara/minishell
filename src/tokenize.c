@@ -91,7 +91,7 @@ char **fill_tokens(char *in, char **tok)
 	tok[++idx_tok] = (char *)malloc(sizeof(char) * 1);
 		if (!tok[idx_tok])
 			exit(1);
-	*tok[idx_tok] = '\0';
+	tok[idx_tok] = NULL;
 	return (tok);
 }
 
