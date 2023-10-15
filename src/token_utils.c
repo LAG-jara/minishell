@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 18:57:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:10:58 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "token_utils.h"
+#include "input_utils.h"
 
 // Returns TRUE if 'str' is a valid word, FALSE otherwise.
 int	is_word(char *str)
