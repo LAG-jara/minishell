@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_UTILS_H
-# define TOKEN_UTILS_H
+#ifndef INPUT_UTILS_H
+# define INPUT_UTILS_H
 
 
 int	is_blankchr(int c);
