@@ -6,15 +6,15 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:01:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:28:45 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:38:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include <stdlib.h>
 
-// Counts and returns the amount of strings in the NULL-terminated array 'arr'.
-size_t	get_arr2_size(char **arr)
+// Counts and returns the amount of elements in the NULL-terminated array 'arr'.
+size_t	get_strarr2_size(char **arr)
 {
 	size_t	size;
 
@@ -31,7 +31,7 @@ char	**dup_strarr2(char **arr)
 	size_t	orig_arr_size;
 	int		i;
 
-	orig_arr_size = get_arr2_size(arr);
+	orig_arr_size = get_strarr2_size(arr);
 	new_arr = (char **) malloc(sizeof(char *) * (orig_arr_size + 1));
 	i = -1;
 	while (arr[++i])
@@ -49,7 +49,7 @@ char	**add_strarr2(char **arr, char *str)
 	size_t	orig_arr_size;
 	int		i;
 
-	orig_arr_size = get_arr2_size(arr);
+	orig_arr_size = get_strarr2_size(arr);
 	new_arr = (char **) malloc(sizeof(char *) * (orig_arr_size + 2));
 	i = -1;
 	while (arr[++i])
@@ -81,7 +81,7 @@ char	**rm_strarr2(char **arr, int i)
 	int		j;
 
 	old_arr = arr;
-	orig_arr_size = get_arr2_size(old_arr);
+	orig_arr_size = get_strarr2_size(old_arr);
 	new_arr = (char **) malloc(sizeof(char *) * orig_arr_size);
 	j = -1;
 	while (old_arr[++j])
