@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 13:18:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 14:19:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,16 @@ char	*ft_strdup(const char *s1)
 		return (NULL);
 	ft_strlcpy(s2, s1, len + 1);
 	return (s2);
+}
+
+// Safely allocates and returns a copy of the given string.
+// Exits properly if memory allocation fails.
+char	*ft_strdup2(const char *str)
+{
+	char	*new_str;
+
+	new_str = ft_strdup(str);
+	if (new_str == NULL)
+		exit (EXIT_FAILURE);
+	return (new_str);
 }
