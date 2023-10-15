@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 18:07:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:18:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
 // Returns an integer greater than, equal to, or less than 0, according as the 
 // string s1 is greater than, equal to, or less than the string s2, comparing
@@ -34,7 +34,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	while (str[i])
-		i++;
+		++i;
 	return (i);
 }
 
@@ -53,7 +53,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	while (src[i] && i < dstsize - 1)
 	{
 		dst[i] = src[i];
-		i++;
+		++i;
 	}
 	dst[i] = '\0';
 	return (srclen);

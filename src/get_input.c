@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:58:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 12:15:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:39:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ char	*get_input(void)
 // 	while (42)
 // 	{
 // 		input = get_input();
-// 		printf("got: %s\n", input);
+// 		printf("got: %s", input);
 // 		if (strcmp(input, "exit") == 0)
 // 			return (1);
-// 		rl_clear_history();
 // 	}
 // }

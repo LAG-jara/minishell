@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:50:58 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 18:50:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 13:17:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
 // Frees the NULL-terminated array of strings 'arr'.
 void	free_strarr2(char **arr)
