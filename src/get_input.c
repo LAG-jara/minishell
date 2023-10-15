@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:58:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 19:32:59 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 12:15:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ char	*get_input(void)
 	return (str);
 }
 
-#include <stdio.h>
-#include <string.h>
-int	main(void)
-{
-	char	*input;
+// #include <stdio.h>
+// #include <string.h>
+// int	main(void)
+// {
+// 	char	*input;
 
-	while (42)
-	{
-		input = get_input();
-		printf("got: %s\n", input);
-		if (strcmp(input, "exit") == 0)
-			return (1);
-		rl_clear_history();
-	}
-}
+// 	while (42)
+// 	{
+// 		input = get_input();
+// 		printf("got: %s\n", input);
+// 		if (strcmp(input, "exit") == 0)
+// 			return (1);
+// 		rl_clear_history();
+// 	}
+// }
