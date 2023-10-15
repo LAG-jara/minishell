@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:01:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 15:38:01 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:04:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "basic_utils.h"
 #include <stdlib.h>
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.

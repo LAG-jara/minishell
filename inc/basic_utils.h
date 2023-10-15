@@ -6,12 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:37:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 16:18:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:02:53 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef BASIC_UTILS_H
+# define BASIC_UTILS_H
 
 # include <stdlib.h>
 

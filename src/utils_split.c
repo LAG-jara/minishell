@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:19:42 by Guillem L         #+#    #+#             */
-/*   Updated: 2023/10/15 16:18:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:04:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "basic_utils.h"
 
 // Counts the amount of substrings resulting from splitting s using the 
 // char c as a delimeter.

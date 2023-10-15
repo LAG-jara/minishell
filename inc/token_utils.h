@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 16:32:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:03:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_UTILS_H
 # define TOKEN_UTILS_H
 
-# include "utils.h"
+# include "basic_utils.h"
 # include "definitions.h"
 
 # define UNQUOTED 0
