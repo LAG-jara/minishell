@@ -49,7 +49,7 @@ BYELLOW		= \033[1;33m
 
 all:		$(NAME)
 
-rl_install	# THIS IS UNTESTED  ##########################
+rl_install:	# THIS IS UNTESTED  ##########################
 			LIB_FOLDER=vendor
 
 			mkdir $(LIB_FOLDER)
