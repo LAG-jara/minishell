@@ -13,6 +13,23 @@
 #include "token_utils.h"
 #include "input_utils.h"
 
+// Get the string of the input(in) and the index(i) of the current quote and 
+// returns the distance(dist) to the next ocurrence of the same type of quote.
+// If no quote is found returns the distance until the char before '\0'.
+int quote_skip(char *in, int i)
+{
+	char	target;
+	int 	dist;
+
+	dist = 1;
+	target = in[i];
+	while (in[i + dist] && in[i + dist] != target)
+		++dist;
+	if(!in[i + dist])
+		--dist;
+	return(dist);
+}
+
 // Returns TRUE if 'str' is a valid word, FALSE otherwise.
 int	is_word(char *str)
 {

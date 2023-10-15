@@ -10,17 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include ""
+#include "input_utils.h"
 
 // Remove pairs of unclosed quotes form left 
 char *remove_quotes_from_token(char *tok)
 {
 	int i;
+	int to_remove;
 
 	i = -1;
+	to_remove = 0;
 	if (is_operatorchr(*tok))
 		return (tok);
 	while (tok[++i])
+	{
+		if (is_quotechrtok(tok[i]))
+		{
+			to_remove += 2;
+			qu
+		}
+	}
 }
 
 // All unquoted occurrences of the characters `'’ and `"’ that did not result

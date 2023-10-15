@@ -28,6 +28,7 @@ typedef enum e_token_type {
 }	t_token_type;
 
 int				is_word(char *str);
+int				quote_skip(char *in, int i);
 t_token_type	token_type(char *token);
 
 #endif
