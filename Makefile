@@ -47,12 +47,36 @@ BRED		= \033[1;31m
 BBLUE		= \033[1;34m
 BYELLOW		= \033[1;33m
 
-all:		makelib $(NAME)
+all:		$(NAME)
 
-makelib		# THIS IS UNTESTED  ##########################
-			$(RL_DIR)/configure --prefix=$(pwd)/$(RL_DIR)
-			make -sC $(RL_DIR)
-			make install -sC $(RL_sDIR)
+rl_install	# THIS IS UNTESTED  ##########################
+			LIB_FOLDER=vendor
+
+			mkdir $(LIB_FOLDER)
+
+			TEMP_FOLDER=$(LIB_FOLDER)/.tmp_readline-install/
+			READLINE_PATH=$(LIB_FOLDER)/readline/
+
+			ARCHIVE=$(LIB_FOLDER)/readline-8.1.tar.gz
+			INSTALLER=$(LIB_FOLDER)/readline-8.1
+			BASEDIR=$(pwd)
+			curl -k https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz > $ARCHIVE
+
+			tar -xf $(ARCHIVE) -C $(LIB_FOLDER)/
+			mkdir -p $(READLINE_PATH)
+			cd $(READLINE_PATH)
+			(READLINE_PATH)=$(pwd)
+			cd $(BASEDIR)
+			mkdir -p $(TEMP_FOLDER)
+
+			cd $(TEMP_FOLDER)
+			../../$(INSTALLER)/configure --prefix=$(READLINE_PATH)
+
+			cd $(BASEDIR)
+			make -C $(TEMP_FOLDER)
+			make -C $(TEMP_FOLDER) install
+			make -C $(TEMP_FOLDER) clean
+			rm -rf $(TEMP_FOLDER) $(ARCHIVE) $(INSTALLER)
 
 $(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
@@ -82,4 +106,4 @@ norm:
 
 -include $(DEPS)
 
-.PHONY: 	clean fclean re norm makelib
+.PHONY: 	clean fclean re norm rl_install
