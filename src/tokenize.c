@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/utils.h"
+#include "basic_utils.h"
 
 // Get the string of the input(in) and the index(i) of the current quote and 
 // returns the distance(dist) to the next ocurrence of the same type of quote.

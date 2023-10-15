@@ -15,8 +15,12 @@
 // Remove pairs of unclosed quotes form left 
 char *remove_quotes_from_token(char *tok)
 {
+	int i;
+
+	i = -1;
 	if (is_operatorchr(*tok))
-	while()
+		return (tok);
+	while (tok[++i])
 }
 
 // All unquoted occurrences of the characters `'’ and `"’ that did not result

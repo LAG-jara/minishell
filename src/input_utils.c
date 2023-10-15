@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/definitions.h"
+#include "definitions.h"
 
 // Returns TRUE if c is the char ' ' or '\t', returns FALSE otherwise.
 int	is_blankchr(int c)
