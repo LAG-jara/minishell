@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 14:59:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:22:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
 // with the 'i'th element replaced by the "sub-array" of strings 'subarr'.
 // Both the original array 'arr' and the added 'subarr' are freed.
+// Exits properly if memory allocation fails.
 char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 {
 	char	**new_arr;
@@ -38,15 +39,7 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 	return (new_arr);
 }
 
-// #include <stdio.h>
-
-// void	print_arr(char **arr)
-// {
-// 	int i = -1;
-// 	while (arr[++i])
-// 		printf("[%d] : %s\n", i, arr[i]);
-// }
-
+// #include "debug.h"
 // int	main(int ac, char **av, char **environ)
 // {
 // 	char **env = strarr2_dup(environ);

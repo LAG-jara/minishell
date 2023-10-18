@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr_get_size.c                                  :+:      :+:    :+:   */
+/*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 11:32:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 15:37:21 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 16:14:27 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/18 16:16:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "debug.h"
 
-// Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	strarr2_get_size(char **arr)
+// DEBUG ONLY!
+void	print_arr(char **arr)
 {
-	size_t	size;
-
-	size = 0;
-	while (arr && arr[size])
-		++size;
-	return (size);
+	int i = -1;
+	while (arr[++i])
+		printf("[%d] : %s\n", i, arr[i]);
 }
 
-// Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	strarr3_get_size(char ***arr)
+// DEBUG ONLY!
+void	print_cmds(char ***cmds)
 {
-	size_t	size;
-
-	size = 0;
-	while (arr[size])
-		++size;
-	return (size);
+	int i = 0;
+	while (cmds && cmds[i])
+	{
+		printf("CMD %d:\n", i);
+		print_arr(cmds[i]);
+		printf("\n");
+		++i;
+	}
 }

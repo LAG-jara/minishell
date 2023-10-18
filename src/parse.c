@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:52:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:19:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # include "print_error.h"
 # include "token_utils.h"
 # include "errno.h"
+# include "strarr_utils.h"
 
 // Returns TRUE if the redirection token in the 'i'th position is valid,
 // returns FALSE otherwise.
@@ -77,6 +78,32 @@ static int	count_commands_checking_syntax(char **tokens)
 	return (cmd_amount);
 }
 
+static char	***get_cmds(char **tokens, int cmd_amount)
+{
+	char	***cmds;
+	char	**cmd;
+	int		i;
+	int		j;
+
+	cmds = (char ***) p_malloc(sizeof(char **) * (cmd_amount + 1));
+	i = 0;
+	j = 0;
+	while (i < cmd_amount)
+	{
+		cmd = strarr2_dup(NULL);
+		while (tokens[j] && token_type(tokens[j]) != CTRL_OP)
+		{
+			cmd = strarr2_add(cmd, tokens[j]);
+			++j;
+		}
+		cmds[i] = cmd;
+		++i;
+		++j;
+	}
+	cmds[i] = NULL;
+	return (cmds);
+}
+
 // Parses the array of tokens and groups them into an array of commands,
 // dividing them by the token '|'. Allocates and returns the array of commands.
 // If a syntax error is found, prints an error message,
@@ -84,7 +111,7 @@ static int	count_commands_checking_syntax(char **tokens)
 char	***parse(char **tokens)
 {
 	int		cmd_amount;
-	char	*err_msg;	
+	char	***cmds;
 
 	cmd_amount = count_commands_checking_syntax(tokens);
 	if (cmd_amount == -1)
@@ -93,16 +120,25 @@ char	***parse(char **tokens)
 		return (NULL);
 	}
 	printf("CMD amount: %d\n", cmd_amount);
-	return (NULL);
+	cmds = get_cmds(tokens, cmd_amount);
+	// strarr2_free(tokens);		// TODO: Check that line 👀
+	return (cmds);
 }
 
+// # include "debug.h"
 // int	main(void)
 // {
-// 	char *tokens[] = { "ls", "arg1", "arg2", "|", "echo", "", "command", "arg", NULL};
+// 	char **empty = strarr2_dup(NULL);
+// 	print_arr(empty);
+
+// 	char *tokens[] = \
+// 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
 
 // 	printf("Errno is: %d\n", errno);
-// 	parse(tokens);
-// 	printf("Errno is: %d\n", errno);
+// 	char ***cmds = parse(tokens);
+// 	printf("Errno is: %d\n\n", errno);
+	
+// 	print_cmds(cmds);
 
 // 	// char	*token = "";
 // 	// int		type = token_type(token);

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:42:30 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:38:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:22:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
 // with the string 'str' added at the end of it.
-// The original array 'arr' is freed.
+// The original array 'arr' is freed. Exits properly if memory allocation fails.
 char	**strarr2_add(char **arr, char *str)
 {
 	char	**new_arr;
@@ -35,6 +35,7 @@ char	**strarr2_add(char **arr, char *str)
 // Allocates and returns a copy of the array of arrays of strings 'arr'
 // with the "sub-array" 'subarr' added at the end of it.
 // The original array 'arr' is freed.
+// Exits properly if memory allocation fails.
 char	***strarr3_add(char ***arr, char **subarr)
 {
 	char	***new_arr;

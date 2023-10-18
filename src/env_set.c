@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 11:36:03 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:22:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,7 @@ void	rm_env_var(char *varname, char ***env)
 		*env = strarr2_rm(*env, var_index);
 }
 
-// #include <stdio.h>
-
-// static void	print_arrstr2(char **arr)
-// {
-// 	int i = 0;
-// 	while (arr[i])
-// 	{
-// 		printf("[%d] : %s\n", i, arr[i]);
-// 		++i;
-// 	}
-// }
-
+// #include "debug.h"
 // int	main(int ac, char **av, char **e)
 // {
 // 	char **env = strarr2_dup(e);
@@ -76,10 +65,10 @@ void	rm_env_var(char *varname, char ***env)
 // 	// printf("Result: %s\n", str);
 
 // 	set_env_var("USER", "Albert Lajara", &env);
-// 	print_arrstr2(env);
+// 	print_arr(env);
 
 // 	// rm_env_var("HOME", &env);
-// 	// print_arrstr2(env);
+// 	// print_arr(env);
 
 // 	return (0);
 // }

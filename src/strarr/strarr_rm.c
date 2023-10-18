@@ -6,15 +6,15 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:07:22 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:47:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 15:21:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strarr_utils.h"
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
-// with the 'i'th string removed from it.
-// The original array 'arr' is freed.
+// with the 'i'th string removed from it. The original array 'arr' is freed.
+// Exits properly if memory allocation fails.
 char	**strarr2_rm(char **arr, int i)
 {
 	char	**old_arr;
