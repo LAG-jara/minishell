@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:39:09 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:47:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:41:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ char	**strarr2_dup(char **arr)
 }
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
-char	**strarr3_dup(char ***arr)
+char	***strarr3_dup(char ***arr)
 {
-	char	**new_arr;
+	char	***new_arr;
 	size_t	orig_arr_size;
 	int		i;
 
 	orig_arr_size = strarr3_get_size(arr);
-	new_arr = (char **) p_malloc(sizeof(char *) * (orig_arr_size + 1));
+	new_arr = (char ***) p_malloc(sizeof(char *) * (orig_arr_size + 1));
 	i = -1;
 	while (arr[++i])
 		new_arr[i] = strarr2_dup(arr[i]);

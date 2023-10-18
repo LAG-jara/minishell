@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr_free.c                                      :+:      :+:    :+:   */
+/*   print_error.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 17:50:58 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:48:42 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/18 13:45:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef PRINT_ERROR_H
+# define PRINT_ERROR_H
 
-// Frees the NULL-terminated array of strings 'arr'.
-void	strarr2_free(char **arr)
-{
-	int	i;
+# define ERRMSG_SYNTAX "syntax error near token"
+# define ERRNO_SYNTAX 258
 
-	i = -1;
-	while (arr[i++])
-		free(arr[i]);
-	free(arr);
-}
+# include "minish_consts.h"
+# include <stdio.h>
 
-// Frees the NULL-terminated array of NULL-terminated arrays of strings 'arr'.
-void	strarr3_free(char ***arr)
-{
-	int	i;
-	int	j;
+int	print_err_syntax(char *token, int ret);
 
-	i = -1;
-	while (arr[i++])
-	{
-		j = -1;
-		while (arr[j++])
-			free(arr[i][j]);
-		free(arr[i]);
-	}
-	free(arr);
-}
+#endif

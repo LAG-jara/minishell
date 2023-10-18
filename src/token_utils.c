@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:52:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:52:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	quote_skip(char *in, int i)
 		++dist;
 	if (!in[i + dist])
 		--dist;
-	return(dist);
+	return (dist);
 }
 
 // Returns TRUE if 'str' is a valid word, FALSE otherwise.

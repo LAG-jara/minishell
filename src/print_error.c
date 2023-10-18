@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr_free.c                                      :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 17:50:58 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:48:42 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/18 13:51:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "print_error.h"
 
-// Frees the NULL-terminated array of strings 'arr'.
-void	strarr2_free(char **arr)
+// Prints the a syntax error message regarding 'token' and returns 'ret'.
+int	print_err_syntax(char *token, int ret)
 {
-	int	i;
-
-	i = -1;
-	while (arr[i++])
-		free(arr[i]);
-	free(arr);
-}
-
-// Frees the NULL-terminated array of NULL-terminated arrays of strings 'arr'.
-void	strarr3_free(char ***arr)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (arr[i++])
-	{
-		j = -1;
-		while (arr[j++])
-			free(arr[i][j]);
-		free(arr[i]);
-	}
-	free(arr);
+	printf("%s: %s '%s'\n", SH_NAME, ERRMSG_SYNTAX, token);
+	return (ret);
 }

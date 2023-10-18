@@ -17,9 +17,11 @@ SRC			=	main.c \
 				env_find.c \
 				env_get.c \
 				env_set.c \
+				expand.c \
 				get_input.c \
 				input_utils.c \
 				parse.c \
+				print_error.c \
 				quote_removal.c \
 				token_utils \
 				tokenize.c
@@ -40,7 +42,7 @@ DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
 # Includes
 INCDIR		= inc/
-INCFLAG		=	-I .$(INCDIR)
+INCFLAG		= -I .$(INCDIR)
 
 RM			= rm -fr
 CC			= cc
@@ -63,7 +65,7 @@ BYELLOW		= \033[1;33m
 
 all:		$(NAME)
 
-$(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
+$(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
 			@mkdir -p $(DEPDIR)
 			@$(CC) $(FLAGS) $(XFLAGS) $(DFLAGS) $(RLFLAGS) -c $< -o $@ $(INCFLAG)
@@ -89,34 +91,34 @@ re:			fclean all
 norm:
 			@norminette $(SRCDIR)* $(INCDIR)*
 
-rl_install:	# THIS IS UNTESTED  ##########################
-			LIB_FOLDER=vendor
+# rl_install:
+# 			LIB_FOLDER=vendor
 
-			mkdir $(LIB_FOLDER)
+# 			mkdir $(LIB_FOLDER)
 
-			TEMP_FOLDER=$(LIB_FOLDER)/.tmp_readline-install/
-			READLINE_PATH=$(LIB_FOLDER)/readline/
+# 			TEMP_FOLDER=$(LIB_FOLDER)/.tmp_readline-install/
+# 			READLINE_PATH=$(LIB_FOLDER)/readline/
 
-			ARCHIVE=$(LIB_FOLDER)/readline-8.1.tar.gz
-			INSTALLER=$(LIB_FOLDER)/readline-8.1
-			BASEDIR=$(pwd)
-			curl -k https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz > $ARCHIVE
+# 			ARCHIVE=$(LIB_FOLDER)/readline-8.1.tar.gz
+# 			INSTALLER=$(LIB_FOLDER)/readline-8.1
+# 			BASEDIR=$(pwd)
+# 			curl -k https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz > $ARCHIVE
 
-			tar -xf $(ARCHIVE) -C $(LIB_FOLDER)/
-			mkdir -p $(READLINE_PATH)
-			cd $(READLINE_PATH)
-			(READLINE_PATH)=$(pwd)
-			cd $(BASEDIR)
-			mkdir -p $(TEMP_FOLDER)
+# 			tar -xf $(ARCHIVE) -C $(LIB_FOLDER)/
+# 			mkdir -p $(READLINE_PATH)
+# 			cd $(READLINE_PATH)
+# 			(READLINE_PATH)=$(pwd)
+# 			cd $(BASEDIR)
+# 			mkdir -p $(TEMP_FOLDER)
 
-			cd $(TEMP_FOLDER)
-			../../$(INSTALLER)/configure --prefix=$(READLINE_PATH)
+# 			cd $(TEMP_FOLDER)
+# 			../../$(INSTALLER)/configure --prefix=$(READLINE_PATH)
 
-			cd $(BASEDIR)
-			make -C $(TEMP_FOLDER)
-			make -C $(TEMP_FOLDER) install
-			make -C $(TEMP_FOLDER) clean
-			rm -rf $(TEMP_FOLDER) $(ARCHIVE) $(INSTALLER)
+# 			cd $(BASEDIR)
+# 			make -C $(TEMP_FOLDER)
+# 			make -C $(TEMP_FOLDER) install
+# 			make -C $(TEMP_FOLDER) clean
+# 			rm -rf $(TEMP_FOLDER) $(ARCHIVE) $(INSTALLER)
 
 -include $(DEPS)
 

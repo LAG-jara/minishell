@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:48:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:41:15 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 	int		j;
 	int		k;
 
-	new_arr_size = get_strarr2_size(arr) + get_strarr2_size(subarr);
+	new_arr_size = strarr2_get_size(arr) + strarr2_get_size(subarr);
 	new_arr = (char **) p_malloc(sizeof(char *) * (new_arr_size + 1));
 	j = -1;
 	while (arr[++j] && j != i)
@@ -33,7 +33,7 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 	while (arr[++k])
 		new_arr[++j] = ft_strdup2(arr[k]);
 	new_arr[j + 1] = NULL;
-	free_strarr2(arr);
-	free_strarr2(subarr);
+	strarr2_free(arr);
+	strarr2_free(subarr);
 	return (new_arr);
 }

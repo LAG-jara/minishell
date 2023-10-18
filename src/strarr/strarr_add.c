@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:42:30 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:47:57 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:38:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ char	**strarr2_add(char **arr, char *str)
 // Allocates and returns a copy of the array of arrays of strings 'arr'
 // with the "sub-array" 'subarr' added at the end of it.
 // The original array 'arr' is freed.
-char	**strarr3_add(char ***arr, char **subarr)
+char	***strarr3_add(char ***arr, char **subarr)
 {
-	char	**new_arr;
+	char	***new_arr;
 	size_t	orig_arr_size;
 	int		i;
 
 	orig_arr_size = strarr3_get_size(arr);
-	new_arr = (char **) p_malloc(sizeof(char *) * (orig_arr_size + 2));
+	new_arr = (char ***) p_malloc(sizeof(char *) * (orig_arr_size + 2));
 	i = -1;
 	while (arr[++i])
 		new_arr[i] = strarr2_dup(arr[i]);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr2.h                                          :+:      :+:    :+:   */
+/*   strarr_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,10 +27,10 @@ char	**strarr2_set(char **arr, char *str, int index);
 
 // 3-Dimensional String Arrays
 
-char	**strarr3_add(char ***arr, char **subarr);
-char	**strarr3_dup(char ***arr);
+char	***strarr3_add(char ***arr, char **subarr);
+char	***strarr3_dup(char ***arr);
 void	strarr3_free(char ***arr);
 size_t	strarr3_get_size(char ***arr);
-char	**strarr3_set(char ***arr, char **subarr, int i);
+char	***strarr3_set(char ***arr, char **subarr, int i);
 
 #endif
