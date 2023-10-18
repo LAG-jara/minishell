@@ -22,7 +22,7 @@ SRC			=	main.c \
 				input_utils.c \
 				parse.c \
 				print_error.c \
-				quote_removal.c \
+				remove_quotes.c \
 				token_utils \
 				tokenize.c
 				
