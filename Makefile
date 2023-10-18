@@ -4,6 +4,7 @@ MKF			= Makefile
 # Sources
 SRC			=	main.c \
 				basic_utils/utils_char.c \
+				basic_utils/utils_itoa.c \
 				basic_utils/utils_free.c \
 				basic_utils/utils_str.c \
 				basic_utils/utils_strarr.c \
@@ -18,6 +19,7 @@ SRC			=	main.c \
 				env_get.c \
 				env_set.c \
 				expand_and_split.c \
+				expand_vars.c \
 				get_input.c \
 				input_utils.c \
 				parse.c \
