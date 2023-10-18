@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_removal.c                                    :+:      :+:    :+:   */
+/*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:35:10 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 18:35:14 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:47:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ char *remove_quotes_from_token(char *tok)
 	}
 }
 
-// All unquoted occurrences of the characters `'’ and `"’ that did not result
-// from one of the above expansions are removed. 
+// Removes all unquoted occurrences of the characters ‘'’ and ‘"’
+// that did not result from expansion.
 char	***remove_quotes(char ***commands)
 {
 	int i_comm;
