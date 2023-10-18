@@ -17,7 +17,7 @@ SRC			=	main.c \
 				env_find.c \
 				env_get.c \
 				env_set.c \
-				expand.c \
+				expand_and_split.c \
 				get_input.c \
 				input_utils.c \
 				parse.c \

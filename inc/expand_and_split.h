@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_utils.h                                      :+:      :+:    :+:   */
+/*   expand_and_split.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 19:14:18 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 13:33:23 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/18 17:04:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKEN_UTILS_H
-# define TOKEN_UTILS_H
+#ifndef EXPAND_AND_SPLIT_H
+# define EXPAND_AND_SPLIT_H
 
-# include "basic_utils.h"
+# include "env.h"
 # include "definitions.h"
 
-# define UNQUOTED 0
-# define QUOTED 1
-# define DQUOTED 2
-
-enum e_token_type {
-	WORD,
-	REDIR_OP,
-	CTRL_OP,
-	INVALID
-};
-
-int	is_word(char *str);
-int	quote_skip(char *in, int i);
-int	token_type(char *token);
-int	update_quote_status(int curr_status, char c);
+char	***expand_and_split(char ***commands, char **env);
 
 #endif

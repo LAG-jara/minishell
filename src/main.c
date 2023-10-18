@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:25:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:08:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	main(int ac, char **av, char **environ)
 	char	***commands;
 
 	env = strarr2_dup(environ);
-	while (42)
+	while (TRUE)
 	{
 		input = get_input();
 		tokens = tokenize(input);
 		commands = parse(tokens);
 		if (!commands)
 			continue ;
-		commands = expand(commands, env);
+		commands = expand_and_split(commands, env);
 		commands = remove_quotes(commands);
 		redirect_and_execute(commands, &env);
 	}

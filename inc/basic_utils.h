@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:37:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:45:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:30:30 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ char	*ft_strdup(const char *s1);
 char	*ft_strdup2(const char *str);
 char	**ft_split(char const *s, char c);
 
-// Memory Allocation
+// Other
 
 void	*p_malloc(size_t size);
+char	*ft_itoa(int n);
 
 #endif
