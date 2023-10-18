@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   minish_consts.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 18:09:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:44:10 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 12:42:56 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/18 12:43:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef MINISH_CONSTS_H
+# define MINISH_CONSTS_H
 
-# include "get_input.h"
-# include "tokenize.h"
-# include "parse.h"
+# define SH_NAME "minish"
 
 #endif

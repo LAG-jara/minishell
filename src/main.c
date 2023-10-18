@@ -6,9 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:44:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:39:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 int	main(int ac, char **av, char **environ)
 {
@@ -17,10 +19,10 @@ int	main(int ac, char **av, char **environ)
 	char	**tokens;
 	char	***commands;
 
-	env = dup_strarr2(environ);
+	env = strarr2_dup(environ);
 	while (42)
 	{
-		input = get_input(env);
+		input = get_input();
 		tokens = tokenize(input);
 		commands = parse(tokens, &env);
 		if (!commands)

@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/14 16:56:06 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:53:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.h"
-
-
-
+#include "tokenize.h"
 
 // Recives the input(in) and returns how many tokens there are. 
-int	count_tokens(char *in)
+static int	count_tokens(char *in)
 {
 	int	i;
-	int count;
+	int	count;
 
 	count = 0;
 	i = -1;
@@ -50,7 +47,7 @@ int	count_tokens(char *in)
 // Words may not include unquoted metacharacters.
 
 // Returns the length of the next token of the input.
-int toklen(char *in, int i)
+static int	toklen(char *in, int i)
 {
 	int	len;
 
@@ -69,11 +66,11 @@ int toklen(char *in, int i)
 }
 
 // Recives the input(in) and fill the allocated spaces for the tokens.
-char **fill_tokens(char *in, char **tok)
+static char	**fill_tokens(char *in, char **tok)
 {
-	int idx_in;
-	int len;
-	int idx_tok;
+	int	idx_in;
+	int	len;
+	int	idx_tok;
 
 	idx_in = -1;
 	idx_tok = -1;
@@ -89,8 +86,8 @@ char **fill_tokens(char *in, char **tok)
 		tok[idx_tok][len] = '\0';
 	}
 	tok[++idx_tok] = (char *)malloc(sizeof(char) * 1);
-		if (!tok[idx_tok])
-			exit(1);
+	if (!tok[idx_tok])
+		exit(1);
 	tok[idx_tok] = NULL;
 	return (tok);
 }
@@ -102,11 +99,10 @@ char	**tokenize(char *input)
 	int		num_tokens;
 	char	**tokens;
 
-
 	num_tokens = count_tokens(input);
 	tokens = (char **)malloc(sizeof(char *) * num_tokens + 1);
-		if(!tokens)
-			exit(1);
+	if(!tokens)
+		exit (1);
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
 }

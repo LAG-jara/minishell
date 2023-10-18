@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:56:50 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 18:56:53 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:51:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 // Returns TRUE if c is the char ' ' or '\t', returns FALSE otherwise.
 int	is_blankchr(int c)
 {
-	if(c == ' ' || c == '\t')
+	if (c == ' ' || c == '\t')
 		return (TRUE);
 	return (FALSE);
 }
 
 // Returns TRUE if c is the char '<' or '>', returns FALSE otherwise.
-int is_redirectionchr(int c)
+int	is_redirectionchr(int c)
 {
-	if(c == '<' || c == '>')
+	if (c == '<' || c == '>')
 		return (TRUE);
 	return (FALSE);
 }
@@ -31,7 +31,7 @@ int is_redirectionchr(int c)
 // Returns TRUE if c is the char '<', '>' or '|', returns FALSE otherwise.
 int	is_operatorchr(int c)
 {
-	if(is_redirectionchr(c) || c == '|')
+	if (is_redirectionchr(c) || c == '|')
 		return (TRUE);
 	return (FALSE);
 }
@@ -40,15 +40,15 @@ int	is_operatorchr(int c)
 // returns FALSE otherwise.
 int	is_metachr(int c)
 {
-	if(c == ' ' || c == '\t' || is_operatorchr(c))
+	if (c == ' ' || c == '\t' || is_operatorchr(c))
 		return (TRUE);
 	return (FALSE);
 }
 
 // Returns TRUE if c is the char '\'' or '"', returns FALSE otherwise.
-int is_quotechr(int c)
+int	is_quotechr(int c)
 {
-	if(c == '\'' || c == '"')
+	if (c == '\'' || c == '"')
 		return (TRUE);
 	return (FALSE);
 }

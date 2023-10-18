@@ -6,13 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 19:58:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:44:46 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "token_utils.h"
-#include "minishell.h"
 
 #include <stdio.h>
 
@@ -65,7 +63,7 @@ static int	count_commands_checking_syntax(char **tokens)
 	int		cmd_amount;
 	int		i;
 
-	tok_amount = get_strarr2_size(tokens);
+	tok_amount = strarr2_get_size(tokens);
 	cmd_amount = 1;
 	i = 0;
 	while (i < tok_amount)

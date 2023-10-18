@@ -3,14 +3,27 @@ MKF			= Makefile
 
 # Sources
 SRC			=	main.c \
+				basic_utils/utils_char.c \
+				basic_utils/utils_free.c \
+				basic_utils/utils_str.c \
+				basic_utils/utils_strarr.c \
+				strarr/strarr_add_subarr_at.c \
+				strarr/strarr_add.c \
+				strarr/strarr_dup.c \
+				strarr/strarr_free.c \
+				strarr/strarr_get_size.c \
+				strarr/strarr_rm.c \
+				strarr/strarr_set.c \
+				env_find.c \
 				env_get.c \
 				env_set.c \
 				get_input.c \
-				tokenize.c \
-				utils_char.c \
-				utils_free.c \
-				utils_str.c \
-				utils_strarr.c
+				input_utils.c \
+				parse.c \
+				quote_removal.c \
+				token_utils \
+				tokenize.c
+				
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))
 
@@ -19,14 +32,15 @@ OBJDIR		= .obj/
 OBJS		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Libraries
-RL_DIR	= readline/
+RL_DIR		= readline/
 
 # Dependencies
 DEPDIR		= .dep/
 DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
 # Includes
-INC			=	-I ./inc/\
+INCDIR		= inc/
+INCFLAG		=	-I .$(INCDIR)
 
 RM			= rm -fr
 CC			= cc
@@ -48,6 +62,32 @@ BBLUE		= \033[1;34m
 BYELLOW		= \033[1;33m
 
 all:		$(NAME)
+
+$(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
+			@mkdir -p $(@D)
+			@mkdir -p $(DEPDIR)
+			@$(CC) $(FLAGS) $(XFLAGS) $(DFLAGS) $(RLFLAGS) -c $< -o $@ $(INCFLAG)
+			@echo "$@ compiled"
+			@mv $(OBJDIR)*.d $(DEPDIR)
+
+$(NAME):	$(OBJS)
+			@$(CC) $(OBJS) -o $(NAME) $(INCFLAG)
+			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
+
+clean:
+			@$(RM) -fr $(OBJDIR) $(DEPDIR)
+			@make clean -sC $(LIBFT_DIR)
+			@echo "$(YELLOW)[ Object files cleared ]$(DEFAULT)"
+
+fclean:		
+			@$(RM) $(OBJDIR) $(NAME) $(DEPS)
+			@make fclean -sC $(LIBFT_DIR)
+			@echo "$(YELLOW)[ All created files cleared ]$(DEFAULT)"
+
+re:			fclean all
+
+norm:
+			@norminette $(SRCDIR)* $(INCDIR)*
 
 rl_install:	# THIS IS UNTESTED  ##########################
 			LIB_FOLDER=vendor
@@ -77,32 +117,6 @@ rl_install:	# THIS IS UNTESTED  ##########################
 			make -C $(TEMP_FOLDER) install
 			make -C $(TEMP_FOLDER) clean
 			rm -rf $(TEMP_FOLDER) $(ARCHIVE) $(INSTALLER)
-
-$(OBJDIR)%.o :	$(SRCDIR)%.c $(MKF)
-			@mkdir -p $(@D)
-			@mkdir -p $(DEPDIR)
-			@$(CC) $(FLAGS) $(XFLAGS) $(DFLAGS) $(RLFLAGS) -c $< -o $@ $(INC)
-			@echo "$@ compiled"
-			@mv $(OBJDIR)*.d $(DEPDIR)
-
-$(NAME):	$(OBJS)
-			@$(CC) $(OBJS) -o $(NAME) $(INC)
-			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
-
-clean:
-			@$(RM) -fr $(OBJDIR) $(DEPDIR)
-			@make clean -sC $(LIBFT_DIR)
-			@echo "$(YELLOW)[ Object files cleared ]$(DEFAULT)"
-
-fclean:		
-			@$(RM) $(OBJDIR) $(NAME) $(DEPS)
-			@make fclean -sC $(LIBFT_DIR)
-			@echo "$(YELLOW)[ All created files cleared ]$(DEFAULT)"
-
-re:			fclean all
-
-norm:
-			@norminette $(SRCDIR)* includes/*
 
 -include $(DEPS)
 

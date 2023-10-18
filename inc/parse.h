@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:12:41 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 19:03:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:45:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define PARSE_H
 
 # include "env.h"
-# include "minishell.h"
+# include "definitions.h"
+# include "minish_consts.h"
 # include "token_utils.h"
 # include "basic_utils.h"
+
+char	***parse(char **tokens, char ***env);
 
 #endif

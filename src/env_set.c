@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 15:42:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:36:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	set_env_var(char *varname, char *value, char ***env)
 	varline = join_varline(varname, value);
 	var_index = find_var_index(varname, *env);
 	if (var_index == -1)
-		*env = add_strarr2(*env, varline);
+		*env = strarr2_add(*env, varline);
 	else
-		*env = set_strarr2(*env, varline, var_index);
+		*env = strarr2_set(*env, varline, var_index);
 }
 
 void	rm_env_var(char *varname, char ***env)
@@ -53,7 +53,7 @@ void	rm_env_var(char *varname, char ***env)
 
 	var_index = find_var_index(varname, *env);
 	if (var_index >= 0)
-		*env = rm_strarr2(*env, var_index);
+		*env = strarr2_rm(*env, var_index);
 }
 
 // #include <stdio.h>
@@ -70,7 +70,7 @@ void	rm_env_var(char *varname, char ***env)
 
 // int	main(int ac, char **av, char **e)
 // {
-// 	char **env = dup_strarr2(e);
+// 	char **env = strarr2_dup(e);
 
 // 	// char *str = get_var("USER", env);
 // 	// printf("Result: %s\n", str);
