@@ -6,13 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:39:09 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:41:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:48:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "strarr_utils.h"
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
+// Exits properly if memory allocation fails.
 char	**strarr2_dup(char **arr)
 {
 	char	**new_arr;
@@ -29,6 +30,7 @@ char	**strarr2_dup(char **arr)
 }
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
+// Exits properly if memory allocation fails.
 char	***strarr3_dup(char ***arr)
 {
 	char	***new_arr;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:41:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 14:59:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,34 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 		new_arr[j] = ft_strdup2(arr[j]);
 	k = j;
 	while (*subarr)
-		new_arr[++j] = ft_strdup2(*subarr++);
+		new_arr[j++] = ft_strdup2(*subarr++);
 	while (arr[++k])
-		new_arr[++j] = ft_strdup2(arr[k]);
+		new_arr[j++] = ft_strdup2(arr[k]);
 	new_arr[j + 1] = NULL;
 	strarr2_free(arr);
-	strarr2_free(subarr);
+	// strarr2_free(subarr);		// TODO: Check that line 👀
 	return (new_arr);
 }
+
+// #include <stdio.h>
+
+// void	print_arr(char **arr)
+// {
+// 	int i = -1;
+// 	while (arr[++i])
+// 		printf("[%d] : %s\n", i, arr[i]);
+// }
+
+// int	main(int ac, char **av, char **environ)
+// {
+// 	char **env = strarr2_dup(environ);
+
+// 	print_arr(env);
+
+// 	char *tmp[] = { "esto es un array", "ESTO ES OTRO ARRAY", "AQUI HAY OTRO", NULL };
+// 	char **subarr = strarr2_dup(tmp);
+// 	env = strarr2_add_subarr_at(env, subarr, 5);
+// 	printf("\n\n");
+
+// 	print_arr(env);
+// }
