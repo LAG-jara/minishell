@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:53:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:32:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,20 @@ char	**tokenize(char *input)
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
 }
-/*
-// DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
-#include <stdio.h>
-#include <unistd.h>
 
+// DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
+/*
+#include "debug.h"
 int main()
 {
-	char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
-	int n = toklen(s,6);
-	printf("%d", n);
+	// char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+	// int n = toklen(s,6);
+	// printf("%d", n);
+
+	char	*s = "fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+	char	**tokens = tokenize(s);
+	
+	print_arr(tokens);
+
 	return (0);
 }*/
