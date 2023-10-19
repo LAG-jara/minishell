@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:32:10 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int main()
 	char	*s = "fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
 	char	**tokens = tokenize(s);
 	
-	print_arr(tokens);
+	print_strarr(tokens);
 
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:22:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 // {
 // 	char **env = strarr2_dup(environ);
 
-// 	print_arr(env);
+// 	print_strarr(env);
 
 // 	char *tmp[] = { "esto es un array", "ESTO ES OTRO ARRAY", "AQUI HAY OTRO", NULL };
 // 	char **subarr = strarr2_dup(tmp);
 // 	env = strarr2_add_subarr_at(env, subarr, 5);
 // 	printf("\n\n");
 
-// 	print_arr(env);
+// 	print_strarr(env);
 // }

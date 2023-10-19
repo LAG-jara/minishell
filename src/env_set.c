@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:22:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ void	rm_env_var(char *varname, char ***env)
 // 	// printf("Result: %s\n", str);
 
 // 	set_env_var("USER", "Albert Lajara", &env);
-// 	print_arr(env);
+// 	print_strarr(env);
 
 // 	// rm_env_var("HOME", &env);
-// 	// print_arr(env);
+// 	// print_strarr(env);
 
 // 	return (0);
 // }

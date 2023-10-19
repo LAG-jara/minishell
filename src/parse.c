@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 10:43:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ char	***parse(char **tokens)
 // int	main(void)
 // {
 // 	char **empty = strarr2_dup(NULL);
-// 	print_arr(empty);
+// 	print_strarr(empty);
 
 // 	char *tokens[] = \
 // 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
