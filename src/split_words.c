@@ -6,21 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 15:52:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 18:04:31 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "split_words.h"
-
-// Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
-// the 'expanded' ranges (read comment of the 'is_expanded' function).
-static int	is_delim(char c, int index, int *expanded)
-{
-	if (is_expanded(index, expanded) && is_blankchr(c))
-		return (TRUE);
-	else
-		return (FALSE);
-}
 
 // Returns TRUE or FALSE whether 'index' is in one of the 'expanded' ranges.
 // 'expanded' includes indexes in ascending order so even indexes defines a
@@ -43,6 +33,16 @@ static int	is_expanded(int index, int *expanded)
 		++i;
 	}
 	return (FALSE);
+}
+
+// Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
+// the 'expanded' ranges (read comment of the 'is_expanded' function).
+static int	is_delim(char c, int index, int *expanded)
+{
+	if (is_expanded(index, expanded) && is_blankchr(c))
+		return (TRUE);
+	else
+		return (FALSE);
 }
 
 // Counts the amount of words resulting from splitting 'token' using <space>
@@ -73,22 +73,23 @@ static int	count_words_amount(char *token, int *expanded)
 	return (count);
 }
 
+# include <stdio.h>
 // Allocates and returns the first word on 'token' (starting at 'i') using 
 // <space> and <tab> as delimiters, only in the ranges defined by 'expanded'.
 // The token's index 'i' is now pointing just after the popped word.
 static char	*pop_word(char *token, int *i, int *expanded)
 {
 	char	*word;
-	char	*tok;
 	size_t	word_len;
 
 	word_len = 0;
 	while (token[*i] && is_delim(token[*i], *i, expanded))
 		(*i)++;
-	while (token[*i + word_len] && !is_delim(token[*i + word_len], i, expanded))
+	while (token[*i + word_len] 
+		&& !is_delim(token[*i + word_len], (*i + word_len), expanded))
 		word_len++;
 	word = (char *) p_malloc((word_len + 1) * sizeof(char));
-	ft_strlcpy(word, token[*i], word_len + 1);
+	ft_strlcpy(word, &token[*i], word_len + 1);
 	*i += word_len;
 	return (word);
 }
@@ -100,13 +101,30 @@ char	**split_words(char *token, int *expanded)
 {
 	int		words_amount;
 	char	**split_tok;
+	int		indx;
 	int		i;
 
 	words_amount = count_words_amount(token, expanded);
 	split_tok = (char **) p_malloc(sizeof(char *) * (words_amount + 1));
+	indx = 0;
 	i = -1;
 	while (++i < words_amount)
-		split_tok[i] = pop_word(token, &i, expanded);
+		split_tok[i] = pop_word(token, &indx, expanded);
 	split_tok[i] = NULL;
 	return (split_tok);
 }
+
+// #include "debug.h"
+// #include "intarr_utils.h"
+// int main(int ac, char **av, char **env)
+// {
+// 	char	*token = ft_strdup2("   uno    dos tres    ");
+// 	int		*expanded = intarr_dup(NULL);
+// 	expanded = intarr_add(expanded, 0);
+// 	expanded = intarr_add(expanded, 0);
+
+// 	char	**split_tok = split_words(token, expanded);
+
+// 	printf("SPLIT TOKEN:\n");
+// 	print_strarr(split_tok);
+// }
