@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 19:47:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:18:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,37 @@ static char	*append_exp_errno(char **str, int *i, char *prev_str)
 	return (prev_str);
 }
 
+// Given that *str[*i] points to the $ character of "$?" or an env variable,
+// expands the value and appends it to 'prev_str' and 'str' (until 'i').
+// The appended result is returned and the 'str' pointer moved forward.
+static char	*append_exp(char **str, int *i, char *prev_str, char **env)
+{
+	if ((*str)[*i + 1] == '?')
+		return (append_exp_errno(str, i, prev_str));
+	else
+		return (append_exp_var(str, i, prev_str, env));
+}
+
+
 // Allocates and returns a copy of 'str' with its $VARIABLES expanded.
+// 'expanded' has the ranges of the result that resulted from expansion.
 char	*expand_vars(char *str, char **env)
 {
 	int		i;
 	char	*ret_str;
 	int		quote_status;
 
-	quote_status = UNQUOTED;
 	ret_str = ft_strdup("");
+	quote_status = UNQUOTED;
 	i = 0;
 	while (str && str[i])
 	{
 		quote_status = update_quote_status(quote_status, str[i]);
-		if (quote_status != QUOTED && str[i] == '$' && str[i + 1]
-			&& ft_isalpha(str[i + 1]) == TRUE)
-			ret_str = append_exp_var(&str, &i, ret_str, env);
-		else if (quote_status != QUOTED && str[i] == '$' && str[i + 1] == '?')
-			ret_str = append_exp_errno(&str, &i, ret_str);
+		if (quote_status != QUOTED && str[i] == '$'
+			&& (str[i + 1] && (ft_isalpha(str[i + 1])) || str[i + 1] == '?'))
+		{
+			ret_str = append_exp(&str, &i, ret_str, env);
+		}
 		else
 			i++;
 	}
