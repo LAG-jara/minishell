@@ -13,6 +13,7 @@ minishell
 *test*
 .*swp
 a.out
+*.dSYM
 *.sh
 *main*
 TODO*
