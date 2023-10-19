@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:32:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 15:37:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:35:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t	strarr3_get_size(char ***arr)
 	size_t	size;
 
 	size = 0;
-	while (arr[size])
+	while (arr && arr[size])
 		++size;
 	return (size);
 }

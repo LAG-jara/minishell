@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 16:19:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:43:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 
 // Returns TRUE if the redirection token in the 'i'th position is valid,
 // returns FALSE otherwise.
-static int is_valid_redir(char **tokens, int i, int tok_amount)
+static int	is_valid_redir(char **tokens, int i, int tok_amount)
 {
-	char	*next_token;
+	char	*next_tok;
 
 	if (i + 1 >= tok_amount)
 		return (FALSE);
-	next_token = tokens[i + 1];
-	if (token_type(next_token) == WORD)
+	next_tok = tokens[i + 1];
+	if (token_type(next_tok) == WORD)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -33,17 +33,17 @@ static int is_valid_redir(char **tokens, int i, int tok_amount)
 
 // Returns TRUE if the control token in the 'i'th position is valid,
 // returns FALSE otherwise.
-static int is_valid_ctrl(char **tokens, int i, int tok_amount)
+static int	is_valid_ctrl(char **tokens, int i, int tok_amount)
 {
-	char	*prev_token;
-	char	*next_token;
+	char	*prev_tok;
+	char	*next_tok;
 
 	if (i + 1 >= tok_amount || i == 0)
 		return (FALSE);
-	next_token = tokens[i + 1];
-	prev_token = tokens[i - 1];
-	if (token_type(prev_token) == WORD &&
-		(token_type(next_token) == WORD || token_type(next_token) == REDIR_OP))
+	next_tok = tokens[i + 1];
+	prev_tok = tokens[i - 1];
+	if (token_type(prev_tok) == WORD
+		&& (token_type(next_tok) == WORD || token_type(next_tok) == REDIR_OP))
 		return (TRUE);
 	else
 		return (FALSE);
@@ -137,7 +137,7 @@ char	***parse(char **tokens)
 // 	printf("Errno is: %d\n", errno);
 // 	char ***cmds = parse(tokens);
 // 	printf("Errno is: %d\n\n", errno);
-	
+
 // 	print_cmds(cmds);
 
 // 	// char	*token = "";

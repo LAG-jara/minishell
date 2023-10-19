@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:07:22 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 15:21:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 10:36:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@
 // Exits properly if memory allocation fails.
 char	**strarr2_rm(char **arr, int i)
 {
-	char	**old_arr;
+	char	**orig_arr;
 	char	**new_arr;
 	size_t	orig_arr_size;
 	int		j;
 
-	old_arr = arr;
-	orig_arr_size = strarr2_get_size(old_arr);
+	orig_arr = arr;
+	orig_arr_size = strarr2_get_size(orig_arr);
 	new_arr = (char **) p_malloc(sizeof(char *) * orig_arr_size);
 	j = -1;
-	while (old_arr[++j])
+	while (++j < orig_arr_size)
 	{
 		if (j == i)
-			++old_arr;
-		new_arr[j] = ft_strdup2(old_arr[j]);
+			++orig_arr;
+		new_arr[j] = ft_strdup2(orig_arr[j]);
 	}
 	new_arr[j] = NULL;
 	strarr2_free(arr);
