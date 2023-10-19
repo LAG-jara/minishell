@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 15:19:42 by Guillem L         #+#    #+#             */
-/*   Updated: 2023/10/15 19:04:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:42:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
 
-// Counts the amount of substrings resulting from splitting s using the 
-// char c as a delimeter.
+// Counts the amount of substrings resulting from splitting 's' using the 
+// char 'c' as a delimeter.
 static size_t	count_substr(char *s, char c)
 {
 	size_t	count;
@@ -38,8 +38,8 @@ static size_t	count_substr(char *s, char c)
 	return (count);
 }
 
-// Allocates and returns the first substring on s using c as a delimeter.
-// The string pointed by s is now pointing just after the popped substring.
+// Allocates and returns the first substring on 's' using 'c' as a delimeter.
+// The string pointed by 's' is now pointing just after the popped substring.
 static char	*pop_str(char **s, char c)
 {
 	char	*substr;
@@ -76,7 +76,7 @@ static void	*freearr(char **arr)
 }
 
 // Allocates (with malloc(3)) and returns an array of strings obtained by 
-// splitting ’s’ using the character ’c’ as a delimiter. The array must end 
+// splitting 's' using the character 'c' as a delimiter. The array must end 
 // with a NULL pointer.
 char	**ft_split(char const *s, char c)
 {
