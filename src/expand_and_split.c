@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 12:00:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:11:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
 #include "expand_vars.h"
-#include "split_words.h"
-#include "remove_quotes.h"
+// #include "split_words.h"
+// #include "remove_quotes.h"
 
 // Expands the variables of the token and splits words if needed.
 // Finally, performs quote removal and returns the result.
@@ -22,9 +22,11 @@ static char	**expand_and_split_token(char *token, char **env)
 	int		*expanded;
 	char	**split_tok;
 
+	expanded = intarr_dup(NULL);
 	token = expand_vars(token, &expanded, env);
 	// split_tok = split_words(token, expanded);
 	// split_tok = remove_quotes(split_tok, expanded);
+	free(expanded);
 	return (split_tok);
 }
 

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 12:18:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:11:53 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ static char	*append_exp(char **str, int *i, char *prev_str, char **env)
 		return (append_exp_var(str, i, prev_str, env));
 }
 
-
 // Allocates and returns a copy of 'str' with its $VARIABLES expanded.
 // 'expanded' has the ranges of the result that resulted from expansion.
-char	*expand_vars(char *str, char **env)
+char	*expand_vars(char *str, int **expanded, char **env)
 {
 	int		i;
 	char	*ret_str;
@@ -80,20 +79,34 @@ char	*expand_vars(char *str, char **env)
 		if (quote_status != QUOTED && str[i] == '$'
 			&& (str[i + 1] && (ft_isalpha(str[i + 1])) || str[i + 1] == '?'))
 		{
+			if (quote_status != DQUOTED)
+				*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
 			ret_str = append_exp(&str, &i, ret_str, env);
+			if (quote_status != DQUOTED)
+				*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
 		}
 		else
 			i++;
 	}
 	ret_str = gnl_strjoin_free(ret_str, str);
+	free(str);
 	return (ret_str);
 }
 
-// # include <stdio.h>
-// int main(int ac, char **av, char **env)
-// {
-// 	errno = 42;
-// 	char	*token = ft_strdup2("\"hola $USER, como estas?\nErrno: $?\"");
-// 	token = expand_vars(token, env);
-// 	printf("new token: %s\n", token);
-// }
+# include "debug.h"
+int main(int ac, char **av, char **env)
+{
+	errno = 42;
+	char	*token = ft_strdup2("hola $USER, como \"estas?  Errno: $?\"");
+	int *expanded = intarr_dup(NULL);
+	token = expand_vars(token, &expanded, env);
+	printf("new token: %s\n\n", token);
+	print_intarr(expanded);
+
+	// int *expanded = intarr_dup(NULL);
+	// expanded = intarr_add(expanded, 4);
+	// expanded = intarr_add(expanded, 6);
+	// expanded = intarr_add(expanded, 9);
+	// expanded = intarr_add(expanded, 42);
+	// print_intarr(expanded);
+}
