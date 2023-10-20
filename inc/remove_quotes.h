@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_and_split.h                                 :+:      :+:    :+:   */
+/*   remove_quotes.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 13:33:23 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 19:48:03 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/20 19:44:57 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/20 19:45:58 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_AND_SPLIT_H
-# define EXPAND_AND_SPLIT_H
+#ifndef REMOVE_QUOTES_H
+# define REMOVE_QUOTES_H
 
-# include "env.h"
+# include "quote_utils.h"
+# include "intarr_utils.h"
 # include "definitions.h"
+# include "basic_utils.h"
 
-char	***expand_and_split(char ***commands, char **env);
+char	**remove_quotes(char **tokens, int *expanded);
 
 #endif

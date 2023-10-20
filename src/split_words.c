@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 17:52:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:41:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ static char	*pop_word(char *token, int *i, int *expanded)
 }
 
 // Given that 'expanded' defines the ranges [even: start(incl), odd: end(excl)]
-// in which a value was expanded, performs word-splitting acording to the 
-// manual.		// TODO : add link
+// that resulted from expansion, performs word-splitting acording to the manual.
+// TODO : add link
 char	**split_words(char *token, int *expanded)
 {
 	int		words_amount;
