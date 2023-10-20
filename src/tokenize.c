@@ -79,15 +79,10 @@ static char	**fill_tokens(char *in, char **tok)
 		while (is_blankchr(in[idx_in]))
 			++idx_in;
 		len = toklen(in, idx_in);
-		tok[++idx_tok] = (char *)malloc(sizeof(char) * len + 1);
-		if (!tok[idx_tok])
-			exit(1);
-		ft_strlcpy(tok[idx_tok], &in[idx_in], len);
-		tok[idx_tok][len] = '\0';
+		tok[++idx_tok] = (char *)p_malloc(sizeof(char) * len + 1);
+		ft_strlcpy(tok[idx_tok], in + idx_in, len + 1);
+		idx_in += len;
 	}
-	tok[++idx_tok] = (char *)malloc(sizeof(char) * 1);
-	if (!tok[idx_tok])
-		exit(1);
 	tok[idx_tok] = NULL;
 	return (tok);
 }
@@ -100,15 +95,13 @@ char	**tokenize(char *input)
 	char	**tokens;
 
 	num_tokens = count_tokens(input);
-	tokens = (char **)malloc(sizeof(char *) * num_tokens + 1);
-	if(!tokens)
-		exit (1);
+	tokens = (char **)p_malloc(sizeof(char *) * num_tokens + 1);
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
 }
 
 // DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
-/*
+
 #include "debug.h"
 int main()
 {
@@ -116,10 +109,11 @@ int main()
 	// int n = toklen(s,6);
 	// printf("%d", n);
 
-	char	*s = "fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+	char	*s = "hola"; //"fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
 	char	**tokens = tokenize(s);
 	
-	print_strarr(tokens);
+	printf("%s\n", tokens[0]);
+	//print_strarr(tokens);
 
 	return (0);
-}*/
+}
