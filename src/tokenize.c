@@ -72,10 +72,11 @@ static char	**fill_tokens(char *in, char **tok)
 	int	len;
 	int	idx_tok;
 
-	idx_in = -1;
+	idx_in = 0;
 	idx_tok = -1;
-	while (in[++idx_in])
+	while (in[idx_in])
 	{
+
 		while (is_blankchr(in[idx_in]))
 			++idx_in;
 		len = toklen(in, idx_in);
@@ -83,7 +84,7 @@ static char	**fill_tokens(char *in, char **tok)
 		ft_strlcpy(tok[idx_tok], in + idx_in, len + 1);
 		idx_in += len;
 	}
-	tok[idx_tok] = NULL;
+	tok[++idx_tok] = NULL;
 	return (tok);
 }
 
@@ -109,10 +110,11 @@ int main()
 	// int n = toklen(s,6);
 	// printf("%d", n);
 
-	char	*s = "hola"; //"fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+	char	*s = " cat ";
 	char	**tokens = tokenize(s);
 	
 	printf("%s\n", tokens[0]);
+	printf("%s\n", tokens[1]);
 	//print_strarr(tokens);
 
 	return (0);
