@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 18:04:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:17:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ static int	is_expanded(int index, int *expanded)
 	{
 		if (index < expanded[i])
 			return (FALSE);
-		if (index >= expanded[i] && index < expanded[i + 1])
+		if (index == expanded[i])
+			return (TRUE);
+		if (index > expanded[i] && index < expanded[i + 1])
 			return (TRUE);
 		++i;
 	}
@@ -37,9 +39,10 @@ static int	is_expanded(int index, int *expanded)
 
 // Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
 // the 'expanded' ranges (read comment of the 'is_expanded' function).
-static int	is_delim(char c, int index, int *expanded)
+static int	is_delim(char c, int index, int *expanded, int quote_status)
 {
-	if (is_expanded(index, expanded) && is_blankchr(c))
+	if (is_expanded(index, expanded) && is_blankchr(c)
+		&& quote_status != DQUOTED)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -52,14 +55,17 @@ static int	count_words_amount(char *token, int *expanded)
 {
 	int	count;
 	int	is_word;
+	int	quote_status;
 	int i;
 
-	is_word = FALSE;
 	count = 0;
+	is_word = FALSE;
+	quote_status = UNQUOTED;
 	i = -1;
 	while (token[++i])
 	{
-		if (is_delim(token[i], i, expanded))
+		quote_status = update_quote_status(quote_status, token[i]);
+		if (is_delim(token[i], i, expanded, quote_status))
 			is_word = FALSE;
 		else
 		{
@@ -80,23 +86,32 @@ static int	count_words_amount(char *token, int *expanded)
 static char	*pop_word(char *token, int *i, int *expanded)
 {
 	char	*word;
-	size_t	word_len;
+	size_t	w_len;
+	int		quote_status;
 
-	word_len = 0;
-	while (token[*i] && is_delim(token[*i], *i, expanded))
-		(*i)++;
-	while (token[*i + word_len] 
-		&& !is_delim(token[*i + word_len], (*i + word_len), expanded))
-		word_len++;
-	word = (char *) p_malloc((word_len + 1) * sizeof(char));
-	ft_strlcpy(word, &token[*i], word_len + 1);
-	*i += word_len;
+	w_len = 0;
+	quote_status = UNQUOTED;
+	while (token[*i])
+	{
+		quote_status = update_quote_status(quote_status, token[*i]);
+		if (is_delim(token[*i], *i, expanded, quote_status))
+			(*i)++;
+	}
+	while (token[*i + w_len])
+	{
+		quote_status = update_quote_status(quote_status, token[*i + w_len]);
+		if (!is_delim(token[*i + w_len], (*i + w_len), expanded, quote_status))
+			w_len++;
+	}
+	word = (char *) p_malloc((w_len + 1) * sizeof(char));
+	ft_strlcpy(word, &token[*i], w_len + 1);
+	*i += w_len;
 	return (word);
 }
 
 // Given that 'expanded' defines the ranges [even: start(incl), odd: end(excl)]
-// in which a value was expanded (excluding those that were double-quoted),
-// performs word-splitting acording to the manual. // TODO : add link
+// in which a value was expanded, performs word-splitting acording to the 
+// manual.		// TODO : add link
 char	**split_words(char *token, int *expanded)
 {
 	int		words_amount;
