@@ -80,6 +80,8 @@ static char	**fill_tokens(char *in, char **tok)
 		while (is_blankchr(in[idx_in]))
 			++idx_in;
 		len = toklen(in, idx_in);
+		if (!len)
+			break;
 		tok[++idx_tok] = (char *)p_malloc(sizeof(char) * len + 1);
 		ft_strlcpy(tok[idx_tok], in + idx_in, len + 1);
 		idx_in += len;
@@ -110,12 +112,12 @@ int main()
 	// int n = toklen(s,6);
 	// printf("%d", n);
 
-	char	*s = " cat ";
+	char	*s = "cat ";
 	char	**tokens = tokenize(s);
 	
-	printf("%s\n", tokens[0]);
-	printf("%s\n", tokens[1]);
-	//print_strarr(tokens);
+	//printf("%s\n", tokens[0]);
+	//printf("%s\n", tokens[1]);
+	print_strarr(tokens);
 
 	return (0);
 }
