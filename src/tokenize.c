@@ -104,7 +104,7 @@ char	**tokenize(char *input)
 }
 
 // DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
-
+/*
 #include "debug.h"
 int main()
 {
@@ -120,4 +120,4 @@ int main()
 	print_strarr(tokens);
 
 	return (0);
-}
+}*/

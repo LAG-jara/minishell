@@ -28,7 +28,6 @@ int	main(int ac, char **av, char **environ)
 		if (!commands)
 			continue ;
 		commands = expand_and_split(commands, env);
-		commands = remove_quotes(commands);
 		redirect_and_execute(commands, &env);
 	}
 	return (0);
