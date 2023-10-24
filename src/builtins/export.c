@@ -36,7 +36,7 @@ void	export_builtin(char **word, char ***env)
 		i = -1;
 		while(*word[++i] != '=')
 			varname[i] = *word[i];
-		if (*word[i++] == '=')
+		if (valid_varname(varname) && *word[i++] == '=')
 			set_env_var(varname, *(word + i), env);
 		++word;
 	}

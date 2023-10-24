@@ -34,5 +34,5 @@ void	cd_builtin(char **word, char ***env)
 	// Si es retalivo, buscar en CDPATH word[0]. Si está, escibir el path.
 	if (*word)
 		err = chdir(word[0]);
-	return (err);
+	exit_status = err;
 }

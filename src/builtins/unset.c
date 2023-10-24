@@ -31,7 +31,7 @@ void	unset_builtin(char **word, char ***env)
 	{
 		i = -1;
 		while(*word[++i])
-			rm_env_var(varname, *(word + i), env);
+			rm_env_var(get_varname(word[i]), env);
 		++word;
 	}
 }

@@ -17,7 +17,8 @@ exit
 	The exit status is that of the last command executed.
 */
 
-void	exit_builtin(char **word)
+void	exit_builtin(char **word, char ***env)
 {
-
+	write(stdout, "exit\n", 6);
+	exit(exit_status);
 }
