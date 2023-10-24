@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "env.h"
 /*
 unset [name ...]
 	For each name, remove the corresponding variable. 
@@ -20,4 +20,18 @@ unset [name ...]
 	The exit status is true unless a name is readonly.
 */
 
-void	unset_builtin(char **comm, char **env);
+void	unset_builtin(char **word, char ***env)
+{
+	char	*value;
+	char	*varname;
+	int		i;
+
+	n_word = strarr2_get_size(word);
+	while (*word)
+	{
+		i = -1;
+		while(*word[++i])
+			rm_env_var(varname, *(word + i), env);
+		++word;
+	}
+}

@@ -10,10 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "env.h"
 /*
 env
 	Prints the current environment.
 */
 
-void	env_builtin(char **env);
+void	printvar(char *var)
+{
+	while (*var)
+	{
+		write(stdout, var, 1);
+		var++;
+	}
+	write(stdout, "\n", 1);
+}
+
+void	env_builtin(char **env)
+{
+	while (*env)
+	{
+		if (ft_strchr(*env, '='))
+			printvar(*env)
+		env++;
+	}
+}

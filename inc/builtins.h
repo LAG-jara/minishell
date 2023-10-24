@@ -13,12 +13,12 @@
 #ifndef BASIC_UTILS_H
 # define BASIC_UTILS_H
 
-void	cd_builtin(char **comm, char **env);
-void	echo_builtin(char **comm);
+void	cd_builtin(char **word, char ***env);
+void	echo_builtin(char **word);
 void	env_builtin(char **env);
-void	exit_builtin(char **comm);
-void	export_builtin(char **comm, char **env);
+void	exit_builtin(char **word);
+void	export_builtin(char **word, char ***env);
 void	pwd_builtin(char **env);
-void	unset_builtin(char **comm, char **env);
+void	unset_builtin(char **word, char ***env);
 
 #endif

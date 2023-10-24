@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include <unistd.assert.h>
+#include "basic_utils.h"
 /*
 pwd
 	Print the absolute pathname of the current working directory.
@@ -18,4 +19,11 @@ pwd
 	current directory or an invalid option is supplied.
 */
 
-void	pwd_builtin(char **env);
+void	pwd_builtin(char **env)
+{
+	char *buffer;
+
+	buffer = NULL;
+	getcwd(buffer, 42);
+	write(stdout, &buffer, ft_strlen(buffer));
+}

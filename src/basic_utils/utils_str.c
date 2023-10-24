@@ -12,6 +12,14 @@
 
 #include <stdlib.h>
 
+/*
+char	*ft_strchr(char *str, char c)
+{
+	while (str && *str != c)
+		str++;
+	return (str);
+}
+*/
 // Returns an integer greater than, equal to, or less than 0, according as the 
 // string s1 is greater than, equal to, or less than the string s2, comparing
 // not more than n characters.

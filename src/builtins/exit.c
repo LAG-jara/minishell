@@ -10,11 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "basic_utils.h"
 /*
 exit 
 	Prints “exit” followed by a newline before closing the shell. 
 	The exit status is that of the last command executed.
 */
 
-void	exit_builtin(char **comm);
+void	exit_builtin(char **word)
+{
+
+}

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "basic_utils.h"
 /*
 export name=value ...
 	The value of the environment variable name is set to value. 
@@ -24,4 +24,20 @@ export name=value ...
 	variable.
 */
 
-void	export_builtin(char **comm, char **env);
+void	export_builtin(char **word, char ***env)
+{
+	char	*value;
+	char	*varname;
+	int		i;
+
+	n_word = strarr2_get_size(word);
+	while (*word)
+	{
+		i = -1;
+		while(*word[++i] != '=')
+			varname[i] = *word[i];
+		if (*word[i++] == '=')
+			set_env_var(varname, *(word + i), env);
+		++word;
+	}
+}

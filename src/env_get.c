@@ -12,7 +12,7 @@
 
 #include "env.h"
 
-// If 'str' points to the begginning of a variable name, returns its lenght.
+// If 'str' points to the begginning of a variable name, returns its length.
 int	get_name_len(char *str)
 {
 	int	i;

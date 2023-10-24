@@ -23,5 +23,7 @@ char	*find_var_line(char *varname, char **env);
 int		find_var_index(char *varname, char **env);
 void	set_env_var(char *varname, char *value, char ***env);
 void	rm_env_var(char *varname, char ***env);
+int		valid_varname(char *word);
+char	*get_varname(char *str);
 
 #endif

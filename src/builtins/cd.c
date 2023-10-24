@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "basic_utils.h"
 /*
 cd [dir]
 	Change the current directory to dir. The variable HOME is the default dir. 
@@ -27,4 +27,12 @@ cd [dir]
 	false otherwise.
 */
 
-void	cd_builtin(char **comm, char **env);
+void	cd_builtin(char **word, char ***env)
+{
+	int err;
+	// Mirar si word[0] es absoluto o relativo ('/' al inicio).
+	// Si es retalivo, buscar en CDPATH word[0]. Si está, escibir el path.
+	if (*word)
+		err = chdir(word[0]);
+	return (err);
+}

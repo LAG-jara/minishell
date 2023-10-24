@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.c"
+#include "basic_utils.h"
 /*
 echo [-n] [arg ...]
 	Output the args, separated by spaces, followed by a newline. 
@@ -18,4 +18,17 @@ echo [-n] [arg ...]
 	If -n is specified, the trailing newline is suppressed.
 */
 
-void	echo_builtin(char **comm);
+void	echo_builtin(char **word)
+{
+	int first;
+
+	first = 0;
+	while (*word)
+	{
+		if (word)
+			write(stdout, " ", 1);
+		write(stdout, word, strlen(*word));
+		first = 1;
+		word++;
+	}
+}
