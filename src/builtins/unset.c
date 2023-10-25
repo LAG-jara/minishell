@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:52 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:03:54 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:45:46 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	unset_builtin(char **word, char ***env)
 	char	*varname;
 	int		i;
 
-	n_word = strarr2_get_size(word);
+	i = strarr2_get_size(word);
 	while (*word)
 	{
 		i = -1;

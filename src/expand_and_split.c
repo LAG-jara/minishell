@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 16:52:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:22:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ static char	**expand_and_split_token(char *token, char **env)
 	char	**split_tok;
 
 	expanded = intarr_dup(NULL);
-	// printf("TOKEN: %s\n", token);
+	printf("TOKEN: %s\n", token);
 	token = expand_vars(token, &expanded, env);
-	// printf("expanded: %s\n", token);
+	printf("expanded: %s\n", token);
 	split_tok = split_words(token, expanded);
-	// printf("split: %s\n", token);
-	split_tok = remove_quotes(split_tok, expanded);
+	printf("split: %s\n", token);
+	// split_tok = remove_quotes(split_tok, expanded);
 	// printf("quote-removed: %s\n", token);
-	if (expanded)
-		free(expanded);
+	// if (expanded)
+		// free(expanded);
 	return (split_tok);
 }
 

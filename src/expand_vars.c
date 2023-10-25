@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 16:51:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:15:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*append_exp_errno(char **str, int *i, char *prev_str)
 	var = ft_itoa(errno);
 	if (var)
 		prev_str = gnl_strjoin_free(prev_str, var);
-	free(var);
+	// free(var);
 	*str += *i + 2;
 	*i = 0;
 	return (prev_str);

@@ -18,7 +18,7 @@ void	print_strarr(char **arr)
 	int	i;
 
 	i = -1;
-	while (arr[++i])
+	while (arr && arr[++i])
 		printf("[%d] : %s\n", i, arr[i]);
 }
 
