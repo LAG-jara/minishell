@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/24 12:50:11 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:39:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_varname(char *str)
 	varname[len] = '\0'; 
 	if (!str || !valid_varname(varname))
 	{
-		free (varname)
+		free (varname);
 		return (NULL);
 	}
 	return (varname);

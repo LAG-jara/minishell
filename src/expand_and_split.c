@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 17:54:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:25:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static char	**expand_and_split_cmd(char **cmd, char **env)
 // Finally, performs quote removal and returns the result.
 char	***expand_and_split(char ***commands, char **env)
 {
-	char	**cmd;
 	int		i;
 
 	i = -1;

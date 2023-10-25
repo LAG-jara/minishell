@@ -5,9 +5,10 @@ MKF			= Makefile
 SRC			=	main.c \
 				basic_utils/utils_char.c \
 				basic_utils/utils_itoa.c \
-				basic_utils/utils_free.c \
+				basic_utils/utils_p_malloc.c \
+				basic_utils/utils_rm_at_indexes.c \
+				basic_utils/utils_split.c \
 				basic_utils/utils_str.c \
-				basic_utils/utils_strarr.c \
 				strarr/strarr_add_subarr_at.c \
 				strarr/strarr_add.c \
 				strarr/strarr_dup.c \
@@ -21,12 +22,17 @@ SRC			=	main.c \
 				expand_and_split.c \
 				expand_vars.c \
 				get_input.c \
+				gnl_utils.c \
 				input_utils.c \
+				intarr.c \
 				parse.c \
 				print_error.c \
+				quote_utils.c \
 				remove_quotes.c \
-				token_utils \
-				tokenize.c
+				split_words.c \
+				token_utils.c \
+				tokenize.c \
+				debug.c	# TODO: Remove debug utils
 				
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))
@@ -44,11 +50,11 @@ DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
 # Includes
 INCDIR		= inc/
-INCFLAG		= -I .$(INCDIR)
+INCFLAG		= -I $(INCDIR)
 
 RM			= rm -fr
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 RLFLAGS		= -lreadline
 DFLAGS		= -MT $@ -MMD -MP
 # XFLAGS		= -fsanitize=address -g
@@ -70,22 +76,21 @@ all:		$(NAME)
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
 			@mkdir -p $(DEPDIR)
-			@$(CC) $(FLAGS) $(XFLAGS) $(DFLAGS) $(RLFLAGS) -c $< -o $@ $(INCFLAG)
+			@$(CC) $(CFLAGS) $(XFLAGS) $(DFLAGS) -c $< -o $@ $(INCFLAG)
 			@echo "$@ compiled"
-			@mv $(OBJDIR)*.d $(DEPDIR)
+			
+# @mv $(OBJDIR)*.d $(DEPDIR)
 
-$(NAME):	$(OBJS)
-			@$(CC) $(OBJS) -o $(NAME) $(INCFLAG)
+$(NAME):	$(OBJS) $(MKF)
+			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCFLAG) $(RLFLAGS) 
 			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
 
 clean:
-			@$(RM) -fr $(OBJDIR) $(DEPDIR)
-			@make clean -sC $(LIBFT_DIR)
+			@$(RM) $(OBJDIR) $(DEPDIR)
 			@echo "$(YELLOW)[ Object files cleared ]$(DEFAULT)"
 
 fclean:		
 			@$(RM) $(OBJDIR) $(NAME) $(DEPS)
-			@make fclean -sC $(LIBFT_DIR)
 			@echo "$(YELLOW)[ All created files cleared ]$(DEFAULT)"
 
 re:			fclean all

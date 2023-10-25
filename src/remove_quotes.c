@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 19:47:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:28:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static char	*rm_quotes_tok(char *token, int *quote_stat, int *i, int *expanded)
 // ranges [even: start(incl), odd: end(excl)] that resulted from expansion.
 char	**remove_quotes(char **tokens, int *expanded)
 {
-	char	**new_tokens;
 	int		quote_status;
 	int		i;
 	int		j;
@@ -83,5 +82,5 @@ char	**remove_quotes(char **tokens, int *expanded)
 	j = -1;
 	while (tokens[++j])
 		tokens[j] = rm_quotes_tok(tokens[j], &quote_status, &i, expanded);
-	return (new_tokens);
+	return (tokens);
 }

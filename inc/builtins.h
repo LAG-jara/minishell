@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:16:57 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:16:59 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:33:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASIC_UTILS_H
-# define BASIC_UTILS_H
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
 void	cd_builtin(char **word, char ***env);
 void	echo_builtin(char **word);

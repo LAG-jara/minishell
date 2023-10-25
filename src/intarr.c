@@ -6,16 +6,16 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:16:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 13:46:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:27:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intarr_utils.h"
 
 // Counts and returns the amount of numbers in the array 'arr' (ending with -1).
-size_t	intarr_get_size(int *arr)
+int	intarr_get_size(int *arr)
 {
-	size_t	size;
+	int	size;
 
 	size = 0;
 	while (arr && arr[size] != -1)
@@ -28,7 +28,7 @@ size_t	intarr_get_size(int *arr)
 int	*intarr_dup(int *arr)
 {
 	int		*new_arr;
-	size_t	orig_arr_size;
+	int		orig_arr_size;
 	int		i;
 
 	orig_arr_size = intarr_get_size(arr);
@@ -46,7 +46,7 @@ int	*intarr_dup(int *arr)
 int	*intarr_add(int *arr, int n)
 {
 	int		*new_arr;
-	size_t	orig_arr_size;
+	int		orig_arr_size;
 	int		i;
 
 	orig_arr_size = intarr_get_size(arr);

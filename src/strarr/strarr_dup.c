@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:39:09 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 10:35:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:24:21 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 char	**strarr2_dup(char **arr)
 {
 	char	**new_arr;
-	size_t	orig_arr_size;
+	int		orig_arr_size;
 	int		i;
 
 	orig_arr_size = strarr2_get_size(arr);
@@ -34,7 +34,7 @@ char	**strarr2_dup(char **arr)
 char	***strarr3_dup(char ***arr)
 {
 	char	***new_arr;
-	size_t	orig_arr_size;
+	int		orig_arr_size;
 	int		i;
 
 	orig_arr_size = strarr3_get_size(arr);

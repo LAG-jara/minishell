@@ -7,6 +7,9 @@ minishell
 # VS Code
 .vscode
 
+.obj
+.dep
+
 # Other stuff
 *.o
 *.a

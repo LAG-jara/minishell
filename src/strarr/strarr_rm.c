@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:07:22 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 10:36:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:24:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**strarr2_rm(char **arr, int i)
 {
 	char	**orig_arr;
 	char	**new_arr;
-	size_t	orig_arr_size;
+	int		orig_arr_size;
 	int		j;
 
 	orig_arr = arr;

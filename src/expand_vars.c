@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 12:01:30 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:26:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,14 @@ char	*expand_vars(char *str, int **expanded, char **env)
 	{
 		quote_status = update_quote_status(quote_status, str[i]);
 		if (quote_status != QUOTED && str[i] == '$'
-			&& (str[i + 1] && (ft_isalpha(str[i + 1])) || str[i + 1] == '?'))
+			&& (str[i + 1] && ((ft_isalpha(str[i + 1])) || str[i + 1] == '?')))
 		{
 			*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
 			ret_str = append_exp(&str, &i, ret_str, env);
 			*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
 		}
 		else
-			i++;
+			++i;
 	}
 	ret_str = gnl_strjoin_free(ret_str, str);
 	free(str);

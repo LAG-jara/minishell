@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:23 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:03:25 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 14:33:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ void	pwd_builtin(char **env)
 	buffer = NULL;
 	getcwd(buffer, 42);
 	write(stdout, &buffer, ft_strlen(buffer));
+	free(buffer);
 }
