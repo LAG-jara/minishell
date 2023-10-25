@@ -31,7 +31,7 @@ static int	count_tokens(char *in)
 		}
 		if (is_quotechr(in[i]))
 			i += quote_skip(in, i);
-		else if (!is_metachr(in[i]) && (is_metachr(in[i + 1]) || !in[i + 1]))
+		if (!is_metachr(in[i]) && (is_metachr(in[i + 1]) || !in[i + 1]))
 			++count;
 	}
 	return (count);
@@ -92,12 +92,18 @@ static char	**fill_tokens(char *in, char **tok)
 // Splits the recived 'input' into an array of strings 
 // NULL-terminated interpretable as tokens.
 // And return it allocated.
+
+#include <stdio.h>
+
 char	**tokenize(char *input)
 {
 	int		num_tokens;
 	char	**tokens;
 
 	num_tokens = count_tokens(input);
+
+		printf("%d\n", num_tokens);
+
 	tokens = (char **)p_malloc(sizeof(char *) * num_tokens + 1);
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
@@ -112,7 +118,7 @@ int main()
 	// int n = toklen(s,6);
 	// printf("%d", n);
 
-	char	*s = "cat ";
+	char	*s = "    $USER \t \" \" ' asd'asd  ";
 	char	**tokens = tokenize(s);
 	
 	//printf("%s\n", tokens[0]);
