@@ -76,12 +76,11 @@ static char	**fill_tokens(char *in, char **tok)
 	idx_tok = -1;
 	while (in[idx_in])
 	{
-
 		while (is_blankchr(in[idx_in]))
 			++idx_in;
 		len = toklen(in, idx_in);
 		if (!len)
-			break;
+			break ;
 		tok[++idx_tok] = (char *)p_malloc(sizeof(char) * len + 1);
 		ft_strlcpy(tok[idx_tok], in + idx_in, len + 1);
 		idx_in += len;
@@ -90,7 +89,8 @@ static char	**fill_tokens(char *in, char **tok)
 	return (tok);
 }
 
-// Splits the recived 'input' into an array of strings NULL-terminated interpretable as tokens.
+// Splits the recived 'input' into an array of strings 
+// NULL-terminated interpretable as tokens.
 // And return it allocated.
 char	**tokenize(char *input)
 {

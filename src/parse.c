@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "parse.h"
-# include "print_error.h"
-# include "token_utils.h"
-# include "errno.h"
-# include "strarr_utils.h"
 
 // Returns TRUE if the redirection token in the 'i'th position is valid,
 // returns FALSE otherwise.
@@ -132,7 +128,8 @@ char	***parse(char **tokens)
 // 	print_strarr(empty);
 
 // 	char *tokens[] = \
-// 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+// 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", 
+//  ">", "outfile", NULL};
 
 // 	printf("Errno is: %d\n", errno);
 // 	char ***cmds = parse(tokens);

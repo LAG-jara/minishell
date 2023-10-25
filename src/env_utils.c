@@ -36,7 +36,7 @@ char	*get_varname(char *str)
 		return (NULL);
 	len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
 	varname = ft_strdup(str);
-	varname[len] = '\0'; 
+	varname[len] = '\0';
 	if (!str || !valid_varname(varname))
 	{
 		free (varname);
