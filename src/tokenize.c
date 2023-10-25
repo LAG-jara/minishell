@@ -92,18 +92,12 @@ static char	**fill_tokens(char *in, char **tok)
 // Splits the recived 'input' into an array of strings 
 // NULL-terminated interpretable as tokens.
 // And return it allocated.
-
-#include <stdio.h>
-
 char	**tokenize(char *input)
 {
 	int		num_tokens;
 	char	**tokens;
 
 	num_tokens = count_tokens(input);
-
-		printf("%d\n", num_tokens);
-
 	tokens = (char **)p_malloc(sizeof(char *) * num_tokens + 1);
 	tokens = fill_tokens(input, tokens);
 	return (tokens);
