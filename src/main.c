@@ -26,7 +26,7 @@ int	main(int ac, char **av, char **environ)
 	while (42)
 	{
 		//input = get_input();
-		input = "hola $USER";
+		input = "$USERA \"hola\"";
 		// printf("INPUT:\n%s\n\n", input);
 		tokens = tokenize(input);
 		// print_strarr(tokens);

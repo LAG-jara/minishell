@@ -57,7 +57,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 RLFLAGS		= -lreadline
 DFLAGS		= -MT $@ -MMD -MP
-# XFLAGS		= -fsanitize=address -g
+XFLAGS		= -fsanitize=address -g
 
 # Colors
 WHITE		= \033[0;37m
@@ -76,13 +76,13 @@ all:		$(NAME)
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
 			@mkdir -p $(DEPDIR)
-			@$(CC) $(CFLAGS) $(XFLAGS) $(DFLAGS) -c $< -o $@ $(INCFLAG)
+			@$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ $(INCFLAG)
 			@echo "$@ compiled"
 			
 # @mv $(OBJDIR)*.d $(DEPDIR)
 
 $(NAME):	$(OBJS) $(MKF)
-			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCFLAG) $(RLFLAGS) 
+			@$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) -o $(NAME) $(INCFLAG) $(RLFLAGS) 
 			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
 
 clean:

@@ -33,7 +33,7 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 		new_arr[j++] = ft_strdup2(*subarr++);
 	while (arr[++k])
 		new_arr[j++] = ft_strdup2(arr[k]);
-	new_arr[j + 1] = NULL;
+	new_arr[j] = NULL;
 	// strarr2_free(arr);
 	// strarr2_free(subarr);		// TODO: Check that line 👀
 	return (new_arr);
