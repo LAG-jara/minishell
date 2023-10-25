@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 16:26:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:51:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ char	*expand_vars(char *str, int **expanded, char **env)
 			++i;
 	}
 	ret_str = gnl_strjoin_free(ret_str, str);
-	free(str);
 	return (ret_str);
 }
 
