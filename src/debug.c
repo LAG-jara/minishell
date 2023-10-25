@@ -2,7 +2,7 @@
 
 #include "debug.h"
 
-// DEBUG ONLY!
+// DEBUG ONLY! 
 void	print_intarr(int *arr)
 {
 	int	i;
