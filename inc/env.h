@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:36:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:32:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ENV_H
 
 # include <stdlib.h>
-# include "strarr_utils.h"
+# include "arrstr_utils.h"
 
 char	**get_paths(char **env);
 char	*get_var(char *varname, char **env);

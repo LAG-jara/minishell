@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	count_commands_checking_syntax(char **tokens)
 	int		cmd_amount;
 	int		i;
 
-	tok_amount = strarr2_get_size(tokens);
+	tok_amount = arrstr_get_size(tokens);
 	cmd_amount = 1;
 	i = 0;
 	while (i < tok_amount)
@@ -86,10 +86,10 @@ static char	***get_cmds(char **tokens, int cmd_amount)
 	j = 0;
 	while (i < cmd_amount)
 	{
-		cmd = strarr2_dup(NULL);
+		cmd = arrstr_dup(NULL);
 		while (tokens[j] && token_type(tokens[j]) != CTRL_OP)
 		{
-			cmd = strarr2_add(cmd, tokens[j]);
+			cmd = arrstr_add(cmd, tokens[j]);
 			++j;
 		}
 		cmds[i] = cmd;
@@ -117,15 +117,15 @@ char	***parse(char **tokens)
 	}
 	printf("CMD amount: %d\n", cmd_amount);
 	cmds = get_cmds(tokens, cmd_amount);
-	// strarr2_free(tokens);		// TODO: Check that line 👀
+	// arrstr_free(tokens);		// TODO: Check that line 👀
 	return (cmds);
 }
 
 // # include "debug.h"
 // int	main(void)
 // {
-// 	char **empty = strarr2_dup(NULL);
-// 	print_strarr(empty);
+// 	char **empty = arrstr_dup(NULL);
+// 	print_arrstr(empty);
 
 // 	char *tokens[] = \
 // 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", 

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 18:41:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,18 +125,18 @@ char	**split_words(char *token, int *expanded)
 }
 
 // #include "debug.h"
-// #include "intarr_utils.h"
+// #include "arrint_utils.h"
 // int main(int ac, char **av, char **env)
 // {
 // 	char	*token = ft_strdup2("   uno    dos tres    .");
-// 	int		*expanded = intarr_dup(NULL);
-// 	expanded = intarr_add(expanded, 2);
-// 	expanded = intarr_add(expanded, 11);
-// 	expanded = intarr_add(expanded, 12);
-// 	expanded = intarr_add(expanded, 14);
+// 	int		*expanded = arrint_dup(NULL);
+// 	expanded = arrint_add(expanded, 2);
+// 	expanded = arrint_add(expanded, 11);
+// 	expanded = arrint_add(expanded, 12);
+// 	expanded = arrint_add(expanded, 14);
 
 // 	char	**split_tok = split_words(token, expanded);
 
 // 	printf("SPLIT TOKEN:\n");
-// 	print_strarr(split_tok);
+// 	print_arrstr(split_tok);
 // }

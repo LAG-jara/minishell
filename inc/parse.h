@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:12:41 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 13:52:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "minish_consts.h"
 # include "token_utils.h"
 # include "basic_utils.h"
-# include "strarr_utils.h"
+# include "arrstr_utils.h"
 # include "print_error.h"
 
 char	***parse(char **tokens);

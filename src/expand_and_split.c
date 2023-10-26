@@ -6,14 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 17:22:29 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:19:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
-#include "expand_vars.h"
-#include "split_words.h"
-#include "remove_quotes.h"
 # include "debug.h"
 
 // Expands the variables of the token and splits words if needed.
@@ -23,7 +20,7 @@ static char	**expand_and_split_token(char *token, char **env)
 	int		*expanded;
 	char	**split_tok;
 
-	expanded = intarr_dup(NULL);
+	expanded = arrint_dup(NULL);
 	printf("TOKEN: %s\n", token);
 	token = expand_vars(token, &expanded, env);
 	printf("expanded: %s\n", token);
@@ -47,7 +44,7 @@ static char	**expand_and_split_cmd(char **cmd, char **env)
 	while (cmd[++i])
 	{
 		split_tok = expand_and_split_token(cmd[i], env);
-		cmd = strarr2_add_subarr_at(cmd, split_tok, i);
+		cmd = arrstr_fill_idx(cmd, split_tok, i);
 	}
 	return (cmd);
 }

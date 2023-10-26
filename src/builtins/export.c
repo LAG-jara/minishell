@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:03:37 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:09:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	export_builtin(char **word, char ***env)
 	char	*varname;
 	int		i;
 
-	n_word = strarr2_get_size(word);
+	n_word = arrstr_get_size(word);
 	while (*word)
 	{
 		i = -1;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 16:28:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:13:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static char	*rm_quotes_tok(char *token, int *quote_stat, int *i, int *expanded)
 	int		index;
 	int		*to_delete;
 
-	to_delete = intarr_dup(NULL);
+	to_delete = arrint_dup(NULL);
 	index = -1;
 	while (token[++index])
 	{
 		++(*i);
 		*quote_stat = update_quote_status(*quote_stat, token[index]);
 		if (is_quote_to_rm(token[index], *quote_stat, *i, expanded))
-			to_delete = intarr_add(to_delete, *i);
+			to_delete = arrint_add(to_delete, *i);
 	}
 	new_token = rm_at_indexes(token, to_delete);
 	free(token);

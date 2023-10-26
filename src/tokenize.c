@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 13:53:16 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int main()
 	
 	//printf("%s\n", tokens[0]);
 	//printf("%s\n", tokens[1]);
-	print_strarr(tokens);
+	print_arrstr(tokens);
 
 	return (0);
 }*/

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:44:57 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 19:45:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define REMOVE_QUOTES_H
 
 # include "quote_utils.h"
-# include "intarr_utils.h"
+# include "arrint_utils.h"
 # include "definitions.h"
 # include "basic_utils.h"
 

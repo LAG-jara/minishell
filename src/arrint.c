@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intarr.c                                           :+:      :+:    :+:   */
+/*   arrint.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:16:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 16:27:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:13:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intarr_utils.h"
+#include "arrint_utils.h"
 
 // Counts and returns the amount of numbers in the array 'arr' (ending with -1).
-int	intarr_get_size(int *arr)
+int	arrint_get_size(int *arr)
 {
 	int	size;
 
@@ -25,13 +25,13 @@ int	intarr_get_size(int *arr)
 
 // Allocates and returns a copy of the array of integers 'arr' (ending with -1).
 // Exits properly if memory allocation fails.
-int	*intarr_dup(int *arr)
+int	*arrint_dup(int *arr)
 {
 	int		*new_arr;
 	int		orig_arr_size;
 	int		i;
 
-	orig_arr_size = intarr_get_size(arr);
+	orig_arr_size = arrint_get_size(arr);
 	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 1));
 	i = -1;
 	while (++i < orig_arr_size)
@@ -43,13 +43,13 @@ int	*intarr_dup(int *arr)
 // Allocates and returns a copy of the array of integers 'arr' (ending with -1)
 // with the integer 'n' added at the end of it.
 // The original array 'arr' is freed. Exits properly if memory allocation fails.
-int	*intarr_add(int *arr, int n)
+int	*arrint_add(int *arr, int n)
 {
 	int		*new_arr;
 	int		orig_arr_size;
 	int		i;
 
-	orig_arr_size = intarr_get_size(arr);
+	orig_arr_size = arrint_get_size(arr);
 	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 2));
 	i = -1;
 	while (++i < orig_arr_size)

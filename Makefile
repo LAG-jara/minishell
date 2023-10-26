@@ -9,13 +9,13 @@ SRC			=	main.c \
 				basic_utils/utils_rm_at_indexes.c \
 				basic_utils/utils_split.c \
 				basic_utils/utils_str.c \
-				strarr/strarr_add_subarr_at.c \
-				strarr/strarr_add.c \
-				strarr/strarr_dup.c \
-				strarr/strarr_free.c \
-				strarr/strarr_get_size.c \
-				strarr/strarr_rm.c \
-				strarr/strarr_set.c \
+				arrstr/arrstr_fill_idx.c \
+				arrstr/arrstr_add.c \
+				arrstr/arrstr_dup.c \
+				arrstr/arrstr_free.c \
+				arrstr/arrstr_get_size.c \
+				arrstr/arrstr_rm.c \
+				arrstr/arrstr_set.c \
 				env_find.c \
 				env_get.c \
 				env_set.c \
@@ -24,7 +24,7 @@ SRC			=	main.c \
 				get_input.c \
 				gnl_utils.c \
 				input_utils.c \
-				intarr.c \
+				arrint.c \
 				parse.c \
 				print_error.c \
 				quote_utils.c \

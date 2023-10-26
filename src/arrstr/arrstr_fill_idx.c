@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr_add_subarr_at.c                             :+:      :+:    :+:   */
+/*   arrstr_fill_idx.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 17:25:59 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "strarr_utils.h"
+#include "arrstr_utils.h"
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
 // with the 'i'th element replaced by the "sub-array" of strings 'subarr'.
 // Both the original array 'arr' and the added 'subarr' are freed.
 // Exits properly if memory allocation fails.
-char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
+char	**arrstr_fill_idx(char **arr, char **subarr, int i)
 {
 	char	**new_arr;
 	size_t	new_arr_size;
 	int		j;
 	int		k;
 
-	new_arr_size = strarr2_get_size(arr) + strarr2_get_size(subarr);
+	new_arr_size = arrstr_get_size(arr) + arrstr_get_size(subarr);
 	new_arr = (char **) p_malloc(sizeof(char *) * (new_arr_size + 1));
 	j = -1;
 	while (arr[++j] && j != i)
@@ -34,22 +34,22 @@ char	**strarr2_add_subarr_at(char **arr, char **subarr, int i)
 	while (arr[++k])
 		new_arr[j++] = ft_strdup2(arr[k]);
 	new_arr[j] = NULL;
-	// strarr2_free(arr);
-	// strarr2_free(subarr);		// TODO: Check that line 👀
+	// arrstr_free(arr);
+	// arrstr_free(subarr);		// TODO: Check that line 👀
 	return (new_arr);
 }
 
 // #include "debug.h"
 // int	main(int ac, char **av, char **environ)
 // {
-// 	char **env = strarr2_dup(environ);
+// 	char **env = arrstr_dup(environ);
 
-// 	print_strarr(env);
+// 	print_arrstr(env);
 
 // 	char *tmp[] = { "esto es un array", "ESTO ES OTRO ARRAY", "AQUI HAY OTRO", NULL };
-// 	char **subarr = strarr2_dup(tmp);
-// 	env = strarr2_add_subarr_at(env, subarr, 5);
+// 	char **subarr = arrstr_dup(tmp);
+// 	env = arrstr_fill_idx(env, subarr, 5);
 // 	printf("\n\n");
 
-// 	print_strarr(env);
+// 	print_arrstr(env);
 // }

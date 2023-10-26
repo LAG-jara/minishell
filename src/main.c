@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 17:38:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:08:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av, char **environ)
 
 	ac++;
 	av[0][0] = '.';
-	env = strarr2_dup(environ);
+	env = arrstr_dup(environ);
 	while (42)
 	{
 		//input = get_input();

@@ -5,8 +5,8 @@
 
 # include <stdio.h>
 
-void	print_intarr(int *arr);
-void	print_strarr(char **arr);
+void	print_arrint(int *arr);
+void	print_arrstr(char **arr);
 void	print_cmds(char ***cmds);
 
 #endif

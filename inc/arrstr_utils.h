@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strarr_utils.h                                     :+:      :+:    :+:   */
+/*   arrstr_utils.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRARR_UTILS_H
-# define STRARR_UTILS_H
+#ifndef ARRSTR_UTILS_H
+# define ARRSTR_UTILS_H
 
 # include "basic_utils.h"
 
 // 2-Dimensional String Arrays
 
-char	**strarr2_add_subarr_at(char **arr, char **subarr, int i);
-char	**strarr2_add(char **arr, char *str);
-char	**strarr2_dup(char **arr);
-void	strarr2_free(char **arr);
-size_t	strarr2_get_size(char **arr);
-char	**strarr2_rm(char **arr, int i);
-char	**strarr2_set(char **arr, char *str, int index);
+char	**arrstr_fill_idx(char **arr, char **subarr, int i);
+char	**arrstr_add(char **arr, char *str);
+char	**arrstr_dup(char **arr);
+void	arrstr_free(char **arr);
+size_t	arrstr_get_size(char **arr);
+char	**arrstr_rm(char **arr, int i);
+char	**arrstr_set(char **arr, char *str, int index);
 
 // 3-Dimensional String Arrays
 
-char	***strarr3_add(char ***arr, char **subarr);
-char	***strarr3_dup(char ***arr);
-void	strarr3_free(char ***arr);
-size_t	strarr3_get_size(char ***arr);
-char	***strarr3_set(char ***arr, char **subarr, int i);
+char	***aarrstr_add(char ***arr, char **subarr);
+char	***aarrstr_dup(char ***arr);
+void	aarrstr_free(char ***arr);
+size_t	aarrstr_get_size(char ***arr);
+char	***aarrstr_set(char ***arr, char **subarr, int i);
 
 #endif

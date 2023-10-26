@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 17:15:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ char	*expand_vars(char *str, int **expanded, char **env)
 		if (quote_status != QUOTED && str[i] == '$'
 			&& (str[i + 1] && ((ft_isalpha(str[i + 1])) || str[i + 1] == '?')))
 		{
-			*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
+			*expanded = arrint_add(*expanded, i + ft_strlen(ret_str));
 			ret_str = append_exp(&str, &i, ret_str, env);
-			*expanded = intarr_add(*expanded, i + ft_strlen(ret_str));
+			*expanded = arrint_add(*expanded, i + ft_strlen(ret_str));
 		}
 		else
 			++i;
@@ -95,15 +95,15 @@ char	*expand_vars(char *str, int **expanded, char **env)
 // {
 // 	errno = 42;
 // 	char	*token = ft_strdup2("hola $USER, como \"estas?  Errno: $?\"");
-// 	int *expanded = intarr_dup(NULL);
+// 	int *expanded = arrint_dup(NULL);
 // 	token = expand_vars(token, &expanded, env);
 // 	printf("new token: %s\n\n", token);
-// 	print_intarr(expanded);
+// 	print_arrint(expanded);
 
-// 	// int *expanded = intarr_dup(NULL);
-// 	// expanded = intarr_add(expanded, 4);
-// 	// expanded = intarr_add(expanded, 6);
-// 	// expanded = intarr_add(expanded, 9);
-// 	// expanded = intarr_add(expanded, 42);
-// 	// print_intarr(expanded);
+// 	// int *expanded = arrint_dup(NULL);
+// 	// expanded = arrint_add(expanded, 4);
+// 	// expanded = arrint_add(expanded, 6);
+// 	// expanded = arrint_add(expanded, 9);
+// 	// expanded = arrint_add(expanded, 42);
+// 	// print_arrint(expanded);
 // }

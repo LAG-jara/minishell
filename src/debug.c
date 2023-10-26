@@ -3,7 +3,7 @@
 #include "debug.h"
 
 // DEBUG ONLY! 
-void	print_intarr(int *arr)
+void	print_arrint(int *arr)
 {
 	int	i;
 
@@ -13,7 +13,7 @@ void	print_intarr(int *arr)
 }
 
 // DEBUG ONLY!
-void	print_strarr(char **arr)
+void	print_arrstr(char **arr)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ void	print_cmds(char ***cmds)
 	while (cmds && cmds[i])
 	{
 		printf("CMD %d:\n", i);
-		print_strarr(cmds[i]);
+		print_arrstr(cmds[i]);
 		printf("\n");
 		++i;
 	}
