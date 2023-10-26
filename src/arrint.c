@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:16:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:27:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:31:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*arrint_dup(int *arr)
 	int		i;
 
 	orig_arr_size = arrint_size(arr);
-	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 1));
+	new_arr = (int *)p_malloc(sizeof(int) * (orig_arr_size + 1));
 	i = -1;
 	while (++i < orig_arr_size)
 		new_arr[i] = arr[i];
@@ -50,7 +50,7 @@ int	*arrint_add(int *arr, int n)
 	int		i;
 
 	orig_arr_size = arrint_size(arr);
-	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 2));
+	new_arr = (int *)p_malloc(sizeof(int) * (orig_arr_size + 2));
 	i = -1;
 	while (++i < orig_arr_size)
 		new_arr[i] = arr[i];
