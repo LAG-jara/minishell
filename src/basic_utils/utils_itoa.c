@@ -33,15 +33,14 @@ static int	digit_count(int n)
 
 // Allocates (with malloc(3)) and returns a string representing the integer 
 // received as an argument. Negative numbers must be handled.
+// Exits properly if malloc fails.
 char	*ft_itoa(int n)
 {
 	char	*str;
 	int		strlen;
 
 	strlen = digit_count(n);
-	str = malloc((strlen + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
+	str = (char *)p_malloc((strlen + 1) * sizeof(char));
 	str[strlen--] = '\0';
 	if (n == 0)
 		*str = '0';

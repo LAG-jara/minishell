@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include <stdlib.h>
 
 // Allocates 'size' bytes of memory and returns a pointer to it.
 // Exits properly if memory allocation fails.

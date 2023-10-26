@@ -40,6 +40,7 @@ static size_t	count_substr(char *s, char c)
 
 // Allocates and returns the first substring on 's' using 'c' as a delimeter.
 // The string pointed by 's' is now pointing just after the popped substring.
+// Exits properly if malloc fails.
 static char	*pop_str(char **s, char c)
 {
 	char	*substr;
@@ -52,9 +53,7 @@ static char	*pop_str(char **s, char c)
 		str++;
 	while (str[strlen] && str[strlen] != c)
 		strlen++;
-	substr = malloc((strlen + 1) * sizeof(char));
-	if (substr == NULL)
-		return (NULL);
+	substr = (char *)p_malloc((strlen + 1) * sizeof(char));
 	ft_strlcpy(substr, str, strlen + 1);
 	*s = str + strlen;
 	return (substr);
@@ -76,8 +75,8 @@ static void	*freearr(char **arr)
 }
 
 // Allocates (with malloc(3)) and returns an array of strings obtained by 
-// splitting 's' using the character 'c' as a delimiter. The array must end 
-// with a NULL pointer.
+// splitting 's' using the character 'c' as a delimiter. 
+// Exits properly if malloc fails.
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
@@ -90,9 +89,7 @@ char	**ft_split(char const *s, char c)
 	count = 0;
 	str = (char *) s;
 	substr_count = count_substr(str, c);
-	arr = malloc((substr_count + 1) * sizeof(char *));
-	if (arr == NULL)
-		return (NULL);
+	arr = (char **)p_malloc((substr_count + 1) * sizeof(char *));
 	while (count < substr_count)
 	{
 		arr[count] = pop_str(&str, c);

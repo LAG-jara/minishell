@@ -35,8 +35,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-#include <stdio.h>
-
 // Returns the length of the string 'str'.
 size_t	ft_strlen(const char *str)
 {
@@ -70,27 +68,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 }
 
 // Allocates and returns a copy of the given string.
+// Exits properly if malloc fails.
 char	*ft_strdup(const char *s1)
 {
 	size_t	len;
 	char	*s2;
 
 	len = ft_strlen(s1);
-	s2 = malloc((len + 1) * sizeof(char));
-	if (s2 == NULL)
-		return (NULL);
+	s2 = (char *)p_malloc((len + 1) * sizeof(char));
 	ft_strlcpy(s2, s1, len + 1);
 	return (s2);
-}
-
-// Safely allocates and returns a copy of the given string.
-// Exits properly if memory allocation fails.
-char	*ft_strdup2(const char *str)
-{
-	char	*new_str;
-
-	new_str = ft_strdup(str);
-	if (new_str == NULL)
-		exit (EXIT_FAILURE);
-	return (new_str);
 }

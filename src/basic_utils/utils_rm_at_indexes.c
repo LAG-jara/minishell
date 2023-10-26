@@ -28,6 +28,7 @@ static int	is_idx_to_delete(int idx, int *to_delete)
 
 // Allocates and returns a copy of 'str' after removing the characters at 
 // the 'to_delete' indexes.
+// Exits properly if malloc fails.
 char	*rm_at_indexes(char *str, int *to_delete)
 {
 	char	*new_str;
@@ -36,7 +37,7 @@ char	*rm_at_indexes(char *str, int *to_delete)
 
 	old_len = ft_strlen(str);
 	new_len = old_len - arrint_size(to_delete);
-	new_str = (char *) p_malloc(sizeof(char) * (new_len + 1));
+	new_str = (char *)p_malloc(sizeof(char) * (new_len + 1));
 	new_str[new_len] = '\0';
 	while (--old_len >= 0)
 	{
