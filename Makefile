@@ -24,6 +24,7 @@ SRC			=	main.c \
 				get_input.c \
 				gnl_utils.c \
 				input_utils.c \
+				is_expanded.c \
 				arrint.c \
 				parse.c \
 				print_error.c \

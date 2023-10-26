@@ -6,34 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:25:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:40:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "split_words.h"
-
-// Returns TRUE or FALSE whether 'index' is in one of the 'expanded' ranges.
-// 'expanded' includes indexes in ascending order so even indexes defines a
-// range start (inclusive) and odd indexes defines ends (exclusive).
-static int	is_expanded(int index, int *expanded)
-{
-	int	i;
-
-	if (!expanded)
-		return (FALSE);
-	i = -1;
-	while (expanded[++i] != -1)
-	{
-		if (index < expanded[i])
-			return (FALSE);
-		if (index == expanded[i])
-			return (TRUE);
-		if (index > expanded[i] && index < expanded[i + 1])
-			return (TRUE);
-		++i;
-	}
-	return (FALSE);
-}
 
 // Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
 // the 'expanded' ranges (read comment of the 'is_expanded' function).
@@ -62,7 +39,7 @@ static int	count_words_amount(char *token, int *expanded)
 	i = -1;
 	while (token[++i])
 	{
-		quote_stat = upd_quote_stat(quote_stat, token[i]);
+		quote_stat = upd_quote_stat_exp(quote_stat, token[i], expanded, i);
 		if (is_delim(token[i], i, expanded, quote_stat))
 			is_word = FALSE;
 		else if (!is_word)
@@ -87,14 +64,15 @@ static char	*pop_word(char *token, int *i, int *expanded)
 	--(*i);
 	while (token[++(*i)])
 	{
-		quote_stat = upd_quote_stat(quote_stat, token[*i]);
+		quote_stat = upd_quote_stat_exp(quote_stat, token[*i], expanded, *i);
 		if (!is_delim(token[*i], *i, expanded, quote_stat))
 			break ;
 	}
 	w_len = -1;
 	while (token[*i + ++(w_len)])
 	{
-		quote_stat = upd_quote_stat(quote_stat, token[*i + w_len]);
+		quote_stat = upd_quote_stat_exp(quote_stat, token[*i + w_len], expanded,\
+		*i + w_len);
 		if (is_delim(token[*i + w_len], (*i + w_len), expanded, quote_stat))
 			break ;
 	}

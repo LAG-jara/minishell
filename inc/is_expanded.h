@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_words.h                                      :+:      :+:    :+:   */
+/*   is_expanded.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 14:38:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:34:24 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/26 17:33:10 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/26 17:33:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPLIT_WORDS_H
-# define SPLIT_WORDS_H
+#ifndef IS_EXPANDED_H
+# define IS_EXPANDED_H
 
-# include "basic_utils.h"
 # include "definitions.h"
-# include "input_utils.h"
-# include "is_expanded.h"
-# include "arrstr_utils.h"
-# include "quote_utils.h"
 
-char	**split_words(char *token, int *expanded);
+int	is_expanded(int index, int *expanded);
 
 #endif

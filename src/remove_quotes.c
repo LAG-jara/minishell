@@ -6,35 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:24:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:31:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "remove_quotes.h"
 # include "debug.h"
-
-// Returns TRUE or FALSE whether 'index' is in one of the 'expanded' ranges.
-// 'expanded' includes indexes in ascending order so even indexes defines a
-// range start (inclusive) and odd indexes defines ends (exclusive).
-static int	is_expanded(int index, int *expanded)
-{
-	int	i;
-
-	if (!expanded)
-		return (FALSE);
-	i = -1;
-	while (expanded[++i] != -1)
-	{
-		if (index < expanded[i])
-			return (FALSE);
-		if (index == expanded[i])
-			return (TRUE);
-		if (index > expanded[i] && index < expanded[i + 1])
-			return (TRUE);
-		++i;
-	}
-	return (FALSE);
-}
 
 // Returns TRUE if 'c' is an unquoted quote that didn't result from expansion.
 static int	is_quote_to_rm(char c, int quote_stat, int i, int *expanded)
