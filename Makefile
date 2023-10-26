@@ -6,7 +6,7 @@ SRC			=	main.c \
 				basic_utils/utils_char.c \
 				basic_utils/utils_itoa.c \
 				basic_utils/utils_p_malloc.c \
-				basic_utils/utils_rm_at_indexes.c \
+				basic_utils/utils_str_rm_idxs.c \
 				basic_utils/utils_split.c \
 				basic_utils/utils_str.c \
 				arrstr/arrstr_fill_idx.c \
