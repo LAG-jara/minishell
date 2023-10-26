@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 14:08:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 14:15:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**arrstr_fill_idx(char **arr, char **subarr, int i)
 	while (arr[++k])
 		new_arr[j++] = ft_strdup(arr[k]);
 	new_arr[j] = NULL;
-	// arrstr_free(arr);
+	arrstr_free(arr);
 	// arrstr_free(subarr);		// TODO: Check that line 👀
 	return (new_arr);
 }
