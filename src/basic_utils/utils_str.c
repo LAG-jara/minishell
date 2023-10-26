@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/15 14:19:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:43:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "basic_utils.h"
 
 /*
 char	*ft_strchr(char *str, char c)

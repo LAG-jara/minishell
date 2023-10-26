@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:08:16 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:37:15 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	main(int ac, char **av, char **environ)
 	ac++;
 	av[0][0] = '.';
 	env = arrstr_dup(environ);
-	while (42)
+	int i = 10;
+	while (i-- > 0)
 	{
 		//input = get_input();
-		input = "$USERA \"hola\"";
+		input = "\"hola\"";
 		// printf("INPUT:\n%s\n\n", input);
 		tokens = tokenize(input);
 		// print_strarr(tokens);

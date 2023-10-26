@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:29:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/19 10:43:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:41:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "basic_utils.h"
 
 // Return the amount of digits needed to represent n in decimal (including
 // sign, if needed).

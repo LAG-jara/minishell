@@ -13,7 +13,7 @@ SRC			=	main.c \
 				arrstr/arrstr_add.c \
 				arrstr/arrstr_dup.c \
 				arrstr/arrstr_free.c \
-				arrstr/arrstr_get_size.c \
+				arrstr/arrstr_size.c \
 				arrstr/arrstr_rm.c \
 				arrstr/arrstr_set.c \
 				env_find.c \

@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:13:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:41:12 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "remove_quotes.h"
+# include "debug.h"
 
 // Returns TRUE or FALSE whether 'index' is in one of the 'expanded' ranges.
 // 'expanded' includes indexes in ascending order so even indexes defines a
@@ -63,6 +64,8 @@ static char	*rm_quotes_tok(char *token, int *quote_stat, int *i, int *expanded)
 		if (is_quote_to_rm(token[index], *quote_stat, *i, expanded))
 			to_delete = arrint_add(to_delete, *i);
 	}
+	printf("TO DELETE:\n");
+	print_arrint(to_delete);
 	new_token = rm_at_indexes(token, to_delete);
 	free(token);
 	return (new_token);
