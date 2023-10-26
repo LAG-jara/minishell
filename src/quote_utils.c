@@ -6,30 +6,30 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:23:40 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 12:26:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:24:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "quote_utils.h"
 
 // Given the current quote status and a character 'c', returns the new status.
-int	update_quote_status(int curr_status, char c)
+int	upd_quote_stat(int curr_stat, char c)
 {
 	if (c == '"')
 	{
-		if (curr_status == DQUOTED)
+		if (curr_stat == DQUOTED)
 			return (UNQUOTED);
-		if (curr_status == UNQUOTED)
+		if (curr_stat == UNQUOTED)
 			return (DQUOTED);
 	}
 	else if (c == '\'')
 	{
-		if (curr_status == QUOTED)
+		if (curr_stat == QUOTED)
 			return (UNQUOTED);
-		if (curr_status == UNQUOTED)
+		if (curr_stat == UNQUOTED)
 			return (QUOTED);
 	}
-	return (curr_status);
+	return (curr_stat);
 }
 
 // Get the string 'str' and the index 'i' of the current quote and 

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:35:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:25:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static int	is_expanded(int index, int *expanded)
 
 // Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
 // the 'expanded' ranges (read comment of the 'is_expanded' function).
-static int	is_delim(char c, int index, int *expanded, int quote_status)
+static int	is_delim(char c, int index, int *expanded, int quote_stat)
 {
 	if (is_expanded(index, expanded) && is_blankchr(c)
-		&& quote_status != DQUOTED)
+		&& quote_stat != DQUOTED)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -53,17 +53,17 @@ static int	count_words_amount(char *token, int *expanded)
 {
 	int	count;
 	int	is_word;
-	int	quote_status;
+	int	quote_stat;
 	int	i;
 
 	count = 0;
 	is_word = FALSE;
-	quote_status = UNQUOTED;
+	quote_stat = UNQUOTED;
 	i = -1;
 	while (token[++i])
 	{
-		quote_status = update_quote_status(quote_status, token[i]);
-		if (is_delim(token[i], i, expanded, quote_status))
+		quote_stat = upd_quote_stat(quote_stat, token[i]);
+		if (is_delim(token[i], i, expanded, quote_stat))
 			is_word = FALSE;
 		else if (!is_word)
 		{
@@ -81,24 +81,24 @@ static char	*pop_word(char *token, int *i, int *expanded)
 {
 	char	*word;
 	size_t	w_len;
-	int		quote_status;
+	int		quote_stat;
 
-	quote_status = UNQUOTED;
+	quote_stat = UNQUOTED;
 	--(*i);
 	while (token[++(*i)])
 	{
-		quote_status = update_quote_status(quote_status, token[*i]);
-		if (!is_delim(token[*i], *i, expanded, quote_status))
+		quote_stat = upd_quote_stat(quote_stat, token[*i]);
+		if (!is_delim(token[*i], *i, expanded, quote_stat))
 			break ;
 	}
 	w_len = -1;
 	while (token[*i + ++(w_len)])
 	{
-		quote_status = update_quote_status(quote_status, token[*i + w_len]);
-		if (is_delim(token[*i + w_len], (*i + w_len), expanded, quote_status))
+		quote_stat = upd_quote_stat(quote_stat, token[*i + w_len]);
+		if (is_delim(token[*i + w_len], (*i + w_len), expanded, quote_stat))
 			break ;
 	}
-	word = (char *) p_malloc((w_len + 1) * sizeof(char));
+	word = (char *)p_malloc((w_len + 1) * sizeof(char));
 	ft_strlcpy(word, &token[*i], w_len + 1);
 	*i += w_len;
 	return (word);
@@ -115,7 +115,7 @@ char	**split_words(char *token, int *expanded)
 	int		i;
 
 	words_amount = count_words_amount(token, expanded);
-	split_tok = (char **) p_malloc(sizeof(char *) * (words_amount + 1));
+	split_tok = (char **)p_malloc(sizeof(char *) * (words_amount + 1));
 	idx = 0;
 	i = -1;
 	while (++i < words_amount)

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:35:44 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:25:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,15 @@ char	*expand_vars(char *str, int **expanded, char **env)
 {
 	int		i;
 	char	*ret_str;
-	int		quote_status;
+	int		quote_stat;
 
 	ret_str = ft_strdup("");
-	quote_status = UNQUOTED;
+	quote_stat = UNQUOTED;
 	i = 0;
 	while (str && str[i])
 	{
-		quote_status = update_quote_status(quote_status, str[i]);
-		if (quote_status != QUOTED && str[i] == '$'
+		quote_stat = upd_quote_stat(quote_stat, str[i]);
+		if (quote_stat != QUOTED && str[i] == '$'
 			&& (str[i + 1] && ((ft_isalpha(str[i + 1])) || str[i + 1] == '?')))
 		{
 			*expanded = arrint_add(*expanded, i + ft_strlen(ret_str));

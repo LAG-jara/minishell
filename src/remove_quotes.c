@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 14:16:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:24:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static int	is_expanded(int index, int *expanded)
 }
 
 // Returns TRUE if 'c' is an unquoted quote that didn't result from expansion.
-static int	is_quote_to_rm(char c, int quote_status, int i, int *expanded)
+static int	is_quote_to_rm(char c, int quote_stat, int i, int *expanded)
 {
 	if ((c == '"' || c == '\'')
-		&& quote_status == UNQUOTED
+		&& quote_stat == UNQUOTED
 		&& !is_expanded(i, expanded))
 		return (TRUE);
 	else
@@ -60,7 +60,7 @@ static char	*rm_quotes_tok(char *token, int *quote_stat, int *i, int *expanded)
 	while (token[++index])
 	{
 		++(*i);
-		*quote_stat = update_quote_status(*quote_stat, token[index]);
+		*quote_stat = upd_quote_stat(*quote_stat, token[index]);
 		if (is_quote_to_rm(token[index], *quote_stat, *i, expanded))
 			to_delete = arrint_add(to_delete, *i);
 	}
@@ -76,14 +76,14 @@ static char	*rm_quotes_tok(char *token, int *quote_stat, int *i, int *expanded)
 // ranges [even: start(incl), odd: end(excl)] that resulted from expansion.
 char	**remove_quotes(char **tokens, int *expanded)
 {
-	int		quote_status;
+	int		quote_stat;
 	int		i;
 	int		j;
 
-	quote_status = UNQUOTED;
+	quote_stat = UNQUOTED;
 	i = 0;
 	j = -1;
 	while (tokens[++j])
-		tokens[j] = rm_quotes_tok(tokens[j], &quote_status, &i, expanded);
+		tokens[j] = rm_quotes_tok(tokens[j], &quote_stat, &i, expanded);
 	return (tokens);
 }
