@@ -111,15 +111,15 @@ char	**split_words(char *token, int *expanded)
 {
 	int		words_amount;
 	char	**split_tok;
-	int		indx;
+	int		idx;
 	int		i;
 
 	words_amount = count_words_amount(token, expanded);
 	split_tok = (char **) p_malloc(sizeof(char *) * (words_amount + 1));
-	indx = 0;
+	idx = 0;
 	i = -1;
 	while (++i < words_amount)
-		split_tok[i] = pop_word(token, &indx, expanded);
+		split_tok[i] = pop_word(token, &idx, expanded);
 	split_tok[i] = NULL;
 	return (split_tok);
 }
