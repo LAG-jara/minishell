@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 18:06:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:11:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	get_name_len(char *str)
 }
 
 // Returns the value of the environment variable name 'varname'.
+// If 'varname' does not exist, returns NULL.
 char	*get_var(char *varname, char **env)
 {
 	int		name_len;

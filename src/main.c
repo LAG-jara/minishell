@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:37:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 13:15:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	main(int ac, char **av, char **environ)
 	ac++;
 	av[0][0] = '.';
 	env = arrstr_dup(environ);
-	int i = 10;
+	int i = 1;
 	while (i-- > 0)
 	{
 		//input = get_input();
-		input = "\"hola\"";
+		input = "$nada";
 		// printf("INPUT:\n%s\n\n", input);
 		tokens = tokenize(input);
 		// print_strarr(tokens);
@@ -36,9 +36,9 @@ int	main(int ac, char **av, char **environ)
 		if (!commands)
 			continue ;
 		//print_cmds(commands);
-		printf("------ AFTER EXPANSION -------\n\n");
+		// printf("------ AFTER EXPANSION -------\n\n");
 		commands = expand_and_split(commands, env);
-		print_cmds(commands);
+		// print_cmds(commands);
 		// redirect_and_execute(commands, &env);
 	}
 	return (0);
