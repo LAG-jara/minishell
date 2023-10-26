@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:50:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "parse_tokens.h"
 
 // Returns TRUE if the redirection token in the 'i'th position is valid,
 // returns FALSE otherwise.

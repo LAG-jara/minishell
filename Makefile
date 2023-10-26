@@ -26,7 +26,7 @@ SRC			=	main.c \
 				input_utils.c \
 				is_expanded.c \
 				arrint.c \
-				parse.c \
+				parse_tokens.c \
 				print_error.c \
 				quote_utils.c \
 				remove_quotes.c \
