@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:35:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*expand_vars(char *str, int **expanded, char **env)
 // int main(int ac, char **av, char **env)
 // {
 // 	errno = 42;
-// 	char	*token = ft_strdup2("hola $USER, como \"estas?  Errno: $?\"");
+// 	char	*token = ft_strdup("hola $USER, como \"estas?  Errno: $?\"");
 // 	int *expanded = arrint_dup(NULL);
 // 	token = expand_vars(token, &expanded, env);
 // 	printf("new token: %s\n\n", token);

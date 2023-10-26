@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:35:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ char	**split_words(char *token, int *expanded)
 // #include "arrint_utils.h"
 // int main(int ac, char **av, char **env)
 // {
-// 	char	*token = ft_strdup2("   uno    dos tres    .");
+// 	char	*token = ft_strdup("   uno    dos tres    .");
 // 	int		*expanded = arrint_dup(NULL);
 // 	expanded = arrint_add(expanded, 2);
 // 	expanded = arrint_add(expanded, 11);

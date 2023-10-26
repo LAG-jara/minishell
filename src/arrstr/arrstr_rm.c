@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:07:22 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:35:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**arrstr_rm(char **arr, int i)
 	{
 		if (j == i)
 			++orig_arr;
-		new_arr[j] = ft_strdup2(orig_arr[j]);
+		new_arr[j] = ft_strdup(orig_arr[j]);
 	}
 	new_arr[j] = NULL;
 	arrstr_free(arr);

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:35:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ char	**arrstr_fill_idx(char **arr, char **subarr, int i)
 	new_arr = (char **) p_malloc(sizeof(char *) * (new_arr_size + 1));
 	j = -1;
 	while (arr[++j] && j != i)
-		new_arr[j] = ft_strdup2(arr[j]);
+		new_arr[j] = ft_strdup(arr[j]);
 	k = j;
 	while (*subarr)
-		new_arr[j++] = ft_strdup2(*subarr++);
+		new_arr[j++] = ft_strdup(*subarr++);
 	while (arr[++k])
-		new_arr[j++] = ft_strdup2(arr[k]);
+		new_arr[j++] = ft_strdup(arr[k]);
 	new_arr[j] = NULL;
 	// arrstr_free(arr);
 	// arrstr_free(subarr);		// TODO: Check that line 👀
