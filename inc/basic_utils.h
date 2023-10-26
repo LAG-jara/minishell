@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:37:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 19:42:01 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strdup(const char *s1);
 //char	*ft_strchr(char *str, char c);
 char	**ft_split(char const *s, char c);
-char	*rm_at_indexes(char *str, int *to_delete);
+char	*str_rm_idxs(char *str, int *to_delete);
 
 // Other
 

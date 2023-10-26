@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 18:04:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*rm_quotes_tok(char *token, int *q_stat, int *i, int *expanded)
 	}
 	// printf("TO DELETE:\n");
 	// print_arrint(to_delete);
-	new_token = rm_at_indexes(token, to_delete);
+	new_token = str_rm_idxs(token, to_delete);
 	free(token);
 	return (new_token);
 }

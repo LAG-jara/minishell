@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:38:18 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:27:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	is_idx_to_delete(int idx, int *to_delete)
 // Allocates and returns a copy of 'str' after removing the characters at 
 // the 'to_delete' indexes.
 // Exits properly if malloc fails.
-char	*rm_at_indexes(char *str, int *to_delete)
+char	*str_rm_idxs(char *str, int *to_delete)
 {
 	char	*new_str;
 	int		old_len;
