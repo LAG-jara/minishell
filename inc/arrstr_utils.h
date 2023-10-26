@@ -21,7 +21,7 @@ char	**arrstr_fill_idx(char **arr, char **subarr, int i);
 char	**arrstr_add(char **arr, char *str);
 char	**arrstr_dup(char **arr);
 void	arrstr_free(char **arr);
-size_t	arrstr_get_size(char **arr);
+size_t	arrstr_size(char **arr);
 char	**arrstr_rm(char **arr, int i);
 char	**arrstr_set(char **arr, char *str, int index);
 
@@ -30,7 +30,7 @@ char	**arrstr_set(char **arr, char *str, int index);
 char	***aarrstr_add(char ***arr, char **subarr);
 char	***aarrstr_dup(char ***arr);
 void	aarrstr_free(char ***arr);
-size_t	aarrstr_get_size(char ***arr);
+size_t	aarrstr_size(char ***arr);
 char	***aarrstr_set(char ***arr, char **subarr, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:09:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	export_builtin(char **word, char ***env)
 	char	*varname;
 	int		i;
 
-	n_word = arrstr_get_size(word);
+	n_word = arrstr_size(word);
 	while (*word)
 	{
 		i = -1;

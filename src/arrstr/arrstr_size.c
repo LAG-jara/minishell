@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arrstr_get_size.c                                  :+:      :+:    :+:   */
+/*   arrstr_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	arrstr_get_size(char **arr)
+size_t	arrstr_size(char **arr)
 {
 	size_t	size;
 
@@ -24,7 +24,7 @@ size_t	arrstr_get_size(char **arr)
 }
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	aarrstr_get_size(char ***arr)
+size_t	aarrstr_size(char ***arr)
 {
 	size_t	size;
 

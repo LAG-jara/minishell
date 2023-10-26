@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:52 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:09:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	unset_builtin(char **word, char ***env)
 	char	*varname;
 	int		i;
 
-	i = arrstr_get_size(word);
+	i = arrstr_size(word);
 	while (*word)
 	{
 		i = -1;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:09:24 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**arrstr_fill_idx(char **arr, char **subarr, int i)
 	int		j;
 	int		k;
 
-	new_arr_size = arrstr_get_size(arr) + arrstr_get_size(subarr);
+	new_arr_size = arrstr_size(arr) + arrstr_size(subarr);
 	new_arr = (char **) p_malloc(sizeof(char *) * (new_arr_size + 1));
 	j = -1;
 	while (arr[++j] && j != i)

@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:16:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:13:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:27:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arrint_utils.h"
 
 // Counts and returns the amount of numbers in the array 'arr' (ending with -1).
-int	arrint_get_size(int *arr)
+int	arrint_size(int *arr)
 {
 	int	size;
 
@@ -31,7 +31,7 @@ int	*arrint_dup(int *arr)
 	int		orig_arr_size;
 	int		i;
 
-	orig_arr_size = arrint_get_size(arr);
+	orig_arr_size = arrint_size(arr);
 	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 1));
 	i = -1;
 	while (++i < orig_arr_size)
@@ -49,7 +49,7 @@ int	*arrint_add(int *arr, int n)
 	int		orig_arr_size;
 	int		i;
 
-	orig_arr_size = arrint_get_size(arr);
+	orig_arr_size = arrint_size(arr);
 	new_arr = (int *) p_malloc(sizeof(int) * (orig_arr_size + 2));
 	i = -1;
 	while (++i < orig_arr_size)

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:38:18 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:27:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*rm_at_indexes(char *str, int *to_delete)
 	int		new_len;
 
 	old_len = ft_strlen(str);
-	new_len = old_len - arrint_get_size(to_delete);
+	new_len = old_len - arrint_size(to_delete);
 	new_str = (char *) p_malloc(sizeof(char) * (new_len + 1));
 	new_str[new_len] = '\0';
 	while (--old_len >= 0)
