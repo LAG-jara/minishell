@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:23:40 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:37:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:00:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	quote_skip(char *in, int i)
 }
 
 // Given the current quote status and a character 'c', returns the new status.
-int	upd_quote_stat(int curr_stat, char c)
+int	quote_stat(int curr_stat, char c)
 {
 	if (c == '"')
 	{
@@ -51,7 +51,7 @@ int	upd_quote_stat(int curr_stat, char c)
 
 // Returns the new status, given the current status, the 'expanded' ranges, the
 // new character 'c' and its index 'i'.
-int	upd_quote_stat_exp(int curr_stat, char c, int *expanded, char i)
+int	quote_stat_exp(int curr_stat, char c, int *expanded, char i)
 {
 	if (is_expanded(i, expanded))
 		return (curr_stat);

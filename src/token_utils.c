@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:26:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:03:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 // Returns TRUE if 'str' is a valid word, FALSE otherwise.
 static int	is_word(char *str)
 {
-	int	quote_stat;
+	int	q_stat;
 
-	quote_stat = UNQUOTED;
+	q_stat = UNQUOTED;
 	while (*str)
 	{
-		if (quote_stat == UNQUOTED && is_metachr(*str))
+		if (q_stat == UNQUOTED && is_metachr(*str))
 			return (FALSE);
-		quote_stat = upd_quote_stat(quote_stat, *str);
+		q_stat = quote_stat(q_stat, *str);
 		++str;
 	}
-	if (quote_stat != UNQUOTED)
+	if (q_stat != UNQUOTED)
 		return (FALSE);
 	return (TRUE);
 }
