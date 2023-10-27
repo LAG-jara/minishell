@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 18:40:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:11:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 
 typedef struct s_xchar
 {
-	char	c;
-	int		x : 1;
-	int		q : 2;
+	char			c;
+	unsigned int	x : 1;
+	unsigned int	q : 2;
 }	t_xchar;
 
 int		xc_strcmp(char *str, t_lst *xstr);
 t_lst	*xc_rm(t_lst **lst, t_lst *to_rm);
+void	xc_set_flags(int exp_stat, int quote_stat);
 
 #endif

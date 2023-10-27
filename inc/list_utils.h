@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:13:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 18:59:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:02:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_lst	*lst_new(void *value);
 void	lst_rm(t_lst **lst, t_lst *to_rm, void (*del)(void *));
 size_t	lst_size(t_lst *lst);
 
-// DEPRECATED: Use 'lst_rm_node'
+// >>> DEPRECATED: Use 'lst_rm_node'  
 t_lst *rm_node_at(t_lst *start, t_lst *to_delete);
 
 #endif
