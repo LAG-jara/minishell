@@ -15,6 +15,9 @@
 
 # include "definitions.h"
 
+# define UNEXPANDED 0
+# define EXPANDED 1
+
 int	is_expanded(int index, int *expanded);
 
 #endif

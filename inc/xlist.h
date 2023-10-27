@@ -16,7 +16,6 @@ typedef struct s_list
 	s_list	*nxt;
 } t_list;
 
-
 typedef struct s_xchar
 {
 	char	c;
