@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   lst_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 14:16:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:28:31 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/27 17:37:52 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 18:59:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "xlist.h"
+#include "list_utils.h"
 
-// Counts the number of nodes in a list.
-size_t	ft_lstsize(t_lst *lst)
+// Adds the node 'new' at the end of the list.
+void	lst_add(t_lst **lst, t_lst *new)
 {
-	size_t	size;
+	t_lst	*node;
 
-	size = 0;
-	while (lst != NULL)
-	{
-		lst = lst->nxt;
-		size++;
-	}
-	return (size);
+	node = lst_last(*lst);
+	if (node)
+		node->nxt = new;
+	else
+		*lst = new;
 }

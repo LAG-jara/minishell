@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xlist.h                                            :+:      :+:    :+:   */
+/*   xc_rm.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:28:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/27 18:41:11 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 18:58:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef XLIST_H
-# define XLIST_H
+#include "xchar.h"
 
-# include <stdlib.h>
-
-typedef struct s_lst
+// Removes and frees the given 'to_rm' xchar from the 'xstr'.
+t_lst	*xc_rm(t_lst **xstr, t_lst *to_rm)
 {
-	void	*val;
-	t_lst	*nxt;
-	t_lst	*pre;
-} t_lst;
-
-typedef struct s_xchar
-{
-	char	c;
-	int		x : 1;
-	int		q : 2;
-} t_xchar;
-
-void	ft_lstclear(t_lst **lst, void (*del)(void*));
-void	ft_lstdelone(t_lst *lst, void (*del)(void *));
-t_lst	*ft_lstnew(void *content);
-size_t	ft_lstsize(t_lst *lst);
-
-
-#endif
+	lst_rm(xstr, to_rm, free);
+}
