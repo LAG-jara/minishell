@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   xlist.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 13:13:50 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:31:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 typedef struct s_lst
 {
 	void	*val;
-	s_lst	*nxt;
+	t_lst	*nxt;
 } t_lst;
 
 typedef struct s_xchar
