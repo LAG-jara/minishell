@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_list
+typedef struct s_lst
 {
 	void	*val;
-	s_list	*nxt;
-} t_list;
+	s_lst	*nxt;
+} t_lst;
 
 typedef struct s_xchar
 {
