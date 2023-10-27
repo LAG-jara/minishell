@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xlist.h                                            :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:28:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/27 14:54:13 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 14:54:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef XLIST_H
-# define XLIST_H
+#include "xlist.h"
 
-# include <stdlib.h>
-
-typedef struct s_lst
+// Takes as a parameter a node and frees the memory of the node’s content using
+// the function ’del’ given as a parameter and free the node. The memory of
+// ’next’ must not be freed.
+void	ft_lstdelone(t_lst *lst, void (*del)(void *))
 {
-	void	*val;
-	t_lst	*nxt;
-	t_lst	*pre;
-} t_lst;
-
-typedef struct s_xchar
-{
-	char	c;
-	int		x : 1;
-	int		q : 2;
-} t_xchar;
-
-void	ft_lstclear(t_lst **lst, void (*del)(void*));
-void	ft_lstdelone(t_lst *lst, void (*del)(void *));
-t_lst	*ft_lstnew(void *content);
-size_t	ft_lstsize(t_lst *lst);
-
-
-#endif
+	if (!lst)
+		return ;
+	del(lst->val);
+	free(lst);
+}

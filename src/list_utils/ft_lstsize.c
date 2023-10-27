@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xlist.h                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 17:28:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/27 14:16:03 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 17:28:31 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef XLIST_H
-# define XLIST_H
+#include "xlist.h"
 
-# include <stdlib.h>
-
-typedef struct s_lst
+// Counts the number of nodes in a list.
+size_t	ft_lstsize(t_lst *lst)
 {
-	void	*val;
-	t_lst	*nxt;
-	t_lst	*pre;
-} t_lst;
+	size_t	size;
 
-typedef struct s_xchar
-{
-	char	c;
-	int		x : 1;
-	int		q : 2;
-} t_xchar;
-
-void	ft_lstclear(t_lst **lst, void (*del)(void*));
-void	ft_lstdelone(t_lst *lst, void (*del)(void *));
-t_lst	*ft_lstnew(void *content);
-size_t	ft_lstsize(t_lst *lst);
-
-
-#endif
+	size = 0;
+	while (lst != NULL)
+	{
+		lst = lst->nxt;
+		size++;
+	}
+	return (size);
+}
