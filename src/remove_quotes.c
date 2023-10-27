@@ -11,56 +11,40 @@
 /* ************************************************************************** */
 
 #include "remove_quotes.h"
-# include "debug.h"
+//# include "debug.h"
 
 // Returns TRUE if 'c' is an unquoted quote that didn't result from expansion.
-static int	is_quote_to_rm(char c, int q_stat, int i, int *expanded)
+static int	is_quote_to_rm(t_xchar *xc)
 {
-	if ((c == '"' || c == '\'')
-		&& q_stat == UNQUOTED
-		&& !is_expanded(i, expanded))
+	if (xc->q == UNQUOTED && xc->x == UNEXPANDED
+		&& (xc->c == '\'' || xc->c == '"'))
 		return (TRUE);
-	else
-		return (FALSE);
+	return (FALSE);
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion,
 // taking (and updating) the given 'q_stat' and 'i' into account.
-static char	*rm_quotes_tok(char *token, int *q_stat, int *i, int *expanded)
+static void	rm_quotes_tok(t_lst *tok)
 {
-	char	*new_token;
-	int		index;
-	int		*to_delete;
 
-	to_delete = arrint_dup(NULL);
-	index = -1;
-	while (token[++index])
+	while (tok)
 	{
-		++(*i);
-		*q_stat = quote_stat(*q_stat, token[index]);
-		if (is_quote_to_rm(token[index], *q_stat, *i, expanded))
-			to_delete = arrint_add(to_delete, *i);
+
+		tok = tok->nxt;
 	}
-	// printf("TO DELETE:\n");
-	// print_arrint(to_delete);
-	new_token = str_rm_idxs(token, to_delete);
-	free(token);
-	return (new_token);
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
-// The 'tokens' are expanded and word-splitted, and 'expanded' defines the
-// ranges [even: start(incl), odd: end(excl)] that resulted from expansion.
-char	**remove_quotes(char **tokens, int *expanded)
+// The 'tokens' are expanded and word-splitted.
+t_lst	*remove_quotes(t_lst *tokens)
 {
-	int		q_stat;
-	int		i;
-	int		j;
+	t_lst	*curr_tok;
 
-	q_stat = UNQUOTED;
-	i = 0;
-	j = -1;
-	while (tokens[++j])
-		tokens[j] = rm_quotes_tok(tokens[j], &q_stat, &i, expanded);
+	curr_tok = tokens;
+	while (curr_tok)
+	{
+		rm_quotes_tok(curr_tok->val);
+		curr_tok = curr_tok->nxt;
+	}
 	return (tokens);
 }

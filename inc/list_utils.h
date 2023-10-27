@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_quotes.h                                    :+:      :+:    :+:   */
+/*   list_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 19:44:57 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:35:25 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/27 14:13:02 by alajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 14:13:05 by alajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REMOVE_QUOTES_H
-# define REMOVE_QUOTES_H
+#ifndef LIST_UTILS_H
+# define LIST_UTILS_H
 
-# include "arrint_utils.h"
-# include "basic_utils.h"
-# include "definitions.h"
-# include "is_expanded.h"
-# include "quote_utils.h"
 # include "xlist.h"
 
-t_list *remove_quotes(t_list *);
+t_lst *rm_node_at(t_lst *start, t_lst *to_delete);
 
 #endif
