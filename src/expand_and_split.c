@@ -6,49 +6,23 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 14:17:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/27 13:39:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
 # include "debug.h"
 
-// Expands the variables of the token and splits words if needed.
-// Finally, performs quote removal and returns the result.
-static char	**expand_and_split_token(char *token, char **env)
-{
-	int		*expanded;
-	char	**split_tok;
-
-	expanded = arrint_dup(NULL);
-	// printf("TOKEN: %s\n", token);
-	token = expand_vars(token, &expanded, env);
-	// printf("expanded: %s\n", token);
-	split_tok = split_words(token, expanded);
-	// printf("split:\n");
-	// print_arrstr(split_tok);
-	split_tok = remove_quotes(split_tok, expanded);
-	// printf("quote-removed:\n");
-	// print_arrstr(split_tok);
-	free(expanded);
-	return (split_tok);
-}
-
 // Expands the variables of the command and splits words if needed.
 // Finally, performs quote removal and returns the result.
 static char	**expand_and_split_cmd(char **cmd, char **env)
 {
-	char	**split_tok;
-	int		i;
+	t_lst	toks;
 
-	i = -1;
-	while (cmd[++i])
-	{
-		split_tok = expand_and_split_token(cmd[i], env);
-		cmd = arrstr_fill_idx(cmd, split_tok, i);
-		if (cmd[i] == NULL)
-			break ;
-	}
+	toks = expand(cmd, env);
+	toks = split_words(toks);
+	toks = remove_quotes(toks);
+	cmd = normalize(toks);
 	return (cmd);
 }
 
