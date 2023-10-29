@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 12:17:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 12:20:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	valid_varname(char *word)
 		return (FALSE);
 	if (*word == '_' || ft_isalpha(*word))
 	{
+		++word;
 		while (*word == '_' || ft_isalnum(*word))
 			++word;
 	}
