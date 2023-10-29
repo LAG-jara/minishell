@@ -25,6 +25,12 @@ enum e_token_type {
 	INVALID
 };
 
+typedef struct s_tok
+{
+	char	*val;
+	int		type : 2;
+}	t_tok;
+
 int	token_type(char *token);
 
 #endif
