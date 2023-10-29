@@ -18,7 +18,7 @@
 # include "definitions.h"
 # include "is_expanded.h"
 # include "quote_utils.h"
-# include "xlist.h"
+# include "xtoken.h"
 
 t_list *remove_quotes(t_list *);
 

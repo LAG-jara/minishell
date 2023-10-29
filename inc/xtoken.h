@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef XCHAR_H
-# define XCHAR_H
+#ifndef XTOKEN_H
+# define XTOKEN_H
 
 # include "list_utils.h"
 
