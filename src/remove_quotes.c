@@ -24,22 +24,22 @@ static int	is_quote_to_rm(t_xchar *xc)
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion,
 // taking (and updating) the given 'q_stat' and 'i' into account.
-static void	rm_quotes_tok(t_lst *tok)
+static void	rm_quotes_tok(t_xtok *tok)
 {
-
-	while (tok)
+	curr_tok = tok;
+	while (curr_tok)
 	{
-		if(is_quote_to_rm(tok))
-			xtok_rmxc(tok);
-		tok = tok->nxt;
+		if(is_quote_to_rm(curr_tok))
+			xtok_rmxc(&tok, &curr_tok);
+		curr_tok = curr_tok->nxt;
 	}
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 // The 'tokens' are expanded and word-splitted.
-t_lst	*remove_quotes(t_lst *tokens)
+t_xtok	*remove_quotes(t_xtok *tokens)
 {
-	t_lst	*curr_tok;
+	t_xtok	*curr_tok;
 
 	curr_tok = tokens;
 	while (curr_tok)
