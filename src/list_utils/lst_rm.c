@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 17:44:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 18:58:53 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:08:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	lst_rm(t_lst **lst, t_lst *to_rm, void (*del)(void *))
 		lst_link(node->pre, node->nxt);
 		lst_delone(node, del);
 	}
-	*lst = NULL;
 }

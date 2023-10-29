@@ -21,18 +21,3 @@ void	print_arrstr(char **arr)
 	while (arr && arr[++i])
 		printf("[%d] : %s\n", i, arr[i]);
 }
-
-// DEBUG ONLY!
-void	print_cmds(char ***cmds)
-{
-	int	i;
-
-	i = 0;
-	while (cmds && cmds[i])
-	{
-		printf("CMD %d:\n", i);
-		print_arrstr(cmds[i]);
-		printf("\n");
-		++i;
-	}
-}

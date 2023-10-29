@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/20 12:48:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 19:28:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ enum e_token_type {
 	INVALID
 };
 
-typedef struct s_tok
+typedef struct s_token
 {
 	char			*val;
 	unsigned int	type : 2;
-}	t_tok;
+}	t_token;
 
-int	token_type(char *token);
+int		token_type(char *token);
+t_token	token_create(char *str);
 
 #endif

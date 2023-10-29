@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:12:41 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:51:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 17:25:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include "basic_utils.h"
 # include "arrstr_utils.h"
 # include "print_error.h"
+# include "list_utils.h"
 
-char	***parse(char **tokens);
+
+t_lst	**parse(char **tokens);
 
 #endif

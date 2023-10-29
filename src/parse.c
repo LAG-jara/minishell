@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:50:35 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 20:06:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,40 +74,36 @@ static int	count_commands_checking_syntax(char **tokens)
 	return (cmd_amount);
 }
 
-static char	***get_cmds(char **tokens, int cmd_amount)
+static t_lst	*get_cmd(t_lst **cmd, char **tokens, int *j)
 {
-	char	***cmds;
-	char	**cmd;
+	t_token	tok;
 	int		i;
-	int		j;
 
-	cmds = (char ***) p_malloc(sizeof(char **) * (cmd_amount + 1));
 	i = 0;
-	j = 0;
-	while (i < cmd_amount)
+	*cmd = NULL;
+	while (tokens[++(*j)])
 	{
-		cmd = arrstr_dup(NULL);
-		while (tokens[j] && token_type(tokens[j]) != CTRL_OP)
+		tok = token_create(tokens[*j]);
+		if (tok.type != CTRL_OP)
 		{
-			cmd = arrstr_add(cmd, tokens[j]);
-			++j;
+			lst_add(cmd, lst_new(&tok, sizeof(t_token)));
 		}
-		cmds[i] = cmd;
-		++i;
-		++j;
+		else
+			return (*cmd);
 	}
-	cmds[i] = NULL;
-	return (cmds);
+	return (*cmd);
 }
 
 // Parses the array of tokens and groups them into an array of commands,
 // dividing them by the token '|'. Allocates and returns the array of commands.
 // If a syntax error is found, prints an error message,
 // 'errno' is set to the corresponding value and returns NULL.
-char	***parse(char **tokens)
+t_lst	**parse(char **tokens)
 {
 	int		cmd_amount;
-	char	***cmds;
+	t_lst	**cmds;
+	int		i;
+	int		j;
 
 	cmd_amount = count_commands_checking_syntax(tokens);
 	if (cmd_amount == -1)
@@ -115,29 +111,53 @@ char	***parse(char **tokens)
 		errno = ERRNO_SYNTAX;
 		return (NULL);
 	}
-	printf("CMD amount: %d\n", cmd_amount);
-	cmds = get_cmds(tokens, cmd_amount);
-	// arrstr_free(tokens);		// TODO: Check that line 👀
+	cmds = (t_lst **) p_malloc(sizeof(t_lst *) * (cmd_amount));
+	j = -1;
+	i = -1;
+	while (++i < cmd_amount)
+		get_cmd(&cmds[i], tokens, &j);
+	cmds[i] = NULL;
 	return (cmds);
 }
 
-// # include "debug.h"
-// int	main(void)
+# include "debug.h"
+
+// static void	fill_list(t_lst	**lst)
 // {
-// 	char **empty = arrstr_dup(NULL);
-// 	print_arrstr(empty);
+// 	// char	*str = ft_strdup("Hola, Manoli!");
+// 	// lst_add(lst, lst_new(&str, sizeof(char *)));
+// 	// str = ft_strdup("Adeu, Andreu");
+// 	// lst_add(lst, lst_new(&str, sizeof(char *)));
 
-// 	char *tokens[] = \
-// 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", 
-//  ">", "outfile", NULL};
-
-// 	printf("Errno is: %d\n", errno);
-// 	char ***cmds = parse(tokens);
-// 	printf("Errno is: %d\n\n", errno);
-
-// 	print_cmds(cmds);
-
-// 	// char	*token = "";
-// 	// int		type = token_type(token);
-// 	// printf("Type of '%s': %d\n", token, type);
+// 	t_token tok = token_create("ls");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
+// 	tok = token_create("|");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
+// 	tok = token_create("echo");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
+// 	tok = token_create("hola");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
+// 	tok = token_create(">");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
+// 	tok = token_create("outfile");
+// 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
 // }
+
+int	main(void)
+{
+	t_lst	*lst;
+	lst = NULL;
+
+	char *pre_toks[] = \
+	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+
+	// fill_list(&lst);
+	
+	// lst_print(lst, pr_str);
+	// lst_print(lst, pr_token);
+
+
+	t_lst	**cmds;
+	cmds = parse(pre_toks);
+	print_cmds(cmds);
+}

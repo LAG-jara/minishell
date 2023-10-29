@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xc_rm.c                                            :+:      :+:    :+:   */
+/*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 18:41:11 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 18:58:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/18 17:41:56 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/27 13:45:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "xchar.h"
+#ifndef EXPAND_H
+# define EXPAND_H
 
-// Removes and frees the given 'to_rm' xchar from the 'xstr'.
-t_lst	*xc_rm(t_lst **xstr, t_lst *to_rm)
-{
-	lst_rm(xstr, to_rm, free);
-}
+# include "env.h"
+# include "errno.h"
+# include "gnl_utils.h"
+# include "quote_utils.h"
+# include "xlist.h"
+
+t_lst	*expand(char *str, char **env);
+
+#endif
