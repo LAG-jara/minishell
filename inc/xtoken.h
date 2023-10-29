@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 15:03:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:27:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "list_utils.h"
 
+// An xchar associates a char with a couple of flags to indicate if its quote
+// status ('q') and if it resulted from an expansion ('x').
 typedef struct s_xchar
 {
 	char			c;
@@ -22,9 +24,14 @@ typedef struct s_xchar
 	unsigned int	q : 2;
 }	t_xchar;
 
-typedef t_lst t_xtok;
+// TODO: Add description
+typedef struct s_xtok
+{
+	t_lst			val;
+	unsigned int	type : 2;
+}	t_xtok;
 
-t_xchar	xc_new(char c, int x_flag, int q_stat);
+t_xchar	xc_new(char c, int x_flag, int q_flag);
 t_xtok	*xtok_rm(t_xtok **xtok, t_lst *to_rm);
 t_xtok	*xtok_addc(t_xtok **xtok, char c, int x_flag, int q_flag);
 t_xtok	*xtok_adds(t_xtok **xtok, char *str, int x_flag, int q_flag);
