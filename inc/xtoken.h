@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 15:35:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:42:11 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define XTOKEN_H
 
 # include "list_utils.h"
+# include "token_utils.h"
 
 // An xchar associates a char with a couple of flags to indicate if its quote
 // status ('q') and if it resulted from an expansion ('x').
@@ -27,17 +28,17 @@ typedef struct s_xchar
 // TODO: Add description
 typedef struct s_xtok
 {
-	t_lst			val;
+	t_lst			*val;
 	unsigned int	type : 2;
 }	t_xtok;
 
 t_xchar	xc_new(char c, int x_flag, int q_flag);
-t_xtok	*xtok_addc(t_xtok **xtok, char c, int x_flag, int q_flag);
-t_xtok	*xtok_adds(t_xtok **xtok, char *str, int x_flag, int q_flag);
-t_xtok	*xtok_addxc(t_xtok **xtok, t_xchar xc);
-t_xtok	*xtok_set_type(t_xtok *xtok, int type);
-t_xtok	*xtok_rm(t_xtok **xtok, t_xtok *to_rm);
-char	*xtok_tostr(t_xtok *xtok);
+void	xtok_addc(t_xtok *xtok, char c, int x_flag, int q_flag);
+void	xtok_adds(t_xtok *xtok, char *str, int x_flag, int q_flag);
+void	xtok_addxc(t_xtok *xtok, t_xchar xc);
+void	xtok_set_type(t_xtok *xtok, int type);
+void	xtok_rm(t_xtok *xtok, t_xtok *to_rm);
+t_tok	xtok_totok(t_xtok *xtok);
 
 // DEPRECATED
 int		xtok_cmp(t_xtok *xtok, char *str);
