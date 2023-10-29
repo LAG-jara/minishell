@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 15:27:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 15:35:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ typedef struct s_xtok
 }	t_xtok;
 
 t_xchar	xc_new(char c, int x_flag, int q_flag);
-t_xtok	*xtok_rm(t_xtok **xtok, t_lst *to_rm);
 t_xtok	*xtok_addc(t_xtok **xtok, char c, int x_flag, int q_flag);
 t_xtok	*xtok_adds(t_xtok **xtok, char *str, int x_flag, int q_flag);
 t_xtok	*xtok_addxc(t_xtok **xtok, t_xchar xc);
+t_xtok	*xtok_set_type(t_xtok *xtok, int type);
+t_xtok	*xtok_rm(t_xtok **xtok, t_xtok *to_rm);
 char	*xtok_tostr(t_xtok *xtok);
 
 // DEPRECATED
