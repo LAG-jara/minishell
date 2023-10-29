@@ -30,7 +30,7 @@ static void	rm_quotes_tok(t_lst *tok)
 	while (tok)
 	{
 		if(is_quote_to_rm(tok))
-			doblst_del_node(tok);
+			xtok_rmxc(tok);
 		tok = tok->nxt;
 	}
 }
