@@ -15,9 +15,9 @@
 
 // Expands the variables of the command and splits words if needed.
 // Finally, performs quote removal and returns the result.
-static char	**expand_and_split_cmd(char **cmd, char **env)
+static t_tok *expand_and_split_cmd(t_tok **cmd, char **env)
 {
-	t_lst	toks;
+	t_xtoken	*toks;
 
 	toks = expand(cmd, env);
 	toks = split_words(toks);
@@ -28,12 +28,12 @@ static char	**expand_and_split_cmd(char **cmd, char **env)
 
 // Expands the variables of the 'commands' and split words if needed.
 // Finally, performs quote removal and returns the result.
-char	***expand_and_split(char ***commands, char **env)
+t_lst	*expand_and_split(char ***commands, char **env)
 {
 	int		i;
 
 	i = -1;
 	while (commands[++i])
-		commands[i] = expand_and_split_cmd(commands[i], env);
+		commands[i] = expand_and_split_cmd(&commands[i], env);
 	return (commands);
 }
