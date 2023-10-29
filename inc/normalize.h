@@ -13,7 +13,7 @@
 #ifndef NORMALIZE_H
 # define NORMALIZE_H
 
-# include "normalize.h"
+# include "xtoken.h"
 
 t_tok *normalize(t_xtok *xtokens);
 

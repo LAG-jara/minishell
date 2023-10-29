@@ -12,7 +12,18 @@
 
 #include "xtoken.h"
 
-char **normalize(t_xtok toks)
+// Recives the expanded, splited, quote-removed tokens and converts them into a
+// t_tok array.
+t_tok	*normalize(t_xtok *toks)
 {
-	
+	t_tok	*cmd;
+
+	cmd = NULL;
+	lst
+	while(toks)
+	{
+		cmd = tok_add(&cmd, xtok_totok(toks));
+		
+		toks = toks->nxt;
+	}
 }
