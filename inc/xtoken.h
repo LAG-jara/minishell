@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 13:01:10 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:03:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		xtok_cmp(char *str, t_lst *xstr);
 t_lst	*xtok_rmc(t_lst **xtok, t_lst *to_rm);
 t_lst	*xtok_addc(t_lst **xtok, char c);
 t_lst	*xtok_adds(t_lst **xtok, char *c);
+char	*xtok_tostr(t_lst **xtok);
 
 #endif
