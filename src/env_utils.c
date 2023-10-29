@@ -6,25 +6,28 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 14:39:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/29 12:17:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <basic_utils.h>
+#include <definitions.h>
 
-// Checks if all the string follows the i
+// Checks and returns TRUE if the given 'word' us a valid variable name.
+// A valid name consists only of alphanumeric characters and underscores, and
+// begins with an alphabetic character or an underscore.
 int	valid_varname(char *word)
 {
 	if (!word)
-		return (0);
+		return (FALSE);
 	if (*word == '_' || ft_isalpha(*word))
 	{
 		while (*word == '_' || ft_isalnum(*word))
 			++word;
 	}
 	if (!*word)
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 
 char	*get_varname(char *str)
