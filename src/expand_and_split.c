@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:02:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_tok *expand_and_split_cmd(t_tok **cmd, char **env)
 
 // Expands the variables of the 'commands' and split words if needed.
 // Finally, performs quote removal and returns the result.
-t_lst	*expand_and_split(char ***commands, char **env)
+t_list	*expand_and_split(char ***commands, char **env)
 {
 	int		i;
 

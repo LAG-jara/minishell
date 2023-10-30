@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:06:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	count_commands_checking_syntax(char **tokens)
 	return (cmd_amount);
 }
 
-static t_lst	*get_cmd(t_lst **cmd, char **tokens, int *j)
+static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 {
 	t_token	tok;
 	int		i;
@@ -98,10 +98,10 @@ static t_lst	*get_cmd(t_lst **cmd, char **tokens, int *j)
 // dividing them by the token '|'. Allocates and returns the array of commands.
 // If a syntax error is found, prints an error message,
 // 'errno' is set to the corresponding value and returns NULL.
-t_lst	**parse(char **tokens)
+t_list	**parse(char **tokens)
 {
 	int		cmd_amount;
-	t_lst	**cmds;
+	t_list	**cmds;
 	int		i;
 	int		j;
 
@@ -111,7 +111,7 @@ t_lst	**parse(char **tokens)
 		errno = ERRNO_SYNTAX;
 		return (NULL);
 	}
-	cmds = (t_lst **) p_malloc(sizeof(t_lst *) * (cmd_amount + 1));
+	cmds = (t_list **) p_malloc(sizeof(t_list *) * (cmd_amount + 1));
 	j = -1;
 	i = -1;
 	while (++i < cmd_amount)

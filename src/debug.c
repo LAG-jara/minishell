@@ -23,7 +23,7 @@ void	print_arrstr(char **arr)
 }
 
 // DEBUG ONLY!
-void	print_lst(t_lst *node, void (*pr_funct)(void *))
+void	print_lst(t_list *node, void (*pr_funct)(void *))
 {
 	int	i;
 
@@ -62,7 +62,7 @@ void	pr_token(void *token)
 }
 
 // DEBUG ONLY!
-void	print_cmds(t_lst **cmds)
+void	print_cmds(t_list **cmds)
 {
 	int	i;
 

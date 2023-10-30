@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:02:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_xchar
 // TODO: Add description
 typedef struct s_xtoken
 {
-	t_lst			*val;
+	t_list			*val;
 	unsigned int	type : 2;
 }	t_xtoken;
 

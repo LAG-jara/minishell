@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 12:57:38 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ static char	*append_exp(char **str, int *i, char *prev_str, char **env)
 		return (append_exp_var(str, i, prev_str, env));
 }
 
-t_lst	*expand_tok(char *tok, char **env)
+t_list	*expand_tok(char *tok, char **env)
 {
 	int		i;
 	int		q_stat;
 	char	*str;
-	t_lst	*xtok;
+	t_list	*xtok;
 
 	q_stat = UNQUOTED;
 	xtok = NULL;
@@ -92,12 +92,12 @@ t_lst	*expand_tok(char *tok, char **env)
 }
 
 // Given an array of tokens, allocates and returns a list of tokens with its
-// $VARIABLES expanded. Each listed token is represented as a t_lst of t_xchars.
-t_lst	*expand(char **toks, char **env)
+// $VARIABLES expanded. Each listed token is represented as a t_list of t_xchars.
+t_list	*expand(char **toks, char **env)
 {
 	int		i;
-	t_lst	*xtok;
-	t_lst	*xtoks;
+	t_list	*xtok;
+	t_list	*xtoks;
 
 	xtoks = NULL;
 	i = -1;

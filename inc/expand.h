@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:41:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 13:45:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include "quote_utils.h"
 # include "xlist.h"
 
-t_lst	*expand(char *str, char **env);
+t_list	*expand(char *str, char **env);
 
 #endif
