@@ -25,7 +25,7 @@ typedef struct s_list
 size_t	lst_size(t_list *lst);
 t_list	*lst_new(void *value, size_t size);
 t_list	*lst_last(t_list *lst);
-void	lst_add(t_list **lst, t_list *new);
+void	lst_add(t_list **lst, t_list *to_add);
 void	lst_add_many(t_list **lst, t_list *pos, t_list *to_add);
 void	lst_clear(t_list **lst, void (*del)(void *));
 void	lst_delone(t_list *lst, void (*del)(void *));
