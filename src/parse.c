@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 20:06:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 10:48:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ t_lst	**parse(char **tokens)
 		errno = ERRNO_SYNTAX;
 		return (NULL);
 	}
-	cmds = (t_lst **) p_malloc(sizeof(t_lst *) * (cmd_amount));
+	cmds = (t_lst **) p_malloc(sizeof(t_lst *) * (cmd_amount + 1));
 	j = -1;
 	i = -1;
 	while (++i < cmd_amount)
@@ -153,8 +153,8 @@ int	main(void)
 
 	// fill_list(&lst);
 	
-	// lst_print(lst, pr_str);
-	// lst_print(lst, pr_token);
+	// print_lst(lst, pr_str);
+	// print_lst(lst, pr_token);
 
 
 	t_lst	**cmds;
