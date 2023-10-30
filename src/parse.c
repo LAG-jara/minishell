@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:51:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:11:15 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,15 +151,27 @@ static void	fill_list(t_list **lst)
 
 int	main(void)
 {
-	t_list	*lst;
-	lst = NULL;
+	t_list	*lst = NULL;
+	t_list	*lst2 = NULL;
 
 	// char *pre_toks[] = \
 	// { "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
 
-	fill_list(&lst);
-	
+	char	*str = ft_strdup("primero");
+	lst_add(&lst, lst_new(&str, sizeof(char *)));
+	str = ft_strdup("segundo");
+	lst_add(&lst, lst_new(&str, sizeof(char *)));
+	str = ft_strdup("tercero");
+	lst_add(&lst, lst_new(&str, sizeof(char *)));
+	str = ft_strdup("cuarto");
+	lst_add(&lst, lst_new(&str, sizeof(char *)));
+	str = ft_strdup("quinto");
+	lst_add(&lst, lst_new(&str, sizeof(char *)));
+	fill_list(&lst2);
+
 	print_lst(lst, pr_str);
+	printf("\n");
+	print_lst(lst2, pr_str);
 	// print_lst(lst, pr_token);
 
 
@@ -169,6 +181,9 @@ int	main(void)
 
 	printf("\n-------------------------\n\n");
 
-	lst_rm_many(&lst, lst->nxt, 2, free);
+	// lst_rm_many(&lst, lst->nxt, 2, free);
+	// print_lst(lst, pr_str);
+
+	lst_add_many(&lst, lst->nxt, lst2);
 	print_lst(lst, pr_str);
 }
