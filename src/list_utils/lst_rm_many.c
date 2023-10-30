@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_delone.c                                       :+:      :+:    :+:   */
+/*   lst_rm_many.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 14:54:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:34:57 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/30 15:22:49 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/30 15:50:45 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list_utils.h"
 
-// Takes as a parameter a node and frees the memory of the node’s content using
-// the function 'del' given as a parameter and free the node. The memory of
-// 'nxt' and 'pre' must not be freed.
-void	lst_delone(t_list *lst, void (*del)(void *))
+// Removes and frees 'n' list nodes starting from 'to_rm' right after 'pos',
+// using the function 'del' and free(3). 
+void	lst_rm_many(t_list **lst, t_list *to_rm, size_t n, void (*del)(void *))
 {
-	if (!lst)
-		return ;
-	del(lst->val);
-	free(lst);
+	t_list	*prev;
+	t_list	*next;
+
+	if (*lst == to_rm)
+		*lst = (*lst)->nxt;
+	prev = to_rm->pre;
+	next = to_rm;
+	while (n-- > 0 && next)
+	{
+		to_rm = next;
+		next = next->nxt;
+		lst_delone(to_rm, del);
+	}
+	lst_link(prev, next);
 }

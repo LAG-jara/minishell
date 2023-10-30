@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:13:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 12:47:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:39:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	lst_delone(t_list *lst, void (*del)(void *));
 t_list	*lst_last(t_list *lst);
 void	lst_link(t_list *n1, t_list *n2);
 t_list	*lst_new(void *value, size_t size);
-void	lst_rm(t_list **lst, t_list *to_rm, void (*del)(void *));
+void	lst_rm_one(t_list **lst, t_list *to_rm, void (*del)(void *));
+void	lst_rm_many(t_list **lst, t_list *to_rm, size_t n, void (*del)(void *));
 size_t	lst_size(t_list *lst);
 
 #endif

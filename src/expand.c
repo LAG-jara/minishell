@@ -6,12 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:01:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
-# include "xchar.h"
+# include "xtoken.h"
 
 // Given that *str[*i] points to the $ character of an environment variable,
 // expands its value and appends it to 'prev_str' and 'str' (until 'i').
@@ -63,7 +63,9 @@ static char	*append_exp(char **str, int *i, char *prev_str, char **env)
 		return (append_exp_var(str, i, prev_str, env));
 }
 
-t_list	*expand_tok(char *tok, char **env)
+// Expands the env variables of the given token (if is word) and returns it 
+// converted into a xtoken, with its appropiate xchar flags.
+t_xtoken	*expand_tok(t_token	*tok, char **env)
 {
 	int		i;
 	int		q_stat;
@@ -73,10 +75,9 @@ t_list	*expand_tok(char *tok, char **env)
 	q_stat = UNQUOTED;
 	xtok = NULL;
 	i = 0;
-	while (tok && tok[i])
+	while (tok && tok->val)
 	{
-		q_stat = quote_stat(q_stat, tok[i]);
-		if (q_stat != QUOTED && tok[i] == '$' && valid_varname(tok[i + 1]))
+		if (q_stat != QUOTED && tok->val[i] == '$' && valid_varname(tok[i + 1]))
 		{
 			str = expand_var(tok[i]);
 			xtok = xtok_adds(*xtok, str);
@@ -91,20 +92,44 @@ t_list	*expand_tok(char *tok, char **env)
 	return
 }
 
-// Given an array of tokens, allocates and returns a list of tokens with its
-// $VARIABLES expanded. Each listed token is represented as a t_list of t_xchars.
-t_list	*expand(char **toks, char **env)
+// Given a list of tokens, allocates and returns a list of xtokens with its
+// $VARIABLES expanded, preserving the original token type and setting each
+// character's flags for expanded and quoted status.
+t_list	*expand(t_list *toks, char **env)
 {
-	int		i;
-	t_list	*xtok;
-	t_list	*xtoks;
+	t_list		*xtoks;
+	t_xtoken	xtok;
+	t_list		*node;
+	int			skip_next;
 
+	skip_next = FALSE;
 	xtoks = NULL;
-	i = -1;
-	while (toks && toks[++i])
+	node = toks;
+	while (node)
 	{
-		xtok = expand_tok(toks[i], env);
-		lst_add(*xtoks, lst_new(xtok));
+		xtok = tok_to_xtok((t_token *)node->val);
+		if (xtok.type == WORD)
+		{
+			if (skip_next)
+				skip_next = FALSE;
+			else
+				expand_xtok(&xtok, env);
+		}
+		else if (!ft_strncmp(node->val, "<<", 3))
+			skip_next = TRUE;
+		lst_add(&xtoks, lst_new(&xtok, sizeof(t_xtoken)));
+		node = node->nxt;
 	}
 	return (xtoks);
+}
+
+
+# include "debug.h"
+
+int	main(void)
+{
+	char *pre_toks[] = \
+	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+
+	
 }

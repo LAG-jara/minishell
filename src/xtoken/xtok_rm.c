@@ -15,5 +15,5 @@
 // Removes and frees the given 'to_rm' xchar from the 'xtok'.
 void	xtok_rm(t_xtoken *xtok, t_xchar *to_rm)
 {
-	lst_rm(xtok->val, to_rm, free);
+	lst_rm_one(xtok->val, to_rm, free);
 }

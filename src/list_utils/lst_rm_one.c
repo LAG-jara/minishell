@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_rm.c                                           :+:      :+:    :+:   */
+/*   lst_rm_one.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 // Removes and frees the given 'to_rm' node from the list, using the function 
 // 'del' and free(3). 
-void	lst_rm(t_list **lst, t_list *to_rm, void (*del)(void *))
+void	lst_rm_one(t_list **lst, t_list *to_rm, void (*del)(void *))
 {
 	if (*lst == to_rm)
 		*lst = (*lst)->nxt;
