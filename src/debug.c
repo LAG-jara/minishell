@@ -23,6 +23,63 @@ void	print_arrstr(char **arr)
 }
 
 // DEBUG ONLY!
+void	print_token(t_token tok)
+{
+	char	*type;
+
+	if (tok.type == WORD)
+		type = "WORD";
+	else if (tok.type == REDIR)
+		type = "REDIR";
+	else if (tok.type == PIPE)
+		type = "PIPE";
+	else
+		type = "INVALID";
+	printf("%s\t%s\n", type, tok.val);
+}
+
+// DEBUG ONLY!
+void	print_xtoken(t_xtoken xtok)
+{
+	char	*type;
+	t_list	*node;
+
+	if (xtok.type == WORD)
+		type = "WORD";
+	else if (xtok.type == REDIR)
+		type = "REDIR";
+	else if (xtok.type == PIPE)
+		type = "PIPE";
+	else
+		type = "INVALID";
+	printf("%s\t", type);
+	node = xtok.val;
+	while (node)
+	{
+		t_xchar xc = *(t_xchar *)node->val;
+		printf("%c", xc.c);
+		node = node->nxt;
+	}
+	printf("\n exp\t");
+	node = xtok.val;
+	while (node)
+	{
+		t_xchar xc = *(t_xchar *)node->val;
+		printf("%d", xc.x);
+		node = node->nxt;
+	}
+	printf("\n quo\t");
+	node = xtok.val;
+	while (node)
+	{
+		t_xchar xc = *(t_xchar *)node->val;
+		printf("%d", xc.q);
+		node = node->nxt;
+	}
+	printf("\n");
+}
+
+// DEBUG ONLY!
 void	print_lst(t_list *node, void (*pr_funct)(void *))
 {
 	int	i;
@@ -45,20 +102,7 @@ void	pr_str(void *str)
 // DEBUG ONLY!
 void	pr_token(void *token)
 {
-	char	*type;
-	t_token tok;
-
-
-	tok = *(t_token *)token;
-	if (tok.type == WORD)
-		type = "WORD";
-	else if (tok.type == REDIR)
-		type = "REDIR";
-	else if (tok.type == PIPE)
-		type = "PIPE";
-	else
-		type = "INVALID";
-	printf("%s\t%s\n", type, tok.val);
+	print_token(*(t_token *)token);
 }
 
 // DEBUG ONLY!

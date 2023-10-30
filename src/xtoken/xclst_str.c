@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:14:08 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 12:30:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:36:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ char	*xclst_str(t_list *xclst)
 	str = (char *)p_malloc(sizeof(char) * (str_len + 1));
 	i = -1;
 	while (xclst && xclst->val)
-		str[++i] = *(char **)(xclst->val);
+	{
+		str[++i] = *(char *)(xclst->val);
+		xclst = xclst->nxt;
+	}
 	str[i] = '\0';
 	return (str);
 }
