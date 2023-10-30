@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 19:28:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:06:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 enum e_token_type {
 	WORD,
-	REDIR_OP,
-	CTRL_OP,
+	REDIR,
+	PIPE,
 	INVALID
 };
 
@@ -31,7 +31,7 @@ typedef struct s_token
 	unsigned int	type : 2;
 }	t_token;
 
-int		token_type(char *token);
+int		token_type(char *str);
 t_token	token_create(char *str);
 
 #endif

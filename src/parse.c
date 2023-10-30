@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 10:48:18 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:06:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	is_valid_ctrl(char **tokens, int i, int tok_amount)
 	next_tok = tokens[i + 1];
 	prev_tok = tokens[i - 1];
 	if (token_type(prev_tok) == WORD
-		&& (token_type(next_tok) == WORD || token_type(next_tok) == REDIR_OP))
+		&& (token_type(next_tok) == WORD || token_type(next_tok) == REDIR))
 		return (TRUE);
 	else
 		return (FALSE);
@@ -58,10 +58,10 @@ static int	count_commands_checking_syntax(char **tokens)
 	i = 0;
 	while (i < tok_amount)
 	{
-		if (token_type(tokens[i]) == REDIR_OP
+		if (token_type(tokens[i]) == REDIR
 			&& !is_valid_redir(tokens, i, tok_amount))
 			return (print_err_syntax(tokens[i], -1));
-		if (token_type(tokens[i]) == CTRL_OP)
+		if (token_type(tokens[i]) == PIPE)
 		{
 			++cmd_amount;
 			if (!is_valid_ctrl(tokens, i, tok_amount))
@@ -84,7 +84,7 @@ static t_lst	*get_cmd(t_lst **cmd, char **tokens, int *j)
 	while (tokens[++(*j)])
 	{
 		tok = token_create(tokens[*j]);
-		if (tok.type != CTRL_OP)
+		if (tok.type != PIPE)
 		{
 			lst_add(cmd, lst_new(&tok, sizeof(t_token)));
 		}
@@ -120,7 +120,7 @@ t_lst	**parse(char **tokens)
 	return (cmds);
 }
 
-# include "debug.h"
+// # include "debug.h"
 
 // static void	fill_list(t_lst	**lst)
 // {
@@ -143,21 +143,21 @@ t_lst	**parse(char **tokens)
 // 	lst_add(lst, lst_new(&tok, sizeof(t_token)));
 // }
 
-int	main(void)
-{
-	t_lst	*lst;
-	lst = NULL;
+// int	main(void)
+// {
+// 	t_lst	*lst;
+// 	lst = NULL;
 
-	char *pre_toks[] = \
-	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+// 	char *pre_toks[] = \
+// 	{ "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
 
-	// fill_list(&lst);
+// 	// fill_list(&lst);
 	
-	// print_lst(lst, pr_str);
-	// print_lst(lst, pr_token);
+// 	// print_lst(lst, pr_str);
+// 	// print_lst(lst, pr_token);
 
 
-	t_lst	**cmds;
-	cmds = parse(pre_toks);
-	print_cmds(cmds);
-}
+// 	t_lst	**cmds;
+// 	cmds = parse(pre_toks);
+// 	print_cmds(cmds);
+// }

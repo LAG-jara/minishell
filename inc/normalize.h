@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normalize.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:53:49 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 16:53:51 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:02:12 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "xtoken.h"
 
-t_tok *normalize(t_xtok *xtokens);
+t_tok *normalize(t_xtoken *xtokens);
 
 #endif

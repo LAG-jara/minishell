@@ -52,9 +52,9 @@ void	pr_token(void *token)
 	tok = *(t_token *)token;
 	if (tok.type == WORD)
 		type = "WORD";
-	else if (tok.type == REDIR_OP)
+	else if (tok.type == REDIR)
 		type = "REDIR";
-	else if (tok.type == CTRL_OP)
+	else if (tok.type == PIPE)
 		type = "PIPE";
 	else
 		type = "INVALID";

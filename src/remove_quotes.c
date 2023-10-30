@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 18:14:57 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:02:12 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	is_quote_to_rm(t_xchar *xc)
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion,
 // taking (and updating) the given 'q_stat' and 'i' into account.
-static void	rm_quotes_xtok(t_xtok *tok)
+static void	rm_quotes_xtok(t_xtoken *tok)
 {
 	curr_tok = tok;
 	while (curr_tok)
@@ -37,9 +37,9 @@ static void	rm_quotes_xtok(t_xtok *tok)
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 // The 'tokens' are expanded and word-splitted.
-t_xtok	*remove_quotes(t_xtok *tokens)
+t_xtoken	*remove_quotes(t_xtoken *tokens)
 {
-	t_xtok	*curr_tok;
+	t_xtoken	*curr_tok;
 
 	curr_tok = tokens;
 	while (curr_tok && curr_tok->type == WORD)
