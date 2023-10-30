@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:53:38 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list_utils.h"
+#include "list.h"
 
 // Deletes and frees the given node and every successor of that node, using the
 // function 'del' and free(3). 

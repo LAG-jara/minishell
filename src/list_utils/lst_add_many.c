@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:55:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:05:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list_utils.h"
+#include "list.h"
 
 // Adds the 'to_add' list nodes right after the 'pos' position.
 void	lst_add_many(t_list **lst, t_list *pos, t_list *to_add)

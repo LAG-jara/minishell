@@ -3,7 +3,7 @@
 # define DEBUG_H
 
 # include <stdio.h>
-# include "list_utils.h"
+# include "list.h"
 # include "token_utils.h"
 
 void	print_arrint(int *arr);

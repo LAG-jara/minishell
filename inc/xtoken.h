@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 12:51:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef XTOKEN_H
 # define XTOKEN_H
 
-# include "list_utils.h"
+# include "list.h"
 # include "token_utils.h"
 
 // An xchar associates a char with a couple of flags to indicate if its quote

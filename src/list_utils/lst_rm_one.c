@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list_utils.h"
+#include "list.h"
 
 // Removes and frees the given 'to_rm' node from the list, using the function 
 // 'del' and free(3). 

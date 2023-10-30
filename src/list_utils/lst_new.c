@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:13:59 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:36:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list_utils.h"
+#include "list.h"
 # include "basic_utils.h"
 
 static void	*ft_memcpy(void *dst, const void *src, size_t n)
