@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xtok_rmc.c                                            :+:      :+:    :+:   */
+/*   xtoc_adds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 18:41:11 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/27 18:58:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/30 11:48:26 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/30 11:53:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-// Removes and frees the given 'to_rm' xchar from the 'xtok'.
-void	xtok_rm(t_xtoken *xtok, t_xchar *to_rm)
+// Allocates and adds 'str' at the end of 'xtok' with the given flags.
+void	xtok_adds(t_xtoken *xtok, char *str, int x_flag, int q_flag)
 {
-	lst_rm(xtok->val, to_rm, free);
+	t_xchar xc;
+
+	while (*str)
+	{
+		xc = xc_new(*str, x_flag, q_flag);
+		lst_add(xtok->val, lst_new(&xc, sizeof(t_xchar)));
+		++str;
+	}
 }
