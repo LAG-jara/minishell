@@ -13,7 +13,7 @@
 #include "xtoken.h"
 
 // Removes and frees the given 'to_rm' xchar from the 'xtok'.
-t_xtoken	*xtok_rm(t_xtoken **xtok, t_xtoken *to_rm)
+void	xtok_rm(t_xtoken **xtok, t_xchar *to_rm)
 {
-	lst_rm(xtok, to_rm, free);
+	lst_rm((*xtok)->val, to_rm, free);
 }
