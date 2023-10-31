@@ -42,7 +42,6 @@ void	print_token(t_token tok)
 void	print_xtoken(t_xtoken xtok)
 {
 	char	*type;
-	// t_list	*node;
 
 	if (xtok.type == WORD)
 		type = "WORD_";
@@ -54,29 +53,6 @@ void	print_xtoken(t_xtoken xtok)
 		type = "WRONG_";
 	printf("%s\t", type);
 	print_lst(xtok.val, pr_xchar);
-	// node = xtok.val;
-	// while (node)
-	// {
-	// 	t_xchar xc = *(t_xchar *)node->val;
-	// 	printf("%c", xc.c);
-	// 	node = node->nxt;
-	// }
-	// printf("\n exp\t");
-	// node = xtok.val;
-	// while (node)
-	// {
-	// 	t_xchar xc = *(t_xchar *)node->val;
-	// 	printf("%d", xc.x);
-	// 	node = node->nxt;
-	// }
-	// printf("\n quo\t");
-	// node = xtok.val;
-	// while (node)
-	// {
-	// 	t_xchar xc = *(t_xchar *)node->val;
-	// 	printf("%d", xc.q);
-	// 	node = node->nxt;
-	// }
 	printf("\n");
 }
 

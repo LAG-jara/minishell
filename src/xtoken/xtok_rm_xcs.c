@@ -6,13 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:17:39 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 13:27:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:12:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-// Removes all ocurrences of 'xc' from the given xtoken.
+// Removes all ocurrences of 'to_rm' from the given xtoken.
 void		xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm)
 {
 	t_xchar	xc;

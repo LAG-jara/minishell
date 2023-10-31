@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 13:37:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:51:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,29 +128,13 @@ int	main(void)
 	// t_list	*lst = NULL;
 	// t_list	*lst2 = NULL;
 
-	// char *pre_toks[] = \
-	// { "ls", "arg1", "arg2", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+	char *pre_toks[] = \
+	{ "ls", "arg1", "|", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
 
-	// char	*str = ft_strdup("primero");
-	// lst_add(&lst, lst_new(&str, sizeof(char *)));
-	// str = ft_strdup("segundo");
-	// lst_add(&lst, lst_new(&str, sizeof(char *)));
-	// str = ft_strdup("tercero");
-	// lst_add(&lst, lst_new(&str, sizeof(char *)));
-	// str = ft_strdup("cuarto");
-	// lst_add(&lst, lst_new(&str, sizeof(char *)));
-	// str = ft_strdup("quinto");
-	// lst_add(&lst, lst_new(&str, sizeof(char *)));
-
-	// print_lst(lst, pr_str);
-	// printf("\n");
-	// print_lst(lst2, pr_str);
-	// print_lst(lst, pr_token);
-
-	// t_list	**cmds;
-	// cmds = parse(pre_toks);
-	// print_cmds(cmds);
-
+	t_list	**cmds;
+	cmds = parse(pre_toks);
+	if (cmds)
+		print_cmds(cmds);
 
 	// lst_rm_many(&lst, lst->nxt, 2, free);
 	// print_lst(lst, pr_str);
@@ -158,15 +142,23 @@ int	main(void)
 	// lst_add_many(&lst, lst->nxt, lst2);
 	// print_lst(lst, pr_str);
 
-	t_token	tok = token_create("hol'a'malmalmal");
+	// t_token	tok = token_create("hola'que\"tal\"?");
 	// print_token(tok);
 	
-	t_xtoken xtok = tok_to_xtok(&tok);
-	print_xtoken(xtok);
+	// printf("\n-------------------------\n\n");
 
-	printf("\n-------------------------\n\n");
+	// t_xtoken xtok = tok_to_xtok(&tok);
+	// t_list *lst = xtok.val;
+	// t_xchar *xc = (t_xchar *)lst->val;
+	// xc->x = EXPANDED;
+	// print_xtoken(xtok);
+
+	// printf("\n-------------------------\n\n");
 	
-	t_xchar	xc = xc_new('l', UNEXPANDED, UNQUOTED);
-	xtok_rm_xcs(&xtok, &xc);
-	print_xtoken(xtok);
+	// tok = xtok_to_tok(&xtok);
+	// print_token(tok);
+
+	// t_xchar	xc = xc_new('l', UNEXPANDED, UNQUOTED);
+	// xtok_rm_xcs(&xtok, &xc);
+	// print_xtoken(xtok);
 }
