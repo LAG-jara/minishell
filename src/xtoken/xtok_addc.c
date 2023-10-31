@@ -6,13 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 15:17:38 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:47:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:35:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-// Allocates and adds 'c' at the end of 'xtok' with the given flags.
+// Adds 'c' at the end of 'xtok' with the given flags.
 void	xtok_addc(t_xtoken *xtok, char c, int x_flag, int q_flag)
 {
 	t_xchar xc;

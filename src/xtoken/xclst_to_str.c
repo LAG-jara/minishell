@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xclst_str.c                                        :+:      :+:    :+:   */
+/*   xclst_to_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "xtoken.h"
 
 // Allocates and returns a string representing the given list of xchars 'xclst'.
-char	*xclst_str(t_list *xclst)
+char	*xclst_to_str(t_list *xclst)
 {
 	char	*str;
 	size_t	str_len;

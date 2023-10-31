@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xtok_to_tok.c                                      :+:      :+:    :+:   */
+/*   str_to_xclst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 12:08:08 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:44:39 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/30 12:14:08 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/31 18:51:38 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-// Converts the given xtoken to a token, losing the xchar flags and keeping the
-// token type.
-t_token		xtok_to_tok(t_xtoken *xtok)
+// Allocates and returns a list representing the 'str', with its given flags.
+t_list	*str_to_xclst(char *str, int x_flag, int q_flag)
 {
-	t_token	tok;
+	t_list	*lst;
+	t_xchar	xc;
 
-	tok.type = xtok->type;
-	tok.val = xclst_to_str(xtok->val);
-	return (tok);
+	lst = NULL;
+	while (*str)
+	{
+		xc.c = *str;
+		xc.x = x_flag;
+		xc.q = q_flag;
+		lst_add(&lst, lst_new(&xc, sizeof(t_xchar)));
+		++str;
+	}
+	return (lst);
 }
