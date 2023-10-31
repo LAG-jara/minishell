@@ -1,7 +1,6 @@
 
 
 #include "debug.h"
-# include "print_fx.h"
 
 // DEBUG ONLY! 
 void	print_arrint(int *arr)

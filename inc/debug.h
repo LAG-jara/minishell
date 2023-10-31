@@ -3,9 +3,9 @@
 # define DEBUG_H
 
 # include <stdio.h>
-# include "list.h"
 # include "token_utils.h"
 # include "xtoken.h"
+# include "print_fx.h"
 
 void	print_arrint(int *arr);
 void	print_arrstr(char **arr);
