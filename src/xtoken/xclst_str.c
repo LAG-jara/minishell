@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:14:08 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:36:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:13:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*xclst_str(t_list *xclst)
 		str[++i] = *(char *)(xclst->val);
 		xclst = xclst->nxt;
 	}
-	str[i] = '\0';
+	str[i + 1] = '\0';
 	return (str);
 }
