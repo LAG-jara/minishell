@@ -22,7 +22,7 @@ t_token	*normalize(t_xtoken *toks)
 	lst
 	while (toks)
 	{
-		cmd = tok_add(&cmd, xtok_totok(toks));
+		cmd = tok_add(&cmd, xtok_to_tok(toks));
 		
 		toks = toks->nxt;
 	}

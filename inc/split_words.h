@@ -19,7 +19,8 @@
 # include "is_expanded.h"
 # include "arrstr_utils.h"
 # include "quote_utils.h"
+# include "xtoken.h"
 
-char	**split_words(char *token, int *expanded);
+void	split_words(t_list *xtokens);
 
 #endif

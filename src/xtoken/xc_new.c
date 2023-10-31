@@ -12,7 +12,7 @@
 
 #include "xtoken.h"
 
-// Allocates and returns a new xchar with the 'c' char and the given flags.
+// Creates and returns a new xchar with the 'c' char and the given flags.
 t_xchar	xc_new(char c, int x_flag, int q_flag)
 {
 	t_xchar	xc;

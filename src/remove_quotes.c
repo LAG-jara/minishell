@@ -11,41 +11,59 @@
 /* ************************************************************************** */
 
 #include "remove_quotes.h"
-//# include "debug.h"
 
-// Returns TRUE if 'c' is an unquoted quote that didn't result from expansion.
-static int	is_quote_to_rm(t_xchar *xc)
+static void	remove_quotes_xtok(t_xtoken *xtok)
 {
-	if (xc->q == UNQUOTED && xc->x == UNEXPANDED
-		&& (xc->c == '\'' || xc->c == '"'))
-		return (TRUE);
-	return (FALSE);
-}
+	t_xchar	quote;
+	t_xchar	dquote;
 
-// Removes all unquoted ocurrences of ' and " that didn't result form expansion,
-// taking (and updating) the given 'q_stat' and 'i' into account.
-static void	rm_quotes_xtok(t_xtoken *tok)
-{
-	curr_tok = tok;
-	while (curr_tok)
-	{
-		if(is_quote_to_rm(curr_tok))
-			xtok_rm(&tok, &curr_tok);
-		curr_tok = curr_tok->nxt;
-	}
+	if(xtok->type != WORD)
+		return ;
+	quote = xc_new('\'', UNEXPANDED, UNQUOTED);
+	dquote = xc_new('"', UNEXPANDED, UNQUOTED);
+	xtok_rm_xcs(xtok, &quote);
+	xtok_rm_xcs(xtok, &dquote);
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 // The 'tokens' are expanded and word-splitted.
-t_xtoken	*remove_quotes(t_xtoken *tokens)
+void	remove_quotes(t_list *xtoks)
 {
-	t_xtoken	*curr_tok;
-
-	curr_tok = tokens;
-	while (curr_tok && curr_tok->type == WORD)
+	while (xtoks)
 	{
-		rm_quotes_xtok(curr_tok->val);
-		curr_tok = curr_tok->nxt;
+		if(xtoks->val)
+			remove_quotes_xtok(xtoks->val);
+		xtoks = xtoks->nxt;
 	}
-	return (tokens);
 }
+
+/*
+#include "debug.h"
+//#include ""
+ int main()
+ {
+
+
+	t_token	tok = token_create("ho\"'\"'\"a'q\"ue'tal\"?");
+	// print_token(tok);
+	
+	// printf("\n-------------------------\n\n");
+
+	t_xtoken xtok = tok_to_xtok(&tok);
+	t_list *list = lst_new(&xtok, sizeof(t_xtoken));
+	// t_list *lst = xtoks.val;
+	// t_xchar *xc = (t_xchar *)lst->val;
+	// xc->x = EXPANDED;
+	print_xtoken(*(t_xtoken *)list->val);
+	remove_quotes(list);
+	print_xtoken(*(t_xtoken *)list->val);
+	// printf("\n-------------------------\n\n");
+	
+	// tok = xtoks_to_tok(&xtoks);
+	// print_token(tok);
+
+	// t_xchar	xc = xc_new('l', UNEXPANDED, UNQUOTED);
+	// xtoks_rm_xcs(&xtoks, &xc);
+	// print_xtoksen(xtoks);
+ }
+*/

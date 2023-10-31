@@ -14,7 +14,7 @@
 
 // Returns TRUE if 'c' is to be considered a delimiter, given its 'index' and
 // the 'expanded' ranges (read comment of the 'is_expanded' function).
-static int	is_delim(char c, int index, int *expanded, int q_stat)
+static int	is_delim(t_xchar xc)
 {
 	if (is_expanded(index, expanded) && is_blankchr(c)
 		&& q_stat != DQUOTED)
@@ -82,24 +82,22 @@ static char	*pop_word(char *token, int *i, int *expanded)
 	return (word);
 }
 
+static void split_xtok(t_xtoken *xtok)
+{
+	if()
+}
+
 // Given that 'expanded' defines the ranges [even: start(incl), odd: end(excl)]
 // that resulted from expansion, performs word-splitting acording to the manual.
 // TODO : add link
-char	**split_words(char *token, int *expanded)
+void	split_words(t_list *xtoks)
 {
-	int		words_amount;
-	char	**split_tok;
-	int		idx;
-	int		i;
-
-	words_amount = count_words_amount(token, expanded);
-	split_tok = (char **)p_malloc(sizeof(char *) * (words_amount + 1));
-	idx = 0;
-	i = -1;
-	while (++i < words_amount)
-		split_tok[i] = pop_word(token, &idx, expanded);
-	split_tok[i] = NULL;
-	return (split_tok);
+	while (xtoks)
+	{
+		if(xtoks->val)
+			split_xtok(xtoks->val);
+		xtoks = xtoks->nxt;
+	}
 }
 
 // #include "debug.h"

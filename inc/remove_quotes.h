@@ -20,6 +20,6 @@
 # include "quote_utils.h"
 # include "xtoken.h"
 
-t_list *remove_quotes(t_list *);
+void	remove_quotes(t_list *);
 
 #endif
