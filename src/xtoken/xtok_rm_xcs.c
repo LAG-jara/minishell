@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tok_to_xtok.c                                      :+:      :+:    :+:   */
+/*   xtok_rm_xcs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 11:56:28 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:09:46 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/31 13:17:39 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/31 13:27:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-// Converts the given token to a xtoken, keeping the token type and setting the
-// appropiate xchar flags.
-t_xtoken	tok_to_xtok(t_token *tok)
+// Removes all ocurrences of 'xc' from the given xtoken.
+void		xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm)
 {
-	t_xtoken	xtok;
-	char		*str;
-	int			q_stat;
-	int			char_stat;
+	t_xchar	xc;
+	t_list	*curr_node;
+	t_list	*next_node;
 
-	xtok.type = tok->type;
-	xtok.val = NULL;
-	q_stat = UNQUOTED;
-	str = tok->val;
-	while (*str)
+	curr_node = xtok->val;
+	while (curr_node)
 	{
-		char_stat = quote_stat(&q_stat, *str);
-		xtok_addc(&xtok, *str, UNEXPANDED, char_stat);
-		++str;
+		xc = *(t_xchar *)curr_node->val;
+		next_node = curr_node->nxt;
+		if (xc.c == to_rm->c && xc.q == to_rm->q && xc.x == to_rm->x)
+			xtok_rm_one(xtok, curr_node);
+		curr_node = next_node;
 	}
-	return (xtok);
 }

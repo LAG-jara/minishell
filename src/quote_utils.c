@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:23:40 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 12:00:30 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:10:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,29 @@ int	quote_skip(char *in, int i)
 	return (dist);
 }
 
-// Given the current quote status and a character 'c', returns the new status
-// before 'c' (including it).
-int	quote_stat_pre(int curr_stat, char c)
+// Given the current quote status and a character 'c', updates its value and
+// returns the status for 'c'.
+int	quote_stat(int *curr_stat, char c)
 {
 	if (c == '"')
 	{
-		if (curr_stat == DQUOTED)
+		if (*curr_stat == DQUOTED)
+			*curr_stat = UNQUOTED;
+		else if (*curr_stat == UNQUOTED)
+		{
+			*curr_stat = DQUOTED;
 			return (UNQUOTED);
+		}
 	}
 	else if (c == '\'')
 	{
-		if (curr_stat == QUOTED)
+		if (*curr_stat == QUOTED)
+			*curr_stat = UNQUOTED;
+		else if (*curr_stat == UNQUOTED)
+		{
+			*curr_stat = QUOTED;
 			return (UNQUOTED);
+		}
 	}
-	return (curr_stat);
-}
-
-// Given the current quote status and a character 'c', returns the new status
-// after 'c'.
-int	quote_stat_post(int curr_stat, char c)
-{
-	if (c == '"')
-	{
-		if (curr_stat == DQUOTED)
-			return (UNQUOTED);
-		if (curr_stat == UNQUOTED)
-			return (DQUOTED);
-	}
-	else if (c == '\'')
-	{
-		if (curr_stat == QUOTED)
-			return (UNQUOTED);
-		if (curr_stat == UNQUOTED)
-			return (QUOTED);
-	}
-	return (curr_stat);
+	return (*curr_stat);
 }

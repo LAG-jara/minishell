@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 12:00:30 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 15:09:46 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	is_word(char *str)
 	{
 		if (q_stat == UNQUOTED && is_metachr(*str))
 			return (FALSE);
-		q_stat = quote_stat_post(q_stat, *str);
+		quote_stat(&q_stat, *str);
 		++str;
 	}
 	if (q_stat != UNQUOTED)
