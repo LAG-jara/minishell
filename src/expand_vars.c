@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:09:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:22:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*append_exp_var(char **str, int *i, char *prev_str, char **env)
 // Given that *str[*i] points to the $ character of "$?", expands the value 
 // of errno and appends it to 'prev_str' and 'str' (until 'i').
 // The appended result is returned and the 'str' pointer moved forward.
-static char	*append_exp_errno(char **str, int *i, char *prev_str)
+static char	*expand_errno(char **str, int *i, char *prev_str)
 {
 	char	*tmp_str;
 	char	*var;
@@ -57,7 +57,7 @@ static char	*append_exp_errno(char **str, int *i, char *prev_str)
 static char	*append_exp(char **str, int *i, char *prev_str, char **env)
 {
 	if ((*str)[*i + 1] == '?')
-		return (append_exp_errno(str, i, prev_str));
+		return (expand_errno(str, i, prev_str));
 	else
 		return (append_exp_var(str, i, prev_str, env));
 }

@@ -6,50 +6,38 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 17:51:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 19:00:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 # include "xtoken.h"
 
-// Given that *str[*i] points to the $ character of an environment variable,
-// expands its value and appends it to 'prev_str' and 'str' (until 'i').
-// The appended result is returned and the 'str' pointer moved forward.
-static char	*append_exp_var(char **str, int *i, char *prev_str, char **env)
+// Given that the xchar list 'node' points to the '$' character of an 
+// environment variable name, expands its value updating the list 'lst'.
+void	expand_var(t_list **lst, t_list *node, char **env)
 {
-	char	*tmp_str;
-	char	*var;
+	char	*name;
+	char	*val;
+	int		namelen;
+	t_list	*expanded_lst;
 
-	tmp_str = gnl_substr(*str, 0, *i);
-	prev_str = gnl_strjoin_free(prev_str, tmp_str);
-	free(tmp_str);
-	var = get_var(&(*str)[*i], env);
-	if (var)
-		prev_str = gnl_strjoin_free(prev_str, var);
-	*str += *i + get_name_len(&(*str)[*i]);
-	*i = 0;
-	return (prev_str);
+	name = xclst_to_str(node);
+	val = get_var(name, env);
+	expanded_lst = str_to_xclst(val, EXPANDED, (*(t_xchar *)node->val).q);
+	namelen = get_name_len(name);
+	expanded_lst = NULL;
+
 }
 
-// Given that *str[*i] points to the $ character of "$?", expands the value 
-// of errno and appends it to 'prev_str' and 'str' (until 'i').
-// The appended result is returned and the 'str' pointer moved forward.
-static char	*append_exp_errno(char **str, int *i, char *prev_str)
+// Given that 'node' points to the $ character of "$?", expands the value 
+// of errno updating the list 'lst'.
+static char	*expand_errno(t_list **lst, t_list *node)
 {
-	char	*tmp_str;
-	char	*var;
+	char	*val;
 
-	tmp_str = gnl_substr(*str, 0, *i);
-	prev_str = gnl_strjoin_free(prev_str, tmp_str);
-	free(tmp_str);
-	var = ft_itoa(errno);
-	if (var)
-		prev_str = gnl_strjoin_free(prev_str, var);
-	// free(var);
-	*str += *i + 2;
-	*i = 0;
-	return (prev_str);
+	val = ft_itoa(errno);
+	
 }
 
 // Returns TRUE if the list of xchars pointed by 'node' represents a string that
@@ -75,22 +63,20 @@ static int	try_to_expand(t_list *node)
 // expanded xchar flags if needed.
 static void	expand_xtok(t_token	*xtok, char **env)
 {
-	t_list	*first_node;
 	t_list	*curr_node;
 	t_list	*expanded_val;
 
 	if (xtok->type != WORD)
 		return ;
-	first_node = xtok->val;
 	curr_node = xtok->val;
 	while (curr_node && curr_node->val)
 	{
 		if (try_to_expand(curr_node))
 		{
 			if (((t_xchar *)((curr_node->nxt)->val))->c == '?')
-				append_exp_errno(&first_node, curr_node);
+				expand_errno(&(xtok->val), curr_node);
 			else
-				append_exp_var(&first_node, curr_node, env);
+				expand_var(&(xtok->val), curr_node, env);
 		}
 		// MAS
 	}
