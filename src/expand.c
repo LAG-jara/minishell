@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:01:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:51:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,44 +52,48 @@ static char	*append_exp_errno(char **str, int *i, char *prev_str)
 	return (prev_str);
 }
 
-// Given that *str[*i] points to the $ character of "$?" or an env variable,
-// expands the value and appends it to 'prev_str' and 'str' (until 'i').
-// The appended result is returned and the 'str' pointer moved forward.
-static char	*append_exp(char **str, int *i, char *prev_str, char **env)
+// Returns TRUE if the list of xchars pointed by 'node' represents a string that
+// should trigger an expansion.
+// That is, a '$' followed by a '?' or an enviroment variable name.
+static int	try_to_expand(t_list *node)
 {
-	if ((*str)[*i + 1] == '?')
-		return (append_exp_errno(str, i, prev_str));
-	else
-		return (append_exp_var(str, i, prev_str, env));
+	int		ret;
+	t_xchar	*xc;
+	t_xchar	*xc_next;
+
+	if (!node->nxt)
+		return (FALSE);
+	xc = (t_xchar *)node;
+	xc_next = (t_xchar *)node->nxt;
+	if (xc->q != QUOTED && xc->c == '$'
+		&& (ft_isalpha(xc_next->c) || xc_next == '?'))
+		return (TRUE);
+	return (FALSE);
 }
 
-// Expands the env variables of the given token (if is word) and returns it 
-// converted into a xtoken, with its appropiate xchar flags.
-t_xtoken	*expand_tok(t_token	*tok, char **env)
+// Expands the env variables of the given xtoken (if is word), updating the
+// expanded xchar flags if needed.
+static void	expand_xtok(t_token	*xtok, char **env)
 {
-	int		i;
-	int		q_stat;
-	char	*str;
-	t_list	*xtok;
+	t_list	*first_node;
+	t_list	*curr_node;
+	t_list	*expanded_val;
 
-	q_stat = UNQUOTED;
-	xtok = NULL;
-	i = 0;
-	while (tok && tok->val)
+	if (xtok->type != WORD)
+		return ;
+	first_node = xtok->val;
+	curr_node = xtok->val;
+	while (curr_node && curr_node->val)
 	{
-		if (q_stat != QUOTED && tok->val[i] == '$' && valid_varname(tok[i + 1]))
+		if (try_to_expand(curr_node))
 		{
-			str = expand_var(tok[i]);
-			xtok = xtok_adds(*xtok, str);
-			i += ft_strlen(str);
+			if (((t_xchar *)((curr_node->nxt)->val))->c == '?')
+				append_exp_errno(&first_node, curr_node);
+			else
+				append_exp_var(&first_node, curr_node, env);
 		}
-		else
-		{
-			xtok_addc(*xtok, tok[i])
-			++i;
-		}
+		// MAS
 	}
-	return
 }
 
 // Given a list of tokens, allocates and returns a list of xtokens with its

@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xclst_str.c                                        :+:      :+:    :+:   */
+/*   lst_move.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 12:14:08 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 16:09:31 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/31 17:48:32 by glajara-          #+#    #+#             */
+/*   Updated: 2023/10/31 17:48:46 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "xtoken.h"
+#include "list.h"
 
-// Allocates and returns a string representing the given list of xchars 'xclst'.
-char	*xclst_str(t_list *xclst)
+// Returns the n-th node moving forward from 'n'.
+// If 'n' is negative, moves backwards.
+t_list	*lst_move(t_list *node, int n)
 {
-	char	*str;
-	size_t	str_len;
-	int		i;
-
-	str_len = lst_size(xclst);
-	str = (char *)p_malloc(sizeof(char) * (str_len + 1));
-	i = -1;
-	while (xclst && xclst->val)
+	while (n != 0)
 	{
-		str[++i] = *(char *)(xclst->val);
-		xclst = xclst->nxt;
+		if (!node)
+			return (NULL);
+		if (n > 0)
+		{
+			node = node->nxt;
+			--n;
+		}
+		else
+		{
+			node = node->pre;
+			++n;
+		}
 	}
-	str[i + 1] = '\0';
-	return (str);
+	return (node);
 }
