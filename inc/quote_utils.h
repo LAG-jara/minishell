@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:21:35 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 18:00:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:01:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define DQUOTED 2
 
 int	quote_skip(char *in, int i);
-int	quote_stat(int curr_status, char c);
-int	quote_stat_exp(int curr_stat, char c, int *expanded, char i);
+int	quote_stat_pre(int curr_stat, char c);
+int	quote_stat_post(int curr_status, char c);
 
 #endif

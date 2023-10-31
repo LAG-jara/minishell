@@ -1,6 +1,7 @@
 
 
 #include "debug.h"
+# include "print_fx.h"
 
 // DEBUG ONLY! 
 void	print_arrint(int *arr)
@@ -34,7 +35,7 @@ void	print_token(t_token tok)
 	else if (tok.type == PIPE)
 		type = "PIPE";
 	else
-		type = "INVALID";
+		type = "WRONG";
 	printf("%s\t%s\n", type, tok.val);
 }
 
@@ -42,52 +43,53 @@ void	print_token(t_token tok)
 void	print_xtoken(t_xtoken xtok)
 {
 	char	*type;
-	t_list	*node;
+	// t_list	*node;
 
 	if (xtok.type == WORD)
-		type = "WORD";
+		type = "WORD_";
 	else if (xtok.type == REDIR)
-		type = "REDIR";
+		type = "REDIR_";
 	else if (xtok.type == PIPE)
-		type = "PIPE";
+		type = "PIPE_";
 	else
-		type = "INVALID";
+		type = "WRONG_";
 	printf("%s\t", type);
-	node = xtok.val;
-	while (node)
-	{
-		t_xchar xc = *(t_xchar *)node->val;
-		printf("%c", xc.c);
-		node = node->nxt;
-	}
-	printf("\n exp\t");
-	node = xtok.val;
-	while (node)
-	{
-		t_xchar xc = *(t_xchar *)node->val;
-		printf("%d", xc.x);
-		node = node->nxt;
-	}
-	printf("\n quo\t");
-	node = xtok.val;
-	while (node)
-	{
-		t_xchar xc = *(t_xchar *)node->val;
-		printf("%d", xc.q);
-		node = node->nxt;
-	}
+	print_lst(xtok.val, pr_xchar);
+	// node = xtok.val;
+	// while (node)
+	// {
+	// 	t_xchar xc = *(t_xchar *)node->val;
+	// 	printf("%c", xc.c);
+	// 	node = node->nxt;
+	// }
+	// printf("\n exp\t");
+	// node = xtok.val;
+	// while (node)
+	// {
+	// 	t_xchar xc = *(t_xchar *)node->val;
+	// 	printf("%d", xc.x);
+	// 	node = node->nxt;
+	// }
+	// printf("\n quo\t");
+	// node = xtok.val;
+	// while (node)
+	// {
+	// 	t_xchar xc = *(t_xchar *)node->val;
+	// 	printf("%d", xc.q);
+	// 	node = node->nxt;
+	// }
 	printf("\n");
 }
 
 // DEBUG ONLY!
 void	print_lst(t_list *node, void (*pr_funct)(void *))
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	while (node)
 	{
-		printf("(%d): ", i++);
+		// printf("(%d): ", i++);
 		(*pr_funct)(node->val);
 		node = node->nxt;
 	}
@@ -103,6 +105,26 @@ void	pr_str(void *str)
 void	pr_token(void *token)
 {
 	print_token(*(t_token *)token);
+}
+
+// DEBUG ONLY!
+void	pr_xchar(void *xchar)
+{
+	t_xchar	xc;
+	char	*color;
+	char	*style;
+
+	xc = *(t_xchar *)xchar;
+	style = PFX_NORMAL;
+	if (xc.x == EXPANDED)
+		style = PFX_ULINE;
+	color = PFX_CWHITE;
+	if (xc.q == QUOTED)
+		color = PFX_CBLUE;
+	else if (xc.q == DQUOTED)
+		color = PFX_CGREEN;
+	printf("%s%s;%s%s%c%s",
+		PFX_PREFIX, style, color, PFX_AFFIX, xc.c, PFX_SET_DEFAULT);
 }
 
 // DEBUG ONLY!

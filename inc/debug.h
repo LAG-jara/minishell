@@ -16,6 +16,8 @@ void	print_xtoken(t_xtoken xtok);
 void	print_lst(t_list *node, void (*pr_funct)(void *));
 void	pr_str(void *str);
 void	pr_token(void *tok);
+void	pr_xchar(void *xchar);
+
 void	print_cmds(t_list **cmds);
 
 #endif

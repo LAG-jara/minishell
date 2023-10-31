@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:56:28 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 12:32:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:00:30 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ t_xtoken	tok_to_xtok(t_token *tok)
 	str = tok->val;
 	while (*str)
 	{
+		q_stat = quote_stat_pre(q_stat, *str);
 		xtok_addc(&xtok, *str, UNEXPANDED, q_stat);
-		q_stat = quote_stat(q_stat, *str);
+		q_stat = quote_stat_post(q_stat, *str);
 		++str;
 	}
 	return (xtok);
