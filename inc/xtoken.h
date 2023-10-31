@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:48:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:07:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_xchar
 	unsigned int	q : 2;
 }	t_xchar;
 
-// TODO: Add description
+// A stoken can be of type word, redirection, pipe or invalid.
+// It's value is defined as a list of xchars, with quote and expansion flags.
 typedef struct s_xtoken
 {
 	t_list			*val;

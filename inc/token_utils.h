@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:06:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:07:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ enum e_token_type {
 	INVALID
 };
 
+// A token can be of type word, redirection, pipe or invalid.
+// It's value is defined as a string.
 typedef struct s_token
 {
 	char			*val;
