@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:22:49 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 17:18:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:16:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	lst_rm_many(t_list **lst, t_list *to_rm, size_t n, void (*del)(void *))
 	t_list	*next;
 
 	if (*lst == to_rm)
-		*lst = (*lst)->nxt;
+		*lst = lst_move(*lst, n);
 	prev = to_rm->pre;
 	next = to_rm;
 	while (n-- > 0 && next)
