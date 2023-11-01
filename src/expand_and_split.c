@@ -22,7 +22,7 @@ static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 
 	xtoks = expand(cmd, env);
 	// split_words(&xtoks);
-	// remove_quotes(&xtoks);
+	remove_quotes(&xtoks);
 
 	print_lst(xtoks, pr_xtoken);
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av, char **e)
 	av += 0;
 
 	char *pre_toks[] = \
-	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
+	{ "a\"hola\"", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);

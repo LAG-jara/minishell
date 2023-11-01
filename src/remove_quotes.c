@@ -23,17 +23,20 @@ static void	remove_quotes_xtok(t_xtoken *xtok)
 	dquote = xc_new('"', UNEXPANDED, UNQUOTED);
 	xtok_rm_xcs(xtok, &quote);
 	xtok_rm_xcs(xtok, &dquote);
+	// print_xtoken(*xtok);
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 // The 'tokens' are expanded and word-splitted.
-void	remove_quotes(t_list **xtoks)
+void	remove_quotes(t_list **xtokens)
 {
-	while (*xtoks)
+	t_list	*xtoks;
+
+	xtoks = *xtokens;
+	while (xtoks)
 	{
-		if((*xtoks)->val)
-			remove_quotes_xtok((*xtoks)->val);
-		*xtoks = (*xtoks)->nxt;
+		remove_quotes_xtok((t_xtoken *)xtoks->val);
+		xtoks = xtoks->nxt;
 	}
 }
 

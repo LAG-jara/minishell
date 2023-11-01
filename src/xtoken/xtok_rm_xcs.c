@@ -25,7 +25,11 @@ void		xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm)
 		xc = *(t_xchar *)curr_node->val;
 		next_node = curr_node->nxt;
 		if (xc.c == to_rm->c && xc.q == to_rm->q && xc.x == to_rm->x)
+		{
+			if (xtok->val == curr_node)
+				xtok->val = next_node;
 			xtok_rm_one(xtok, curr_node);
+		}
 		curr_node = next_node;
 	}
 }
