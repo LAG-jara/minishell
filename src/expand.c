@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 10:55:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:01:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,45 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 
 	// printf("original lst:\t");
 	// print_lst(*lst, pr_xchar);
+	// printf("\n");
 	// printf("original node:\t");
 	// print_lst(*node, pr_xchar);
+	// printf("\n");
+
 	name = xclst_to_str(*node);
 	value = get_var(name, env);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	lst_add_many(lst, *node, expanded_lst);
 	len = get_name_len(name);
 	*node = lst_move(*node, len);
-	lst_rm_many(lst, lst_move(*node, -len), len, free);
-	// printf("final node:\t");
-	// print_lst(*node, pr_xchar);
+	if (!*node)
+		lst_rm_many(lst, lst_move(lst_last(*lst), -(len - 1)), len, free);
+	else
+		lst_rm_many(lst, lst_move(*node, -len), len, free);
+
 	// printf("final lst:\t");
 	// print_lst(*lst, pr_xchar);
+	// printf("\n");
+	// printf("final node:\t");
+	// print_lst(*node, pr_xchar);
+	// printf("\n");
+	// printf("\n");
 }
 
 // Given that 'node' points to the $ character of "$?", expands the value 
 // of errno updating the list 'lst'.
 // Finally, 'node' points to the xchar right after the expanded errno value.
-static void	expand_errno(t_list **lst, t_list *node)
+static void	expand_errno(t_list **lst, t_list **node)
 {
-	char	*val;
+	char	*value;
+	t_list	*expanded_lst;
 
-	val = ft_itoa(errno);
-	lst_move(*lst, 0);
-	lst_move(node, 0);
+	value = ft_itoa(errno);
+	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
+	free(value);
+	lst_add_many(lst, *node, expanded_lst);
+	*node = lst_move(*node, 2);
+	lst_rm_many(lst, lst_move(*node, -2), 2, free);
 }
 
 // Returns TRUE if the list of xchars pointed by 'node' represents a string that
@@ -74,21 +88,22 @@ static int	try_to_expand(t_list *node)
 // expanded xchar flags if needed.
 static void	expand_xtok(t_xtoken *xtok, char **env)
 {
-	t_list	*curr_node;
+	t_list	*node;
 
 	if (xtok->type != WORD)
 		return ;
-	curr_node = xtok->val;
-	while (curr_node && curr_node->val)
+	node = xtok->val;
+	while (node && node->val)
 	{
-		if (try_to_expand(curr_node))
+		if (try_to_expand(node))
 		{
-			if (((t_xchar *)((curr_node->nxt)->val))->c == '?')
-				expand_errno(&(xtok->val), curr_node);
+			if (((t_xchar *)((node->nxt)->val))->c == '?')
+				expand_errno(&(xtok->val), &node);
 			else
-				expand_var(&(xtok->val), &curr_node, env);
+				expand_var(&(xtok->val), &node, env);
 		}
-		// MAS
+		else
+			node = node->nxt;
 	}
 }
 
@@ -117,7 +132,7 @@ t_list	*expand(t_list *toks, char **env)
 		}
 		else if (!ft_strncmp(node->val, "<<", 3))
 			skip_next = TRUE;
-		lst_add(&xtoks, lst_new(&xtok, sizeof(t_xtoken)));
+		lst_add(&xtoks, lst_new(&xtok, sizeof(xtok)));
 		node = node->nxt;
 	}
 	return (xtoks);
@@ -130,31 +145,33 @@ t_list	*expand(t_list *toks, char **env)
 int	main(int ac, char **av, char **e)
 {
 	char	**env = arrstr_dup(e);
+	// e += 0;
 	ac += 0;
 	av += 0;
 
 	char *pre_toks[] = \
-	{ "$$USER.BOSS", "Holis", ":)", ">", "outfile", NULL};
+	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);
 	if (cmds)
 		print_cmds(cmds);
 
-	t_list	*cmd = cmds[0];
-	t_token	tok = *(t_token *)cmd->val;
-	t_xtoken xtok = tok_to_xtok(&tok);
-	
-	print_xtoken(xtok);
-
 	printf("-------------------------\n");
+
+	t_list	*cmd = expand(cmds[0], env);
+
+	print_lst(cmd, pr_xtoken);
+	// t_list	*cmd = cmds[0];
+	// t_token	tok = *(t_token *)cmd->val;
+	// t_xtoken xtok = tok_to_xtok(&tok);
 	
-	if (xtok.type != WORD)
-		exit(1);
-	t_list	*lst = xtok.val;
-	t_list	*node = lst->nxt;
-	expand_var(&lst, &node, env);
+	// print_xtoken(xtok);
+
+	// printf("-------------------------\n");
 	
-	print_xtoken(xtok);
+	// expand_xtok(&xtok, env);
+	// print_xtoken(xtok);
+
 	printf("\n");
 }

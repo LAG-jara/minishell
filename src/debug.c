@@ -83,6 +83,12 @@ void	pr_token(void *token)
 }
 
 // DEBUG ONLY!
+void	pr_xtoken(void *xtoken)
+{
+	print_xtoken(*(t_xtoken *)xtoken);
+}
+
+// DEBUG ONLY!
 void	pr_xchar(void *xchar)
 {
 	t_xchar	xc;

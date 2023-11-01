@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:02:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:32:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	remove_quotes(t_list *xtoks)
 	// printf("\n-------------------------\n\n");
 
 	t_xtoken xtok = tok_to_xtok(&tok);
-	t_list *list = lst_new(&xtok, sizeof(t_xtoken));
+	t_list *list = lst_new(&xtok, sizeof(xtok));
 	// t_list *lst = xtoks.val;
 	// t_xchar *xc = (t_xchar *)lst->val;
 	// xc->x = EXPANDED;

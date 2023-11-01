@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:48:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:48:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:31:58 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	xtok_adds(t_xtoken *xtok, char *str, int x_flag, int q_flag)
 	while (*str)
 	{
 		xc = xc_new(*str, x_flag, q_flag);
-		lst_add(&xtok->val, lst_new(&xc, sizeof(t_xchar)));
+		lst_add(&xtok->val, lst_new(&xc, sizeof(xc)));
 		++str;
 	}
 }

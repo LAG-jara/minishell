@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 09:40:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:32:21 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 		tok = token_create(tokens[*j]);
 		if (tok.type != PIPE)
 		{
-			lst_add(cmd, lst_new(&tok, sizeof(t_token)));
+			lst_add(cmd, lst_new(&tok, sizeof(tok)));
 		}
 		else
 			return (*cmd);

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:14:08 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 09:58:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 11:32:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*str_to_xclst(char *str, int x_flag, int q_flag)
 		xc.c = *str;
 		xc.x = x_flag;
 		xc.q = q_flag;
-		lst_add(&lst, lst_new(&xc, sizeof(t_xchar)));
+		lst_add(&lst, lst_new(&xc, sizeof(xc)));
 		++str;
 	}
 	return (lst);
