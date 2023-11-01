@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:33:23 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:21:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # include "split_words.h"
 # include "list.h"
 
-t_list	*expand_and_split(t_list **commands, char **env);
+t_list	**expand_and_split(t_list **commands, char **env);
 
 #endif

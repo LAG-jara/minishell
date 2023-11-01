@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:44:57 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:35:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:16:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include "quote_utils.h"
 # include "xtoken.h"
 
-void	remove_quotes(t_list *);
+void	remove_quotes(t_list **);
 
 #endif

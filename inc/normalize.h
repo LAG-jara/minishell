@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 16:53:49 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 11:02:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:14:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "xtoken.h"
 
-t_tok *normalize(t_xtoken *xtokens);
+t_token	*normalize(t_xtoken *xtokens);
 
 #endif

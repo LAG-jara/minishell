@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 12:01:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:23:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,36 +142,36 @@ t_list	*expand(t_list *toks, char **env)
 # include "debug.h"
 # include "parse_tokens.h"
 
-int	main(int ac, char **av, char **e)
-{
-	char	**env = arrstr_dup(e);
-	// e += 0;
-	ac += 0;
-	av += 0;
+// int	main(int ac, char **av, char **e)
+// {
+// 	char	**env = arrstr_dup(e);
+// 	// e += 0;
+// 	ac += 0;
+// 	av += 0;
 
-	char *pre_toks[] = \
-	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
+// 	char *pre_toks[] = \
+// 	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
 
-	t_list	**cmds;
-	cmds = parse(pre_toks);
-	if (cmds)
-		print_cmds(cmds);
+// 	t_list	**cmds;
+// 	cmds = parse(pre_toks);
+// 	if (cmds)
+// 		print_cmds(cmds);
 
-	printf("-------------------------\n");
+// 	printf("-------------------------\n");
 
-	t_list	*cmd = expand(cmds[0], env);
+// 	t_list	*cmd = expand(cmds[0], env);
 
-	print_lst(cmd, pr_xtoken);
-	// t_list	*cmd = cmds[0];
-	// t_token	tok = *(t_token *)cmd->val;
-	// t_xtoken xtok = tok_to_xtok(&tok);
+// 	print_lst(cmd, pr_xtoken);
+// 	// t_list	*cmd = cmds[0];
+// 	// t_token	tok = *(t_token *)cmd->val;
+// 	// t_xtoken xtok = tok_to_xtok(&tok);
 	
-	// print_xtoken(xtok);
+// 	// print_xtoken(xtok);
 
-	// printf("-------------------------\n");
+// 	// printf("-------------------------\n");
 	
-	// expand_xtok(&xtok, env);
-	// print_xtoken(xtok);
+// 	// expand_xtok(&xtok, env);
+// 	// print_xtoken(xtok);
 
-	printf("\n");
-}
+// 	printf("\n");
+// }

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 13:07:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:29:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,51 @@
 // words if needed. Finally, performs quote removal and returns the result.
 static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 {
-	t_list	*new_cmd;
+	// t_list	*new_cmd;
 	t_list	*xtoks;
 
 	xtoks = expand(cmd, env);
 	// split_words(&xtoks);
 	// remove_quotes(&xtoks);
-	new_cmd = normalize(xtoks);
-	return (new_cmd);
+
+	print_lst(xtoks, pr_xtoken);
+
+	// new_cmd = normalize(xtoks);
+	return (cmd);
+	// return (new_cmd);
 }
 
 // Expands the variables of the 'commands' and split words if needed.
 // Finally, performs quote removal and returns the result.
-t_list	*expand_and_split(t_list **commands, char **env)
+t_list	**expand_and_split(t_list **commands, char **env)
 {
 	int		i;
 
 	i = -1;
 	while (commands[++i])
-		commands[i] = expand_and_split_cmd(&commands[i], env);
+		commands[i] = expand_and_split_cmd(commands[i], env);
 	return (commands);
+}
+
+# include "parse_tokens.h"
+int	main(int ac, char **av, char **e)
+{
+	char **env = arrstr_dup(e);
+	ac += 0;
+	av += 0;
+
+	char *pre_toks[] = \
+	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
+
+	t_list	**cmds;
+	cmds = parse(pre_toks);
+	if (cmds)
+		print_cmds(cmds);
+
+	printf("-------------------------\n");
+
+	cmds[0] = expand_and_split_cmd(cmds[0], env);
+	// if (cmds)
+	// 	print_cmds(cmds);
+
 }

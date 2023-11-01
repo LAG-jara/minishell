@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 11:32:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:16:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static void	remove_quotes_xtok(t_xtoken *xtok)
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 // The 'tokens' are expanded and word-splitted.
-void	remove_quotes(t_list *xtoks)
+void	remove_quotes(t_list **xtoks)
 {
-	while (xtoks)
+	while (*xtoks)
 	{
-		if(xtoks->val)
-			remove_quotes_xtok(xtoks->val);
-		xtoks = xtoks->nxt;
+		if((*xtoks)->val)
+			remove_quotes_xtok((*xtoks)->val);
+		*xtoks = (*xtoks)->nxt;
 	}
 }
 
