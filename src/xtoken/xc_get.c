@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_add_many.c                                     :+:      :+:    :+:   */
+/*   xc_get.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 15:55:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 10:31:19 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/01 10:02:45 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/01 10:10:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "xtoken.h"
 
-// Adds the 'to_add' list nodes right before the 'pos' position.
-void	lst_add_many(t_list **lst, t_list *pos, t_list *to_add)
+// Given a xchar list 'node' returns its 'xchar' value
+t_xchar		xc_get(t_list *node)
 {
-	t_list	*prev;
-	t_list	*next;
+	t_xchar	xc;
 
-	if (!*lst)
-	{
-		*lst = to_add;
-		return ;
-	}
-	if (!pos)
-		return;
-	prev = pos->pre;
-	next = pos;
-	lst_link(prev, to_add);
-	lst_link(lst_last(to_add), next);
-	if (!prev)
-		*lst = to_add;
+	xc = *(t_xchar *)node->val;
+	return (xc);
 }

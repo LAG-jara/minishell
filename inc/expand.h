@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:41:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 09:44:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "errno.h"
 # include "gnl_utils.h"
 # include "quote_utils.h"
-# include "list.h"
+# include "xtoken.h"
 
-t_list	*expand(char *str, char **env);
+t_list	*expand(t_list *toks, char **env);
 
 #endif

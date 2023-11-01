@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 18:18:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 09:40:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,52 +123,52 @@ t_list	**parse(char **tokens)
 # include "debug.h"
 # include "print_fx.h"
 
-int	main(void)
-{
-	// char *pre_toks[] = \
-	// { "ls", "arg1", "|", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
+// int	main(void)
+// {
+// 	// char *pre_toks[] = \
+// 	// { "ls", "arg1", "|", "|", "echo", "Holis", ":)", ">", "outfile", NULL};
 
-	// t_list	**cmds;
-	// cmds = parse(pre_toks);
-	// if (cmds)
-	// 	print_cmds(cmds);
+// 	// t_list	**cmds;
+// 	// cmds = parse(pre_toks);
+// 	// if (cmds)
+// 	// 	print_cmds(cmds);
 
-	t_list	*lst = NULL;
-	// t_list	*lst2 = NULL;
+// 	t_list	*lst = NULL;
+// 	// t_list	*lst2 = NULL;
 
-	char	*str = ft_strdup("hola");
-	lst_add(&lst, lst_new(&str, sizeof(str)));
-	str = ft_strdup("holis");
-	lst_add(&lst, lst_new(&str, sizeof(str)));
-	str = ft_strdup("ciao");
-	lst_add(&lst, lst_new(&str, sizeof(str)));
-	print_lst(lst, pr_str);
+// 	char	*str = ft_strdup("hola");
+// 	lst_add(&lst, lst_new(&str, sizeof(str)));
+// 	str = ft_strdup("holis");
+// 	lst_add(&lst, lst_new(&str, sizeof(str)));
+// 	str = ft_strdup("ciao");
+// 	lst_add(&lst, lst_new(&str, sizeof(str)));
+// 	print_lst(lst, pr_str);
 
-	printf("\n-------------------------\n\n");
+// 	printf("\n-------------------------\n\n");
 
-	lst_rm_many(&lst, lst->nxt->nxt, 2, free);
-	print_lst(lst, pr_str);
+// 	lst_rm_many(&lst, lst->nxt->nxt, 2, free);
+// 	print_lst(lst, pr_str);
 
 
-	// lst_add_many(&lst, lst->nxt, lst2);
-	// print_lst(lst, pr_str);
+// 	// lst_add_many(&lst, lst->nxt, lst2);
+// 	// print_lst(lst, pr_str);
 
-	// t_token	tok = token_create("hola'que\"tal\"?");
-	// print_token(tok);
+// 	// t_token	tok = token_create("hola'que\"tal\"?");
+// 	// print_token(tok);
 	
 
-	// t_xtoken xtok = tok_to_xtok(&tok);
-	// t_list *lst = xtok.val;
-	// t_xchar *xc = (t_xchar *)lst->val;
-	// xc->x = EXPANDED;
-	// print_xtoken(xtok);
+// 	// t_xtoken xtok = tok_to_xtok(&tok);
+// 	// t_list *lst = xtok.val;
+// 	// t_xchar *xc = (t_xchar *)lst->val;
+// 	// xc->x = EXPANDED;
+// 	// print_xtoken(xtok);
 
-	// printf("\n-------------------------\n\n");
+// 	// printf("\n-------------------------\n\n");
 	
-	// tok = xtok_to_tok(&xtok);
-	// print_token(tok);
+// 	// tok = xtok_to_tok(&xtok);
+// 	// print_token(tok);
 
-	// t_xchar	xc = xc_new('l', UNEXPANDED, UNQUOTED);
-	// xtok_rm_xcs(&xtok, &xc);
-	// print_xtoken(xtok);
-}
+// 	// t_xchar	xc = xc_new('l', UNEXPANDED, UNQUOTED);
+// 	// xtok_rm_xcs(&xtok, &xc);
+// 	// print_xtoken(xtok);
+// }

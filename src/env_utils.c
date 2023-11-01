@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/29 12:20:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 09:48:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,22 @@ int	valid_varname(char *word)
 	return (FALSE);
 }
 
-char	*get_varname(char *str)
-{
-	int		len;
-	char	*varname;
+// DEPRECATED: not working
 
-	if (!str)
-		return (NULL);
-	len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
-	varname = ft_strdup(str);
-	varname[len] = '\0';
-	if (!str || !valid_varname(varname))
-	{
-		free (varname);
-		return (NULL);
-	}
-	return (varname);
-}
+// char	*get_varname(char *str)
+// {
+// 	int		len;
+// 	char	*varname;
+
+// 	if (!str)
+// 		return (NULL);
+// 	len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
+// 	varname = ft_strdup(str);
+// 	varname[len] = '\0';
+// 	if (!str || !valid_varname(varname))
+// 	{
+// 		free (varname);
+// 		return (NULL);
+// 	}
+// 	return (varname);
+// }
