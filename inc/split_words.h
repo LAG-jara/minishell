@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:38:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:34:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/01 12:43:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@
 # include "quote_utils.h"
 # include "xtoken.h"
 
-void	split_words(t_list *xtokens);
+void	split_words(t_list **xtokens);
 
 #endif
