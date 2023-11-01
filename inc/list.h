@@ -33,5 +33,6 @@ void	lst_delone(t_list *lst, void (*del)(void *));
 void	lst_link(t_list *n1, t_list *n2);
 void	lst_rm_one(t_list **lst, t_list *to_rm, void (*del)(void *));
 void	lst_rm_many(t_list **lst, t_list *to_rm, size_t n, void (*del)(void *));
+void	lst_split(t_list *node);
 
 #endif
