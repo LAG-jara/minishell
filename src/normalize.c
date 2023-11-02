@@ -14,16 +14,24 @@
 
 // Recives the expanded, splited, quote-removed tokens and converts them into a
 // t_token array.
-t_token	*normalize(t_xtoken *toks)
+t_list	*normalize(t_list **xtokens)
 {
-	t_token	*cmd;
+	t_list	*cmd;
+	t_list	*xtoks;
+	t_token tok;
+	t_list	*new_tok;
 
 	cmd = NULL;
-	lst
-	while (toks)
+	new_tok = NULL;
+	xtoks = *xtokens;
+	while (xtoks)
 	{
-		cmd = tok_add(&cmd, xtok_to_tok(toks));
-		
-		toks = toks->nxt;
+		tok = xtok_to_tok((t_xtoken *)xtoks);
+		new_tok = lst_new(&tok, sizeof(t_token));
+		lst_add(&cmd, new_tok);
+		xtoks = xtoks->nxt;
 	}
+	//while(*tokens)
+	//	lst_rm_one(tokens, *tokens, xtok_rm_one())
+	return (cmd);
 }

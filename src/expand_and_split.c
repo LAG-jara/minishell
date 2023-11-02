@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
+
 # include "debug.h"
 
 // Expands the variables of the command 'cmd' (as a list of tokens) and splits
 // words if needed. Finally, performs quote removal and returns the result.
 static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 {
-	// t_list	*new_cmd;
+	t_list	*new_cmd;
 	t_list	*xtoks;
 
 	xtoks = expand(cmd, env);
@@ -25,10 +26,10 @@ static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 	remove_quotes(&xtoks);
 
 	print_lst(xtoks, pr_xtoken);
-
-	// new_cmd = normalize(xtoks);
-	return (cmd);
-	// return (new_cmd);
+	new_cmd = normalize(&xtoks);
+	print_lst(new_cmd, pr_token);
+	//return (cmd);
+	return (new_cmd);
 }
 
 // Expands the variables of the 'commands' and split words if needed.

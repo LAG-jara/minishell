@@ -15,6 +15,6 @@
 
 # include "xtoken.h"
 
-t_token	*normalize(t_xtoken *xtokens);
+t_list	*normalize(t_list **xtokens);
 
 #endif
