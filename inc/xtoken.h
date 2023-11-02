@@ -46,7 +46,7 @@ void		xtok_rm_many(t_xtoken *xtok, t_list *to_rm, size_t n);
 void		xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm);
 t_token		xtok_to_tok(t_xtoken *xtok);
 t_xtoken	tok_to_xtok(t_token *tok);
-// void		xtoklst_clear(t_list **xtoks);
+void		xtoklst_clear(t_list **xtoks);
 
 // DEPRECATED ?
 // void		xtok_adds(t_xtoken *xtok, char *str, int x_flag, int q_flag);

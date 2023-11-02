@@ -22,14 +22,13 @@ static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 	t_list	*xtoks;
 
 	xtoks = expand(cmd, env);
+	lst_clear(&cmd, tok_del);
 	// split_words(&xtoks);
-	//print_lst(xtoks, pr_xtoken);
 	remove_quotes(&xtoks);
-
 	//print_lst(xtoks, pr_xtoken);
 	new_cmd = normalize(&xtoks);
-	print_lst(new_cmd, pr_token);
-	//return (cmd);
+	xtoklst_clear(&xtoks);
+	//print_lst(new_cmd, pr_token);
 	return (new_cmd);
 }
 
@@ -46,6 +45,22 @@ t_list	**expand_and_split(t_list **commands, char **env)
 }
 
 # include "parse_tokens.h"
+void env_free(char **env)
+{
+	// TODO : como conseguir el tamaño de env?
+	int i = 26;
+	char	**tmp;
+
+	tmp = env;
+	while (i--)
+	{
+		free(*tmp);
+		tmp++;
+
+	}
+	free(env);
+}
+
 int	main(int ac, char **av, char **e)
 {
 	char **env = arrstr_dup(e);
@@ -53,7 +68,7 @@ int	main(int ac, char **av, char **e)
 	av += 0;
 
 	char *pre_toks[] = \
-	{ "a\"hola\"", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
+	{ "a\"hola\"", NULL};
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);
@@ -64,6 +79,8 @@ int	main(int ac, char **av, char **e)
 
 	cmds[0] = expand_and_split_cmd(cmds[0], env);
 	// if (cmds)
-	// 	print_cmds(cmds);
-
+	print_cmds(cmds);
+	env_free(env);
+	lst_clear(cmds, tok_del);
+	free(cmds);
 }

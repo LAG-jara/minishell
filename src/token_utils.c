@@ -54,3 +54,11 @@ t_token	token_create(char *str)
 	token.type = token_type(str);
 	return (token);
 }
+
+void tok_del(void *tok)
+{
+	//if (((t_token *)tok)->val)
+		free(((t_token *)tok)->val);
+	free(tok);
+	tok = NULL;
+}

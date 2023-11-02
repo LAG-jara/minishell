@@ -33,6 +33,7 @@ typedef struct s_token
 	unsigned int	type : 2;
 }	t_token;
 
+void	tok_del(void *tok);
 int		token_type(char *str);
 t_token	token_create(char *str);
 

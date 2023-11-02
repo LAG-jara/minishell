@@ -27,5 +27,6 @@ void	lst_clear(t_list **lst, void (*del)(void *))
 		lst_delone(node, del);
 		node = nxt_node;
 	}
-	*lst = NULL;
+	//free(lst);
+	lst = NULL;
 }

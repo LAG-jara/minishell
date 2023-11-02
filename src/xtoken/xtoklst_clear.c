@@ -12,8 +12,23 @@
 
 #include "xtoken.h"
 
+// static void del_xtoklst
+// {
+
+// }
+
 void	xtoklst_clear(t_list **xtoks)
 {
-	// TODO: mirar si es correcto
+	t_list	*node;
+	t_list	*nxt_node;
+
+	node = *xtoks;
+	while (node)
+	{
+		nxt_node = node->nxt;
+		lst_clear(node->val, free);
+		node = nxt_node;
+	}
 	lst_clear(xtoks, free);
+	*xtoks = NULL;
 }
