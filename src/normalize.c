@@ -12,26 +12,24 @@
 
 #include "xtoken.h"
 
-// Recives the expanded, splited, quote-removed tokens and converts them into a
-// t_token array.
+// Recives the expanded, splited, quote-removed xtokens and converts them into a
+// token list(cmd).
 t_list	*normalize(t_list **xtokens)
 {
 	t_list	*cmd;
-	t_list	*xtoks;
+	t_list	*xtok;
 	t_token tok;
 	t_list	*new_tok;
 
 	cmd = NULL;
-	new_tok = NULL;
-	xtoks = *xtokens;
-	while (xtoks)
+	xtok = *xtokens;
+	while (xtok)
 	{
-		tok = xtok_to_tok((t_xtoken *)xtoks);
-		new_tok = lst_new(&tok, sizeof(t_token));
+		tok = xtok_to_tok(xtok->val);
+		new_tok = lst_new(&tok, sizeof(tok));
 		lst_add(&cmd, new_tok);
-		xtoks = xtoks->nxt;
+		xtok = xtok->nxt;
 	}
-	//while(*tokens)
-	//	lst_rm_one(tokens, *tokens, xtok_rm_one())
+	// TODO: LIBERAR XTOKENS
 	return (cmd);
 }

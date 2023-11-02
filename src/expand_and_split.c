@@ -23,9 +23,10 @@ static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 
 	xtoks = expand(cmd, env);
 	// split_words(&xtoks);
+	//print_lst(xtoks, pr_xtoken);
 	remove_quotes(&xtoks);
 
-	print_lst(xtoks, pr_xtoken);
+	//print_lst(xtoks, pr_xtoken);
 	new_cmd = normalize(&xtoks);
 	print_lst(new_cmd, pr_token);
 	//return (cmd);
