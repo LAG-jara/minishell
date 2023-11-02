@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_vars.h                                      :+:      :+:    :+:   */
+/*   xtok_addxc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:41:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:16:36 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/02 16:57:32 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/02 16:59:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXPAND_VARS_H
-# define EXPAND_VARS_H
+#include "xtoken.h"
 
-# include "env.h"
-# include "errno.h"
-# include "gnl_utils.h"
-# include "quote_utils.h"
-# include "arrint_utils.h"
-
-char	*expand_vars(char *str, int **expanded, char **env);
-
-#endif
+// Adds 'xc' at the end of 'xtok'.
+void	xtok_addxc(t_xtoken *xtok, t_xchar xc)
+{
+	lst_add(&(xtok->val), lst_new(&xc, sizeof(xc)));
+}
