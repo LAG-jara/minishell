@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/02 17:00:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:43:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_xchar		xc_new(char c, int x_flag, int q_flag);
 t_xchar		xc_get(t_list *node);
 char		*xclst_to_str(t_list *xclst);
 t_list		*str_to_xclst(char *str, int x_flag, int q_flag);
+t_xtoken	xtok_get(t_list *node);
 void		xtok_add_many(t_xtoken *xtok, t_list *pos, t_list *to_add);
 void		xtok_addc(t_xtoken *xtok, char c, int x_flag, int q_flag);
 void		xtok_addxc(t_xtoken *xtok, t_xchar xc);
