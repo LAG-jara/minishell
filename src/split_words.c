@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/02 17:58:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:04:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void	split_words_xtok(t_list **xtokens, t_list *xtoken)
 {
 	t_xtoken	*word;
 	t_list		*split_words;
-	t_list		*prev_xtok;
 	t_list		*next_xtok;
 
 	next_xtok = xtoken->nxt;
