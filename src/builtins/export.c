@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "basic_utils.h"
+#include "env.h"
+#include "list.h"
 /*
 export name=value ...
 	The value of the environment variable name is set to value. 
@@ -24,26 +26,29 @@ export name=value ...
 	variable.
 */
 
-void	export_builtin(char **word, char ***env)
+void	export_builtin(t_list *words, char ***env)
 {
-	char	*value;
+	char	*word;
 	char	*varname;
 	int		i;
 
-	n_word = arrstr_size(word);
+	word = words->val;
+	varname = get_varname(word);
 	while (*word)
 	{
 		i = -1;
-		while(*word[++i] != '=')
-			varname[i] = *word[i];
-		if (valid_varname(varname) && *word[i++] == '=')
-			set_env_var(varname, *(word + i), env);
+		while(word[i] != '=')
+			++i;
+		if (valid_varname(varname) && word[i++] == '=')
+			set_env_var(varname, word + i, env);
 		++word;
 	}
 }
 
 # include "debug.h"
 # include "builtins.h"
+# include "parse_tokens.h"
+
 int	main(int ac, char **av, char **e)
 {
 	char **env = arrstr_dup(e);
@@ -51,13 +56,13 @@ int	main(int ac, char **av, char **e)
 	av += 0;
 
 	char *pre_toks[] = \
-	{ "hola", "final", NULL};
+	{ "hola=dew", "final=pepe", NULL};
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);
 	//if (cmds)
 	//	print_cmds(cmds);
-
+	export_builtin(*cmds, &env);
 	env_builtin(env);
 	lst_clear(cmds, tok_del);
 	free(cmds);

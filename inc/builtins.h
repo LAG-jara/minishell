@@ -17,7 +17,7 @@ void	cd_builtin(char **word, char ***env);
 void	echo_builtin(char **word);
 void	env_builtin();
 void	exit_builtin();
-void	export_builtin(char **word, char ***env);
+void	export_builtin(t_list *word, char ***env);
 void	pwd_builtin();
 void	unset_builtin(char **word, char ***env);
 
