@@ -12,7 +12,8 @@
 
 #include "basic_utils.h"
 
-
+// Retuns a ointer to the first occurrence of c in str. If there aren't, returns
+// NULL.
 char	*ft_strchr(char *str, char c)
 {
 	while (str && *str != c)
