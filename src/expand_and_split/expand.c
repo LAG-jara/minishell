@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 12:23:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:02:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand.h"
+#include "expand_and_split.h"
+
 # include "debug.h"
 
 // Given that the xchar list 'node' points to the '$' character of an 

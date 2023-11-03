@@ -2,38 +2,7 @@ NAME		= minishell
 MKF			= Makefile
 
 # Sources
-SRC			=	main.c \
-				basic_utils/utils_char.c \
-				basic_utils/utils_itoa.c \
-				basic_utils/utils_p_malloc.c \
-				basic_utils/utils_str_rm_idxs.c \
-				basic_utils/utils_split.c \
-				basic_utils/utils_str.c \
-				arrstr/arrstr_fill_idx.c \
-				arrstr/arrstr_add.c \
-				arrstr/arrstr_dup.c \
-				arrstr/arrstr_free.c \
-				arrstr/arrstr_size.c \
-				arrstr/arrstr_rm.c \
-				arrstr/arrstr_set.c \
-				env_find.c \
-				env_get.c \
-				env_set.c \
-				expand_and_split.c \
-				expand_vars.c \
-				get_input.c \
-				gnl_utils.c \
-				input_utils.c \
-				is_expanded.c \
-				arrint.c \
-				parse.c \
-				print_error.c \
-				quote_utils.c \
-				remove_quotes.c \
-				split_words.c \
-				token_utils.c \
-				tokenize.c \
-				debug.c	# TODO: Remove debug utils
+SRC			=	main.c
 				
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))

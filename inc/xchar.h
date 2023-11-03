@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_expanded.h                                      :+:      :+:    :+:   */
+/*   xchar.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/26 17:33:10 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 17:33:49 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/03 12:23:56 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/03 12:25:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_EXPANDED_H
-# define IS_EXPANDED_H
+#ifndef XCHAR_H
+# define XCHAR_H
 
-# include "definitions.h"
+# include "list.h"
 
 # define UNEXPANDED 0
 # define EXPANDED 1
 
-int	is_expanded(int index, int *expanded);
+// An xchar associates a char with a couple of flags to indicate if its quote
+// status ('q') and if it resulted from an expansion ('x').
+typedef struct s_xchar
+{
+	char			c;
+	unsigned int	x : 1;
+	unsigned int	q : 2;
+}	t_xchar;
+
+t_xchar		xc_new(char c, int x_flag, int q_flag);
+t_xchar		xc_get(t_list *node);
+char		*xclst_to_str(t_list *xclst);
+t_list		*str_to_xclst(char *str, int x_flag, int q_flag);
 
 #endif

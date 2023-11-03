@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 12:29:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:23:21 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void env_free(char **env)
 	{
 		free(*tmp);
 		tmp++;
-
 	}
 	free(env);
 }
@@ -68,7 +67,7 @@ int	main(int ac, char **av, char **e)
 	av += 0;
 
 	char *pre_toks[] = \
-	{ "a\"hola\"", NULL};
+	{ "a\"hola\"", "hola", "soy", "$USER", "word_split=$PATH", "final", NULL};
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);
@@ -78,7 +77,6 @@ int	main(int ac, char **av, char **e)
 	printf("-------------------------\n");
 
 	cmds[0] = expand_and_split_cmd(cmds[0], env);
-	// if (cmds)
 	print_cmds(cmds);
 	env_free(env);
 	lst_clear(cmds, tok_del);

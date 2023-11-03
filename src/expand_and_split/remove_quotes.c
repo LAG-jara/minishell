@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 12:16:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:03:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "remove_quotes.h"
+#include "expand_and_split.h"
 
 static void	remove_quotes_xtok(t_xtoken *xtok)
 {

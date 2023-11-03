@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/02 18:04:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:22:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "split_words.h"
+#include "expand_and_split.h"
 
 // Returns TRUE if the value of 'xc_node' is a blank char (space or tab) that 
 // is also expanded and non-double-quoted.
@@ -69,17 +69,19 @@ static t_list	*pop_word(t_list **xc_lst)
 // At the end, 'xtoken' points to the next element of the list.
 static void	split_words_xtok(t_list **xtokens, t_list *xtoken)
 {
-	t_xtoken	*word;
+	t_list		*word;
 	t_list		*split_words;
 	t_list		*next_xtok;
+	t_xtoken	xtok_orig;
 
+	xtok_orig = xtok_get(xtoken);
 	next_xtok = xtoken->nxt;
 	split_words = NULL;
-	word = pop_word(xtok_get(xtoken).val);
+	word = pop_word(&xtok_orig.val);
 	while (word)
 	{
 		lst_add(&split_words, word);
-		word = pop_word(xtok_get(xtoken).val);
+		word = pop_word(&xtok_orig.val);
 	}
 	lst_add_many(xtokens, next_xtok, split_words);
 	lst_rm_one(xtokens, xtoken, free);
