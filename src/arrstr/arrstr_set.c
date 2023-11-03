@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:03:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:35:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:57:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arrstr_utils.h"
+#include "arrstr.h"
 
 // Sets the value of the 'i'th string in the NULL-terminated array of strings
 // 'arr' to the string 'str'. Returns 'arr'.
@@ -19,15 +19,5 @@ char	**arrstr_set(char **arr, char *str, int i)
 {
 	free(arr[i]);
 	arr[i] = ft_strdup(str);
-	return (arr);
-}
-
-// Sets the value of the 'i'th string in the NULL-terminated array of arrays
-// of strings 'arr' to the "sub-array" 'subarr'. Returns 'arr'.
-// Pre: 'i' must be smaller than the 'arr' size.
-char	***aarrstr_set(char ***arr, char **subarr, int i)
-{
-	free(arr[i]);
-	arr[i] = arrstr_dup(subarr);
 	return (arr);
 }

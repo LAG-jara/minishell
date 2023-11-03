@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:12:41 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 13:15:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:57:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "minish_consts.h"
 # include "token_utils.h"
 # include "basic_utils.h"
-# include "arrstr_utils.h"
+# include "arrstr.h"
 # include "print_error.h"
 # include "list.h"
 

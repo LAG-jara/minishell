@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:10 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:04:12 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:57:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exit_builtin(void)
 }
 
 // # include "debug.h"
-// # include "arrstr_utils.h"
+// # include "arrstr.h"
 // # include "parse_tokens.h"
 // int	main(int ac, char **av, char **e)
 // {

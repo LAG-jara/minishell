@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arrstr_utils.h                                     :+:      :+:    :+:   */
+/*   arrstr.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRSTR_UTILS_H
-# define ARRSTR_UTILS_H
+#ifndef ARRSTR_H
+# define ARRSTR_H
 
 # include "basic_utils.h"
 
-// 2-Dimensional String Arrays
-
-char	**arrstr_fill_idx(char **arr, char **subarr, int i);
 char	**arrstr_add(char **arr, char *str);
 char	**arrstr_dup(char **arr);
 void	arrstr_free(char **arr);
 size_t	arrstr_size(char **arr);
 char	**arrstr_rm(char **arr, int i);
 char	**arrstr_set(char **arr, char *str, int index);
-
-// 3-Dimensional String Arrays
-
-char	***aarrstr_add(char ***arr, char **subarr);
-char	***aarrstr_dup(char ***arr);
-void	aarrstr_free(char ***arr);
-size_t	aarrstr_size(char ***arr);
-char	***aarrstr_set(char ***arr, char **subarr, int i);
 
 #endif

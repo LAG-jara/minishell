@@ -22,14 +22,3 @@ size_t	arrstr_size(char **arr)
 		++size;
 	return (size);
 }
-
-// Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	aarrstr_size(char ***arr)
-{
-	size_t	size;
-
-	size = 0;
-	while (arr && arr[size])
-		++size;
-	return (size);
-}

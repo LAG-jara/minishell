@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:04:03 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:58:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include <unistd.h>
-/*
-env
-	Prints the current environment.
-*/
 
 void	printvar(char *var)
 {
@@ -38,7 +34,7 @@ void	env_builtin(char **env)
 }
 
 // # include "debug.h"
-// # include "arrstr_utils.h"
+// # include "arrstr.h"
 // # include "parse_tokens.h"
 // int	main(int ac, char **av, char **e)
 // {

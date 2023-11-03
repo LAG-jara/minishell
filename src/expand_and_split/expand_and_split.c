@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:41:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 20:05:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int ac, char **av, char **e)
 	printf("\n");
 
 	char *pre_toks[] = \
-	{ "hola$a", "'hola$a'", "$nada", "\"hola$a\"", NULL};
+	{ "hola$a", "'hola$a'", "\"hola$a\"", NULL};	// TODO: Fix leak with $nada
 
 	t_list	**cmds;
 	cmds = parse(pre_toks);
