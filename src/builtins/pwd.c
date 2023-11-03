@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.assert.h>
+#include <unistd.h>
+#include <sys/param.h>
 #include "basic_utils.h"
 /*
 pwd
@@ -18,13 +19,32 @@ pwd
 	The return status is 0 unless an error occurs while reading the name of the
 	current directory or an invalid option is supplied.
 */
-
-void	pwd_builtin(char **env)
+void	pwd_builtin(void)
 {
 	char *buffer;
 
 	buffer = NULL;
-	getcwd(buffer, 42);
-	write(stdout, &buffer, ft_strlen(buffer));
+	buffer = getcwd(buffer, 42);
+	write(1, buffer, ft_strlen(buffer));
 	free(buffer);
 }
+
+
+// int	main(int ac, char **av, char **e)
+// {
+// 	// char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	e += 0;
+// 	// char *pre_toks[] = \
+// 	// { "hola", "final", NULL};
+
+// 	// t_list	**cmds;
+// 	// cmds = parse(pre_toks);
+// 	// if (cmds)
+// 	// 	print_cmds(cmds);
+
+// 	pwd_builtin();
+// 	//lst_clear(cmds, tok_del);
+// 	//free(cmds);
+// }

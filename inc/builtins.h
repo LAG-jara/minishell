@@ -15,10 +15,10 @@
 
 void	cd_builtin(char **word, char ***env);
 void	echo_builtin(char **word);
-void	env_builtin(char **env);
-void	exit_builtin(char **word);
+void	env_builtin();
+void	exit_builtin();
 void	export_builtin(char **word, char ***env);
-void	pwd_builtin(char **env);
+void	pwd_builtin();
 void	unset_builtin(char **word, char ***env);
 
 #endif

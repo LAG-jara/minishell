@@ -41,3 +41,24 @@ void	export_builtin(char **word, char ***env)
 		++word;
 	}
 }
+
+# include "debug.h"
+# include "builtins.h"
+int	main(int ac, char **av, char **e)
+{
+	char **env = arrstr_dup(e);
+	ac += 0;
+	av += 0;
+
+	char *pre_toks[] = \
+	{ "hola", "final", NULL};
+
+	t_list	**cmds;
+	cmds = parse(pre_toks);
+	//if (cmds)
+	//	print_cmds(cmds);
+
+	env_builtin(env);
+	lst_clear(cmds, tok_del);
+	free(cmds);
+}

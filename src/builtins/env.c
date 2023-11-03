@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "env.h"
+#include <unistd.h>
 /*
 env
 	Prints the current environment.
@@ -20,10 +21,10 @@ void	printvar(char *var)
 {
 	while (*var)
 	{
-		write(stdout, var, 1);
+		write(1, var, 1);
 		var++;
 	}
-	write(stdout, "\n", 1);
+	write(1, "\n", 1);
 }
 
 void	env_builtin(char **env)
@@ -31,7 +32,29 @@ void	env_builtin(char **env)
 	while (*env)
 	{
 		if (ft_strchr(*env, '='))
-			printvar(*env)
+			printvar(*env);
 		env++;
 	}
 }
+
+// # include "debug.h"
+// # include "arrstr_utils.h"
+// # include "parse_tokens.h"
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+
+// 	char *pre_toks[] = \
+// 	{ "hola", "final", NULL};
+
+// 	t_list	**cmds;
+// 	cmds = parse(pre_toks);
+// 	//if (cmds)
+// 	//	print_cmds(cmds);
+
+// 	env_builtin(env);
+// 	lst_clear(cmds, tok_del);
+// 	free(cmds);
+// }

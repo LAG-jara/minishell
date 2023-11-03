@@ -10,15 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.h"
+#include <unistd.h>
+#include <stdlib.h>
+
 /*
 exit 
 	Prints “exit” followed by a newline before closing the shell. 
 	The exit status is that of the last command executed.
 */
 
-void	exit_builtin(char **word, char ***env)
+void	exit_builtin(void)
 {
-	write(stdout, "exit\n", 6);
-	exit(exit_status);
+	write(1, "exit\n", 5);
+	// TODO : Añadir exit_status del exit
+	exit(0);
 }
+
+// # include "debug.h"
+// # include "arrstr_utils.h"
+// # include "parse_tokens.h"
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	env += 0;
+// 	char *pre_toks[] = \
+// 	{ "hola", "final", NULL};
+
+// 	t_list	**cmds;
+// 	cmds = parse(pre_toks);
+// 	if (cmds)
+// 		print_cmds(cmds);
+
+// 	//env_free(env);
+// 	lst_clear(cmds, tok_del);
+// 	free(cmds);
+// 	exit_builtin();
+// }
