@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:36:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:17:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	set_env_var(char *varname, char *value, char ***env);
 void	rm_env_var(char *varname, char ***env);
 int		valid_varname(char *word);
 char	*get_varname(char *str);
+void	env_free(char **env);
 
 #endif

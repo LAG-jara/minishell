@@ -6,31 +6,29 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 09:32:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 18:14:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 
-// DEPRECATED : Falta '_'
-
 // Given that 'str' points to the begginning of a variable name, returns its 
 // length ignoring the leading '$' (if any).
-// int	get_name_len(char *str)
-// {
-// 	int	i;
+int	get_name_len(char *str)
+{
+	int	i;
 
-// 	i = 0;
-// 	if (str[i] == '$')
-// 		i = 1;
-// 	if (str[i] && ft_isalpha(str[i]))
-// 	{
-// 		++i;
-// 		while (str[i] && ft_isalnum(str[i]))
-// 			++i;
-// 	}
-// 	return (i);
-// }
+	i = 0;
+	if (str[i] == '$')
+		i = 1;
+	if (str[i] && (ft_isalpha(str[i]) || str[i] == '_'))
+	{
+		++i;
+		while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+			++i;
+	}
+	return (i);
+}
 
 // Returns the value of the environment variable name 'varname'.
 // If 'varname' does not exist, returns NULL.

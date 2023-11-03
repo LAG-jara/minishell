@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:55:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 10:31:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:03:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@ void	lst_add_many(t_list **lst, t_list *pos, t_list *to_add)
 		return ;
 	}
 	if (!pos)
-		return;
-	prev = pos->pre;
-	next = pos;
+	{
+		prev = lst_last(*lst);
+		next = NULL;
+	}
+	else
+	{
+		prev = pos->pre;
+		next = pos;
+	}
 	lst_link(prev, to_add);
 	lst_link(lst_last(to_add), next);
 	if (!prev)

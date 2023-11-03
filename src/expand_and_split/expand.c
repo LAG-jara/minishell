@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 12:02:57 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:23:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,17 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 	int		len;
 	t_list	*expanded_lst;
 
-	// printf("original lst:\t");
-	// print_lst(*lst, pr_xchar);
-	// printf("\n");
-	// printf("original node:\t");
-	// print_lst(*node, pr_xchar);
-	// printf("\n");
-
 	name = xclst_to_str(*node);
 	value = get_var(name, env);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	lst_add_many(lst, *node, expanded_lst);
 	len = get_name_len(name);
+	free(name);
 	*node = lst_move(*node, len);
 	if (!*node)
 		lst_rm_many(lst, lst_move(lst_last(*lst), -(len - 1)), len, free);
 	else
 		lst_rm_many(lst, lst_move(*node, -len), len, free);
-
-	// printf("final lst:\t");
-	// print_lst(*lst, pr_xchar);
-	// printf("\n");
-	// printf("final node:\t");
-	// print_lst(*node, pr_xchar);
-	// printf("\n");
-	// printf("\n");
 }
 
 // Given that 'node' points to the $ character of "$?", expands the value 
@@ -59,12 +45,44 @@ static void	expand_errno(t_list **lst, t_list **node)
 	char	*value;
 	t_list	*expanded_lst;
 
+	// printf("original lst:\t");
+	// print_lst(*lst, pr_xchar);
+	// printf("\noriginal node:\t");
+	// print_lst(*node, pr_xchar);
+	// printf("\n");
+
 	value = ft_itoa(errno);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	free(value);
+
+	// printf("expanded:\t");
+	// print_lst(expanded_lst, pr_xchar);
+	// printf("\n");
+
 	lst_add_many(lst, *node, expanded_lst);
+
+	// printf("added list:\t");
+	// print_lst(*lst, pr_xchar);
+	// printf("\n");
+
 	*node = lst_move(*node, 2);
-	lst_rm_many(lst, lst_move(*node, -2), 2, free);
+
+	// printf("moved node:\t");
+	// print_lst(*node, pr_xchar);
+	// printf("\n");
+
+	if (!*node)
+		lst_rm_many(lst, lst_move(lst_last(*lst), - 1), 2, free);
+	else
+		lst_rm_many(lst, lst_move(*node, -2), 2, free);
+
+	// printf("final lst:\t");
+	// print_lst(*lst, pr_xchar);
+	// printf("\n");
+	// printf("final node:\t");
+	// print_lst(*node, pr_xchar);
+	// printf("\n");
+	// printf("\n");
 }
 
 // Returns TRUE if the list of xchars pointed by 'node' represents a string that
@@ -138,41 +156,3 @@ t_list	*expand(t_list *toks, char **env)
 	}
 	return (xtoks);
 }
-
-
-# include "debug.h"
-# include "parse_tokens.h"
-
-// int	main(int ac, char **av, char **e)
-// {
-// 	char	**env = arrstr_dup(e);
-// 	// e += 0;
-// 	ac += 0;
-// 	av += 0;
-
-// 	char *pre_toks[] = \
-// 	{ "a$?Im_da_BOSS", "'Holis  mundo'", "\"hola||\"$USER", ">", "outfile", NULL};
-
-// 	t_list	**cmds;
-// 	cmds = parse(pre_toks);
-// 	if (cmds)
-// 		print_cmds(cmds);
-
-// 	printf("-------------------------\n");
-
-// 	t_list	*cmd = expand(cmds[0], env);
-
-// 	print_lst(cmd, pr_xtoken);
-// 	// t_list	*cmd = cmds[0];
-// 	// t_token	tok = *(t_token *)cmd->val;
-// 	// t_xtoken xtok = tok_to_xtok(&tok);
-	
-// 	// print_xtoken(xtok);
-
-// 	// printf("-------------------------\n");
-	
-// 	// expand_xtok(&xtok, env);
-// 	// print_xtoken(xtok);
-
-// 	printf("\n");
-// }

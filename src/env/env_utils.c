@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 09:48:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:16:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ int	valid_varname(char *word)
 	if (!*word)
 		return (TRUE);
 	return (FALSE);
+}
+
+// Frees the array of strings 'env'.
+void	env_free(char **env)
+{
+	char	**tmp;
+
+	tmp = env;
+	while (*tmp)
+	{
+		free(*tmp);
+		++tmp;
+	}
+	free(env);
 }
 
 // DEPRECATED: not working
