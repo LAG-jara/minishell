@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 13:59:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:10:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_list *expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 	return (new_cmd);
 }
 
-// Expands the variables of the 'commands' and split words if needed.
+// Expands the env variables and $? of the 'commands' and split words if needed.
 // Finally, performs quote removal and returns the result.
 t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 {
