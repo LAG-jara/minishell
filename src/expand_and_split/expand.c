@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:23:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:03:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 }
 
 // Given that 'node' points to the $ character of "$?", expands the value 
-// of errno updating the list 'lst'.
-// Finally, 'node' points to the xchar right after the expanded errno value.
-static void	expand_errno(t_list **lst, t_list **node)
+// of 'exit_status' updating the list 'lst'.
+// Finally, 'node' points to the xchar right after the expanded value.
+static void	expand_exit_stat(t_list **lst, t_list **node, int exit_status)
 {
 	char	*value;
 	t_list	*expanded_lst;
@@ -51,7 +51,7 @@ static void	expand_errno(t_list **lst, t_list **node)
 	// print_lst(*node, pr_xchar);
 	// printf("\n");
 
-	value = ft_itoa(errno);
+	value = ft_itoa(exit_status);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	free(value);
 
@@ -103,9 +103,9 @@ static int	try_to_expand(t_list *node)
 	return (FALSE);
 }
 
-// Expands the env variables of the given xtoken (if is word), updating the
+// Expands the env variables (or exit status) of the given xtoken (if is word), updating the
 // expanded xchar flags if needed.
-static void	expand_xtok(t_xtoken *xtok, char **env)
+static void	expand_xtok(t_xtoken *xtok, int exit_status, char **env)
 {
 	t_list	*node;
 
@@ -117,7 +117,7 @@ static void	expand_xtok(t_xtoken *xtok, char **env)
 		if (try_to_expand(node))
 		{
 			if (((t_xchar *)((node->nxt)->val))->c == '?')
-				expand_errno(&(xtok->val), &node);
+				expand_exit_stat(&(xtok->val), &node, exit_status);
 			else
 				expand_var(&(xtok->val), &node, env);
 		}
@@ -127,9 +127,9 @@ static void	expand_xtok(t_xtoken *xtok, char **env)
 }
 
 // Given a list of tokens, allocates and returns a list of xtokens with its
-// $VARIABLES expanded, preserving the original token type and setting each
-// character's flags for expanded and quoted status.
-t_list	*expand(t_list *toks, char **env)
+// environment variables (or exit status) expanded, preserving the original
+// token type and setting each character's flags for expanded and quoted status.
+t_list	*expand(t_list *toks, int exit_status, char **env)
 {
 	t_list		*xtoks;
 	t_xtoken	xtok;
@@ -147,7 +147,7 @@ t_list	*expand(t_list *toks, char **env)
 			if (skip_next)
 				skip_next = FALSE;
 			else
-				expand_xtok(&xtok, env);
+				expand_xtok(&xtok, exit_status, env);
 		}
 		else if (!ft_strncmp(node->val, "<<", 3))
 			skip_next = TRUE;

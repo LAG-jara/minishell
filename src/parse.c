@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/01 11:32:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 13:48:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 // dividing them by the token '|'. Allocates and returns the array of commands.
 // If a syntax error is found, prints an error message,
 // 'errno' is set to the corresponding value and returns NULL.
-t_list	**parse(char **tokens)
+t_list	**parse(char **tokens, int	*exit_status)
 {
 	int		cmd_amount;
 	t_list	**cmds;
@@ -108,7 +108,7 @@ t_list	**parse(char **tokens)
 	cmd_amount = count_commands_checking_syntax(tokens);
 	if (cmd_amount == -1)
 	{
-		errno = ERRNO_SYNTAX;
+		*exit_status = ERRNO_SYNTAX;
 		return (NULL);
 	}
 	cmds = (t_list **) p_malloc(sizeof(t_list *) * (cmd_amount + 1));

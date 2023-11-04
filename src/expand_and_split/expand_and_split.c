@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 20:05:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 13:59:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 // Expands the variables of the command 'cmd' (as a list of tokens) and splits
 // words if needed. Finally, performs quote removal and returns the result.
-static t_list *expand_and_split_cmd(t_list *cmd, char **env)
+static t_list *expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 {
 	t_list	*new_cmd;
 	t_list	*xtoks;
 
-	xtoks = expand(cmd, env);
+	xtoks = expand(cmd, exit_status, env);
 
 	printf("------------------------- 1\n");
 	lst_clear(&cmd, tok_del);
@@ -37,13 +37,13 @@ static t_list *expand_and_split_cmd(t_list *cmd, char **env)
 
 // Expands the variables of the 'commands' and split words if needed.
 // Finally, performs quote removal and returns the result.
-t_list	**expand_and_split(t_list **commands, char **env)
+t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 {
 	int		i;
 
 	i = -1;
 	while (commands[++i])
-		commands[i] = expand_and_split_cmd(commands[i], env);
+		commands[i] = expand_and_split_cmd(commands[i], exit_status, env);
 	return (commands);
 }
 
@@ -53,6 +53,7 @@ int	main(int ac, char **av, char **e)
 	char **env = arrstr_dup(e);
 	ac += 0;
 	av += 0;
+	int exit_status = 0;
 	
 	printf("\n");
 
@@ -60,11 +61,11 @@ int	main(int ac, char **av, char **e)
 	{ "hola$a", "'hola$a'", "\"hola$a\"", NULL};	// TODO: Fix leak with $nada
 
 	t_list	**cmds;
-	cmds = parse(pre_toks);
+	cmds = parse(pre_toks, &exit_status);
 	if (cmds)
 		print_cmds(cmds);
 
-	cmds = expand_and_split(cmds, env);
+	cmds = expand_and_split(cmds, exit_status, env);
 
 	printf("------------------------- 2\n");
 	print_cmds(cmds);
