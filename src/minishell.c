@@ -6,14 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:28:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 16:54:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Executes the minish loop until the exit builtin is used or the SIGHUP
-// signal is received.
+// Executes the minish loop until the SIGHUP signal is received.
 void	minish_loop(char **env)
 {
 	char	*input;
@@ -32,4 +31,4 @@ void	minish_loop(char **env)
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, exit_status, &env);
 	}
-}
+}   
