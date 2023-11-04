@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:07:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:17:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ t_list	**parse(char **tokens, int *exit_status)
 	cmd_amount = count_commands_checking_syntax(tokens);
 	if (cmd_amount == -1)
 	{
-		*exit_status = ERRNO_SYNTAX;
+		*exit_status = EXIT_SYNTERR;
 		return (NULL);
 	}
 	cmds = (t_list **) p_malloc(sizeof(t_list *) * (cmd_amount + 1));
