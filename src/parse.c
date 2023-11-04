@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 13:48:18 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 14:07:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 
 // Parses the array of tokens and groups them into an array of commands,
 // dividing them by the token '|'. Allocates and returns the array of commands.
-// If a syntax error is found, prints an error message,
-// 'errno' is set to the corresponding value and returns NULL.
-t_list	**parse(char **tokens, int	*exit_status)
+// If a syntax error is found, prints an error message, 'exit_status' is set to 
+// the corresponding value and returns NULL.
+t_list	**parse(char **tokens, int *exit_status)
 {
 	int		cmd_amount;
 	t_list	**cmds;
@@ -120,8 +120,8 @@ t_list	**parse(char **tokens, int	*exit_status)
 	return (cmds);
 }
 
-# include "debug.h"
-# include "print_fx.h"
+// # include "debug.h"
+// # include "print_fx.h"
 
 // int	main(void)
 // {
