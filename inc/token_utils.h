@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 13:07:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "definitions.h"
 # include "input_utils.h"
 # include "quote_utils.h"
+# include "list.h"
 
 enum e_token_type {
 	WORD,
@@ -34,7 +35,8 @@ typedef struct s_token
 }	t_token;
 
 void	tok_del(void *tok);
-int		token_type(char *str);
-t_token	token_create(char *str);
+int		tok_type(char *str);
+t_token	tok_create(char *str);
+t_token	tok_get(t_list *node);
 
 #endif

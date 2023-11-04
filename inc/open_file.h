@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   open_file.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 13:16:57 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:09:08 by glajara-         ###   ########.fr       */
+/*   Created: 2023/09/26 14:48:50 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/04 18:24:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#ifndef OPEN_FILE_H
+# define OPEN_FILE_H
 
-void	cd_builtin(char **word, char ***env);
-void	echo_builtin(char **word);
-void	env_builtin();
-void	exit_builtin();
-void	export_builtin(t_list *word, char ***env);
-void	pwd_builtin();
-void	unset_builtin(char **word, char ***env);
+# include "basic_utils.h"	// using: putstr_fd
+# include <errno.h>			// using: errno
+# include <fcntl.h>			// using: open()
+# include "minish_consts.h"	// using: SH_NAME
+# include <string.h>		// using: strerror()
+# include <unistd.h>		// using: STDERR_FILENO
 
-int		is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
-int		is_builtin_cmd(t_list *cmd);
+int	open_file(char *filename, int flags);
 
 #endif

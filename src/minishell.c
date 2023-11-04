@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 16:54:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 16:57:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	minish_loop(char **env)
 		if (!commands)
 			continue ;
 		commands = expand_and_split(commands, exit_status, env);
-		redirect_and_execute(commands, exit_status, &env);
+		redirect_and_execute(commands, &exit_status, &env);
 	}
 }   

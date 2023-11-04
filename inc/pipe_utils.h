@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   pipe_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 13:16:57 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:09:08 by glajara-         ###   ########.fr       */
+/*   Created: 2023/09/26 16:00:55 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/04 18:30:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#ifndef PIPE_UTILS_H
+# define PIPE_UTILS_H
 
-void	cd_builtin(char **word, char ***env);
-void	echo_builtin(char **word);
-void	env_builtin();
-void	exit_builtin();
-void	export_builtin(t_list *word, char ***env);
-void	pwd_builtin();
-void	unset_builtin(char **word, char ***env);
+# include "open_file.h"
 
-int		is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
-int		is_builtin_cmd(t_list *cmd);
+# define READ_END	0					// pipe's read end index
+# define WRITE_END	1					// pipe's write end index
+
+void	pipe_or_die(int fd_pipe[2]);
+void	link_read_end(int *fd_pipe);
+void	link_write_end(int *fd_pipe);
 
 #endif

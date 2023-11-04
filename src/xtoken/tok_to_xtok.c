@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:56:28 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:09:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 19:39:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
 // Converts the given token to a xtoken, keeping the token type and setting the
-// appropiate xchar flags.
+// appropriate xchar flags.
 t_xtoken	tok_to_xtok(t_token *tok)
 {
 	t_xtoken	xtok;

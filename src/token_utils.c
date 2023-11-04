@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/31 15:09:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_word(char *str)
 }
 
 // Given a string representing a token, returns its type.
-int	token_type(char *str)
+int	tok_type(char *str)
 {
 	if (!str)
 		return (INVALID);
@@ -46,12 +46,12 @@ int	token_type(char *str)
 }
 
 // Returns a token (with its type) wiven a string representing it.
-t_token	token_create(char *str)
+t_token	tok_create(char *str)
 {
 	t_token	token;
 
 	token.val = ft_strdup(str);
-	token.type = token_type(str);
+	token.type = tok_type(str);
 	return (token);
 }
 
@@ -61,4 +61,13 @@ void tok_del(void *tok)
 		free(((t_token *)tok)->val);
 	free(tok);
 	tok = NULL;
+}
+
+// Given a token 'node' returns its 'token' value
+t_token	tok_get(t_list *node)
+{
+	t_token	tok;
+
+	tok = *(t_token *)node->val;
+	return (tok);
 }

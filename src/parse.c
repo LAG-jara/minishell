@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 16:39:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_valid_redir(char **tokens, int i, int tok_amount)
 	if (i + 1 >= tok_amount)
 		return (FALSE);
 	next_tok = tokens[i + 1];
-	if (token_type(next_tok) == WORD)
+	if (tok_type(next_tok) == WORD)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -38,8 +38,8 @@ static int	is_valid_ctrl(char **tokens, int i, int tok_amount)
 		return (FALSE);
 	next_tok = tokens[i + 1];
 	prev_tok = tokens[i - 1];
-	if (token_type(prev_tok) == WORD
-		&& (token_type(next_tok) == WORD || token_type(next_tok) == REDIR))
+	if (tok_type(prev_tok) == WORD
+		&& (tok_type(next_tok) == WORD || tok_type(next_tok) == REDIR))
 		return (TRUE);
 	else
 		return (FALSE);
@@ -58,16 +58,16 @@ static int	count_commands_checking_syntax(char **tokens)
 	i = 0;
 	while (i < tok_amount)
 	{
-		if (token_type(tokens[i]) == REDIR
+		if (tok_type(tokens[i]) == REDIR
 			&& !is_valid_redir(tokens, i, tok_amount))
 			return (print_err_syntax(tokens[i], -1));
-		if (token_type(tokens[i]) == PIPE)
+		if (tok_type(tokens[i]) == PIPE)
 		{
 			++cmd_amount;
 			if (!is_valid_ctrl(tokens, i, tok_amount))
 				return (print_err_syntax(tokens[i], -1));
 		}
-		if (token_type(tokens[i]) == INVALID)
+		if (tok_type(tokens[i]) == INVALID)
 			return (print_err_syntax(tokens[i], -1));
 		++i;
 	}
@@ -83,7 +83,7 @@ static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 	*cmd = NULL;
 	while (tokens[++(*j)])
 	{
-		tok = token_create(tokens[*j]);
+		tok = tok_create(tokens[*j]);
 		if (tok.type != PIPE)
 		{
 			lst_add(cmd, lst_new(&tok, sizeof(tok)));

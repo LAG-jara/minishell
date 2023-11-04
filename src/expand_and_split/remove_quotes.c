@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 12:03:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	remove_quotes(t_list **xtokens)
  {
 
 
-	t_token	tok = token_create("ho\"'\"'\"a'q\"ue'tal\"?");
+	t_token	tok = tok_create("ho\"'\"'\"a'q\"ue'tal\"?");
 	// print_token(tok);
 	
 	// printf("\n-------------------------\n\n");

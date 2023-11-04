@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   utils_putstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 13:16:57 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:09:08 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/04 18:04:59 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/04 18:06:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "basic_utils.h"
 
-void	cd_builtin(char **word, char ***env);
-void	echo_builtin(char **word);
-void	env_builtin();
-void	exit_builtin();
-void	export_builtin(t_list *word, char ***env);
-void	pwd_builtin();
-void	unset_builtin(char **word, char ***env);
+// Outputs the string ’s’ to the given file descriptor.
+void	ft_putstr_fd(char *s, int fd)
+{
+	size_t	slen;
 
-int		is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
-int		is_builtin_cmd(t_list *cmd);
+	if (!s)
+		return ;
+	slen = ft_strlen(s);
+	write(fd, s, slen);
+}
 
-#endif
+// Outputs the string ’s’ to the given file descriptor followed by a newline.
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
+}

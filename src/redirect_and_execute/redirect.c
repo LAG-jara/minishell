@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 13:16:57 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:09:08 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/04 19:36:11 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+# include "redirect_utils.h"
+# include "token_utils.h"
 
-void	cd_builtin(char **word, char ***env);
-void	echo_builtin(char **word);
-void	env_builtin();
-void	exit_builtin();
-void	export_builtin(t_list *word, char ***env);
-void	pwd_builtin();
-void	unset_builtin(char **word, char ***env);
+// Performs all redirections of the current command, from left-to-right,
+// removing the redirection tokens from 'cmd'. Returns the exit status.
+int	redirect(t_list **cmd)
+{
+	int	exit_stat;
 
-int		is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
-int		is_builtin_cmd(t_list *cmd);
+	exit_stat = 0;
+	// TODO
 
-#endif
+
+
+	
+	return (exit_stat);
+}
