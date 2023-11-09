@@ -6,14 +6,27 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:52:16 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 18:28:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:31:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "pipe_utils.h"
 
-// Creates a pipe on the 'fd_pipe' file descriptors.
-// On failure, exits.
+// Creates a new process (using fork()) returning 0 to the child process and the
+// pid of the child to the parent.
+// On failure, prints an error message (TODO) and exits.
+pid_t	fork_or_die()
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == -1)
+		exit (EXIT_FAILURE);
+	return (pid);
+}
+
+// Creates a pipe and allocates a pair of file descriptors at 'fd_pipe'.
+// On failure, prints an error message (TODO) and exits.
 void	pipe_or_die(int fd_pipe[2])
 {
 	if (pipe(fd_pipe) == -1)
