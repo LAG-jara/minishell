@@ -16,7 +16,11 @@
 // Returns TRUE if the string 'str' is the name of a builtin.
 int	is_builtin_name(char *str)
 {
-	// TODO
+	if (!ft_strncmp(str, "cd", 3) || !ft_strncmp(str, "echo", 5) || \
+	!ft_strncmp(str, "env", 4) || !ft_strncmp(str, "exit", 5) || \
+	!ft_strncmp(str, "export", 7) || !ft_strncmp(str, "pwd", 4) || \
+	!ft_strncmp(str, "unset", 6))
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -34,7 +38,8 @@ int	is_builtin_cmd(t_list *cmd)
 			node = lst_move(node, 2);
 		else if (is_builtin_name(tok.val))
 			return (TRUE);
-		return (FALSE);
+		else
+			return (FALSE);
 	}
 	return (FALSE);
 }
