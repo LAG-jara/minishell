@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:21:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:26:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	exec_cmd(char **cmd, char **env)
 		execve(cmd, args, env);
 	else
 	{
-		paths = get_paths(env);
+		paths = get_vars("PATH", env);
 		i = -1;
 		while (paths[++i])
 		{

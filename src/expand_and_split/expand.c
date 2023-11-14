@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:17:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:19:45 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static int	try_to_expand(t_list *node)
 	return (FALSE);
 }
 
-// Expands the env variables (or exit status) of the given xtoken (if is word), updating the
-// expanded xchar flags if needed.
+// Expands the env variables (or exit status) of the given xtoken (if is word),
+// updating the expanded xchar flags if needed.
 static void	expand_xtok(t_xtoken *xtok, int exit_status, char **env)
 {
 	t_list	*node;

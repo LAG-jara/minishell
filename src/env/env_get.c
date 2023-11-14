@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 18:14:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:26:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,14 @@ char	*get_var(char *varname, char **env)
 	return (var_line + name_len + 1);
 }
 
-// Returns a NULL-terminated array of strings containing the values of PATH.
-char	**get_paths(char **env)
+// Returns a NULL-terminated array of strings containing the values of the
+// colon-separated environment value 'varname'.
+char	**get_vars(char *varname, char **env)
 {
 	char	*value;
-	char	**paths;
+	char	**values;
 
-	value = get_var("PATH", env);
-	paths = ft_split(value, ':');
-	return (paths);
+	value = get_var(varname, env);
+	values = ft_split(value, ':');
+	return (values);
 }
