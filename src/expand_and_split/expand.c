@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:03:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:33:21 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,44 +45,15 @@ static void	expand_exit_stat(t_list **lst, t_list **node, int exit_status)
 	char	*value;
 	t_list	*expanded_lst;
 
-	// printf("original lst:\t");
-	// print_lst(*lst, pr_xchar);
-	// printf("\noriginal node:\t");
-	// print_lst(*node, pr_xchar);
-	// printf("\n");
-
 	value = ft_itoa(exit_status);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	free(value);
-
-	// printf("expanded:\t");
-	// print_lst(expanded_lst, pr_xchar);
-	// printf("\n");
-
 	lst_add_many(lst, *node, expanded_lst);
-
-	// printf("added list:\t");
-	// print_lst(*lst, pr_xchar);
-	// printf("\n");
-
 	*node = lst_move(*node, 2);
-
-	// printf("moved node:\t");
-	// print_lst(*node, pr_xchar);
-	// printf("\n");
-
 	if (!*node)
 		lst_rm_many(lst, lst_move(lst_last(*lst), - 1), 2, free);
 	else
 		lst_rm_many(lst, lst_move(*node, -2), 2, free);
-
-	// printf("final lst:\t");
-	// print_lst(*lst, pr_xchar);
-	// printf("\n");
-	// printf("final node:\t");
-	// print_lst(*node, pr_xchar);
-	// printf("\n");
-	// printf("\n");
 }
 
 // Returns TRUE if the list of xchars pointed by 'node' represents a string that

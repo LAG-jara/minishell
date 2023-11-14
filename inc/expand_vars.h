@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_input.c                                        :+:      :+:    :+:   */
+/*   expand_vars.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 13:58:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 16:30:24 by glajara-         ###   ########.fr       */
+/*   Created: 2023/09/29 19:38:52 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/14 16:55:11 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_input.h"
+#ifndef EXPAND_VARS_H
+# define EXPAND_VARS_H
 
-// Prints the prompt and waits for user input (managing the history).
-// Allocates and returns the string provided by the user.
-char	*get_input(void)
-{
-	char	*str;
+# include "basic_utils.h"
+# include "get_next_line.h"
+# include "env.h"
 
-	str = readline(PROMPT);
-	if (str && *str)
-		add_history(str);
-	return (str);
-}
+char	*expand_vars(char *str, char **env);
+
+#endif 
