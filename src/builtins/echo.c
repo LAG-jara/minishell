@@ -11,6 +11,33 @@
 /* ************************************************************************** */
 
 #include "basic_utils.h"
+#include "definitions.h"
+#include <unistd.h>
+#include <stdio.h>
+
+static int is_flag(char *word)
+{
+	int i;
+
+	i = 0;
+	if (word[i++] != '-')
+		return (FALSE);
+	while (word[i] && word[i] == 'n')
+		++i;
+	if (word[i])
+		return (FALSE);
+	return(TRUE);
+}
+
+static int get_flag(char **word)
+{
+	int idx;
+
+	idx = 0;
+	while (is_flag(word[idx]))
+		++idx;
+	return (idx);
+}
 /*
 echo [-n] [arg ...]
 	Output the args, separated by spaces, followed by a newline. 
@@ -18,19 +45,33 @@ echo [-n] [arg ...]
 	If -n is specified, the trailing newline is suppressed.
 */
 
-void	echo_builtin(char **word, int flag)
+int	echo_builtin(char **word)
 {
 	int first;
+	int flag;
 
 	first = 0;
+	flag = get_flag(word);
+	word += flag;
 	while (*word)
 	{
-		if (word)
-			write(1, " ", 1);
-		write(1, word, strlen(*word));
+		if (first)
+			printf(" ");
+		printf("%s", *word);
 		first = 1;
 		word++;
 	}
 	if (!flag)
-		write(1, "\n", 1);
+		printf("\n");
+	return (0);
+}
+
+# include "debug.h"
+# include "builtins.h"
+
+int	main(int ac, char **av)
+{
+	ac += 0;
+	av += 0;
+	echo_builtin(++av);
 }
