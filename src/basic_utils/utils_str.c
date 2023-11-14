@@ -6,13 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:43:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:15:31 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
 
-// Retuns a ointer to the first occurrence of c in str. If there aren't, returns
+// Retuns a ointer to the first occurrence of 'c' in str. If there aren't, returns
 // NULL.
 char	*ft_strchr(char *str, char c)
 {
@@ -22,8 +22,8 @@ char	*ft_strchr(char *str, char c)
 }
 
 // Returns an integer greater than, equal to, or less than 0, according as the 
-// string s1 is greater than, equal to, or less than the string s2, comparing
-// not more than n characters.
+// string 's1' is greater than, equal to, or less than the string 's2', comparing
+// not more than 'n' characters.
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:10:39 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:06:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static t_list *expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 	t_list	*xtoks;
 
 	xtoks = expand(cmd, exit_status, env);
-
-	//printf("------------------------- 1\n");
 	lst_clear(&cmd, tok_del);
-	//print_lst(xtoks, pr_xtoken);
 	split_words(&xtoks);
 	remove_quotes(&xtoks);
 	new_cmd = normalize(&xtoks);

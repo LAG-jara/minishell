@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 16:33:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:17:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_list	*expand(t_list *toks, int exit_status, char **env)
 			else
 				expand_xtok(&xtok, exit_status, env);
 		}
-		else if (!ft_strncmp(node->val, "<<", 3))
+		else if (!xtok_strncmp(&xtok, "<<", 3))
 			skip_next = TRUE;
 		lst_add(&xtoks, lst_new(&xtok, sizeof(xtok)));
 		node = node->nxt;

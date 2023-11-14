@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   xtoklst_clear.c                                    :+:      :+:    :+:   */
+/*   xtok_strncmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 11:24:13 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:10:30 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/14 18:10:03 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/14 18:17:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
-void	xtoklst_clear(t_list **xtoks)
+// Returns an integer greater than, equal to, or less than 0, according as the 
+// string the value of 'xtok' is greater than, equal to, or less than 'str',
+// comparing not more than 'n' characters.
+int	xtok_strncmp(t_xtoken *xtok, const char *str, size_t n)
 {
-	t_list	*node;
-	t_list	*nxt_node;
+	int		ret;
+	char	*xtok_val;
 
-	node = *xtoks;
-	while (node)
-	{
-		nxt_node = node->nxt;
-		lst_clear(node->val, free);
-		node = nxt_node;
-	}
-	lst_clear(xtoks, free);
-	*xtoks = NULL;
+	xtok_val = xclst_to_str(xtok->val);
+	ret = ft_strncmp(xtok_val, str, n);
+	free(xtok_val);
+	return (ret);
 }

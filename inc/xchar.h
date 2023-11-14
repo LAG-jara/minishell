@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:23:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 12:25:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:11:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define UNEXPANDED 0
 # define EXPANDED 1
 
-// An xchar associates a char with a couple of flags to indicate if its quote
+// An xchar associates a char with a couple of flags to indicate its quote
 // status ('q') and if it resulted from an expansion ('x').
 typedef struct s_xchar
 {
