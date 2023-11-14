@@ -24,13 +24,14 @@ char	**arrstr_rm(char **arr, int i)
 
 	orig_arr = arr;
 	orig_arr_size = arrstr_size(orig_arr);
-	new_arr = (char **) p_malloc(sizeof(char *) * orig_arr_size);
+	new_arr = (char **)p_malloc(sizeof(char *) * orig_arr_size);
 	j = -1;
-	while (++j < orig_arr_size)
-	{
-		if (j == i)
-			++orig_arr;
+	while (++j < i)
 		new_arr[j] = ft_strdup(orig_arr[j]);
+	while (orig_arr[j + 1])
+	{
+		new_arr[j] = ft_strdup(orig_arr[j + 1]);
+		++j;
 	}
 	new_arr[j] = NULL;
 	arrstr_free(arr);

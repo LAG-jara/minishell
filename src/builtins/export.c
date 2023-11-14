@@ -26,23 +26,24 @@ export name=value ...
 	variable.
 */
 
-void	export_builtin(t_list *words, char ***env)
+int	export_builtin(char **args, char ***env)
 {
-	char	*word;
+	char 	*word;
 	char	*varname;
 	int		i;
-
-	word = words->val;
-	varname = get_varname(word);
-	while (*word)
+	
+	while (*args)
 	{
-		i = -1;
-		while(word[i] != '=')
+		i = 0;
+		word = *args;
+		varname = get_varname(word);
+		while(word[i] && word[i] != '=')
 			++i;
 		if (valid_varname(varname) && word[i++] == '=')
 			set_env_var(varname, word + i, env);
-		++word;
+		++args;
 	}
+	return (0);
 }
 
 # include "debug.h"
@@ -54,16 +55,6 @@ int	main(int ac, char **av, char **e)
 	char **env = arrstr_dup(e);
 	ac += 0;
 	av += 0;
-
-	char *pre_toks[] = \
-	{ "hola=dew", "final=pepe", NULL};
-
-	t_list	**cmds;
-	cmds = parse(pre_toks);
-	//if (cmds)
-	//	print_cmds(cmds);
-	export_builtin(*cmds, &env);
+	export_builtin(++av, &env);
 	env_builtin(env);
-	lst_clear(cmds, tok_del);
-	free(cmds);
 }

@@ -20,18 +20,25 @@ unset [name ...]
 	The exit status is true unless a name is readonly.
 */
 
-void	unset_builtin(char **word, char ***env)
+int	unset_builtin(char **argv, char ***env)
 {
-	char	*value;
-	char	*varname;
 	int		i;
 
-	i = arrstr_size(word);
-	while (*word)
-	{
-		i = -1;
-		while(*word[++i])
-			rm_env_var(get_varname(word[i]), env);
-		++word;
-	}
+	i = -1;
+	while (argv[++i])
+		rm_env_var(argv[i], env);
+	return (0);
 }
+
+# include "debug.h"
+# include "builtins.h"
+# include "parse_tokens.h"
+
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	unset_builtin(++av, &env);
+// 	env_builtin(env);
+// }

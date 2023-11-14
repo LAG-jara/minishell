@@ -51,7 +51,7 @@ char	*get_varname(char *str)
 	varname[len] = '\0';
 	if (!str || !valid_varname(varname))
 	{
-		free (varname);
+		free(varname);
 		return (NULL);
 	}
 	return (varname);
