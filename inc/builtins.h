@@ -19,7 +19,7 @@ int	is_arg(char *unnedeed_arg);
 int	is_validflag(char *flag);
 int	exec_builtin(char **args, char ***env);
 
-int	cd_builtin(char **word);
+int	cd_builtin(char **word, char **env);
 int	echo_builtin(char **word);
 int	env_builtin(char **env);
 int	exit_builtin();

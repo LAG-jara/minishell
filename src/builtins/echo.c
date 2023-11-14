@@ -38,13 +38,13 @@ static int get_flag(char **word)
 		++idx;
 	return (idx);
 }
+
 /*
 echo [-n] [arg ...]
 	Output the args, separated by spaces, followed by a newline. 
 	The return status is always 0. 
 	If -n is specified, the trailing newline is suppressed.
 */
-
 int	echo_builtin(char **word)
 {
 	int first;
@@ -66,12 +66,12 @@ int	echo_builtin(char **word)
 	return (0);
 }
 
-# include "debug.h"
-# include "builtins.h"
+// # include "debug.h"
+// # include "builtins.h"
 
-int	main(int ac, char **av)
-{
-	ac += 0;
-	av += 0;
-	echo_builtin(++av);
-}
+// int	main(int ac, char **av)
+// {
+// 	ac += 0;
+// 	av += 0;
+// 	echo_builtin(++av);
+// }

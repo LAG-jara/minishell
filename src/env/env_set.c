@@ -20,9 +20,7 @@ static char	*join_varline(char *varname, char *value)
 	char	*varline_cpy;
 
 	varline_len = ft_strlen(varname) + ft_strlen(value) + 2;
-	varline = (char *) malloc(sizeof(char) * varline_len);
-	if (varline == NULL)
-		exit(EXIT_FAILURE);
+	varline = (char *)p_malloc(sizeof(char) * varline_len);
 	varline_cpy = varline;
 	while (*varname)
 		*varline++ = *varname++;

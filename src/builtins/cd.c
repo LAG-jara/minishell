@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "basic_utils.h"
+#include <unistd.h>
+
 /*
 cd [dir]
 	Change the current directory to dir. The variable HOME is the default dir. 
@@ -25,14 +27,34 @@ cd [dir]
 	written directory the standard output.
 	The return value is true if the directory was successfully changed;
 	false otherwise.
+CDPATH
+	The search path for the cd command. This is a colon-separated (`:') list of
+	directories in which the shell looks for destination directories specified
+	by the cd command. A sample value is ".:~:/usr". 
 */
 
-void	cd_builtin(char **word)
+int	cd_builtin(char **word, char **env)
 {
 	int err;
+	env += 0;
 	// Mirar si word[0] es absoluto o relativo ('/' al inicio).
 	// Si es retalivo, buscar en CDPATH word[0]. Si está, escibir el path.
-	if (*word)
-		err = chdir(word[0]);
-	exit_status = err;
+	err = chdir(*word);
+	if (!err && )
+	return (err);
+}
+
+
+# include "debug.h"
+# include "builtins.h"
+# include "parse_tokens.h"
+int	main(int ac, char **av, char **e)
+{
+	char **env = arrstr_dup(e);
+	ac += 0;
+	av += 0;
+	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
+	pwd_builtin();
+	int err = cd_builtin(++av, env);
+	pwd_builtin();
 }
