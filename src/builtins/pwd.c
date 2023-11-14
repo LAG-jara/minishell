@@ -36,21 +36,21 @@ int	pwd_builtin(void)
 }
 
 
-int	main(int ac, char **av, char **e)
-{
-	// char **env = arrstr_dup(e);
-	ac += 0;
-	av += 0;
-	e += 0;
-	// char *pre_toks[] = \
-	// { "hola", "final", NULL};
+// int	main(int ac, char **av, char **e)
+// {
+// 	// char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	e += 0;
+// 	// char *pre_toks[] = \
+// 	// { "hola", "final", NULL};
 
-	// t_list	**cmds;
-	// cmds = parse(pre_toks);
-	// if (cmds)
-	// 	print_cmds(cmds);
+// 	// t_list	**cmds;
+// 	// cmds = parse(pre_toks);
+// 	// if (cmds)
+// 	// 	print_cmds(cmds);
 
-	pwd_builtin();
-	//lst_clear(cmds, tok_del);
-	//free(cmds);
-}
+// 	pwd_builtin();
+// 	//lst_clear(cmds, tok_del);
+// 	//free(cmds);
+// }
