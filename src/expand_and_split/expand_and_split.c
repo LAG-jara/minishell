@@ -24,10 +24,9 @@ static t_list *expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 
 	xtoks = expand(cmd, exit_status, env);
 
-	printf("------------------------- 1\n");
+	//printf("------------------------- 1\n");
 	lst_clear(&cmd, tok_del);
-	print_lst(xtoks, pr_xtoken);
-
+	//print_lst(xtoks, pr_xtoken);
 	split_words(&xtoks);
 	remove_quotes(&xtoks);
 	new_cmd = normalize(&xtoks);
@@ -47,7 +46,7 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 	return (commands);
 }
 
-
+// TODO free de expansiones "$nada".
 int	main(int ac, char **av, char **e)
 {
 	char **env = arrstr_dup(e);

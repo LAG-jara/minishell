@@ -27,7 +27,7 @@ cd [dir]
 	false otherwise.
 */
 
-void	cd_builtin(char **word, char ***env)
+void	cd_builtin(char **word)
 {
 	int err;
 	// Mirar si word[0] es absoluto o relativo ('/' al inicio).

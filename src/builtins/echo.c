@@ -18,7 +18,7 @@ echo [-n] [arg ...]
 	If -n is specified, the trailing newline is suppressed.
 */
 
-void	echo_builtin(char **word)
+void	echo_builtin(char **word, int flag)
 {
 	int first;
 
@@ -26,9 +26,11 @@ void	echo_builtin(char **word)
 	while (*word)
 	{
 		if (word)
-			write(stdout, " ", 1);
-		write(stdout, word, strlen(*word));
+			write(1, " ", 1);
+		write(1, word, strlen(*word));
 		first = 1;
 		word++;
 	}
+	if (!flag)
+		write(1, "\n", 1);
 }

@@ -13,15 +13,21 @@
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-void	cd_builtin(char **word, char ***env);
-void	echo_builtin(char **word);
-void	env_builtin();
-void	exit_builtin();
-void	export_builtin(t_list *word, char ***env);
-void	pwd_builtin();
-void	unset_builtin(char **word, char ***env);
+# include "list.h"
 
-int		is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
-int		is_builtin_cmd(t_list *cmd);
+int	is_arg(char *unnedeed_arg);
+int	is_validflag(char *flag);
+int	exec_builtin(char **args, char ***env);
+
+int	cd_builtin(char **word);
+int	echo_builtin(char **word, int flag);
+int	env_builtin(char **env);
+int	exit_builtin();
+int	export_builtin(char **word, char ***env);
+int	pwd_builtin(void);
+int	unset_builtin(char **word, char ***env);
+
+int	is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
+int	is_builtin_cmd(t_list *cmd);
 
 #endif

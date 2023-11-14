@@ -26,3 +26,9 @@ int	print_err_argc()
 	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
 	return (EXIT_WRONGAC);
 }
+
+int	print_err_()
+{
+	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
+	return (EXIT_WRONGAC);
+}

@@ -18,8 +18,7 @@ exit
 	Prints “exit” followed by a newline before closing the shell. 
 	The exit status is that of the last command executed.
 */
-
-void	exit_builtin(void)
+void	exit_builtin(char **args, char **env)
 {
 	write(1, "exit\n", 5);
 	// TODO : Añadir exit_status del exit

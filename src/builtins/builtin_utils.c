@@ -31,15 +31,30 @@ int	is_builtin_cmd(t_list *cmd)
 	t_token	tok;
 
 	node = cmd;
-	while (node)
+	if (node)
 	{
 		tok = tok_get(node);
-		if (tok.type == REDIR)
+		while (tok.type == REDIR)
+		{
 			node = lst_move(node, 2);
-		else if (is_builtin_name(tok.val))
+			if (!node)
+				return (FALSE);
+			tok = tok_get(node);
+		}
+		if (is_builtin_name(tok.val))
 			return (TRUE);
-		else
-			return (FALSE);
 	}
 	return (FALSE);
+}
+
+// Checks for more arguments in builtins that don't use it.
+int		is_arg(char *unnedeed_arg)
+{
+
+}
+
+// Check for flags in the builtins that need them and use it in the builtin.
+int		is_validflag(char *flag)
+{
+	
 }
