@@ -10,15 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <arrstr.h>
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.
 size_t	arrstr_size(char **arr)
 {
-	size_t	size;
-
-	size = 0;
-	while (arr && arr[size])
-		++size;
-	return (size);
+	return (arr_size((void *)arr));
 }

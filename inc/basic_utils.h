@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:37:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 18:09:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:05:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	*p_malloc(size_t size);
 char	*ft_itoa(int n);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+size_t	arr_size(void **arr);
 
 #endif

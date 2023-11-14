@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.h                                          :+:      :+:    :+:   */
+/*   utils_arr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 17:19:43 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 10:38:04 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/14 11:58:28 by glajara-          #+#    #+#             */
+/*   Updated: 2023/11/14 12:05:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_H
-# define HEREDOC_H
+#include <unistd.h>
 
-# define HEREDOC_FILENAME "/tmp/heredoc_temp"
+// Returns the size of the given NULL-terminated array 'arr'.
+size_t	arr_size(void **arr)
+{
+	size_t	size;
 
-// # include "get_next_line.h"
-// # include "libft.h"
-# include "open_file.h"
-// # include "expand_vars.h"
-
-void	link_heredoc(char *delimeter, int expand, char **env);
-int		read_heredoc(char *delimiter, int expand, char **env);
-void	clear_heredoc(void);
-
-#endif
+	size = 0;
+	while (arr && arr[size])
+		++size;
+	return (size);
+}

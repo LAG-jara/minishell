@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:59:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:21:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec_cmd.h"
+#include "token_utils.h"
 
 // Prints the corresponding error message (according to errno).
 static void	err_exec(char *cmdname)
@@ -47,7 +48,7 @@ static char	*get_full_path(char *dir, char *file)
 
 // Executes the shell command 'cmd' and exits.
 // If it can't be opened, prints an error message and 'errno' is set.
-void	exec_cmd(char *cmd, char **env)
+void	exec_cmd(char **cmd, char **env)
 {
 	char	**paths;
 	char	**args;
