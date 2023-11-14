@@ -17,6 +17,7 @@ char	*xclst_to_str(t_list *xclst)
 {
 	char	*str;
 	size_t	str_len;
+	t_xchar	xc;
 	int		i;
 
 	str_len = lst_size(xclst);
@@ -24,7 +25,8 @@ char	*xclst_to_str(t_list *xclst)
 	i = -1;
 	while (xclst && xclst->val)
 	{
-		str[++i] = *(char *)(xclst->val);
+		xc = *(t_xchar *)(xclst->val);
+		str[++i] = xc.c;
 		xclst = xclst->nxt;
 	}
 	str[i + 1] = '\0';

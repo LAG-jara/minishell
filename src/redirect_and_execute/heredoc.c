@@ -6,13 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/01 19:48:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:34:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
 
-// Returns 1 if 'str' is the delimeter, 0 otherwise.
+// Returns TRUE if 'str' is the delimeter, FALSE otherwise.
 // Works exactly as in the HereDoc.
 static int	is_delimeter(char *str, char *delimeter)
 {
@@ -22,11 +22,11 @@ static int	is_delimeter(char *str, char *delimeter)
 	if (ft_strncmp(str, delimeter, delimeter_len) == 0
 		&& str[delimeter_len] == '\n'
 	)
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 
-// Opens a HereDoc and links it to the standard input.
+// Opens a here document and links it to the standard input.
 void	link_heredoc(char *delimeter, int expand, char **env)
 {
 	int	fd_file;
@@ -36,7 +36,7 @@ void	link_heredoc(char *delimeter, int expand, char **env)
 	close(fd_file);
 }
 
-// Removes the temporary HereDoc file.
+// Removes the temporary here document file.
 void	clear_heredoc(void)
 {
 	unlink(HEREDOC_FILENAME);
@@ -69,8 +69,8 @@ static void	expand_file_vars(char **env)
 	close(fd_file);
 }
 
-// Opens a HereDoc, reads it until 'delimiter' and returns its file descriptor.
-// If 'expand' is not 0, the variable names are expanded.
+// Opens a here document, reads it until 'delimiter' and returns its file
+// descriptor. If 'expand' is TRUE, the variable names are expanded.
 int	read_heredoc(char *delimiter, int expand, char **env)
 {
 	int		fd_file;
@@ -80,7 +80,7 @@ int	read_heredoc(char *delimiter, int expand, char **env)
 	fd_file = open_file(HEREDOC_FILENAME, O_CREAT | O_WRONLY | O_TRUNC);
 	while (1)
 	{
-		write(STDOUT_FILENO, "heredoc>", 9);
+		write(STDOUT_FILENO, ">", 9);
 		line = get_next_line(STDIN_FILENO);
 		if (line == NULL)
 			exit(EXIT_FAILURE);
@@ -89,7 +89,7 @@ int	read_heredoc(char *delimiter, int expand, char **env)
 		ft_putstr_fd(line, fd_file);
 	}
 	close(fd_file);
-	if (expand != 0)
+	if (expand)
 		expand_file_vars(env);
 	fd_file = open_file(HEREDOC_FILENAME, O_RDONLY);
 	return (fd_file);

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:16:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:34:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/14 13:28:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "token_utils.h"
 
-int	redirect(t_list **cmd);
+int	redirect(t_list **cmd, char **env);
 
 #endif
