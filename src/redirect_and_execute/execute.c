@@ -6,11 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:40:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:39:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execute.h"
+#include "token_utils.h"
+#include "builtins.h"
+#include "exec_cmd.h"
 
 // Allocates and returns a NULL-terminated array of strings representing the
 // list of tokens 'cmd'.

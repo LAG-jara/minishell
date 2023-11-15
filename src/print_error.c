@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 16:39:39 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:35:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,22 @@ int	print_err_argc()
 	return (EXIT_WRONGAC);
 }
 
-int	print_err_()
+// Prints the corresponding error message (according to errno).
+void	print_err_exec(const char *cmdname)
 {
-	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
-	return (EXIT_WRONGAC);
+	char	*tmp;
+
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	if (errno == ENOENT)
+		tmp = ft_strdup("Command not found");
+	else
+		tmp = ft_strdup(strerror(errno));
+	ft_putstr_fd(tmp, STDERR_FILENO);
+	free(tmp);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(cmdname, STDERR_FILENO);
+	if (errno == ENOENT)
+		exit(EXIT_CMD_NOT_FOUND);
+	exit(errno);
 }

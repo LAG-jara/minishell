@@ -6,32 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:12:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:38:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exec_cmd.h"
-#include "token_utils.h"
-
-// Prints the corresponding error message (according to errno).
-static void	err_exec(const char *cmdname)
-{
-	char	*tmp;
-
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	if (errno == ENOENT)
-		tmp = ft_strdup("Command not found");
-	else
-		tmp = ft_strdup(strerror(errno));
-	ft_putstr_fd(tmp, STDERR_FILENO);
-	free(tmp);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(cmdname, STDERR_FILENO);
-	if (errno == ENOENT)
-		exit(CMD_NOT_FOUND);
-	exit(errno);
-}
+# include "basic_utils.h"
+# include "env.h"
+# include "list.h"
+# include "print_error.h"
 
 // Allocates and returns a string containing the full path of 'file' in 'dir'.
 // Example: if 'dir' is /folder and 'file' is myfile, returns "/folder/myfile".
@@ -71,8 +53,6 @@ void	exec_cmd(char **cmd, char **env)
 		}
 	}
 	else
-	{
-		execve(cmd, args, env);
-	}
+		execve(file, args, env);
 	err_exec(cmd[0]);
 }

@@ -6,22 +6,27 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:43:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:35:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_ERROR_H
 # define PRINT_ERROR_H
 
-# define MSG_SYNTERR "syntax error near token"
-# define EXIT_SYNTERR 258
-# define MSG_WRONGAC "wrong arguments amount"
-# define EXIT_WRONGAC 2
+# define MSG_SYNTERR 		"syntax error near token"
+# define EXIT_SYNTERR 		258
+# define MSG_WRONGAC 		"wrong arguments amount"
+# define EXIT_WRONGAC 		2
+# define EXIT_CMD_NOT_FOUND	127
 
 # include "minish_consts.h"
 # include <stdio.h>
+# include <unistd.h>
+# include <string.h>
+# include <errno.h>
 
-int	print_err_syntax(const char *token, int ret);
-int print_err_argc();
+int		print_err_syntax(const char *token, int ret);
+int 	print_err_argc();
+void	print_err_exec(const char *cmdname);
 
 #endif
