@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:38:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:18:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,23 @@ void	exec_cmd(char **cmd, char **env)
 {
 	char	**paths;
 	char	**args;
-	char	*file;
+	char	*path;
 	int		i;
 
-	file = cmd[0];
+	path = cmd[0];
 	args = cmd;
-	if (!ft_strchr(file, '/'))
+	if (!ft_strchr(path, '/'))
 	{
 		paths = get_vars("PATH", env);
 		i = -1;
 		while (paths[++i])
 		{
-			file = get_full_path(paths[i], args[0]);
-			execve(file, args, env);
-			free(file);
+			path = get_full_path(paths[i], args[0]);
+			execve(path, args, env);
+			free(path);
 		}
 	}
 	else
-		execve(file, args, env);
+		execve(path, args, env);
 	err_exec(cmd[0]);
 }
