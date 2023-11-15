@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:32:59 by glajara-          #+#    #+#             */
-/*   Updated: 2023/09/28 21:04:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:06:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static char	*feed_storage(char **storage, int fd, size_t *lf)
 	char	*buf;
 	int		read_bytes;
 
-	buf = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
 		return (gnl_free(storage, NULL));
 	read_bytes = 1;

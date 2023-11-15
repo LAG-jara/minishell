@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:13:59 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/30 16:18:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:06:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_list	*lst_new(void *value, size_t size)
 {
 	t_list	*lstnode;
 
-	lstnode = (t_list *) p_malloc(sizeof (t_list));
+	lstnode = (t_list *)p_malloc(sizeof (t_list));
 	lstnode->val = p_malloc(size);
 	ft_memcpy(lstnode->val, value, size);
 	lstnode->nxt = NULL;

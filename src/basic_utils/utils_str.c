@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:15:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:07:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
 
-// Retuns a ointer to the first occurrence of 'c' in str. If there aren't, returns
-// NULL.
+// Retuns a pointer to the first occurrence of 'c' in str.
+// If there aren't, returns NULL.
 char	*ft_strchr(const char *str, char c)
 {
 	while (str && *str != c)

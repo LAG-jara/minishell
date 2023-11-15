@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:12:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:05:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	rm_env_var(const char *varname, char ***env)
 {
 	int		var_index;
 
-	var_index = find_var_index(varname, (char **)*env);
+	var_index = find_var_index(varname, *env);
 	if (var_index >= 0)
 		*env = arrstr_rm(*env, var_index);
 }

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:11:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:06:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static int	count_commands_checking_syntax(char **tokens)
 	return (cmd_amount);
 }
 
+// TODO: description & rename?
 static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 {
 	t_token	tok;
@@ -111,7 +112,7 @@ t_list	**parse(char **tokens, int *exit_status)
 		*exit_status = EXIT_SYNTERR;
 		return (NULL);
 	}
-	cmds = (t_list **) p_malloc(sizeof(t_list *) * (cmd_amount + 1));
+	cmds = (t_list **)p_malloc(sizeof(t_list *) * (cmd_amount + 1));
 	j = -1;
 	i = -1;
 	while (++i < cmd_amount)

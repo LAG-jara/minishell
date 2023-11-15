@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:58:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 16:53:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:06:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*gnl_substr(char const *s, unsigned int start, size_t len)
 	while (start + i <= slen && s[start + i] && i < len)
 		i++;
 	strlen = i;
-	str = (char *) malloc(sizeof(char) * (strlen + 1));
+	str = (char *)malloc(sizeof(char) * (strlen + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

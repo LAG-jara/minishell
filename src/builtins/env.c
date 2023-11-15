@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:12:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:05:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,6 @@ void	env_builtin(char **env)
 // 	ac += 0;
 // 	av += 0;
 
-// 	env_builtin((char **)env);
+// 	env_builtin(env);
 // 	env_free(env);
 // }
