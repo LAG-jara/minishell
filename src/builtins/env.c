@@ -33,17 +33,15 @@ void	env_builtin(const char **env)
 	}
 }
 
-# include "debug.h"
-# include "arrstr.h"
-# include "parse_tokens.h"
-int	main(int ac, char **av, const char **e)
-{
-	const char **env = (const char **)arrstr_dup(e);
-	ac += 0;
-	av += 0;
+// # include "debug.h"
+// # include "arrstr.h"
+// # include "parse_tokens.h"
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
 
-	//if (cmds)
-	//	print_cmds(cmds);
-
-	env_builtin(env);
-}
+// 	env_builtin((const char **)env);
+// 	env_free(env);
+// }

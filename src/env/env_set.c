@@ -13,7 +13,7 @@
 #include "env.h"
 
 // Allocates and returns a string consisting of 'varname' + "=" + 'value'.
-static char	*join_varline(char *varname, char *value)
+static char	*join_varline(const char *varname, const char *value)
 {
 	char	*varline;
 	size_t	varline_len;
@@ -32,7 +32,7 @@ static char	*join_varline(char *varname, char *value)
 }
 
 // Sets the environment variable 'varname' to 'value', creating it if needed.
-void	set_env_var(char *varname, char *value, char ***env)
+void	set_env_var(const char *varname, const char *value, char ***env)
 {
 	int		var_index;
 	char	*varline;
@@ -46,7 +46,7 @@ void	set_env_var(char *varname, char *value, char ***env)
 }
 
 // Removes the environment variable 'varname'.
-void	rm_env_var(char *varname, char ***env)
+void	rm_env_var(const char *varname, char ***env)
 {
 	int		var_index;
 

@@ -46,15 +46,15 @@ int	export_builtin(char **args, char ***env)
 	return (0);
 }
 
-# include "debug.h"
-# include "builtins.h"
-# include "parse_tokens.h"
+// # include "debug.h"
+// # include "builtins.h"
+// # include "parse_tokens.h"
 
-int	main(int ac, char **av, char **e)
-{
-	char **env = arrstr_dup(e);
-	ac += 0;
-	av += 0;
-	export_builtin(++av, &env);
-	env_builtin(env);
-}
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	export_builtin(++av, &env);
+// 	env_builtin(env);
+// }

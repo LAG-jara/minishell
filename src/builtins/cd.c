@@ -45,16 +45,16 @@ int	cd_builtin(char **word, char **env)
 }
 
 
-# include "debug.h"
-# include "builtins.h"
-# include "parse_tokens.h"
-int	main(int ac, char **av, char **e)
-{
-	char **env = arrstr_dup(e);
-	ac += 0;
-	av += 0;
-	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
-	pwd_builtin();
-	int err = cd_builtin(++av, env);
-	pwd_builtin();
-}
+// # include "debug.h"
+// # include "builtins.h"
+// # include "parse_tokens.h"
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
+// 	pwd_builtin();
+// 	int err = cd_builtin(++av, env);
+// 	pwd_builtin();
+// }
