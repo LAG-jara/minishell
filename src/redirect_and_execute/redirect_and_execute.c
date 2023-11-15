@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 11:17:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:03:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	process_commands(t_list **cmds, t_pipe *p, char **env)
 		last_child = pid;
 		i++;
 	}
-	return (wait_children(last_child));
+	return (wait_children(last_child, p->cmds_amount));
 }
 
 // Performs all redirections and command/builtin executions defined by the array

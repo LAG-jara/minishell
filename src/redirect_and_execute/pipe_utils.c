@@ -6,11 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:52:16 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:31:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:52:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipe_utils.h"
+# include "pipe.h"
+# include "stdlib.h"
+# include "unistd.h"
 
 // Creates a new process (using fork()) returning 0 to the child process and the
 // pid of the child to the parent.
