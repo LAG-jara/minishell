@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:06:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 15:19:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ static int	count_commands_checking_syntax(char **tokens)
 	return (cmd_amount);
 }
 
-// TODO: description & rename?
-static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
+// Creates and adds a new command to the 'cmd' list, creating each new token
+// from the j-th position of the 'tokens' array of strings.
+// At the end, 'j' is the index of the following string.
+static t_list	*add_cmd(t_list **cmd, char **tokens, int *j)
 {
 	t_token	tok;
 	int		i;
@@ -86,9 +88,7 @@ static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 	{
 		tok = tok_create(tokens[*j]);
 		if (tok.type != PIPE)
-		{
 			lst_add(cmd, lst_new(&tok, sizeof(tok)));
-		}
 		else
 			return (*cmd);
 	}
@@ -116,7 +116,7 @@ t_list	**parse(char **tokens, int *exit_status)
 	j = -1;
 	i = -1;
 	while (++i < cmd_amount)
-		get_cmd(&cmds[i], tokens, &j);
+		add_cmd(&cmds[i], tokens, &j);
 	cmds[i] = NULL;
 	return (cmds);
 }
