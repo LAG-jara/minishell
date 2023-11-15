@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:27:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:34:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Returns TRUE if 'str' is the delimeter, FALSE otherwise.
 // Works exactly as in the HereDoc.
-static int	is_delimeter(char *str, char *delimeter)
+static int	is_delimeter(const char *str, const char *delimeter)
 {
 	int	len;
 
@@ -26,7 +26,7 @@ static int	is_delimeter(char *str, char *delimeter)
 
 // Opens a here document and links it to the standard input.
 // If 'expand' is TRUE, expands the environment variables of its content.
-void	link_heredoc(char *delimeter, int expand, char **env)
+void	link_heredoc(const char *delimeter, const int expand, char **env)
 {
 	int	fd_file;
 
@@ -43,7 +43,7 @@ void	clear_heredoc(void)
 
 // Opens a here document, reads it until 'delimiter' and returns its file
 // descriptor. If 'expand' is TRUE, the variable names are expanded.
-int	read_heredoc(char *delimiter, int expand, char **env)
+int	read_heredoc(const char *delimiter, const int expand, char **env)
 {
 	int		fd_file;
 	char	*line;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:55:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:36:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Opens the file 'filename' and links it to the standard input.
 // Returns 0 on success, and the appropriate exit code on failure.
-int	link_input_file(char *filename)
+int	link_input_file(const char *filename)
 {
 	int	fd_file;
 
@@ -29,7 +29,7 @@ int	link_input_file(char *filename)
 // Opens the file 'filename' and links it to the standard output.
 // If 'append' is not zero, it opens the file with the O_APPEND flag.
 // Returns 0 on success, and the appropriate exit code on failure.
-int	link_output_file(char *filename, int append)
+int	link_output_file(const char *filename, int append)
 {
 	int	fd_file;
 	int	flags;

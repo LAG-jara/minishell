@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:11:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:38:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize.h"
 
 // Recives the input(in) and returns how many tokens there are. 
-static int	count_tokens(char *in)
+static int	count_tokens(const char *in)
 {
 	int	i;
 	int	count;
@@ -47,7 +47,7 @@ static int	count_tokens(char *in)
 // Words may not include unquoted metacharacters.
 
 // Returns the length of the next token of the input.
-static int	toklen(char *in, int i)
+static int	toklen(const char *in, int i)
 {
 	int	len;
 
@@ -66,7 +66,7 @@ static int	toklen(char *in, int i)
 }
 
 // Recives the input(in) and fill the allocated spaces for the tokens.
-static char	**fill_tokens(char *in, char **tok)
+static char	**fill_tokens(const char *in, char **tok)
 {
 	int	idx_in;
 	int	len;
@@ -92,7 +92,7 @@ static char	**fill_tokens(char *in, char **tok)
 // Splits the recived 'input' into an array of strings 
 // NULL-terminated interpretable as tokens.
 // And return it allocated.
-char	**tokenize(char *input)
+char	**tokenize(const char *input)
 {
 	int		num_tokens;
 	char	**tokens;

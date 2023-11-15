@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:35:46 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/25 15:23:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:38:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "input_utils.h"
 # include "quote_utils.h"
 
-char	**tokenize(char *input);
+char	**tokenize(const char *input);
 
 #endif

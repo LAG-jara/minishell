@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:48:50 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 18:24:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:35:30 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include <string.h>		// using: strerror()
 # include <unistd.h>		// using: STDERR_FILENO
 
-int	open_file(char *filename, int flags);
+int	open_file(const char *filename, int flags);
 
 #endif

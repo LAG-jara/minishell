@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:23:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 17:11:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:39:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ typedef struct s_xchar
 t_xchar		xc_new(char c, int x_flag, int q_flag);
 t_xchar		xc_get(t_list *node);
 char		*xclst_to_str(t_list *xclst);
-t_list		*str_to_xclst(char *str, int x_flag, int q_flag);
+t_list		*str_to_xclst(const char *str, int x_flag, int q_flag);
 
 #endif

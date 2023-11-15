@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:19:43 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:20:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:34:15 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "open_file.h"
 # include "quote_utils.h"
 
-void	link_heredoc(char *delimeter, int expand, char **env);
-int		read_heredoc(char *delimiter, int expand, char **env);
+void	link_heredoc(const char *delimeter, const int expand, char **env);
+int		read_heredoc(const char *delimiter, const int expand, char **env);
 void	clear_heredoc(void);
 
 int		delim_quote_remove(char **str);
