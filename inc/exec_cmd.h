@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:39:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 12:17:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:59:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define EXEC_CMD_H
 
 # include "basic_utils.h"
-# include "env.h"			// using: get_paths
-# include <errno.h>			// using: errno
-# include "minish_consts.h"	// using: SH_NAME
-# include <string.h>		// using: strerror()
+# include "env.h"				// using: get_paths
+# include <errno.h>				// using: errno
+# include "minish_consts.h"		// using: SH_NAME
+# include <string.h>			// using: strerror()
+# include "list.h"
 # include <unistd.h>		
 
 # define CMD_NOT_FOUND		127	// Error code for "Command not found"
-# define CMD_PERM_DENIED	126	// Error code for "Permission denied"
 
 char	**get_args_from_cmd(t_list *cmd);
-void	exec_cmd(char **cmd, char **env);
+void	exec_cmd(const char **cmd, const char **env);
 
 #endif

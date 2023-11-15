@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 13:28:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:17:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int	process_builtin_here(t_list *cmd, char ***env)
 	exit_stat = redirect(&cmd, *env);
 	if (exit_stat != 0)
 		return (exit_stat);
-	exit_stat = execute_builtin(cmd, env);
+	if (lst_size(cmd) > 0)
+		exit_stat = execute_builtin(cmd, env);
 	return (exit_stat);
 }
 
@@ -41,6 +42,8 @@ static int	process_command(t_pipe *p, int i, t_list *cmd, char **env)
 		link_read_end(p->prev_fds);
 	if (i < p->cmds_amount - 1)
 		link_write_end(p->next_fds);
+	if (lst_size(cmd) == 0)
+		exit(EXIT_SUCCESS);
 	execute_command(cmd, env);
 	return (EXIT_FAILURE);
 }

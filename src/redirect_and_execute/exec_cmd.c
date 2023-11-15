@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:26:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:36:53 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "token_utils.h"
 
 // Prints the corresponding error message (according to errno).
-static void	err_exec(char *cmdname)
+static void	err_exec(const char *cmdname)
 {
 	char	*tmp;
 
@@ -28,14 +28,14 @@ static void	err_exec(char *cmdname)
 	free(tmp);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(cmdname, STDERR_FILENO);
-	// if (errno == ENOENT)
-	// 	exit(CMD_NOT_FOUND);
-	// exit(errno);
+	if (errno == ENOENT)
+		exit(CMD_NOT_FOUND);
+	exit(errno);
 }
 
 // Allocates and returns a string containing the full path of 'file' in 'dir'.
 // Example: if 'dir' is /folder and 'file' is myfile, returns "/folder/myfile".
-static char	*get_full_path(char *dir, char *file)
+static char	*get_full_path(const char *dir, const char *file)
 {
 	char	*tmp;
 	char	*full_path;
@@ -46,27 +46,33 @@ static char	*get_full_path(char *dir, char *file)
 	return (full_path);
 }
 
-// Executes the shell command 'cmd' and exits.
-// If it can't be opened, prints an error message and 'errno' is set.
-void	exec_cmd(char **cmd, char **env)
+// Executes the shell command 'cmd' and exits, assuming 'cmd' is a non-empty
+// NULL-terminated array of strings in which the first element is the path or
+// name of the program and the following (if any) are the arguments.
+// On error, prints an error message and exits with the appropriate exit code.
+void	exec_cmd(const char **cmd, const char **env)
 {
 	char	**paths;
 	char	**args;
+	char	*file;
 	int		i;
 
-	args = ft_split(cmd, ' ');
-	if (ft_strncmp(cmd, "./", 2) == 0)
-		execve(cmd, args, env);
-	else
+	file = cmd[0];
+	args = cmd;
+	if (!ft_strchr(file, '/'))
 	{
 		paths = get_vars("PATH", env);
 		i = -1;
 		while (paths[++i])
 		{
-			cmd = get_full_path(paths[i], args[0]);
-			execve(cmd, args, env);
-			free(cmd);
+			file = get_full_path(paths[i], args[0]);
+			execve(file, args, env);
+			free(file);
 		}
 	}
-	err_exec(args[0]);
+	else
+	{
+		execve(cmd, args, env);
+	}
+	err_exec(cmd[0]);
 }
