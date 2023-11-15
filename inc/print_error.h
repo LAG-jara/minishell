@@ -21,7 +21,7 @@
 # include "minish_consts.h"
 # include <stdio.h>
 
-int	print_err_syntax(char *token, int ret);
+int	print_err_syntax(const char *token, int ret);
 int print_err_argc();
 
 #endif

@@ -13,7 +13,7 @@
 #include "token_utils.h"
 
 // Returns TRUE if 'str' is a valid word, FALSE otherwise.
-static int	is_word(char *str)
+static int	is_word(const char *str)
 {
 	int	q_stat;
 
@@ -31,7 +31,7 @@ static int	is_word(char *str)
 }
 
 // Given a string representing a token, returns its type.
-int	tok_type(char *str)
+int	tok_type(const char *str)
 {
 	if (!str)
 		return (INVALID);
@@ -46,7 +46,7 @@ int	tok_type(char *str)
 }
 
 // Returns a token (with its type) wiven a string representing it.
-t_token	tok_create(char *str)
+t_token	tok_create(const char *str)
 {
 	t_token	token;
 

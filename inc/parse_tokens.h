@@ -19,6 +19,6 @@
 # include "print_error.h"
 # include "list.h"
 
-t_list	**parse(char **tokens, int *exit_status);
+t_list	**parse(const char **tokens, int *exit_status);
 
 #endif

@@ -45,7 +45,7 @@ echo [-n] [arg ...]
 	The return status is always 0. 
 	If -n is specified, the trailing newline is suppressed.
 */
-int	echo_builtin(char **word)
+int	echo_builtin(const char **word)
 {
 	int first;
 	int flag;

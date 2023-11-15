@@ -13,7 +13,7 @@
 #include "env.h"
 #include <unistd.h>
 
-void	printvar(char *var)
+static void	printvar(const char *var)
 {
 	while (*var)
 	{
@@ -23,7 +23,7 @@ void	printvar(char *var)
 	write(1, "\n", 1);
 }
 
-void	env_builtin(char **env)
+void	env_builtin(const char **env)
 {
 	while (*env)
 	{
@@ -33,24 +33,17 @@ void	env_builtin(char **env)
 	}
 }
 
-// # include "debug.h"
-// # include "arrstr.h"
-// # include "parse_tokens.h"
-// int	main(int ac, char **av, char **e)
-// {
-// 	char **env = arrstr_dup(e);
-// 	ac += 0;
-// 	av += 0;
+# include "debug.h"
+# include "arrstr.h"
+# include "parse_tokens.h"
+int	main(int ac, char **av, const char **e)
+{
+	const char **env = (const char **)arrstr_dup(e);
+	ac += 0;
+	av += 0;
 
-// 	char *pre_toks[] = \
-// 	{ "hola", "final", NULL};
+	//if (cmds)
+	//	print_cmds(cmds);
 
-// 	t_list	**cmds;
-// 	cmds = parse(pre_toks);
-// 	//if (cmds)
-// 	//	print_cmds(cmds);
-
-// 	env_builtin(env);
-// 	lst_clear(cmds, tok_del);
-// 	free(cmds);
-// }
+	env_builtin(env);
+}

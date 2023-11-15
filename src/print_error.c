@@ -13,7 +13,7 @@
 #include "print_error.h"
 
 // Prints the a syntax error message regarding 'token' and returns 'ret'.
-int	print_err_syntax(char *token, int ret)
+int	print_err_syntax(const char *token, int ret)
 {
 	printf("%s: %s '%s'\n", SH_NAME, MSG_SYNTERR, token);
 	return (ret);

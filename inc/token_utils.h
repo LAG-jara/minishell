@@ -35,8 +35,8 @@ typedef struct s_token
 }	t_token;
 
 void	tok_del(void *tok);
-int		tok_type(char *str);
-t_token	tok_create(char *str);
+int		tok_type(const char *str);
+t_token	tok_create(const char *str);
 t_token	tok_get(t_list *node);
 
 #endif

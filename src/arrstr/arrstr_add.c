@@ -21,7 +21,7 @@ char	**arrstr_add(char **arr, char *str)
 	int		orig_arr_size;
 	int		i;
 
-	orig_arr_size = arrstr_size(arr);
+	orig_arr_size = arrstr_size((const char **)arr);
 	new_arr = (char **) p_malloc(sizeof(char *) * (orig_arr_size + 2));
 	i = -1;
 	while (++i < orig_arr_size)

@@ -14,7 +14,7 @@
 
 // Returns a pointer to the first character of the line containing the
 // environment variable 'varname'. If 'varname' is not found returns NULL.
-char	*find_var_line(char *varname, char **env)
+char	*find_var_line(const char *varname, const char **env)
 {
 	int	name_len;
 
@@ -27,7 +27,7 @@ char	*find_var_line(char *varname, char **env)
 	{
 		if (ft_strncmp(*env, varname, name_len) == 0
 			&& (*env)[name_len] && (*env)[name_len] == '=')
-			return (*env);
+			return ((char *)*env);
 		++env;
 	}
 	return (NULL);
@@ -35,7 +35,7 @@ char	*find_var_line(char *varname, char **env)
 
 // Returns the index of the environment variable 'varname'.
 // If 'varname' is not found, returns -1.
-int	find_var_index(char *varname, char **env)
+int	find_var_index(const char *varname, const char **env)
 {
 	int	name_len;
 	int	i;

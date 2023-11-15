@@ -14,11 +14,11 @@
 
 // Retuns a ointer to the first occurrence of 'c' in str. If there aren't, returns
 // NULL.
-char	*ft_strchr(char *str, char c)
+char	*ft_strchr(const char *str, char c)
 {
 	while (str && *str != c)
 		str++;
-	return (str);
+	return ((char *)str);
 }
 
 // Returns an integer greater than, equal to, or less than 0, according as the 

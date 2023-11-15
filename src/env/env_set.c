@@ -38,7 +38,7 @@ void	set_env_var(char *varname, char *value, char ***env)
 	char	*varline;
 
 	varline = join_varline(varname, value);
-	var_index = find_var_index(varname, *env);
+	var_index = find_var_index(varname, (const char **)*env);
 	if (var_index == -1)
 		*env = arrstr_add(*env, varline);
 	else
@@ -50,7 +50,7 @@ void	rm_env_var(char *varname, char ***env)
 {
 	int		var_index;
 
-	var_index = find_var_index(varname, *env);
+	var_index = find_var_index(varname, (const char **)*env);
 	if (var_index >= 0)
 		*env = arrstr_rm(*env, var_index);
 }

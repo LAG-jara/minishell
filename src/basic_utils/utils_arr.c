@@ -13,7 +13,7 @@
 #include <unistd.h>
 
 // Returns the size of the given NULL-terminated array 'arr'.
-size_t	arr_size(void **arr)
+size_t	arr_size(const void **arr)
 {
 	size_t	size;
 

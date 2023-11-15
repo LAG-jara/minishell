@@ -14,7 +14,7 @@
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
 // Exits properly if memory allocation fails.
-char	**arrstr_dup(char **arr)
+char	**arrstr_dup(const char **arr)
 {
 	char	**new_arr;
 	int		orig_arr_size;

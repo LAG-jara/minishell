@@ -16,15 +16,15 @@
 # include <stdlib.h>
 # include "arrstr.h"
 
-char	**get_vars(char *varname, char **env);
-char	*get_var(char *varname, char **env);
-int		get_name_len(char *str);
-char	*find_var_line(char *varname, char **env);
-int		find_var_index(char *varname, char **env);
+char	**get_vars(const char *varname, const char **env);
+char	*get_var(const char *varname, const char **env);
+int		get_name_len(const char *str);
+char	*find_var_line(const char *varname, const char **env);
+int		find_var_index(const char *varname, const char **env);
 void	set_env_var(char *varname, char *value, char ***env);
 void	rm_env_var(char *varname, char ***env);
-int		valid_varname(char *word);
-char	*get_varname(char *str);
+int		valid_varname(const char *word);
+char	*get_varname(const char *str);
 void	env_free(char **env);
 
 #endif
