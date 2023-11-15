@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 15:34:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:20:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	perform_redirection(char *redir, char *str, char **env)
 		link_input_file(str);
 	else if (!ft_strncmp(redir, "<<", 3))
 	{
-		expand = quote_remove_delimeter(&str);
+		expand = delim_quote_remove(&str);
 		link_heredoc(str, expand, env);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:19:43 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 17:05:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:20:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	link_heredoc(char *delimeter, int expand, char **env);
 int		read_heredoc(char *delimiter, int expand, char **env);
 void	clear_heredoc(void);
 
-int		quote_remove_delimeter(char **str);
+int		delim_quote_remove(char **str);
 
 #endif

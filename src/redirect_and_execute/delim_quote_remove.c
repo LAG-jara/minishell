@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quote_remove_delimeter.c                           :+:      :+:    :+:   */
+/*   delim_quote_remove.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -21,19 +21,19 @@ static char	*clst_to_str(t_list *clst)
 
 	str_len = lst_size(clst);
 	str = (char *)p_malloc(sizeof(char) * (str_len + 1));
-	i = -1;
+	i = 0;
 	while (clst && clst->val)
 	{
-		str[++i] = *(char *)(clst->val);
+		str[i++] = *(char *)(clst->val);
 		clst = clst->nxt;
 	}
-	str[i + 1] = '\0';
+	str[i] = '\0';
 	return (str);
 }
 
-// Performs quote removal on 'str'.
+// Performs quote removal on 'word'.
 // Returns TRUE if any quote has been removed. Otherwise, returns FALSE.
-int	quote_remove_delimeter(char **str)
+int	delim_quote_remove(char **word)
 {
 	int		quote_removed;
 	t_list	*char_lst;
@@ -43,15 +43,16 @@ int	quote_remove_delimeter(char **str)
 	quote_removed = FALSE;
 	q_stat = UNQUOTED;
 	char_lst = NULL;
-	while (**str)
+	while (**word)
 	{
-		char_stat = quote_stat(&q_stat, **str);
-		if ((**str != '"' && **str != '\'') || char_stat != UNQUOTED)
-			lst_add(&char_lst, lst_new(*str, sizeof(*str)));
+		char_stat = quote_stat(&q_stat, **word);
+		if ((**word != '"' && **word != '\'') || char_stat != UNQUOTED)
+			lst_add(&char_lst, lst_new(*word, sizeof(*word)));
 		else
 			quote_removed = TRUE;
-		++str;
+		++word;
 	}
-	free(str);
-	*str = clst_to_str(char_lst);
+	free(word);
+	*word = clst_to_str(char_lst);
+	return (quote_removed);
 }
