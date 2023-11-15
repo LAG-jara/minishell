@@ -15,11 +15,11 @@
 
 # include "basic_utils.h"
 
-char	**arrstr_add(char **arr, char *str);
+char	**arrstr_add(char **arr, const char *str);
 char	**arrstr_dup(char **arr);
 void	arrstr_free(char **arr);
 size_t	arrstr_size(char **arr);
 char	**arrstr_rm(char **arr, int i);
-char	**arrstr_set(char **arr, char *str, int index);
+char	**arrstr_set(char **arr, const char *str, int index);
 
 #endif

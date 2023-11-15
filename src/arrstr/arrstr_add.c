@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:42:30 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:05:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:42:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
 // with the string 'str' added at the end of it.
 // The original array 'arr' is freed. Exits properly if memory allocation fails.
-char	**arrstr_add(char **arr, char *str)
+char	**arrstr_add(char **arr, const char *str)
 {
 	char	**new_arr;
 	int		orig_arr_size;
