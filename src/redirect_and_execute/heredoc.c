@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 16:42:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:27:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	is_delimeter(char *str, char *delimeter)
 }
 
 // Opens a here document and links it to the standard input.
+// If 'expand' is TRUE, expands the environment variables of its content.
 void	link_heredoc(char *delimeter, int expand, char **env)
 {
 	int	fd_file;

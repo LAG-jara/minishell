@@ -6,13 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:20:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:30:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "redirect_utils.h"
-# include "heredoc.h"
-# include "token_utils.h"
+#include "redirect.h"
+#include "heredoc.h"
+#include "token_utils.h"
 
 // Performs the redirection defined by 'redir', taking 'str' as the following 
 // token. In the case of here documents, quote-removal is performed to 'str'. 
