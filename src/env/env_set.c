@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:05:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 17:14:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ static char	*join_varline(const char *varname, const char *value)
 {
 	char	*varline;
 	size_t	varline_len;
-	char	*varline_cpy;
+	int		i;
 
-	varline_len = ft_strlen(varname) + ft_strlen(value) + 2;
-	varline = (char *)p_malloc(sizeof(char) * varline_len);
-	varline_cpy = varline;
+	varline_len = ft_strlen(varname) + ft_strlen(value) + 1;
+	varline = (char *)p_malloc(sizeof(char) * (varline_len + 1));
+	i = 0;
 	while (*varname)
-		*varline++ = *varname++;
-	*varline++ = '=';
+		varline[i++] = *varname++;
+	varline[i++] = '=';
 	while (*value)
-		*varline++ = *value++;
-	*varline = '\0';
-	return (varline_cpy);
+		varline[i++] = *value++;
+	varline[i] = '\0';
+	return (varline);
 }
 
 // Sets the environment variable 'varname' to 'value', creating it if needed.
