@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:11:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Returns TRUE if the redirection token in the 'i'th position is valid,
 // returns FALSE otherwise.
-static int	is_valid_redir(const char **tokens, int i, int tok_amount)
+static int	is_valid_redir(char **tokens, int i, int tok_amount)
 {
 	const char	*next_tok;
 
@@ -29,7 +29,7 @@ static int	is_valid_redir(const char **tokens, int i, int tok_amount)
 
 // Returns TRUE if the control token in the 'i'th position is valid,
 // returns FALSE otherwise.
-static int	is_valid_ctrl(const char **tokens, int i, int tok_amount)
+static int	is_valid_ctrl(char **tokens, int i, int tok_amount)
 {
 	const char	*prev_tok;
 	const char	*next_tok;
@@ -47,7 +47,7 @@ static int	is_valid_ctrl(const char **tokens, int i, int tok_amount)
 
 // Returns the amount of commands in the NULL-terminated 'tokens' array.
 // If a syntax error is found, prints an error message and returns -1.
-static int	count_commands_checking_syntax(const char **tokens)
+static int	count_commands_checking_syntax(char **tokens)
 {
 	int		tok_amount;
 	int		cmd_amount;
@@ -74,7 +74,7 @@ static int	count_commands_checking_syntax(const char **tokens)
 	return (cmd_amount);
 }
 
-static t_list	*get_cmd(t_list **cmd, const char **tokens, int *j)
+static t_list	*get_cmd(t_list **cmd, char **tokens, int *j)
 {
 	t_token	tok;
 	int		i;
@@ -98,7 +98,7 @@ static t_list	*get_cmd(t_list **cmd, const char **tokens, int *j)
 // dividing them by the token '|'. Allocates and returns the array of commands.
 // If a syntax error is found, prints an error message, 'exit_status' is set to 
 // the corresponding value and returns NULL.
-t_list	**parse(const char **tokens, int *exit_status)
+t_list	**parse(char **tokens, int *exit_status)
 {
 	int		cmd_amount;
 	t_list	**cmds;

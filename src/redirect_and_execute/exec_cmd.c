@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 11:36:53 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:12:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*get_full_path(const char *dir, const char *file)
 // NULL-terminated array of strings in which the first element is the path or
 // name of the program and the following (if any) are the arguments.
 // On error, prints an error message and exits with the appropriate exit code.
-void	exec_cmd(const char **cmd, const char **env)
+void	exec_cmd(char **cmd, char **env)
 {
 	char	**paths;
 	char	**args;

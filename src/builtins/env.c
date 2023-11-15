@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:58:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:12:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	printvar(const char *var)
 	write(1, "\n", 1);
 }
 
-void	env_builtin(const char **env)
+void	env_builtin(char **env)
 {
 	while (*env)
 	{
@@ -42,6 +42,6 @@ void	env_builtin(const char **env)
 // 	ac += 0;
 // 	av += 0;
 
-// 	env_builtin((const char **)env);
+// 	env_builtin((char **)env);
 // 	env_free(env);
 // }

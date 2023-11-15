@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:39:09 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:57:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:11:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
 // Exits properly if memory allocation fails.
-char	**arrstr_dup(const char **arr)
+char	**arrstr_dup(char **arr)
 {
 	char	**new_arr;
 	int		orig_arr_size;

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:39:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 11:59:03 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:11:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # define CMD_NOT_FOUND		127	// Error code for "Command not found"
 
 char	**get_args_from_cmd(t_list *cmd);
-void	exec_cmd(const char **cmd, const char **env);
+void	exec_cmd(char **cmd, char **env);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:12:41 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 13:53:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:11:38 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include "print_error.h"
 # include "list.h"
 
-t_list	**parse(const char **tokens, int *exit_status);
+t_list	**parse(char **tokens, int *exit_status);
 
 #endif

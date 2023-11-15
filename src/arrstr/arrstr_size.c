@@ -13,7 +13,7 @@
 #include <arrstr.h>
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.
-size_t	arrstr_size(const char **arr)
+size_t	arrstr_size(char **arr)
 {
 	return (arr_size((void *)arr));
 }

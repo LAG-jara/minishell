@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 11:36:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:12:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_name_len(const char *str)
 
 // Returns the value of the environment variable name 'varname'.
 // If 'varname' does not exist, returns NULL.
-char	*get_var(const char *varname, const char **env)
+char	*get_var(const char *varname, char **env)
 {
 	int		name_len;
 	char	*var_line;
@@ -48,7 +48,7 @@ char	*get_var(const char *varname, const char **env)
 
 // Returns a NULL-terminated array of strings containing the values of the
 // colon-separated environment value 'varname'.
-char	**get_vars(const char *varname, const char **env)
+char	**get_vars(const char *varname, char **env)
 {
 	char	*value;
 	char	**values;
