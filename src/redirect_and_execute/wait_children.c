@@ -6,16 +6,16 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:18:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:01:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:22:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/wait.h>
 #include <stdlib.h>
 
-// Waits for the children with process ID 'pid' to finish and returns its
-// return value (if exited). It waits for 'n' children at most.
-int	wait_children(pid_t pid, size_t n)
+// Waits for 'n' children processes to finish and returns the exit status of
+// the 'last_pid' (if exited).
+int	wait_children(pid_t last_pid, size_t n)
 {
 	pid_t	pid;
 	int		i;
@@ -26,7 +26,7 @@ int	wait_children(pid_t pid, size_t n)
 	while (i++ < n)
 	{
 		pid = wait(&status);
-		if (pid == pid)
+		if (pid == last_pid)
 			ret_status = status;
 	}
 	if (WIFEXITED(ret_status))

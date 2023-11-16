@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:18:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:07:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 # include "env.h"
 # include "list.h"
 # include "print_error.h"
+
+// Exits with the appropriate exit code after printing an error message.
+static void	err_exec(const char *cmdname)
+{
+	print_err_exec(cmdname);
+	if (errno == ENOENT)
+		exit(EXIT_CMD_NOT_FOUND);
+	exit(errno);
+}
 
 // Allocates and returns a string containing the full path of 'file' in 'dir'.
 // Example: if 'dir' is /folder and 'file' is myfile, returns "/folder/myfile".

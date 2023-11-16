@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:35:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:20:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@
 # include <unistd.h>
 # include <string.h>
 # include <errno.h>
+# include <stdlib.h>
 
 int		print_err_syntax(const char *token, int ret);
 int 	print_err_argc();
 void	print_err_exec(const char *cmdname);
+void	print_err_filename(const char *filename);
+int		print_err_heredoc();
 
 #endif
