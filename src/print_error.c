@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 14:20:16 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:32:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 // Prints the a syntax error message regarding 'token' and returns 'ret'.
 int	print_err_syntax(const char *token, int ret)
 {
-	printf("%s: %s '%s'\n", SH_NAME, MSG_SYNTERR, token);
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(MSG_SYNTERR, STDERR_FILENO);
+	ft_putstr_fd(" '", STDERR_FILENO);
+	ft_putstr_fd(token, STDERR_FILENO);
+	ft_putendl_fd("'", STDERR_FILENO);
 	return (ret);
 }
 
@@ -30,18 +35,14 @@ int	print_err_argc()
 // Prints the corresponding execution error message (according to errno).
 void	print_err_exec(const char *cmdname)
 {
-	char	*tmp;
-
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	if (errno == ENOENT)
-		tmp = ft_strdup("Command not found");
-	else
-		tmp = ft_strdup(strerror(errno));
-	ft_putstr_fd(tmp, STDERR_FILENO);
-	free(tmp);
+	ft_putstr_fd(cmdname, STDERR_FILENO);						
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(cmdname, STDERR_FILENO);						
+	if (errno == ENOENT)
+		ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
+	else
+		ft_putendl_fd(strerror(errno), STDERR_FILENO);
 }
 
 // Prints the corresponding filename error message (according to errno).
@@ -60,6 +61,6 @@ int	print_err_heredoc()
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd("here document error: ", STDERR_FILENO);
+	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
 	return (EXIT_FAILURE);
 }

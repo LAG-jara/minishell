@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 14:20:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:31:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # define EXIT_SYNTERR 		258
 # define MSG_WRONGAC 		"wrong arguments amount"
 # define EXIT_WRONGAC 		2
+# define MSG_CMD_NOT_FOUND	"command not found"
 # define EXIT_CMD_NOT_FOUND	127
+# define MSG_HEREDOC_ERR	"here document error"
 
 # include "minish_consts.h"
 # include <stdio.h>
