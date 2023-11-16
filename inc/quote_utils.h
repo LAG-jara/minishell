@@ -17,7 +17,7 @@
 # define QUOTED 1
 # define DQUOTED 2
 
-// int	quote_skip(char *in, int i);			// DEPRECATED ?
+// int	quote_skip(const char *in, int i);			// DEPRECATED ?
 int	quote_stat(int *curr_stat, char c);
 
 #endif

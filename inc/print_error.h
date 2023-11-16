@@ -21,6 +21,7 @@
 # define EXIT_CMD_NOT_FOUND	127
 # define MSG_HEREDOC_ERR	"here document error"
 
+# include "basic_utils.h"
 # include "minish_consts.h"
 # include <stdio.h>
 # include <unistd.h>

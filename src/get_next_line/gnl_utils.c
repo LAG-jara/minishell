@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "basic_utils.h"
 
 size_t	gnl_strlen(const char *str)
 {
@@ -72,7 +73,7 @@ size_t	gnl_strlcat(char *dst, const char *src, size_t dstsize)
 // Allocates (with malloc(3)) and returns a new string, which is the result of
 // the concatenation of ’s1’ and ’s2’.
 // Finally, 's1' is freed and the new returned string is pointed by 's1'.
-char	*gnl_strjoin_free(char **s1, char *s2)
+char	*gnl_strjoin_free(char **s1, const char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -82,9 +83,7 @@ char	*gnl_strjoin_free(char **s1, char *s2)
 	s1_len = gnl_strlen(*s1);
 	s2_len = gnl_strlen(s2);
 	strsize = s1_len + s2_len + 1;
-	str = malloc(strsize * sizeof(char));
-	if (str == NULL)
-		return (NULL);
+	str = p_malloc(strsize * sizeof(char));
 	gnl_strlcpy(str, *s1, strsize);
 	gnl_strlcat(str, s2, strsize);
 	free(*s1);

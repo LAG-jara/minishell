@@ -15,7 +15,7 @@
 // Sets the value of the 'i'th string in the NULL-terminated array of strings
 // 'arr' to the string 'str'. Returns 'arr'.
 // Pre: 'i' must be smaller than the 'arr' size.
-char	**arrstr_set(const char **arr, char *str, int i)
+char	**arrstr_set(char **arr, const char *str, int i)
 {
 	free(arr[i]);
 	arr[i] = ft_strdup(str);

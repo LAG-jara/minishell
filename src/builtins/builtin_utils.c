@@ -47,14 +47,14 @@ int	is_builtin_cmd(t_list *cmd)
 	return (FALSE);
 }
 
-// Checks for more arguments in builtins that don't use it.
-int		is_arg(char *unnedeed_arg)
-{
+// // Checks for more arguments in builtins that don't use it.
+// int		is_arg(char *unnedeed_arg)
+// {
 
-}
+// }
 
-// Check for flags in the builtins that need them and use it in the builtin.
-int		is_validflag(char *flag)
-{
+// // Check for flags in the builtins that need them and use it in the builtin.
+// int		is_validflag(char *flag)
+// {
 	
-}
+// }

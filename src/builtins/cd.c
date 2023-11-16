@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 
 #include "basic_utils.h"
+#include "builtins.h"
+#include "definitions.h"
 #include "env.h"
 #include <unistd.h>
+
+#include "get_next_line.h" // TODO : ver leaks porque no se yo
+
+# include "debug.h"
 
 static int	is_relativepath(char *str)
 {
@@ -21,17 +27,27 @@ static int	is_relativepath(char *str)
 	return (FALSE);
 }
 
-// Returns TRUE if can perform a change of dir with any path.
+// Tries to change directory for any 'path' with 'str' at the end.
+// If it succeeds, stops trying and retuns TRUE.
 // FALSE otherwise.
-static int	try_cdpath(char *str, char **path)
+static int	try_cdpath(char *str, char **env)
 {
-	int	i;
+	char	**path;
+	int		i;
 
 	i = -1;
+	path = get_vars("CDPATH" ,env);
 	while (path[++i])
 	{
-		if (chdir())
+		printf("%s", gnl_strjoin_free(&path[i], str));
+		if (chdir(path[i]) == 0)
+		{
+			arrstr_free(path);
+			return(TRUE);
+		}
 	}
+	arrstr_free(path);
+	return(FALSE);
 }
 
 /*
@@ -45,13 +61,16 @@ cd [dir]
 	If dir begins with a slash (/), then CDPATH is not used. 
 	If a non-empty directory name from CDPATH is used and the directory change 
 	is successful, the absolute pathname of the new working directory is 
-	written directory the standard output.
+	written to the standard output.
 	The return value is true if the directory was successfully changed;
 	false otherwise.
 CDPATH
 	The search path for the cd command. This is a colon-separated (`:') list of
 	directories in which the shell looks for destination directories specified
 	by the cd command. A sample value is ".:~:/usr".
+HOME
+	The home directory of the current user; the default argument for the cd builtin 
+	command. The value of this variable is also used when performing tilde expansion. 
 */
 
 int	cd_builtin(char **word, char **env)
@@ -62,10 +81,16 @@ int	cd_builtin(char **word, char **env)
 	i = -1;
 	// Mirar si word[0] es absoluto o relativo ('/' al inicio).
 	// Si es retalivo, buscar en CDPATH word[0]. Si está, escibir el path.
-	
+	if (*word == NULL)
+	{
+		ret = chdir(get_var("HOME", env));
+		if (ret != 0)
+			return (1);
+		return (ret);
+	}
 	if (is_relativepath(*word))
 	{
-		if (try_cdpath(*word, get_vars("CDPATH" ,env)))
+		if (try_cdpath(*word, env))
 			return (pwd_builtin());
 	}
 	ret = chdir(*word);
@@ -74,11 +99,8 @@ int	cd_builtin(char **word, char **env)
 	return (ret);
 }
 
-int
-
-
-# include "debug.h"
-# include "builtins.h"
+//# include "debug.h"
+//# include "builtins.h"
 # include "parse_tokens.h"
 int	main(int ac, char **av, char **e)
 {
@@ -89,4 +111,5 @@ int	main(int ac, char **av, char **e)
 	pwd_builtin();
 	int err = cd_builtin(++av, env);
 	pwd_builtin();
+	printf("\n\t%d\n", err);
 }

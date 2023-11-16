@@ -46,8 +46,8 @@ char	*get_var(const char *varname, char **env)
 	return (var_line + name_len + 1);
 }
 
-// Returns a NULL-terminated array of strings containing the values of the
-// colon-separated environment value 'varname'.
+// Allocates and returns a NULL-terminated array of strings containing the
+// values of the colon-separated environment value 'varname'.
 char	**get_vars(const char *varname, char **env)
 {
 	char	*value;
