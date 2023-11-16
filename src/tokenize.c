@@ -6,118 +6,97 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:38:47 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 18:04:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize.h"
+# include "debug.h"
 
-// Recives the input(in) and returns how many tokens there are. 
-static int	count_tokens(const char *in)
+// Given that 'str' points to a quote character, returns the distance to the
+// next quote character of the same kind.
+// If no next quote is found, returns the distance until the char before '\0'.
+static int	distance_next_quote(const char *str)
 {
-	int	i;
-	int	count;
+	int		dist;
+	char	c;
 
-	count = 0;
-	i = -1;
-	while (in[++i])
-	{
-		if (is_metachr(in[i]))
-		{
-			if (is_redirectionchr(in[i]) && is_redirectionchr(in[i + 1]))
-				++i;
-			if (is_operatorchr(in[i]))
-				++count;
-		}
-		if (is_quotechr(in[i]))
-			i += quote_skip(in, i);
-		if (!is_metachr(in[i]) && (is_metachr(in[i + 1]) || !in[i + 1]))
-			++count;
-	}
-	return (count);
+	c = *str;
+	dist = 1;
+	while (str[dist] && str[dist] != c)
+		++dist;
+	if (!str[dist])
+		--dist;
+	return (dist);
 }
 
-// TOKEN
-// A sequence of characters treated as a unit by the shell.
-// Both operators and words are tokens.
-
-// WORD
-// A sequence of characters treated as a unit by the shell
-// (excluding operators).
-// Words may not include unquoted metacharacters.
-
-// Returns the length of the next token of the input.
-static int	toklen(const char *in, int i)
+// Given that 'str' points to the beginning of a token, retuns its lenght.
+static int	toklen(const char *str)
 {
 	int	len;
 
 	len = 0;
-	if (is_redirectionchr(in[i]) && in[i] == in[i + 1])
+	if (is_redirectionchr(*str) && *str == *(str + 1))
 		return (2);
-	if (is_operatorchr(in[i]))
+	if (is_operatorchr(*str))
 		return (1);
-	while (in[i + len] && !is_metachr(in[i + len]))
+	while (*(str + len) && !is_metachr(*(str + len)))
 	{
-		if (is_quotechr(in[i + len]))
-			len += quote_skip(in, i + len);
+		if (is_quotechr(*(str + len)))
+			len += distance_next_quote(str + len);
+		// else
 		++len;
 	}
 	return (len);
 }
 
-// Recives the input(in) and fill the allocated spaces for the tokens.
-static char	**fill_tokens(const char *in, char **tok)
+// Given that the i-th character of 'str' represents the beginning of a token,
+// allocates and returns a string representing the token.
+// At the end, 'i' points to character after the token.
+char	*pop_token(const char *str, int *i)
 {
-	int	idx_in;
-	int	len;
-	int	idx_tok;
+	char	*str_tok;
+	int		len;
 
-	idx_in = 0;
-	idx_tok = -1;
-	while (in[idx_in])
-	{
-		while (is_blankchr(in[idx_in]))
-			++idx_in;
-		len = toklen(in, idx_in);
-		if (!len)
-			break ;
-		tok[++idx_tok] = (char *)p_malloc(sizeof(char) * len + 1);
-		ft_strlcpy(tok[idx_tok], in + idx_in, len + 1);
-		idx_in += len;
-	}
-	tok[++idx_tok] = NULL;
-	return (tok);
+	while (is_blankchr(str[*i]))
+		++(*i);
+	len = toklen(str + *i);
+	str_tok = (char *)p_malloc(sizeof(char) * len + 1);
+	ft_strlcpy(str_tok, str + *i, len + 1);
+	*i += len;
+	return (str_tok);
 }
 
-// Splits the recived 'input' into an array of strings 
-// NULL-terminated interpretable as tokens.
-// And return it allocated.
-char	**tokenize(const char *input)
+// Splits the recived 'input' into a list of tokens.
+t_list	*tokenize(const char *input)
 {
-	int		num_tokens;
-	char	**tokens;
+	t_list	*tokens;
+	int		i;
+	char	*str;
+	t_token	tok;
 
-	num_tokens = count_tokens(input);
-	tokens = (char **)p_malloc(sizeof(char *) * num_tokens + 1);
-	tokens = fill_tokens(input, tokens);
+	tokens = NULL;
+	i = 0;
+	while (input[i])
+	{
+		str = pop_token(input, &i);
+		if (!*str)
+			break ;
+		tok = tok_create(str);
+		free(str);
+		lst_add(&tokens, lst_new(&tok, sizeof(tok)));
+	}
 	return (tokens);
 }
 
-// DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-= DELETE =-=
-/*
-#include "debug.h"
-int main()
-{
-	// char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
-	// int n = toklen(s,6);
-	// printf("%d", n);
+// int main()
+// {
+// 	// char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
+// 	char *s="echo hola! < | caca || >>> 'esto es una cadena sin cerrar";
 
-	char	*s = "    $USER \t \" \" ' asd'asd  ";
-	char	**tokens = tokenize(s);
+// 	t_list *tokens = tokenize(s);
 	
-	//printf("%s\n", tokens[0]);
-	//printf("%s\n", tokens[1]);
-	print_arrstr(tokens);
+// 	print_lst(tokens, pr_token);
 
-	return (0);
-}*/
+// 	return (0);
+// }

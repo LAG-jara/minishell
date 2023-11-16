@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:21:35 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 12:04:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:33:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define QUOTED 1
 # define DQUOTED 2
 
-int	quote_skip(char *in, int i);
+// int	quote_skip(char *in, int i);			// DEPRECATED ?
 int	quote_stat(int *curr_stat, char c);
 
 #endif

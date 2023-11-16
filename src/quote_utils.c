@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:23:40 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:38:10 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:33:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 // Get the string 'str' and the index 'i' of the current quote and 
 // returns the distance to the next ocurrence of the same type of quote.
 // If no quote is found returns the distance until the char before '\0'.
-int	quote_skip(const char *in, int i)
-{
-	char	target;
-	int		dist;
+// int	quote_skip(const char *in, int i)
+// {
+// 	char	target;
+// 	int		dist;
 
-	dist = 1;
-	target = in[i];
-	while (in[i + dist] && in[i + dist] != target)
-		++dist;
-	if (!in[i + dist])
-		--dist;
-	return (dist);
-}
+// 	dist = 1;
+// 	target = in[i];
+// 	while (in[i + dist] && in[i + dist] != target)
+// 		++dist;
+// 	if (!in[i + dist])
+// 		--dist;
+// 	return (dist);
+// }
 
 // Given the current quote status and a character 'c', updates its value and
 // returns the status for 'c'.
