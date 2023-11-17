@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 18:18:47 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:29:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ static int	count_commands_checking_syntax(t_list *tokens)
 	while (node)
 	{
 		tok = tok_get(node);
+		if (tok.type == INVALID)
+			return (print_err_syntax(tok.val, -1));
 		if (tok.type == REDIR && !is_valid_redir(node))
 			return (print_err_syntax(tok.val, -1));
 		if (tok.type == PIPE)
@@ -67,8 +69,6 @@ static int	count_commands_checking_syntax(t_list *tokens)
 			if (!is_valid_pipe(node))
 				return (print_err_syntax(tok.val, -1));
 		}
-		if (tok.type == INVALID)
-			return (print_err_syntax(tok.val, -1));
 		node = node->nxt;
 	}
 	return (cmd_amount);
@@ -129,7 +129,8 @@ t_list	**parse(t_list *tokens, int *exit_status)
 // int	main(void)
 // {
 // 	// char *s="echo hola! < | caca || >>> 'esto es una cadena sin cerrar";
-// 	char *s="echo hola! < file | cat << EOF";
+// 	// char *s="echo hola! > caca | command 'esto es una cadena sin cerrar";
+// 	char *s="echo hola! 'asdasdasd''asdasdasdasd' cat << EOF";
 
 // 	t_list *tokens = tokenize(s);
 	
