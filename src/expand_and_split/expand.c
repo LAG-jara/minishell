@@ -6,13 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:19:45 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:12:38 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
-
-# include "debug.h"
 
 // Given that the xchar list 'node' points to the '$' character of an 
 // environment variable name, expands its value updating the list 'lst'.

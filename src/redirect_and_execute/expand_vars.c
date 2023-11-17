@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:43:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/17 19:02:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_vars.h"
+#include "basic_utils.h"
 
 // Allocates and returns a copy of 'str' with its $VARIABLES expanded.
 char	*expand_vars(const char *str, char **env)
@@ -29,10 +30,10 @@ char	*expand_vars(const char *str, char **env)
 			tmp_str = ft_substr(str, 0, i);
 			gnl_strjoin_free(&ret_str, tmp_str);
 			free(tmp_str);
-			var = get_env_var(&str[i], env);
+			var = env_get(&str[i], env);
 			if (var)
 				gnl_strjoin_free(&ret_str, var);
-			str += i + get_varlen(&str[i]);
+			str += i + get_name_len(&str[i]);
 			i = 0;
 		}
 		else

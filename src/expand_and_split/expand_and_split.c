@@ -6,14 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:06:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:13:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
-
-# include "debug.h"
-# include "parse_tokens.h"
 
 // Expands the variables of the command 'cmd' (as a list of tokens) and splits
 // words if needed. Finally, performs quote removal and returns the result.
@@ -43,30 +40,37 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 	return (commands);
 }
 
-// TODO free de expansiones "$nada".
-int	main(int ac, char **av, char **e)
-{
-	char **env = arrstr_dup(e);
-	ac += 0;
-	av += 0;
-	int exit_status = 0;
+
+// # include "debug.h"
+// # include "parse_tokens.h"
+// # include "tokenize.h"
+
+// int	main(int ac, char **av, char **e)
+// {
+// 	av++;
+// 	ac--;
+// 	char **env = arrstr_dup(e);
+// 	int exit_status;
+// 	char *input = "cd directorio \"$USER\" caca > uno '$USER' > caca | echo $USER | rm -fr *";
 	
-	printf("\n");
+// 	t_list	*tokens = tokenize(input);
+// 	// printf("\n___________________TOKENIZE\n");
+// 	// print_lst(tokens, pr_token);
 
-	char *pre_toks[] = \
-	{ "hola$a", "'hola$a'", "\"hola$a\"", NULL};	// TODO: Fix leak with $nada
 
-	t_list	**cmds;
-	cmds = parse(pre_toks, &exit_status);
-	if (cmds)
-		print_cmds(cmds);
+// 	t_list	**cmds;
+// 	cmds = parse(tokens, &exit_status);
+// 	printf("\n______________________PARSE\n");
+// 	if (cmds)
+// 		print_cmds(cmds);
+// 	printf("Exit status: %d\n", exit_status);
 
-	cmds = expand_and_split(cmds, exit_status, env);
 
-	printf("------------------------- 2\n");
-	print_cmds(cmds);
+// 	cmds = expand_and_split(cmds, exit_status, env);
+// 	printf("\n___________EXPAND AND SPLIT\n");
+// 	print_cmds(cmds);
 	
-	env_free(env);
-	lst_clear(cmds, tok_del);
-	free(cmds);
-}
+// 	env_free(env);
+// 	lst_clear(cmds, tok_del);
+// 	free(cmds);
+// }
