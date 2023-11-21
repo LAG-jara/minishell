@@ -22,9 +22,23 @@
 
 static int	is_relativepath(char *str)
 {
-	if (str && str[0] != '/')
+	if (str[0] != '/')
 		return (TRUE);
 	return (FALSE);
+}
+
+// If the string 'str' uses the dir . or .. returns TRUE.
+// Otherwise returns FALSE.
+static int is_same_or_parent_dir(char *str)
+{
+	if (str[0] != '.')
+		return (FALSE);
+	if (str[1] == '\0' || str[1] == '/')
+		return (TRUE);
+	if (str[1] == '.' && (str[2] == '\0' || str[2] == '/'))
+		return (TRUE);
+	return (FALSE);
+
 }
 
 // Tries to change directory for any 'path' with 'str' at the end.
@@ -37,9 +51,11 @@ static int	try_cdpath(char *str, char **env)
 
 	i = -1;
 	path = get_vars("CDPATH" ,env);
+	if (path == NULL)
+		return (FALSE);
 	while (path[++i])
 	{
-		printf("%s", gnl_strjoin_free(&path[i], str));
+		gnl_strjoin_free(&path[i], str);
 		if (chdir(path[i]) == 0)
 		{
 			arrstr_free(path);
@@ -88,7 +104,7 @@ int	cd_builtin(char **word, char **env)
 			return (1);
 		return (ret);
 	}
-	if (is_relativepath(*word))
+	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
 	{
 		if (try_cdpath(*word, env))
 			return (pwd_builtin());
@@ -111,5 +127,5 @@ int	main(int ac, char **av, char **e)
 	pwd_builtin();
 	int err = cd_builtin(++av, env);
 	pwd_builtin();
-	printf("\n\t%d\n", err);
+	printf("\t%d\n", err);
 }

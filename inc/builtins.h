@@ -27,7 +27,7 @@ int	export_builtin(char **word, char ***env);
 int	pwd_builtin(void);
 int	unset_builtin(char **word, char ***env);
 
-int	is_builtin_name(char *str);		// TODO: definition on builtin_utils.c
+int	is_builtin_name(char *str);
 int	is_builtin_cmd(t_list *cmd);
 
 #endif
