@@ -2,8 +2,19 @@ NAME		= minishell
 MKF			= Makefile
 
 # Sources
-SRC			=	main.c
-				
+SRC			= get_input.c input_utils.c main.c minishell.c parse_bak.c parse.c \
+			print_error.c quote_utils.c tokenize_bak.c tokenize.c \
+			arrstr/arrstr_add.c arrstr/arrstr_dup.c arrstr/arrstr_free.c \
+			arrstr/arrstr_rm.c arrstr/arrstr_set.c arrstr/arrstr_size.c \
+			basic_utils/utils_arr.c basic_utils/utils_char.c \
+			basic_utils/utils_itoa.c basic_utils/utils_p_malloc.c \
+			basic_utils/utils_putstr.c basic_utils/utils_split.c \
+			basic_utils/utils_str.c basic_utils/utils_strjoin.c \
+			basic_utils/utils_strlcat.c basic_utils/utils_substr.c \
+			builtins/builtin_utils.c builtins/cd.c builtins/echo.c \
+			builtins/env.c builtins/exec_builtin.c builtins/exit.c builtins/export.c builtins/pwd.c builtins/unset.c \
+			
+			
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))
 
