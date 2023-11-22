@@ -28,16 +28,16 @@ export name=value ...
 
 int	export_builtin(char **args, char ***env)
 {
-	char 	*word;
+	char	*word;
 	char	*varname;
 	int		i;
-	
+
 	while (*args)
 	{
 		i = 0;
 		word = *args;
 		varname = get_varname(word);
-		while(word[i] && word[i] != '=')
+		while (word[i] && word[i] != '=')
 			++i;
 		if (valid_varname(varname) && word[i++] == '=')
 			set_env_var(varname, word + i, env);
@@ -45,11 +45,9 @@ int	export_builtin(char **args, char ***env)
 	}
 	return (0);
 }
-
 // # include "debug.h"
 // # include "builtins.h"
 // # include "parse_tokens.h"
-
 // int	main(int ac, char **av, char **e)
 // {
 // 	char **env = arrstr_dup(e);

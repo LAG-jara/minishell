@@ -56,5 +56,5 @@ int	is_builtin_cmd(t_list *cmd)
 // // Check for flags in the builtins that need them and use it in the builtin.
 // int		is_validflag(char *flag)
 // {
-	
+
 // }

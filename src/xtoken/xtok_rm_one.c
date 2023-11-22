@@ -13,7 +13,7 @@
 #include "xtoken.h"
 
 // Removes and frees the given 'to_rm' node from the xtoken's value.
-void		xtok_rm_one(t_xtoken *xtok, t_list *to_rm)
+void	xtok_rm_one(t_xtoken *xtok, t_list *to_rm)
 {
 	t_list	*lst;
 

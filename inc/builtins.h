@@ -22,7 +22,7 @@ int	exec_builtin(char **args, char ***env);
 int	cd_builtin(char **word, char **env);
 int	echo_builtin(char **word);
 int	env_builtin(char **env);
-int	exit_builtin();
+int	exit_builtin(void);
 int	export_builtin(char **word, char ***env);
 int	pwd_builtin(void);
 int	unset_builtin(char **word, char ***env);

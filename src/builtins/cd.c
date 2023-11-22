@@ -18,8 +18,6 @@
 
 #include "get_next_line.h" // TODO : ver leaks porque no se yo
 
-# include "debug.h"
-
 static int	is_relativepath(char *str)
 {
 	if (str[0] != '/')
@@ -29,7 +27,7 @@ static int	is_relativepath(char *str)
 
 // If the string 'str' uses the dir . or .. returns TRUE.
 // Otherwise returns FALSE.
-static int is_same_or_parent_dir(char *str)
+static int	is_same_or_parent_dir(char *str)
 {
 	if (str[0] != '.')
 		return (FALSE);
@@ -38,7 +36,6 @@ static int is_same_or_parent_dir(char *str)
 	if (str[1] == '.' && (str[2] == '\0' || str[2] == '/'))
 		return (TRUE);
 	return (FALSE);
-
 }
 
 // Tries to change directory for any 'path' with 'str' at the end.
@@ -50,7 +47,7 @@ static int	try_cdpath(char *str, char **env)
 	int		i;
 
 	i = -1;
-	path = get_vars("CDPATH" ,env);
+	path = get_vars("CDPATH", env);
 	if (path == NULL)
 		return (FALSE);
 	while (path[++i])
@@ -59,11 +56,11 @@ static int	try_cdpath(char *str, char **env)
 		if (chdir(path[i]) == 0)
 		{
 			arrstr_free(path);
-			return(TRUE);
+			return (TRUE);
 		}
 	}
 	arrstr_free(path);
-	return(FALSE);
+	return (FALSE);
 }
 
 /*
@@ -85,23 +82,21 @@ CDPATH
 	directories in which the shell looks for destination directories specified
 	by the cd command. A sample value is ".:~:/usr".
 HOME
-	The home directory of the current user; the default argument for the cd builtin 
-	command. The value of this variable is also used when performing tilde expansion. 
+	The home directory of the current user; the default argument for the cd 
+	builtin	command. The value of this variable is also used when performing 
+	tilde expansion. 
 */
-
 int	cd_builtin(char **word, char **env)
 {
-	int		i;
-	int		ret;
+	int	i;
+	int	ret;
 
 	i = -1;
-	// Mirar si word[0] es absoluto o relativo ('/' al inicio).
-	// Si es retalivo, buscar en CDPATH word[0]. Si está, escibir el path.
 	if (*word == NULL)
 	{
-		ret = chdir(get_var("HOME", env));
+		ret = access(get_var("HOME", env));
 		if (ret != 0)
-			return (1);
+			return (errno);
 		return (ret);
 	}
 	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
@@ -109,23 +104,24 @@ int	cd_builtin(char **word, char **env)
 		if (try_cdpath(*word, env))
 			return (pwd_builtin());
 	}
+	ret = access(*word);
 	ret = chdir(*word);
 	if (ret != 0)
-		return (1);
+		return (errnoq);
 	return (ret);
 }
 
-//# include "debug.h"
-//# include "builtins.h"
-# include "parse_tokens.h"
-int	main(int ac, char **av, char **e)
-{
-	char **env = arrstr_dup(e);
-	ac += 0;
-	av += 0;
-	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
-	pwd_builtin();
-	int err = cd_builtin(++av, env);
-	pwd_builtin();
-	printf("\t%d\n", err);
-}
+// # include "debug.h"
+// # include "builtins.h"
+// # include "parse_tokens.h"
+// int	main(int ac, char **av, char **e)
+// {
+// 	char **env = arrstr_dup(e);
+// 	ac += 0;
+// 	av += 0;
+// 	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
+// 	pwd_builtin();
+// 	int err = cd_builtin(++av, env);
+// 	pwd_builtin();
+// 	printf("\t%d\n", err);
+// }

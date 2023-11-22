@@ -133,16 +133,14 @@ t_list	**parse(t_list *tokens, int *exit_status)
 // 	char *s="echo hola! 'asdasdasd''asdasdasdasd' cat << EOF";
 
 // 	t_list *tokens = tokenize(s);
-	
+
 // 	print_lst(tokens, pr_token);
 
 // 	printf("\n==================\n\n");
 
 // 	int	exit_status;
 // 	t_list	**cmds;
-	
 // 	cmds = parse(tokens, &exit_status);
-
 // 	if (cmds)
 // 		print_cmds(cmds);
 // 	printf("\nExit status: %d\n", exit_status);

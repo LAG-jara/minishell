@@ -14,7 +14,7 @@
 
 // Converts the given xtoken to a token, losing the xchar flags and keeping the
 // token type.
-t_token		xtok_to_tok(t_xtoken *xtok)
+t_token	xtok_to_tok(t_xtoken *xtok)
 {
 	t_token	tok;
 

@@ -15,7 +15,7 @@
 // Allocates and adds 'str' at the end of 'xtok' with the given flags.
 void	xtok_adds(t_xtoken *xtok, char *str, int x_flag, int q_flag)
 {
-	t_xchar xc;
+	t_xchar	xc;
 
 	while (*str)
 	{

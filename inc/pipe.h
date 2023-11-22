@@ -24,7 +24,7 @@ typedef struct s_pipe {
 	int	next_fds[2];
 }	t_pipe;
 
-pid_t	fork_or_die();
+pid_t	fork_or_die(void);
 void	pipe_or_die(int fd_pipe[2]);
 void	link_read_end(int *fd_pipe);
 void	link_write_end(int *fd_pipe);

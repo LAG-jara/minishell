@@ -48,23 +48,19 @@ int	find_var_index(const char *varname, char **env)
 	i = -1;
 	while (env[++i])
 	{
-		if (ft_strncmp(env[i], varname, name_len) == 0 &&
+		if (ft_strncmp(env[i], varname, name_len) == 0 && \
 			env[i][name_len] == '=')
 			return (i);
 	}
 	return (-1);
 }
-
-
 // # include "debug.h"
 // # include "builtins.h"
 // # include "parse_tokens.h"
-
 // int	main(int ac, char **av, char **e)
 // {
 // 	char **env = arrstr_dup(e);
 // 	ac += 0;
 // 	av += 0;
 // 	printf("%d\n",find_var_index(av[1], env));
-	
 // }

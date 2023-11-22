@@ -15,9 +15,9 @@
 #include <unistd.h>
 #include <stdio.h>
 
-static int is_flag(char *word)
+static int	is_flag(char *word)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (word[i++] != '-')
@@ -26,12 +26,12 @@ static int is_flag(char *word)
 		++i;
 	if (word[i])
 		return (FALSE);
-	return(TRUE);
+	return (TRUE);
 }
 
-static int get_flag(char **word)
+static int	get_flag(char **word)
 {
-	int idx;
+	int	idx;
 
 	idx = 0;
 	while (is_flag(word[idx]))
@@ -47,8 +47,8 @@ echo [-n] [arg ...]
 */
 int	echo_builtin(char **word)
 {
-	int first;
-	int flag;
+	int	first;
+	int	flag;
 
 	first = 0;
 	flag = get_flag(word);

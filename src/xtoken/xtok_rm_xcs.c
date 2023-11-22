@@ -13,7 +13,7 @@
 #include "xtoken.h"
 
 // Removes all ocurrences of 'to_rm' from the given xtoken.
-void		xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm)
+void	xtok_rm_xcs(t_xtoken *xtok, t_xchar *to_rm)
 {
 	t_xchar	xc;
 	t_list	*curr_node;

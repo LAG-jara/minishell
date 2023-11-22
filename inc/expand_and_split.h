@@ -26,5 +26,4 @@ void	split_words(t_list **xtokens);
 void	remove_quotes(t_list **xtoken);
 t_list	*normalize(t_list **xtokens);
 
-
 #endif

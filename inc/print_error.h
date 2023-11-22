@@ -30,9 +30,9 @@
 # include <stdlib.h>
 
 int		print_err_syntax(const char *token, int ret);
-int 	print_err_argc();
+int		print_err_argc(void);
 void	print_err_exec(const char *cmdname);
 void	print_err_filename(const char *filename);
-int		print_err_heredoc();
+int		print_err_heredoc(void);
 
 #endif

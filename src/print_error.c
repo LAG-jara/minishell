@@ -26,7 +26,7 @@ int	print_err_syntax(const char *token, int ret)
 
 // Prints the an error message regarding a wrong arguments amount and returns
 // the corresponding exit code.
-int	print_err_argc()
+int	print_err_argc(void)
 {
 	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
 	return (EXIT_WRONGAC);
@@ -37,7 +37,7 @@ void	print_err_exec(const char *cmdname)
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putstr_fd(cmdname, STDERR_FILENO);						
+	ft_putstr_fd(cmdname, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	if (errno == ENOENT)
 		ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
@@ -57,10 +57,10 @@ void	print_err_filename(const char *filename)
 
 // Prints an error message regarding the here document and returns a non-zero
 // exit code.
-int	print_err_heredoc()
+int	print_err_heredoc(void)
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
 	return (EXIT_FAILURE);
-} 
+}

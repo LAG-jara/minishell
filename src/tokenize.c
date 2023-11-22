@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "tokenize.h"
-# include "debug.h"
+#include "debug.h"
 
 // Given that 'str' points to a quote character, returns the distance to the
 // next quote character of the same kind.
@@ -44,7 +44,6 @@ static int	toklen(const char *str)
 	{
 		if (is_quotechr(*(str + len)))
 			len += distance_next_quote(str + len);
-		// else
 		++len;
 	}
 	return (len);
@@ -95,7 +94,7 @@ t_list	*tokenize(const char *input)
 // 	char *s="echo hola! < | caca || >>> 'esto es una cadena sin cerrar";
 
 // 	t_list *tokens = tokenize(s);
-	
+
 // 	print_lst(tokens, pr_token);
 
 // 	return (0);

@@ -21,8 +21,8 @@
 
 int	exec_builtin(char **args, char ***env)
 {
-	int flag;
-	int exit_status;
+	int	flag;
+	int	exit_status;
 
 	if (!ft_strncmp(args[0], "cd", 3))
 		exit_status = cd_builtin(++args);

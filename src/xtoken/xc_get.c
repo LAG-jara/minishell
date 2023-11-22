@@ -13,7 +13,7 @@
 #include "xtoken.h"
 
 // Given a xchar list 'node' returns its 'xchar' value
-t_xchar		xc_get(t_list *node)
+t_xchar	xc_get(t_list *node)
 {
 	t_xchar	xc;
 

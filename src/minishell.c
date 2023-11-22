@@ -31,4 +31,4 @@ void	minish_loop(char **env)
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 	}
-}   
+}

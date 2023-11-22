@@ -22,9 +22,8 @@ pwd
 */
 int	pwd_builtin(void)
 {
-	char *buffer;
+	char	*buffer;
 
-	
 	buffer = NULL;
 	buffer = getcwd(buffer, 42);
 	if (!buffer)
@@ -34,8 +33,6 @@ int	pwd_builtin(void)
 	free(buffer);
 	return (0);
 }
-
-
 // int	main(int ac, char **av, char **e)
 // {
 // 	// char **env = arrstr_dup(e);
@@ -44,12 +41,10 @@ int	pwd_builtin(void)
 // 	e += 0;
 // 	// char *pre_toks[] = \
 // 	// { "hola", "final", NULL};
-
 // 	// t_list	**cmds;
 // 	// cmds = parse(pre_toks);
 // 	// if (cmds)
 // 	// 	print_cmds(cmds);
-
 // 	pwd_builtin();
 // 	//lst_clear(cmds, tok_del);
 // 	//free(cmds);

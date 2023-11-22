@@ -55,7 +55,7 @@ t_token	tok_create(const char *str)
 	return (token);
 }
 
-void tok_del(void *tok)
+void	tok_del(void *tok)
 {
 	free(((t_token *)tok)->val);
 	free(tok);
