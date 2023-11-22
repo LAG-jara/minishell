@@ -13,7 +13,7 @@
 #include "basic_utils.h"
 
 // Retuns a pointer to the first occurrence of 'c' in str.
-// If there aren't, returns NULL.
+// If there aren't, returns a pointer.
 char	*ft_strchr(const char *str, char c)
 {
 	while (str && *str)
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *str, char c)
 			return ((char *)str);
 		str++;
 	}
-	return (NULL);
+	return ((char *)str);
 }
 
 // Returns an integer greater than, equal to, or less than 0, according as the 
