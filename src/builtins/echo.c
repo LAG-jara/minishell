@@ -51,6 +51,11 @@ int	echo_builtin(char **word)
 	int	flag;
 
 	first = 0;
+	if (!*word)
+	{
+		printf("\n");
+		return (0);
+	}
 	flag = get_flag(word);
 	word += flag;
 	while (*word)
