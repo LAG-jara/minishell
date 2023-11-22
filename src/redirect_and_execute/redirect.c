@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 13:11:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:27:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "token_utils.h"
 
 // Performs the redirection defined by 'redir', taking 'str' as the following 
-// token. In the case of here documents, quote-removal is performed to 'str'. 
+// token. In the case of here documents, quote-removal is performed to 'str'.
+// Returns the appropriate exit code after printing any error message.
 static int	redirect_one(char *redir, char *str, char **env)
 {
 	int	expand;
@@ -31,6 +32,7 @@ static int	redirect_one(char *redir, char *str, char **env)
 		expand = delim_quote_remove(&str);
 		return (link_heredoc(str, expand, env));
 	}
+	return (EXIT_FAILURE);
 }
 
 // Performs all redirections of the current command, from left-to-right,

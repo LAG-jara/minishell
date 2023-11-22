@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:00:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:02:01 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:34:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # define WRITE_END	1					// pipe's write end index
 
 typedef struct s_pipe {
-	size_t	cmds_amount;
-	int		prev_fds[2];
-	int		next_fds[2];
+	int	cmds_amount;
+	int	prev_fds[2];
+	int	next_fds[2];
 }	t_pipe;
 
 pid_t	fork_or_die();

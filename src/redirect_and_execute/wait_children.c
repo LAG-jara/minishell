@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:18:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:22:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:40:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	wait_children(pid_t last_pid, size_t n)
 {
 	pid_t	pid;
-	int		i;
+	size_t	i;
 	int		status;
 	int		ret_status;
 

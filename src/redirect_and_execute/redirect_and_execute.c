@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/17 18:26:38 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:34:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static int	process_builtin_here(t_list *cmd, char ***env)
 static int	process_command(t_pipe *p, int i, t_list *cmd, char **env)
 {
 	int		exit_stat;
-	char	**args;
-	char	**e;
 
 	exit_stat = redirect(&cmd, env);
 	if (exit_stat != 0)

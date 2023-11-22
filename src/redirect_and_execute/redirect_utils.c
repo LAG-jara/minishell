@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:35:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:44:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_file.h"
+#include "print_error.h"
 #include "stdlib.h"
 
 // Opens the file 'filename' and links it to the standard input.
@@ -28,7 +29,7 @@ int	link_input_file(const char *filename)
 		err = close(fd_file);
 	if (err)
 	{
-		print_errno_msg(filename);
+		print_err_filename(filename);
 		return (EXIT_FAILURE);
 	}
 	return (0);

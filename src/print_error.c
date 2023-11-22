@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:32:29 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:44:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,4 @@ int	print_err_heredoc()
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
 	return (EXIT_FAILURE);
-}
+} 
