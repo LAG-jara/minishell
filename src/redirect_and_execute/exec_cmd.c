@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 14:07:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:50:31 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "basic_utils.h"
-# include "env.h"
-# include "list.h"
-# include "print_error.h"
+#include "basic_utils.h"
+#include "env.h"
+#include "list.h"
+#include "print_error.h"
 
 // Exits with the appropriate exit code after printing an error message.
 static void	err_exec(const char *cmdname)

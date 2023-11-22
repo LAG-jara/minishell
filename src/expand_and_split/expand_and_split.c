@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/17 18:13:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:56:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Expands the variables of the command 'cmd' (as a list of tokens) and splits
 // words if needed. Finally, performs quote removal and returns the result.
-static t_list *expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
+static t_list	*expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 {
 	t_list	*new_cmd;
 	t_list	*xtoks;
@@ -40,7 +40,6 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 	return (commands);
 }
 
-
 // # include "debug.h"
 // # include "parse_tokens.h"
 // # include "tokenize.h"
@@ -52,11 +51,10 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 // 	char **env = arrstr_dup(e);
 // 	int exit_status;
 // 	char *input = "cd directorio \"$USER\" caca > uno '$USER' > caca | echo $USER | rm -fr *";
-	
+
 // 	t_list	*tokens = tokenize(input);
 // 	// printf("\n___________________TOKENIZE\n");
 // 	// print_lst(tokens, pr_token);
-
 
 // 	t_list	**cmds;
 // 	cmds = parse(tokens, &exit_status);
@@ -65,11 +63,10 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 // 		print_cmds(cmds);
 // 	printf("Exit status: %d\n", exit_status);
 
-
 // 	cmds = expand_and_split(cmds, exit_status, env);
 // 	printf("\n___________EXPAND AND SPLIT\n");
 // 	print_cmds(cmds);
-	
+
 // 	env_free(env);
 // 	lst_clear(cmds, tok_del);
 // 	free(cmds);

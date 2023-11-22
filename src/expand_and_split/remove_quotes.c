@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 17:33:39 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:57:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@ static void	remove_quotes_xtok(t_xtoken *xtok)
 	t_xchar	quote;
 	t_xchar	dquote;
 
-	if(xtok->type != WORD)
+	if (xtok->type != WORD)
 		return ;
 	quote = xc_new('\'', UNEXPANDED, UNQUOTED);
 	dquote = xc_new('"', UNEXPANDED, UNQUOTED);
 	xtok_rm_xcs(xtok, &quote);
 	xtok_rm_xcs(xtok, &dquote);
-	// print_xtoken(*xtok);
 }
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.

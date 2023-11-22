@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 13:11:43 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 12:03:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:57:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*normalize(t_list **xtokens)
 {
 	t_list	*cmd;
 	t_list	*xtok;
-	t_token tok;
+	t_token	tok;
 	t_list	*new_tok;
 
 	cmd = NULL;
@@ -30,6 +30,5 @@ t_list	*normalize(t_list **xtokens)
 		lst_add(&cmd, new_tok);
 		xtok = xtok->nxt;
 	}
-	// TODO: LIBERAR XTOKENS
 	return (cmd);
 }

@@ -6,18 +6,18 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 16:52:16 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 16:52:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:52:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "pipe.h"
-# include "stdlib.h"
-# include "unistd.h"
+#include "pipe.h"
+#include "stdlib.h"
+#include "unistd.h"
 
 // Creates a new process (using fork()) returning 0 to the child process and the
 // pid of the child to the parent.
 // On failure, prints an error message (TODO) and exits.
-pid_t	fork_or_die()
+pid_t	fork_or_die(void)
 {
 	pid_t	pid;
 

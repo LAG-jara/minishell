@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:27:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:51:38 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	redirect(t_list **cmd, char **env)
 	t_token	tok;
 
 	exit_stat = 0;
-	node = *cmd;	
+	node = *cmd;
 	while (node && exit_stat == 0)
-	{	
+	{
 		tok = tok_get(node);
 		if (tok.type == REDIR && node->nxt)
 		{

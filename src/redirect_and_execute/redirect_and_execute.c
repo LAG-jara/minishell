@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:34:02 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:53:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,39 +98,39 @@ void	redirect_and_execute(t_list **commands, int *exit_status, char ***env)
 		*exit_status = process_builtin_here(commands[0], env);
 	else
 		*exit_status = process_commands(commands, &p, *env);
- }
-
-# include "debug.h"
-# include "parse_tokens.h"
-# include "tokenize.h"
-# include "expand_and_split.h"
-
-int	main(int ac, char **av, char **e)
-{
-	av++;
-	ac--;
-	char **env = arrstr_dup(e);
-	int exit_status;
-	char *input = "ls";
-	
-	t_list	*tokens = tokenize(input);
-	// printf("\n___________________TOKENIZE\n");
-	// print_lst(tokens, pr_token);
-
-
-	t_list	**cmds;
-	cmds = parse(tokens, &exit_status);
-	printf("\n______________________PARSE\n");
-	if (cmds)
-		print_cmds(cmds);
-	printf("Exit status: %d\n", exit_status);
-
-
-	cmds = expand_and_split(cmds, exit_status, env);
-	printf("\n___________EXPAND AND SPLIT\n");
-	print_cmds(cmds);
-	
-	env_free(env);
-	lst_clear(cmds, tok_del);
-	free(cmds);
 }
+
+// # include "debug.h"
+// # include "parse_tokens.h"
+// # include "tokenize.h"
+// # include "expand_and_split.h"
+
+// int	main(int ac, char **av, char **e)
+// {
+// 	av++;
+// 	ac--;
+// 	char **env = arrstr_dup(e);
+// 	int exit_status;
+// 	char *input = "ls";
+
+// 	t_list	*tokens = tokenize(input);
+// 	// printf("\n___________________TOKENIZE\n");
+// 	// print_lst(tokens, pr_token);
+
+
+// 	t_list	**cmds;
+// 	cmds = parse(tokens, &exit_status);
+// 	printf("\n______________________PARSE\n");
+// 	if (cmds)
+// 		print_cmds(cmds);
+// 	printf("Exit status: %d\n", exit_status);
+
+
+// 	cmds = expand_and_split(cmds, exit_status, env);
+// 	printf("\n___________EXPAND AND SPLIT\n");
+// 	print_cmds(cmds);
+	
+// 	env_free(env);
+// 	lst_clear(cmds, tok_del);
+// 	free(cmds);
+// }

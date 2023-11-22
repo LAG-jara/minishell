@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/17 18:12:38 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 12:53:58 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	expand_exit_stat(t_list **lst, t_list **node, int exit_status)
 	lst_add_many(lst, *node, expanded_lst);
 	*node = lst_move(*node, 2);
 	if (!*node)
-		lst_rm_many(lst, lst_move(lst_last(*lst), - 1), 2, free);
+		lst_rm_many(lst, lst_move(lst_last(*lst), -1), 2, free);
 	else
 		lst_rm_many(lst, lst_move(*node, -2), 2, free);
 }
