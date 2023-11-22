@@ -34,7 +34,7 @@ static int	get_flag(char **word)
 	int	idx;
 
 	idx = 0;
-	while (is_flag(word[idx]))
+	while (word[idx] && is_flag(word[idx]))
 		++idx;
 	return (idx);
 }
@@ -51,11 +51,6 @@ int	echo_builtin(char **word)
 	int	flag;
 
 	first = 0;
-	if (!*word)
-	{
-		printf("\n");
-		return (0);
-	}
 	flag = get_flag(word);
 	word += flag;
 	while (*word)
