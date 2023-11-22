@@ -48,12 +48,15 @@ char	*get_var(const char *varname, char **env)
 
 // Allocates and returns a NULL-terminated array of strings containing the
 // values of the colon-separated environment value 'varname'.
+// If 'varname' does not exist, returns NULL.
 char	**get_vars(const char *varname, char **env)
 {
 	char	*value;
 	char	**values;
 
 	value = get_var(varname, env);
+	if (!value)
+		return (NULL);
 	values = ft_split(value, ':');
 	return (values);
 }

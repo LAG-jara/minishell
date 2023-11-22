@@ -20,7 +20,8 @@ exit
 */
 void	exit_builtin(char **args)
 {
-	args +=0;
+	// TODO : checkear numero de argumentos y si es numerico (int) %256.
+	args+=0;
 	write(1, "exit\n", 5);
 	// TODO : Añadir exit_status del exit
 	exit(0);

@@ -54,7 +54,7 @@ void	exec_cmd(char **cmd, char **env)
 	{
 		paths = get_vars("PATH", env);
 		i = -1;
-		while (paths[++i])
+		while (paths && paths[++i])
 		{
 			path = get_full_path(paths[i], args[0]);
 			execve(path, args, env);

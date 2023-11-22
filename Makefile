@@ -88,6 +88,16 @@ SRC			= main.c \
 			xtoken/xtok_to_tok.c \
 			xtoken/xtoklst_clear.c
 
+DEPDIRS		= $(DEPDIR)arrstr/ \
+			$(DEPDIR)basic_utils/ \
+			$(DEPDIR)builtins/ \
+			$(DEPDIR)env/ \
+			$(DEPDIR)expand_and_split/ \
+			$(DEPDIR)get_next_line/ \
+			$(DEPDIR)list/ \
+			$(DEPDIR)redirect_and_execute/ \
+			$(DEPDIR)xtoken/
+
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))
 
@@ -129,25 +139,28 @@ all:		$(NAME)
 
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
-			@mkdir -p $(DEPDIR)
+#			@mkdir -p $(DEPDIR) $(DEPDIRS)
 			@$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ $(INCFLAG)
-			@echo "$@ compiled"
-			
-# @mv $(OBJDIR)*.d $(DEPDIR)
+			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
+#			@mv $(OBJDIR)*.d $(DEPDIR)
 
-$(NAME):	$(OBJS) $(MKF)
+$(NAME)::	$(OBJS) $(MKF)
 			@$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) -o $(NAME) $(INCFLAG) $(RLFLAGS) 
-			@echo "$(BGREEN)$@ created!$(DEFAULT)\n"
+			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
+
+$(NAME)::	
+			@@echo "$(BLUE)[ All done already ]$(DEFAULT)"
 
 clean:
 			@$(RM) $(OBJDIR) $(DEPDIR)
-			@echo "$(YELLOW)[ Object files cleared ]$(DEFAULT)"
+			@echo "$(BRED)[ Object files cleared ]$(DEFAULT)"
 
-fclean:		
-			@$(RM) $(OBJDIR) $(NAME) $(DEPS)
-			@echo "$(YELLOW)[ All created files cleared ]$(DEFAULT)"
+fclean:		clean
+			@$(RM) $(NAME)
+			@echo "$(RED)[ All created files cleared ]$(DEFAULT)"
 
 re:			fclean all
+			@echo "$(BBLUE)[ All cleared and compiled ]$(DEFAULT)"
 
 norm:
 			@norminette $(SRCDIR)* $(INCDIR)*

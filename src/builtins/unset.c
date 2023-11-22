@@ -20,13 +20,22 @@ unset [name ...]
 	The exit status is true unless a name is readonly.
 */
 
-int	unset_builtin(char **argv, char ***env)
+int	unset_builtin(char **args, char ***env)
 {
-	int		i;
+	int	i;
 
 	i = -1;
-	while (argv[++i])
-		rm_env_var(argv[i], env);
+	// while (argv[++i])
+	// 	rm_env_var(argv[i], env);
+	// return (0);
+
+	while (args[++i])
+	{
+		if (valid_varname(args[i]))
+			rm_env_var(varname, word + i, env);
+		else
+			print_err_identifier(); // "bash: unset: `_a=pepe': not a valid identifier"
+	}
 	return (0);
 }
 
