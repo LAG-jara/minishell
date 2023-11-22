@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "builtins.h"
+#include "basic_utils.h"
+
 /*
 *	'args' being a NULL-terminated array of strings, representing the arguments
 *	passed to the builting (including its name).
@@ -18,25 +20,24 @@
 *	Incorrect arguments or errors on execution must be handled by the builtin
 *	function, printing the error message and returning the expected value.
 */
-
 int	exec_builtin(char **args, char ***env)
 {
-	int	flag;
 	int	exit_status;
 
+	exit_status = 42;
 	if (!ft_strncmp(args[0], "cd", 3))
-		exit_status = cd_builtin(++args);
+		exit_status = cd_builtin(++args, *env);
 	else if (!ft_strncmp(args[0], "echo", 5))
 		exit_status = echo_builtin(++args);
 	else if (!ft_strncmp(args[0], "env", 4))
-		exit_status = env_builtin(env, ++args);
+		exit_status = env_builtin(*env);
 	else if (!ft_strncmp(args[0], "exit", 5))
 		exit_status = exit_builtin(args);
 	else if (!ft_strncmp(args[0], "export", 7))
 		exit_status = export_builtin(++args, env);
 	else if (!ft_strncmp(args[0], "pwd", 4))
-		exit_status = pwd_builtin(++args);
+		exit_status = pwd_builtin();
 	else if (!ft_strncmp(args[0], "unset", 6))
-		exit_status = unset_builtin(++args, *env);
+		exit_status = unset_builtin(++args, env);
 	return (exit_status);
 }

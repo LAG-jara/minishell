@@ -15,6 +15,7 @@
 #include "definitions.h"
 #include "env.h"
 #include <unistd.h>
+#include <errno.h>
 
 #include "get_next_line.h" // TODO : ver leaks porque no se yo
 
@@ -94,7 +95,8 @@ int	cd_builtin(char **word, char **env)
 	i = -1;
 	if (*word == NULL)
 	{
-		ret = access(get_var("HOME", env));
+		ret = access(get_var("HOME", env), X_OK);
+		ret = chdir(get_var("HOME", env));
 		if (ret != 0)
 			return (errno);
 		return (ret);
@@ -104,10 +106,10 @@ int	cd_builtin(char **word, char **env)
 		if (try_cdpath(*word, env))
 			return (pwd_builtin());
 	}
-	ret = access(*word);
+	ret = access(*word, X_OK);
 	ret = chdir(*word);
 	if (ret != 0)
-		return (errnoq);
+		return (errno);
 	return (ret);
 }
 

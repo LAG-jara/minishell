@@ -16,7 +16,7 @@
 void	minish_loop(char **env)
 {
 	char	*input;
-	char	**tokens;
+	t_list	*tokens;
 	t_list	**commands;
 	int		exit_status;
 
