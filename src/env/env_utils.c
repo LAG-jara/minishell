@@ -37,8 +37,8 @@ void	env_free(char **env)
 	arrstr_free(env);
 }
 
-// DEPRECATED: not working
-
+// Check if the string has a proper name for an environment variable before
+// any '=' if exists. Returns the valid varname or NULL if invalid.
 char	*get_varname(char *str)
 {
 	int		len;
@@ -46,7 +46,10 @@ char	*get_varname(char *str)
 
 	if (!str)
 		return (NULL);
-	len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
+	if (!ft_strchr(str, '='))
+		len = ft_strlen(str);
+	else
+		len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
 	varname = ft_strdup(str);
 	varname[len] = '\0';
 	if (!str || !valid_varname(varname))
