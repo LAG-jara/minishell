@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:58:36 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 15:24:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:30:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,3 @@ char	*get_input(void)
 		add_history(str);
 	return (str);
 }
-
-
-// int main()
-// {
-// 	while (42)
-// 	{
-// 		char *str = readline(PROMPT);
-// 		printf("I got: %s\n", str);
-// 	}
-// }
