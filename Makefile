@@ -2,19 +2,92 @@ NAME		= minishell
 MKF			= Makefile
 
 # Sources
-SRC			= get_input.c input_utils.c main.c minishell.c parse_bak.c parse.c \
-			print_error.c quote_utils.c tokenize_bak.c tokenize.c \
-			arrstr/arrstr_add.c arrstr/arrstr_dup.c arrstr/arrstr_free.c \
-			arrstr/arrstr_rm.c arrstr/arrstr_set.c arrstr/arrstr_size.c \
-			basic_utils/utils_arr.c basic_utils/utils_char.c \
-			basic_utils/utils_itoa.c basic_utils/utils_p_malloc.c \
-			basic_utils/utils_putstr.c basic_utils/utils_split.c \
-			basic_utils/utils_str.c basic_utils/utils_strjoin.c \
-			basic_utils/utils_strlcat.c basic_utils/utils_substr.c \
-			builtins/builtin_utils.c builtins/cd.c builtins/echo.c \
-			builtins/env.c builtins/exec_builtin.c builtins/exit.c builtins/export.c builtins/pwd.c builtins/unset.c \
-			
-			
+SRC			= main.c \
+			minishell.c \
+			get_input.c \
+			input_utils.c \
+			parse.c \
+			print_error.c \
+			quote_utils.c \
+			token_utils.c \
+			tokenize.c \
+			arrstr/arrstr_add.c \
+			arrstr/arrstr_dup.c \
+			arrstr/arrstr_free.c \
+			arrstr/arrstr_rm.c \
+			arrstr/arrstr_set.c \
+			arrstr/arrstr_size.c \
+			basic_utils/utils_arr.c \
+			basic_utils/utils_char.c \
+			basic_utils/utils_itoa.c \
+			basic_utils/utils_p_malloc.c \
+			basic_utils/utils_putstr.c \
+			basic_utils/utils_split.c \
+			basic_utils/utils_str.c \
+			basic_utils/utils_strjoin.c \
+			basic_utils/utils_strlcat.c \
+			basic_utils/utils_substr.c \
+			builtins/builtin_utils.c \
+			builtins/cd.c \
+			builtins/echo.c \
+			builtins/env.c \
+			builtins/exec_builtin.c \
+			builtins/exit.c \
+			builtins/export.c \
+			builtins/pwd.c \
+			builtins/unset.c \
+			env/env_find.c \
+			env/env_get.c \
+			env/env_set.c \
+			env/env_utils.c \
+			expand_and_split/expand.c \
+			expand_and_split/expand_and_split.c \
+			expand_and_split/normalize.c \
+			expand_and_split/remove_quotes.c \
+			expand_and_split/split_words.c \
+			get_next_line/get_next_line.c \
+			get_next_line/gnl_utils.c \
+			list/lst_add.c \
+			list/lst_add_many.c \
+			list/lst_clear.c \
+			list/lst_delone.c \
+			list/lst_first.c \
+			list/lst_last.c \
+			list/lst_link.c \
+			list/lst_move.c \
+			list/lst_new.c \
+			list/lst_rm_many.c \
+			list/lst_rm_one.c \
+			list/lst_size.c \
+			list/lst_split.c \
+			redirect_and_execute/delim_quote_remove.c \
+			redirect_and_execute/exec_cmd.c \
+			redirect_and_execute/execute.c \
+			redirect_and_execute/expand_vars.c \
+			redirect_and_execute/heredoc.c \
+			redirect_and_execute/open_file.c \
+			redirect_and_execute/pipe_utils.c \
+			redirect_and_execute/redirect.c \
+			redirect_and_execute/redirect_and_execute.c \
+			redirect_and_execute/redirect_utils.c \
+			redirect_and_execute/wait_children.c \
+			xtoken/str_to_xclst.c \
+			xtoken/tok_to_xtok.c \
+			xtoken/xc_get.c \
+			xtoken/xc_new.c \
+			xtoken/xclst_to_str.c \
+			xtoken/xtok_add_many.c \
+			xtoken/xtok_addc.c \
+			xtoken/xtok_adds.c \
+			xtoken/xtok_addxc.c \
+			xtoken/xtok_get.c \
+			xtoken/xtok_rm_many.c \
+			xtoken/xtok_rm_one.c \
+			xtoken/xtok_rm_xcs.c \
+			xtoken/xtok_strncmp.c \
+			xtoken/xtok_to_tok.c \
+			xtoken/xtoklst_clear.c
+
 SRCDIR		= src/
 SRCS		= $(addprefix $(SRCDIR), $(SRC))
 
