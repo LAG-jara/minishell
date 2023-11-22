@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 17:08:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:07:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 16:08:16 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 // If there aren't, returns NULL.
 char	*ft_strchr(const char *str, char c)
 {
-	while (str && *str != c)
+	while (str && *str)
+	{
+		if (*str == c)
+			return ((char *)str);
 		str++;
-	return ((char *)str);
+	}
+	return (NULL);
 }
 
 // Returns an integer greater than, equal to, or less than 0, according as the 
