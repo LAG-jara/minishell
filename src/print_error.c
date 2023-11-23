@@ -64,8 +64,3 @@ int	print_err_heredoc(void)
 	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
-
-int	print_err_identifier(const char *identifier)
-{
-	//bash: unset: `_aaaa222asd=pepe': not a valid identifier
-}

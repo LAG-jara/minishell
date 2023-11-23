@@ -12,19 +12,28 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include "definitions.h"
 
 /*
 exit 
 	Prints “exit” followed by a newline before closing the shell. 
 	The exit status is that of the last command executed.
 */
-void	exit_builtin(char **args)
+void	exit_builtin(char **args, int exit_status)
 {
-	// TODO : checkear numero de argumentos y si es numerico (int) %256.
-	args+=0;
+	long long	exit_status;
+
 	write(1, "exit\n", 5);
-	// TODO : Añadir exit_status del exit
-	exit(0);
+	if (*args == FALSE)
+		exit(exit_status);	// TODO: Last command executed?????
+	if (is_longlong(args[0]) == FALSE)
+		// Error de numeric argument required hace salir de bash. exit_status 255
+		
+	if (args[1] == TRUE)
+		// Comprueba que no hayan más argumentos.
+		// Error de too many arguments y no sale. exit_status de EXIT_FALIURE
+	exit_status = ft_atoll(args[0]);
+	exit(exit_status % 256);
 }
 
 // # include "debug.h"

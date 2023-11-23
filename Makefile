@@ -27,6 +27,7 @@ SRC			= main.c \
 			basic_utils/utils_strjoin.c \
 			basic_utils/utils_strlcat.c \
 			basic_utils/utils_substr.c \
+			builtins/builtin_print_error.c \
 			builtins/builtin_utils.c \
 			builtins/cd.c \
 			builtins/echo.c \

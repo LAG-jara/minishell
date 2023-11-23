@@ -20,7 +20,7 @@
 *	Incorrect arguments or errors on execution must be handled by the builtin
 *	function, printing the error message and returning the expected value.
 */
-int	exec_builtin(char **args, char ***env)
+int	exec_builtin(char **args, int exit_status, char ***env)
 {
 	int	exit_status;
 
@@ -32,11 +32,11 @@ int	exec_builtin(char **args, char ***env)
 	else if (!ft_strncmp(args[0], "env", 4))
 		exit_status = env_builtin(*env);
 	else if (!ft_strncmp(args[0], "exit", 5))
-		exit_status = exit_builtin(args);
+		exit_status = exit_builtin(++args, exit_status);
 	else if (!ft_strncmp(args[0], "export", 7))
 		exit_status = export_builtin(++args, env);
 	else if (!ft_strncmp(args[0], "pwd", 4))
-		exit_status = pwd_builtin();
+		exit_status = pwd_builtin(void);
 	else if (!ft_strncmp(args[0], "unset", 6))
 		exit_status = unset_builtin(++args, env);
 	return (exit_status);

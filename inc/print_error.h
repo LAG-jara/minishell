@@ -13,13 +13,19 @@
 #ifndef PRINT_ERROR_H
 # define PRINT_ERROR_H
 
-# define MSG_SYNTERR 		"syntax error near token"
-# define EXIT_SYNTERR 		258
-# define MSG_WRONGAC 		"wrong arguments amount"
-# define EXIT_WRONGAC 		2
+# define MSG_SYNTERR		"syntax error near token"
+# define EXIT_SYNTERR		258
+# define MSG_WRONGAC		"wrong arguments amount"
+# define EXIT_WRONGAC		2
 # define MSG_CMD_NOT_FOUND	"command not found"
 # define EXIT_CMD_NOT_FOUND	127
 # define MSG_HEREDOC_ERR	"here document error"
+
+//BUITIN DEFINITIONS
+# define MSG_NUMARG 		"numeric argument required"
+# define EXIT_NUMARG 		255
+//# define MSG_MANY_ARGS 		"too many arguments"
+# define MSG_IDENTERR 		"not a valid identifier"
 
 # include "basic_utils.h"
 # include "minish_consts.h"
@@ -34,5 +40,10 @@ int		print_err_argc(void);
 void	print_err_exec(const char *cmdname);
 void	print_err_filename(const char *filename);
 int		print_err_heredoc(void);
+
+// BUILTIN ERRORS
+int		print_err_identifier(const char *identifier);
+int		print_err_too_many_arg(void);
+int		print_err_numeric_arg(const char *arg);
 
 #endif
