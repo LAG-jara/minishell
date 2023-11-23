@@ -61,6 +61,8 @@ static int	is_longlong(char *arg)
 		++i;
 	while (arg[i] && ((arg[i] <= '9' && arg[i] >= '0')))
 		++i;
+	if (arg[i])
+		return (FALSE);
 	return (ft_check_llong(arg));
 }
 
