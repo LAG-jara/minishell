@@ -13,28 +13,88 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "definitions.h"
+#include "print_error.h"
+#include "input_utils.h"
+#include "basic_utils.h"
+
+static int	ft_check_llong(char *arg)
+{
+	int		len;
+	char	sign;
+
+	sign = '+';
+	if (*arg == '-' || *arg == '+')
+	{
+		sign = *arg;
+		arg++;
+	}
+	while (*arg == '0')
+		arg++;
+	len = ft_strlen(arg);
+	if (len > 19)
+		return (FALSE);
+	if (len == 19)
+	{
+		if (sign == '-')
+			len = ft_strncmp(arg, "9223372036854775808", 19);
+		else
+			len = ft_strncmp(arg, "9223372036854775807", 19);
+		if (len > 0)
+			return (FALSE);
+	}
+	return (TRUE);
+}
+// -9223372036854775808 > 9223372036854775807
+
+static int	is_longlong(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if (arg[i] == '-' || arg[i] == '+')
+	{
+		if (arg[i + 1] == 0)
+			return (FALSE);
+		++i;
+	}
+	while (arg[i] == '0')
+		++i;
+	while (arg[i] && ((arg[i] <= '9' && arg[i] >= '0')))
+		++i;
+	return (ft_check_llong(arg));
+}
+
 
 /*
 exit 
 	Prints “exit” followed by a newline before closing the shell. 
-	The exit status is that of the last command executed.
+	If no arguments are passed, the exit status is that of the last command
+	executed.
+	If a number(long long) is passed as argument, exits with the % 256 of that
+	number.
 */
-void	exit_builtin(char **args, int exit_status)
+int	exit_builtin(char **args, int exit_status)
 {
-	long long	exit_s =0;
+	long long	exit_s;
+	char		*str;
 
-	args+=0;
-	exit_status+=0;
 	write(1, "exit\n", 5);
-	// if (*args == FALSE)
-	// 	exit(exit_status);	// TODO: Last command executed?????
-	// if (is_longlong(args[0]) == FALSE)
-	// 	// Error de numeric argument required hace salir de bash. exit_status 255
-	// if (args[1] != NULL)
-	// 	// Comprueba que no hayan más argumentos.
-	// 	// Error de too many arguments y no sale. exit_status de EXIT_FALIURE
-	// exit_s = ft_atoll(args[0]);
-	exit(exit_s % 256);
+	if (*args == NULL)
+		exit(exit_status);
+	str = ft_strtrim(args[0], " \n\t\v\f\r");
+	if (is_longlong(str) == FALSE)
+	{
+		free(str);
+		exit(print_err_numeric_arg(args[0]));
+	}
+	if (args[1] == NULL)
+	{
+		exit_s = ft_atoll(str);
+		free(str);
+		exit(exit_s % 256);
+	}
+	free(str);
+	return (print_err_too_many_arg());
 }
 
 // # include "debug.h"

@@ -18,6 +18,7 @@ SRC			= main.c \
 			arrstr/arrstr_set.c \
 			arrstr/arrstr_size.c \
 			basic_utils/utils_arr.c \
+			basic_utils/utils_atoll.c \
 			basic_utils/utils_char.c \
 			basic_utils/utils_itoa.c \
 			basic_utils/utils_p_malloc.c \

@@ -23,7 +23,7 @@ static void	printvar(const char *var)
 	write(1, "\n", 1);
 }
 
-void	env_builtin(char **env)
+int	env_builtin(char **env)
 {
 	while (*env)
 	{
@@ -31,6 +31,7 @@ void	env_builtin(char **env)
 			printvar(*env);
 		env++;
 	}
+	return (0);
 }
 
 // # include "debug.h"
