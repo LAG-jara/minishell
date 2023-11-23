@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 13:16:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:16:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 		arrstr_free(e);
 		exit(exit_stat);
 	}
-	exec_cmd(args, env);
+	exec_cmd(args, exit_status, env);
 	exit(EXIT_FAILURE);
 }
