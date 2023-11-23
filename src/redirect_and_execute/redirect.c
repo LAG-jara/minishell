@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 18:14:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:41:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	redirect(t_list **cmd, char **env)
 {
 	int		exit_stat;
 	t_list	*node;
+	t_list	*nxt_node;
 	t_token	tok;
 
 	exit_stat = 0;
@@ -52,9 +53,12 @@ int	redirect(t_list **cmd, char **env)
 		if (tok.type == REDIR && node->nxt)
 		{
 			exit_stat = redirect_one(tok.val, tok_get(node->nxt).val, env);
+			nxt_node = lst_move(node, 2);
 			lst_rm_many(cmd, node, 2, tok_del);
+			node = nxt_node;
 		}
-		node = node->nxt;
+		else
+			node = node->nxt;
 	}
 	return (exit_stat);
 }
