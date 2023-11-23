@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:49:41 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:12:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,31 +46,24 @@ int	link_output_file(const char *filename, int append)
 	int	flags;
 	int	ret;
 
-	// printf("openning %s...\n", filename);
 	if (append)
 		flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
 		flags = O_WRONLY | O_CREAT | O_TRUNC;
 	fd_file = open_file(filename, flags);
-	// dprintf(STDERR_FILENO, "fd_file: %d\n", fd_file);
 	if (fd_file == -1)
 		return (EXIT_FAILURE);
 	ret = dup2(fd_file, STDOUT_FILENO);
-	// dprintf(STDERR_FILENO, "ret: %d\n", ret);
 	if (ret == -1)
 	{
-		// dprintf(STDERR_FILENO, "errorsito\n");
 		print_err_filename(filename);
 		return (EXIT_FAILURE);
 	}
 	ret = close(fd_file);
-	// dprintf(STDERR_FILENO, "ret: %d\n", ret);
 	if (ret == -1)
 	{
-		// dprintf(STDERR_FILENO, "errorsito\n");
 		print_err_filename(filename);
 		return (EXIT_FAILURE);
 	}
-	// dprintf(STDERR_FILENO, "todo OK\n");
 	return (EXIT_SUCCESS);
 }
