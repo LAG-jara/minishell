@@ -12,46 +12,47 @@
 
 #include "heredoc.h"
 
-// Allocates and returns a string representing the given list of chars 'clst'.
-static char	*clst_to_str(t_list *clst)
+// Returns TRUE if the null-terminated string 'word' has any ' or " character.
+// Otherwise, returns FALSE.
+int	has_quotes(const char *word)
 {
-	char	*str;
-	size_t	str_len;
-	int		i;
-
-	str_len = lst_size(clst);
-	str = (char *)p_malloc(sizeof(char) * (str_len + 1));
-	i = 0;
-	while (clst && clst->val)
-	{
-		str[i++] = *(char *)(clst->val);
-		clst = clst->nxt;
-	}
-	str[i] = '\0';
-	return (str);
+	if (!ft_strchr(word, '"') && !ft_strchr(word, '\''))
+		return (FALSE);
+	return (TRUE);
 }
 
 // Performs quote removal on 'word'.
-// Returns TRUE if any quote has been removed. Otherwise, returns FALSE.
-int	delim_quote_remove(char **word)
+void	delim_quote_remove(char **word)
 {
-	int		quote_removed;
-	t_list	*char_lst;
-	int		q_stat;
-	int		char_stat;
+	char	last_quote;
+	int		i;
+	int		j;
+	char	*str;
 
-	quote_removed = FALSE;
-	q_stat = UNQUOTED;
-	char_lst = NULL;
-	while (**word)
+	str = (char *)p_malloc(sizeof(char) * (ft_strlen(word[0])));
+	i = -1;
+	j = -1;
+	last_quote = 0;
+	while (word[0][++i])
 	{
-		char_stat = quote_stat(&q_stat, **word);
-		if ((**word != '"' && **word != '\'') || char_stat != UNQUOTED)
-			lst_add(&char_lst, lst_new(*word, sizeof(*word)));
+		if (last_quote != 0 && last_quote == word[0][i])
+			last_quote = 0;
+		else if (last_quote == 0 && is_quotechr(word[0][i]))
+			last_quote = word[0][i];
 		else
-			quote_removed = TRUE;
-		++word;
+			str[++j] = word[0][i];
 	}
-	*word = clst_to_str(char_lst);
-	return (quote_removed);
+	str[++j] = '\0';
+	*word = str;
 }
+
+// int main(void)
+// {
+// 	char	*str;
+// 	int		ret;
+
+// 	str = ft_strdup("\"holaa\" :3");
+// 	printf("original str: |%s|\n", str);
+// 	ret = delim_quote_remove(&str);
+// 	printf("str is now: |%s|\n(%d)\n", str, ret);
+// }

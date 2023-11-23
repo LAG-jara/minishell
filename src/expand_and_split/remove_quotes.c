@@ -6,12 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:57:59 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:08:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
 
+// Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 static void	remove_quotes_xtok(t_xtoken *xtok)
 {
 	t_xchar	quote;
@@ -25,17 +26,29 @@ static void	remove_quotes_xtok(t_xtoken *xtok)
 	xtok_rm_xcs(xtok, &dquote);
 }
 
-// Removes all unquoted ocurrences of ' and " that didn't result form expansion.
-// The 'tokens' are expanded and word-splitted.
-void	remove_quotes(t_list **xtokens)
+// For each word on the 'xtokens' list, removes all unquoted ocurrences of 
+// ' and " that didn't result form expansion (excluding those after << redirs).
+void	remove_quotes(t_list *xtokens)
 {
-	t_list	*xtoks;
+	t_xtoken	xtok;
+	t_list		*node;
+	int			skip_next;
 
-	xtoks = *xtokens;
-	while (xtoks)
+	skip_next = FALSE;
+	node = xtokens;
+	while (node)
 	{
-		remove_quotes_xtok((t_xtoken *)xtoks->val);
-		xtoks = xtoks->nxt;
+		xtok = xtok_get(node);
+		if (xtok.type == WORD)
+		{
+			if (skip_next)
+				skip_next = FALSE;
+			else
+				remove_quotes_xtok(&xtok);
+		}
+		else if (!xtok_strncmp(&xtok, "<<", 3))
+			skip_next = TRUE;
+		node = node->nxt;
 	}
 }
 

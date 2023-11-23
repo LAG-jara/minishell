@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:20:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:48:57 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_list	*expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 	xtoks = expand(cmd, exit_status, env);
 	lst_clear(&cmd, tok_del);
 	split_words(&xtoks);
-	remove_quotes(&xtoks);
+	remove_quotes(xtoks);
 	new_cmd = normalize(&xtoks);
 	xtoklst_clear(&xtoks);
 	return (new_cmd);
@@ -32,7 +32,7 @@ static t_list	*expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 // Finally, performs quote removal and returns the result.
 t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 {
-	int		i;
+	int	i;
 
 	i = -1;
 	while (commands[++i])

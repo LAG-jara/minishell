@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:33:23 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:03:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:27:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env);
 
 t_list	*expand(t_list *toks, int exit_status, char **env);
 void	split_words(t_list **xtokens);
-void	remove_quotes(t_list **xtoken);
+void	remove_quotes(t_list *xtokens);
 t_list	*normalize(t_list **xtokens);
 
 #endif

@@ -6,15 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 16:12:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:13:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_file.h"
 #include "print_error.h"
 #include <stdlib.h>
-
-# include "debug.h"
 
 // Opens the file 'filename' and links it to the standard input.
 // Returns the appropriate exit code after printing any error message.
