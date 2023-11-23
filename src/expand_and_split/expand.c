@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:53:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:39:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,23 +103,14 @@ t_list	*expand(t_list *toks, int exit_status, char **env)
 	t_list		*xtoks;
 	t_xtoken	xtok;
 	t_list		*node;
-	int			skip_next;
 
-	skip_next = FALSE;
 	xtoks = NULL;
 	node = toks;
 	while (node)
 	{
 		xtok = tok_to_xtok((t_token *)node->val);
 		if (xtok.type == WORD)
-		{
-			if (skip_next)
-				skip_next = FALSE;
-			else
-				expand_xtok(&xtok, exit_status, env);
-		}
-		else if (!xtok_strncmp(&xtok, "<<", 3))
-			skip_next = TRUE;
+			expand_xtok(&xtok, exit_status, env);
 		lst_add(&xtoks, lst_new(&xtok, sizeof(xtok)));
 		node = node->nxt;
 	}
