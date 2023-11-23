@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "env.h"
+#include "print_error.h"
 /*
 unset [name ...]
 	For each name, remove the corresponding variable. 
@@ -32,9 +33,9 @@ int	unset_builtin(char **args, char ***env)
 	while (args[++i])
 	{
 		if (valid_varname(args[i]))
-			rm_env_var(varname, word + i, env);
+			rm_env_var(args[i], env);
 		else
-			print_err_identifier(); // "bash: unset: `_a=pepe': not a valid identifier"
+			print_err_identifier(args[i]); // "bash: unset: `_a=pepe': not a valid identifier"
 	}
 	return (0);
 }

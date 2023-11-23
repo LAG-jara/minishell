@@ -22,9 +22,6 @@
 */
 int	exec_builtin(char **args, int exit_status, char ***env)
 {
-	int	exit_status;
-
-	exit_status = 42;
 	if (!ft_strncmp(args[0], "cd", 3))
 		exit_status = cd_builtin(++args, *env);
 	else if (!ft_strncmp(args[0], "echo", 5))
@@ -36,7 +33,7 @@ int	exec_builtin(char **args, int exit_status, char ***env)
 	else if (!ft_strncmp(args[0], "export", 7))
 		exit_status = export_builtin(++args, env);
 	else if (!ft_strncmp(args[0], "pwd", 4))
-		exit_status = pwd_builtin(void);
+		exit_status = pwd_builtin();
 	else if (!ft_strncmp(args[0], "unset", 6))
 		exit_status = unset_builtin(++args, env);
 	return (exit_status);

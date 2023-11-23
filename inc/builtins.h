@@ -17,12 +17,12 @@
 
 int	is_arg(char *unnedeed_arg);
 int	is_validflag(char *flag);
-int	exec_builtin(char **args, char ***env);
+int	exec_builtin(char **args, int exit_status, char ***env);
 
 int	cd_builtin(char **word, char **env);
 int	echo_builtin(char **word);
 int	env_builtin(char **env);
-int	exit_builtin(char **word);
+int	exit_builtin(char **word, int exit_status);
 int	export_builtin(char **word, char ***env);
 int	pwd_builtin(void);
 int	unset_builtin(char **word, char ***env);

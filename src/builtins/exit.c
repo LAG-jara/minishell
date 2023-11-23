@@ -21,19 +21,20 @@ exit
 */
 void	exit_builtin(char **args, int exit_status)
 {
-	long long	exit_status;
+	long long	exit_s =0;
 
+	args+=0;
+	exit_status+=0;
 	write(1, "exit\n", 5);
-	if (*args == FALSE)
-		exit(exit_status);	// TODO: Last command executed?????
-	if (is_longlong(args[0]) == FALSE)
-		// Error de numeric argument required hace salir de bash. exit_status 255
-		
-	if (args[1] == TRUE)
-		// Comprueba que no hayan más argumentos.
-		// Error de too many arguments y no sale. exit_status de EXIT_FALIURE
-	exit_status = ft_atoll(args[0]);
-	exit(exit_status % 256);
+	// if (*args == FALSE)
+	// 	exit(exit_status);	// TODO: Last command executed?????
+	// if (is_longlong(args[0]) == FALSE)
+	// 	// Error de numeric argument required hace salir de bash. exit_status 255
+	// if (args[1] != NULL)
+	// 	// Comprueba que no hayan más argumentos.
+	// 	// Error de too many arguments y no sale. exit_status de EXIT_FALIURE
+	// exit_s = ft_atoll(args[0]);
+	exit(exit_s % 256);
 }
 
 // # include "debug.h"
