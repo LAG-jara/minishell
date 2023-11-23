@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 13:03:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:49:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	link_output_file(const char *filename, int append)
 	int	flags;
 	int	ret;
 
-	printf("openning %s...\n", filename);
+	// printf("openning %s...\n", filename);
 	if (append)
 		flags = O_WRONLY | O_CREAT | O_APPEND;
 	else
@@ -71,6 +71,6 @@ int	link_output_file(const char *filename, int append)
 		print_err_filename(filename);
 		return (EXIT_FAILURE);
 	}
-	dprintf(STDERR_FILENO, "todo OK\n");
+	// dprintf(STDERR_FILENO, "todo OK\n");
 	return (EXIT_SUCCESS);
 }
