@@ -87,7 +87,8 @@ SRC			= main.c \
 			xtoken/xtok_rm_xcs.c \
 			xtoken/xtok_strncmp.c \
 			xtoken/xtok_to_tok.c \
-			xtoken/xtoklst_clear.c
+			xtoken/xtoklst_clear.c \
+			debug.c						# Remove before submitting
 
 DEPDIRS		= $(DEPDIR)arrstr/ \
 			$(DEPDIR)basic_utils/ \
