@@ -6,11 +6,17 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 16:57:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:21:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+// Frees a list of tokens
+void	free_tokens(t_list **tokens)
+{
+	lst_clear(tokens, tok_del);
+}
 
 // Executes the minish loop until the SIGHUP signal is received.
 void	minish_loop(char **env)
@@ -25,10 +31,13 @@ void	minish_loop(char **env)
 	{
 		input = get_input();
 		tokens = tokenize(input);
+		free(input);
 		commands = parse(tokens, &exit_status);
 		if (!commands)
 			continue ;
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
+		lst_clear(commands, tok_del);
+		// free_commands(commands);
 	}
 }

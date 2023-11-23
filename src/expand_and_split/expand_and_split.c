@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:56:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:20:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,27 @@ t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 // 	ac--;
 // 	char **env = arrstr_dup(e);
 // 	int exit_status;
-// 	char *input = "cd directorio \"$USER\" caca > uno '$USER' > caca | echo $USER | rm -fr *";
+// 	char *input = "echo hola";
+	
 
 // 	t_list	*tokens = tokenize(input);
 // 	// printf("\n___________________TOKENIZE\n");
 // 	// print_lst(tokens, pr_token);
 
 // 	t_list	**cmds;
+// 	t_list	**cmds2;
 // 	cmds = parse(tokens, &exit_status);
 // 	printf("\n______________________PARSE\n");
 // 	if (cmds)
 // 		print_cmds(cmds);
 // 	printf("Exit status: %d\n", exit_status);
 
-// 	cmds = expand_and_split(cmds, exit_status, env);
+// 	cmds2 = expand_and_split(cmds, exit_status, env);
 // 	printf("\n___________EXPAND AND SPLIT\n");
-// 	print_cmds(cmds);
+// 	print_cmds(cmds2);
 
 // 	env_free(env);
 // 	lst_clear(cmds, tok_del);
+// 	lst_clear(cmds2, tok_del);
 // 	free(cmds);
 // }

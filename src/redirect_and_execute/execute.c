@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:50:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:16:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ static char	**get_args_from_cmd(t_list *cmd)
 
 // Executes the builtin defined by 'cmd' assuming there are no redirections and
 // modifying the 'env' if required. Returns the exit status.
-int	execute_builtin(t_list *cmd, char ***env)
+int	execute_builtin(t_list *cmd, int exit_status, char ***env)
 {
 	char	**args;
 	int		exit_stat;
 
 	args = get_args_from_cmd(cmd);
-	exit_stat = exec_builtin(args, env);
+	exit_stat = exec_builtin(args, exit_status, env);
 	return (exit_stat);
 }
 
 // Executes the command 'cmd' (which might be a builtin) assuming there are no
 // redirections and exits with the appropriate exit status.
-void	execute_command(t_list *cmd, char **env)
+void	execute_command(t_list *cmd, int exit_status, char **env)
 {
 	int		exit_stat;
 	char	**args;
@@ -61,7 +61,7 @@ void	execute_command(t_list *cmd, char **env)
 	if (is_builtin_name(args[0]))
 	{
 		e = arrstr_dup(env);
-		exit_stat = exec_builtin(args, &e);
+		exit_stat = exec_builtin(args, exit_status, &e);
 		arrstr_free(e);
 		exit(exit_stat);
 	}
