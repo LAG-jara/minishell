@@ -9,6 +9,7 @@ SRC			= main.c \
 			parse.c \
 			print_error.c \
 			quote_utils.c \
+			\
 			token_utils.c \
 			tokenize.c \
 			arrstr/arrstr_add.c \
@@ -121,8 +122,8 @@ INCFLAG		= -I $(INCDIR)
 
 RM			= rm -fr
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g
-RLFLAGS		= -lreadline
+CFLAGS		= -Wall -Wextra -Werror -DREADLINE_LIBRARY -g
+RLFLAGS		= -lreadline #-DREADLINE_LIBRARY
 DFLAGS		= -MT $@ -MMD -MP
 XFLAGS		= -fsanitize=address -g
 
