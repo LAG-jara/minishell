@@ -52,7 +52,6 @@ int	delim_quote_remove(char **word)
 			quote_removed = TRUE;
 		++word;
 	}
-	free(word);
 	*word = clst_to_str(char_lst);
 	return (quote_removed);
 }
