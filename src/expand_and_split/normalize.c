@@ -6,15 +6,17 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 13:11:43 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:57:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 18:40:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
 
+# include "debug.h"
+
 // Recives the expanded, splited, quote-removed xtokens and converts them into a
 // token list(cmd).
-t_list	*normalize(t_list **xtokens)
+t_list	*normalize(t_list *xtokens)
 {
 	t_list	*cmd;
 	t_list	*xtok;
@@ -22,7 +24,7 @@ t_list	*normalize(t_list **xtokens)
 	t_list	*new_tok;
 
 	cmd = NULL;
-	xtok = *xtokens;
+	xtok = xtokens;
 	while (xtok)
 	{
 		tok = xtok_to_tok(xtok->val);

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 13:05:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:20:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,25 @@ static void	split_words_xtok(t_list **xtokens, t_list **xtoken)
 	t_xtoken	split_word;
 	t_list		*split_words;
 	t_list		*next_node;
-	t_xtoken	xtok_orig;
+	t_xtoken	*xtok_orig;
 
 	xtok_orig = xtok_get(*xtoken);
 	next_node = (*xtoken)->nxt;
 	split_words = NULL;
-	split_word = pop_word(&xtok_orig.val);
+	split_word = pop_word(&xtok_orig->val);
 	while (split_word.val)
 	{
 		lst_add(&split_words, lst_new(&split_word, sizeof(split_word)));
-		split_word = pop_word(&xtok_orig.val);
+		split_word = pop_word(&xtok_orig->val);
 	}
 	lst_rm_one(xtokens, *xtoken, free);		// TODO: xtok_del function
 	lst_add_many(xtokens, next_node, split_words);
 	*xtoken = next_node;
 }
 
-// Receives a list of xtokens and performs word splitting on the non-double-
-// quoted expanded parts of words. Unquoted implicit null tokens are removed.
+// Receives a list of xtokens and performs word splitting on the
+// non-double-quoted expanded parts of words.
+// Unquoted implicit null tokens are removed.
 void	split_words(t_list **xtokens)
 {
 	t_list		*node;
@@ -94,7 +95,7 @@ void	split_words(t_list **xtokens)
 	node = *xtokens;
 	while (node)
 	{
-		if (xtok_get(node).type == WORD)
+		if (xtok_get(node)->type == WORD)
 			split_words_xtok(xtokens, &node);
 		else
 			node = node->nxt;

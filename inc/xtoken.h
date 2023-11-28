@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:16:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:18:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_xtoken
 	unsigned int	type : 2;
 }	t_xtoken;
 
-t_xtoken	xtok_get(t_list *node);
+t_xtoken	*xtok_get(t_list *node);
 void		xtok_add_many(t_xtoken *xtok, t_list *pos, t_list *to_add);
 void		xtok_addc(t_xtoken *xtok, char c, int x_flag, int q_flag);
 void		xtok_addxc(t_xtoken *xtok, t_xchar xc);

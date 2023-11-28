@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 18:10:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:23:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ void	tok_del(void *tok)
 {
 	free(((t_token *)tok)->val);
 	free(tok);
-	// tok = NULL;		// esto no hace nada!
 }
 
-// Given a token 'node' returns its 'token' value
+// Given a token 'node' returns its 'token' value.
 t_token	tok_get(t_list *node)
 {
 	t_token	tok;

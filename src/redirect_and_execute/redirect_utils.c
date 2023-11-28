@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 14:12:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:17:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ int	link_input_file(const char *filename)
 		return (EXIT_FAILURE);
 	ret = dup2(fd_file, STDIN_FILENO);
 	if (ret == -1)
-	{
-		print_err_filename(filename);
 		return (EXIT_FAILURE);
-	}
 	ret = close(fd_file);
 	if (ret == -1)
-	{
-		print_err_filename(filename);
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
 
@@ -57,15 +51,9 @@ int	link_output_file(const char *filename, int append)
 		return (EXIT_FAILURE);
 	ret = dup2(fd_file, STDOUT_FILENO);
 	if (ret == -1)
-	{
-		print_err_filename(filename);
 		return (EXIT_FAILURE);
-	}
 	ret = close(fd_file);
 	if (ret == -1)
-	{
-		print_err_filename(filename);
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
