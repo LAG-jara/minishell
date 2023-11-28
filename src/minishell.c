@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "signal_handler.h"
 
 // Frees a list of tokens
 void	free_tokens(t_list **tokens)
