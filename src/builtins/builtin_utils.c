@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:04:19 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:08:46 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:43:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ int	is_builtin_name(char *str)
 int	is_builtin_cmd(t_list *cmd)
 {
 	t_list	*node;
-	t_token	tok;
+	t_token	*tok;
 
 	node = cmd;
 	if (node)
 	{
 		tok = tok_get(node);
-		while (tok.type == REDIR)
+		while (tok->type == REDIR)
 		{
 			node = lst_move(node, 2);
 			if (!node)
 				return (FALSE);
 			tok = tok_get(node);
 		}
-		if (is_builtin_name(tok.val))
+		if (is_builtin_name(tok->val))
 			return (TRUE);
 	}
 	return (FALSE);

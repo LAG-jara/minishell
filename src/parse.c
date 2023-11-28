@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/17 17:29:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:43:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 // returns FALSE otherwise.
 static int	is_valid_redir(t_list *node)
 {
-	t_token	next_tok;
+	t_token	*next_tok;
 
 	if (node->nxt == NULL)
 		return (FALSE);
 	next_tok = tok_get(node->nxt);
-	if (next_tok.type != WORD)
+	if (next_tok->type != WORD)
 		return (FALSE);
 	return (TRUE);
 }
@@ -30,15 +30,15 @@ static int	is_valid_redir(t_list *node)
 // returns FALSE otherwise.
 static int	is_valid_pipe(t_list *node)
 {
-	t_token	prev_tok;
-	t_token	next_tok;
+	t_token	*prev_tok;
+	t_token	*next_tok;
 
 	if (node->pre == NULL || node->nxt == NULL)
 		return (FALSE);
 	next_tok = tok_get(node->nxt);
 	prev_tok = tok_get(node->pre);
-	if (prev_tok.type == WORD
-		&& (next_tok.type == WORD || next_tok.type == REDIR))
+	if (prev_tok->type == WORD
+		&& (next_tok->type == WORD || next_tok->type == REDIR))
 		return (TRUE);
 	else
 		return (FALSE);
@@ -51,7 +51,7 @@ static int	count_commands_checking_syntax(t_list *tokens)
 	int		tok_amount;
 	int		cmd_amount;
 	t_list	*node;
-	t_token	tok;
+	t_token	*tok;
 
 	tok_amount = lst_size(tokens);
 	cmd_amount = 1;
@@ -59,15 +59,15 @@ static int	count_commands_checking_syntax(t_list *tokens)
 	while (node)
 	{
 		tok = tok_get(node);
-		if (tok.type == INVALID)
-			return (print_err_syntax(tok.val, -1));
-		if (tok.type == REDIR && !is_valid_redir(node))
-			return (print_err_syntax(tok.val, -1));
-		if (tok.type == PIPE)
+		if (tok->type == INVALID)
+			return (print_err_syntax(tok->val, -1));
+		if (tok->type == REDIR && !is_valid_redir(node))
+			return (print_err_syntax(tok->val, -1));
+		if (tok->type == PIPE)
 		{
 			++cmd_amount;
 			if (!is_valid_pipe(node))
-				return (print_err_syntax(tok.val, -1));
+				return (print_err_syntax(tok->val, -1));
 		}
 		node = node->nxt;
 	}
@@ -79,14 +79,14 @@ static int	count_commands_checking_syntax(t_list *tokens)
 // At the end, 'node' points to the node after the PIPE.
 static void	add_cmd(t_list **cmd, t_list **node)
 {
-	t_token	tok;
+	t_token	*tok;
 
 	*cmd = NULL;
 	while (*node)
 	{
 		tok = tok_get(*node);
-		if (tok.type != PIPE)
-			lst_add(cmd, lst_new(&tok, sizeof(tok)));
+		if (tok->type != PIPE)
+			lst_add(cmd, lst_new(tok, sizeof(*tok)));
 		else
 		{
 			*node = (*node)->nxt;
@@ -122,28 +122,3 @@ t_list	**parse(t_list *tokens, int *exit_status)
 	cmds[i] = NULL;
 	return (cmds);
 }
-
-// # include "debug.h"
-// # include "tokenize.h"
-
-// int	main(void)
-// {
-// 	// char *s="echo hola! < | caca || >>> 'esto es una cadena sin cerrar";
-// 	// char *s="echo hola! > caca | command 'esto es una cadena sin cerrar";
-// 	char *s="echo hola! 'asdasdasd''asdasdasdasd' cat << EOF";
-
-// 	t_list *tokens = tokenize(s);
-
-// 	print_lst(tokens, pr_token);
-
-// 	printf("\n==================\n\n");
-
-// 	int	exit_status;
-// 	t_list	**cmds;
-// 	cmds = parse(tokens, &exit_status);
-// 	if (cmds)
-// 		print_cmds(cmds);
-// 	printf("\nExit status: %d\n", exit_status);
-
-// 	return (0);
-// }

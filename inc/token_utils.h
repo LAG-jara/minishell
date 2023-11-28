@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:26:32 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 19:23:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:42:06 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ typedef struct s_token
 void	tok_del(void *tok);
 int		tok_type(const char *str);
 t_token	tok_create(const char *str);
-t_token	tok_get(t_list *node);
+t_token	*tok_get(t_list *node);
 
 #endif
