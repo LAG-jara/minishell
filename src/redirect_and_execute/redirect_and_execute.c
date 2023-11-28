@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:51:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:46:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int	process_command(t_pipe *p, int i, t_list *cmd, int e_stat, char **env
 {
 	int		exit_stat;
 
-	exit_stat = redirect(&cmd, env);
-	if (exit_stat != 0)
-		exit(exit_stat);
 	if (i > 0)
 		link_read_end(p->prev_fds);
 	if (i < p->cmds_amount - 1)
 		link_write_end(p->next_fds);
+	exit_stat = redirect(&cmd, env);
+	if (exit_stat != 0)
+		exit(exit_stat);
 	if (lst_size(cmd) == 0)
 		exit(EXIT_SUCCESS);
 	execute_command(cmd, e_stat, env);

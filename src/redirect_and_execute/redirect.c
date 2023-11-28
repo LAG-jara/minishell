@@ -6,14 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 19:09:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:39:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "redirect.h"
 #include "heredoc.h"
 #include "token_utils.h"
-# include "debug.h"
 
 // Performs the redirection defined by 'redir', taking 'str' as the following 
 // token. In the case of here documents, quote-removal is performed to 'str'.
@@ -30,10 +29,8 @@ static int	redirect_one(char *redir, char *str, char **env)
 		return (link_input_file(str));
 	else if (!ft_strncmp(redir, "<<", 3))
 	{
-		// printf("esteerre: %s\n", str);
 		expand = !has_quotes(str);
 		delim_quote_remove(&str);
-		// printf("anifakinshit not asked is: %d\n", expand);
 		return (link_heredoc(str, expand, env));
 	}
 	return (EXIT_FAILURE);

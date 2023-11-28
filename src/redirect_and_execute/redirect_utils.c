@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 16:13:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:12:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,24 @@
 int	link_input_file(const char *filename)
 {
 	int	fd_file;
-	int	err;
+	int	ret;
 
 	fd_file = open_file(filename, O_RDONLY);
 	if (fd_file == -1)
 		return (EXIT_FAILURE);
-	err = dup2(fd_file, STDIN_FILENO);
-	if (!err)
-		err = close(fd_file);
-	if (err)
+	ret = dup2(fd_file, STDIN_FILENO);
+	if (ret == -1)
 	{
 		print_err_filename(filename);
 		return (EXIT_FAILURE);
 	}
-	return (0);
+	ret = close(fd_file);
+	if (ret == -1)
+	{
+		print_err_filename(filename);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
 
 // Opens the file 'filename' and links it to the standard output.
