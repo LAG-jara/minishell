@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 19:06:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:48:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 	value = get_var(name, env);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	lst_add_many(lst, *node, expanded_lst);
-	len = get_name_len(name);
+	len = get_name_len(name) + 1;
 	free(name);
 	*node = lst_move(*node, len);
 	if (!*node)
@@ -56,7 +56,7 @@ static void	expand_exit_stat(t_list **lst, t_list **node, int exit_status)
 
 // Returns TRUE if the list of xchars pointed by 'node' represents a string that
 // should trigger an expansion.
-// That is, a '$' followed by a '?' or an enviroment variable name.
+// That is, a '$' followed by a '?' or a valid environment variable name.
 static int	try_to_expand(t_list *node)
 {
 	t_xchar	xc;
@@ -67,7 +67,8 @@ static int	try_to_expand(t_list *node)
 	xc = xc_get(node);
 	xc_next = xc_get(node->nxt);
 	if (xc.q != QUOTED && xc.c == '$'
-		&& (ft_isalpha(xc_next.c) || xc_next.c == '?'))
+		&& (ft_isalpha(xc_next.c) || xc_next.c == '?'
+			|| xc_next.c == '"' || xc_next.c =='\''))
 		return (TRUE);
 	return (FALSE);
 }

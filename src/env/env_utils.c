@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:57:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:55:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*get_varname(char *str)
 		len = ft_strlen(str) - ft_strlen(ft_strchr(str, '='));
 	varname = ft_strdup(str);
 	varname[len] = '\0';
-	if (!str || !valid_varname(varname))
+	if (!valid_varname(varname))
 	{
 		free(varname);
 		return (NULL);
