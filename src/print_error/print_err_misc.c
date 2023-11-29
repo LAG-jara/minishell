@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   print_err_misc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:44:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:12:12 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,6 @@ int	print_err_argc(void)
 {
 	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
 	return (EXIT_WRONGAC);
-}
-
-// Prints the corresponding execution error message (according to errno).
-void	print_err_exec(const char *cmdname)
-{
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putstr_fd(cmdname, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	if (errno == ENOENT)
-		ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
-	else
-		ft_putendl_fd(strerror(errno), STDERR_FILENO);
 }
 
 // Prints the corresponding filename error message (according to errno).

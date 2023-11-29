@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 15:31:18 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:01:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define MSG_CMD_NOT_FOUND	"command not found"
 # define EXIT_CMD_NOT_FOUND	127
 # define MSG_HEREDOC_ERR	"here document error"
+# define EXIT_NOPATH		127
+# define MSG_NOPATH			"No such file or directory"
+
 
 //BUITIN DEFINITIONS
 # define MSG_NUMARG 		"numeric argument required"
@@ -37,13 +40,17 @@
 
 int		print_err_syntax(const char *token, int ret);
 int		print_err_argc(void);
-void	print_err_exec(const char *cmdname);
 void	print_err_filename(const char *filename);
 int		print_err_heredoc(void);
 
 // BUILTIN ERRORS
+
 int		print_err_identifier(const char *identifier);
 int		print_err_too_many_arg(void);
 int		print_err_numeric_arg(const char *arg);
+
+// EXEC ERRORS
+void	print_err_exec(const char *cmdname);
+void	print_err_nopath(const char *cmdname);
 
 #endif

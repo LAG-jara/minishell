@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 15:32:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:24:53 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "list.h"
 #include "print_error.h"
 
+# include "debug.h"
+
 // Exits with the appropriate exit code after printing an error message.
 static void	err_exec(const char *cmdname)
 {
@@ -22,6 +24,13 @@ static void	err_exec(const char *cmdname)
 	if (errno == ENOENT)
 		exit(EXIT_CMD_NOT_FOUND);
 	exit(errno);
+}
+
+// Exits with the appropriate exit code after printing an error message.
+static void	err_nopath(const char *cmdname)
+{
+	print_err_nopath(cmdname);
+	exit(EXIT_NOPATH);
 }
 
 // Allocates and returns a string containing the full path of 'file' in 'dir'.
@@ -53,6 +62,8 @@ void	exec_cmd(char **cmd, char **env)
 	if (!ft_strchr(path, '/'))
 	{
 		paths = get_vars("PATH", env);
+		if (!paths)
+			err_nopath(path);
 		i = -1;
 		while (paths && paths[++i])
 		{
