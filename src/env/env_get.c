@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 16:24:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:42:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ char	*get_var(const char *varname, char **env)
 	char	*var_line;
 
 	var_line = find_var_line(varname, env);
-	// printf("\n\nvarline: %s\n", var_line);
 	name_len = get_name_len(varname);
-	// printf("namelen: %d\n\n", name_len);
 	if (var_line == NULL)
 		return (NULL);
 	return (var_line + name_len + 1);
