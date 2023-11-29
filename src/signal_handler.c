@@ -11,43 +11,15 @@
 /* ************************************************************************** */
 
 #include "signal_handler.h"
+# include "readline/readline.h"
+# include "readline/history.h"
 
- static void	process(int sign_num)
+// Normal mode signal
+void	signal_handler(int signal)
 {
-	if (!kill(g_pid, sign_num))
-	{
-		if (sign_num == SIGTERM)
-		{
-			ft_putstr_fd("Exit\n", 1);
-			g_status = 131;
-		}
-		else if (sign_num == SIGINT)
-		{
-			ft_putchar_fd('\n', 1);
-			g_status = 130;
-		}
-	}
-	else if (sign_num == SIGINT)
-	{
-		ft_putchar_fd('\n', 1);
-		g_status = 1;
-		prompt();
-	}
-}
-
-void	signal_handler(int sign_num)
-{
-	if ((sign_num == SIGINT || sign_num == SIGTERM) && g_pid != 0)
-		process(sign_num);
-	else
-	{
-		if (sign_num == SIGINT)
-		{
-			ft_putchar_fd('\n', 1);
-			g_status = 1;
-			prompt();
-		}
-		else if (sign_num == SIGTERM)
-			ft_putstr_fd("\b\b  \b\b", 1);
-	}
+	signal+=0;
+	//rl_replace_line("", signal);
+	printf("\n");
+	rl_on_new_line();
+	rl_redisplay();
 }

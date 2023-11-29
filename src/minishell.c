@@ -27,6 +27,8 @@ void	minish_loop(char **env)
 	t_list	**commands;
 	int		exit_status;
 
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, signal_handler);
 	exit_status = 0;
 	while (42)
 	{

@@ -14,6 +14,7 @@
 # define SIGNAL_HANDLER_H
 
 # include <signal.h>
+# include <stdio.h>
 
 void	signal_handler(int sign_num);
 

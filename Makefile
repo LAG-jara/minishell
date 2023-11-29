@@ -7,9 +7,8 @@ SRC			= main.c \
 			get_input.c \
 			input_utils.c \
 			parse.c \
-			print_error.c \
 			quote_utils.c \
-			\
+			signal_handler.c \
 			token_utils.c \
 			tokenize.c \
 			arrstr/arrstr_add.c \
@@ -29,7 +28,6 @@ SRC			= main.c \
 			basic_utils/utils_strjoin.c \
 			basic_utils/utils_strlcat.c \
 			basic_utils/utils_substr.c \
-			builtins/builtin_print_error.c \
 			builtins/builtin_utils.c \
 			builtins/cd.c \
 			builtins/echo.c \
@@ -63,6 +61,9 @@ SRC			= main.c \
 			list/lst_rm_one.c \
 			list/lst_size.c \
 			list/lst_split.c \
+			print_error/print_err_builtin.c \
+			print_error/print_err_exec.c \
+			print_error/print_err_misc.c \
 			redirect_and_execute/delim_quote_remove.c \
 			redirect_and_execute/exec_cmd.c \
 			redirect_and_execute/execute.c \
@@ -110,7 +111,10 @@ OBJDIR		= .obj/
 OBJS		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Libraries
-RL_DIR		= readline/
+RL_LIB		= readline/lib/
+RL_INC		= readline/include/
+#INCFLAG		:= -I $(RL_INC)
+READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
 
 # Dependencies
 DEPDIR		= .dep/
@@ -118,14 +122,14 @@ DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 
 # Includes
 INCDIR		= inc/
-INCFLAG		= -I $(INCDIR)
+INCFLAG		+= -I $(INCDIR)
 
+LIBS		= -DREADLINE_LIBRARY -lreadline -lhistory -ltermcap
 RM			= rm -fr
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -DREADLINE_LIBRARY -g
-RLFLAGS		= -lreadline #-DREADLINE_LIBRARY
+CFLAGS		= -Wall -Wextra -Werror -g
 DFLAGS		= -MT $@ -MMD -MP
-XFLAGS		= -fsanitize=address -g
+XFLAGS		= -fsanitize=address
 
 # Colors
 WHITE		= \033[0;37m
@@ -143,13 +147,13 @@ all:		$(NAME)
 
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
-#			@mkdir -p $(DEPDIR) $(DEPDIRS)
-			@$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ $(INCFLAG)
+			@$(CC) $(CFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
 			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
+#			@mkdir -p $(DEPDIR) $(DEPDIRS)
 #			@mv $(OBJDIR)*.d $(DEPDIR)
 
 $(NAME)::	$(OBJS) $(MKF)
-			@$(CC) $(CFLAGS) $(XFLAGS) $(OBJS) -o $(NAME) $(INCFLAG) $(RLFLAGS) 
+			@$(CC) $(CFLAGS) $(XFLAGS) -lreadline $(OBJS) -o $(NAME)  
 			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
 
 $(NAME)::	

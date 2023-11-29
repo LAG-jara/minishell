@@ -13,11 +13,7 @@
 #ifndef GET_INPUT_H
 # define GET_INPUT_H
 
-# include <readline/readline.h>
-# include <readline/history.h>
-
 # define PROMPT "minish$ "
-// # define PROMPT "\033[32mminish\033[33m$ \033[0m"
 
 char	*get_input(void);
 
