@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:14:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 15:59:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,3 @@ void	rm_env_var(const char *varname, char ***env)
 	if (var_index >= 0)
 		*env = arrstr_rm(*env, var_index);
 }
-
-// #include "debug.h"
-// int	main(int ac, char **av, char **e)
-// {
-// 	char **env = arrstr_dup(e);
-
-// 	// char *str = get_var("USER", env);
-// 	// printf("Result: %s\n", str);
-
-// 	set_env_var("USER", "Albert Lajara", &env);
-// 	print_arrstr(env);
-
-// 	// rm_env_var("HOME", &env);
-// 	// print_arrstr(env);
-
-// 	return (0);
-// }

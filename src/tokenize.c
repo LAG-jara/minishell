@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 18:04:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:39:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,3 @@ t_list	*tokenize(const char *input)
 	}
 	return (tokens);
 }
-
-// int main()
-// {
-// 	// char *s="fdgdf<Dfg$d a''a   a'a'a a'aaaaaa'aa ";
-// 	char *s="echo hola! < | caca || >>> 'esto es una cadena sin cerrar";
-
-// 	t_list *tokens = tokenize(s);
-
-// 	print_lst(tokens, pr_token);
-
-// 	return (0);
-// }

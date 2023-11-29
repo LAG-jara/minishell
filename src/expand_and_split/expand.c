@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 15:48:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:39:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 	int		len;
 	t_list	*expanded_lst;
 
+	*node = (*node)->nxt;
 	name = xclst_to_str(*node);
 	value = get_var(name, env);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
-	lst_add_many(lst, *node, expanded_lst);
-	len = get_name_len(name) + 1;
+	lst_add_many(lst, (*node)->pre, expanded_lst);
+	len = get_name_len(name);
 	free(name);
 	*node = lst_move(*node, len);
 	if (!*node)
-		lst_rm_many(lst, lst_move(lst_last(*lst), -(len - 1)), len, free);
+		lst_rm_many(lst, lst_move(lst_last(*lst), -(len)), len + 1, free);
 	else
-		lst_rm_many(lst, lst_move(*node, -len), len, free);
+		lst_rm_many(lst, lst_move(*node, -(len + 1)), len + 1, free);
 }
 
 // Given that 'node' points to the $ character of "$?", expands the value 
