@@ -11,15 +11,20 @@
 /* ************************************************************************** */
 
 #include "signal_handler.h"
-# include "readline/readline.h"
-# include "readline/history.h"
+
+#define READLINE_LIBRARY
+
+# include "../readline/readline.h"
+# include "../readline/history.h"
 
 // Normal mode signal
 void	signal_handler(int signal)
 {
-	signal+=0;
-	//rl_replace_line("", signal);
-	printf("\n");
-	rl_on_new_line();
-	rl_redisplay();
+	if (signal == SIGINT)
+	{
+		rl_replace_line("", signal);
+		printf("\n");
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }

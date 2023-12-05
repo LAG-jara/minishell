@@ -84,6 +84,7 @@ t_list	*tokenize(const char *input)
 		tok = tok_create(str);
 		free(str);
 		lst_add(&tokens, lst_new(&tok, sizeof(tok)));
+		//free(tok.val);
 	}
 	return (tokens);
 }
