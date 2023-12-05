@@ -111,8 +111,7 @@ OBJDIR		= .obj/
 OBJS		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Libraries
-RL_LIB		= readline/lib/
-RL_INC		= readline/include/
+RL_LIB		= readline/
 #INCFLAG		:= -I $(RL_INC)
 READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
 
@@ -124,7 +123,7 @@ DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
 INCDIR		= inc/
 INCFLAG		+= -I $(INCDIR)
 
-LIBS		= -DREADLINE_LIBRARY -lreadline -lhistory -ltermcap
+LIBS		= -lreadline -ltermcap
 RM			= rm -fr
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
@@ -143,28 +142,28 @@ BRED		= \033[1;31m
 BBLUE		= \033[1;34m
 BYELLOW		= \033[1;33m
 
-all:		$(NAME)
+all:		$(READLINE) $(NAME)
 
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
-			@$(CC) $(CFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
+			@$(CC) $(CFLAGS) $(XFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
 			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
 #			@mkdir -p $(DEPDIR) $(DEPDIRS)
 #			@mv $(OBJDIR)*.d $(DEPDIR)
 
-$(NAME)::	$(OBJS) $(MKF)
-			@$(CC) $(CFLAGS) $(XFLAGS) -lreadline $(OBJS) -o $(NAME)  
+$(NAME)::	$(OBJS) $(MKF) $(READLINE)
+			@$(CC) $(CFLAGS) $(XFLAGS) $(LIBS) $(READLINE) $(OBJS) -o $(NAME)  
 			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
 
 $(NAME)::	
-			@@echo "$(BLUE)[ All done already ]$(DEFAULT)"
+			@echo "$(BLUE)[ All done already ]$(DEFAULT)"
 
 clean:
 			@$(RM) $(OBJDIR) $(DEPDIR)
 			@echo "$(BRED)[ Object files cleared ]$(DEFAULT)"
 
 fclean:		clean
-			@$(RM) $(NAME)
+			@$(RM) $(NAME) $(READLINE)
 			@echo "$(RED)[ All created files cleared ]$(DEFAULT)"
 
 re:			fclean all
@@ -172,6 +171,11 @@ re:			fclean all
 
 norm:
 			@norminette $(SRCDIR)* $(INCDIR)*
+
+
+$(READLINE): 
+			@cd ./$(RL_LIB) && ./configure && make
+
 
 # rl_install:
 # 			LIB_FOLDER=vendor

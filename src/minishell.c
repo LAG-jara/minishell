@@ -33,6 +33,11 @@ void	minish_loop(char **env)
 	while (42)
 	{
 		input = get_input();
+		if (!input)
+		{
+			write(1, "exit\n", 5);
+			exit(exit_status);
+		}
 		tokens = tokenize(input);
 		free(input);
 		commands = parse(tokens, &exit_status);
@@ -41,6 +46,7 @@ void	minish_loop(char **env)
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		lst_clear(commands, tok_del);
-		// free_commands(commands);
+		free (commands);
+		//env_free(env);
 	}
 }
