@@ -31,5 +31,12 @@ int	wait_children(pid_t last_pid, size_t n)
 	}
 	if (WIFEXITED(ret_status))
 		return (WEXITSTATUS(ret_status));
+	else if (WIFSIGNALED(ret_status))
+	{
+		if (WTERMSIG(ret_status) == SIGINT)
+			return (130);
+		if (WTERMSIG(ret_status) == SIGQUIT)
+			return (131);
+	}
 	return (EXIT_FAILURE);
 }

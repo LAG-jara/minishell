@@ -49,6 +49,7 @@ int	execute_builtin(t_list *cmd, int exit_status, char ***env)
 	return (exit_stat);
 }
 
+
 // Executes the command 'cmd' (which might be a builtin) assuming there are no
 // redirections and exits with the appropriate exit status.
 void	execute_command(t_list *cmd, int exit_status, char **env)
@@ -56,6 +57,9 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	int		exit_stat;
 	char	**args;
 	char	**e;
+
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
 
 	args = get_args_from_cmd(cmd);
 	if (is_builtin_name(args[0]))

@@ -82,6 +82,9 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	pid_t	last_child;
 
 	i = 0;
+	//stop_signals();
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	while (i < p->cmds_amount)
 	{
 		if (i < p->cmds_amount - 1)

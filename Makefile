@@ -128,7 +128,7 @@ RM			= rm -fr
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 DFLAGS		= -MT $@ -MMD -MP
-XFLAGS		= -fsanitize=address
+#XFLAGS		= -fsanitize=address
 
 # Colors
 WHITE		= \033[0;37m

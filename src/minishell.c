@@ -27,11 +27,11 @@ void	minish_loop(char **env)
 	t_list	**commands;
 	int		exit_status;
 
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGINT, signal_handler);
 	exit_status = 0;
 	while (42)
 	{
+		signal(SIGQUIT, SIG_IGN);
+		signal(SIGINT, signal_handler);		// start_signals();
 		input = get_input();
 		if (!input)
 		{
@@ -47,6 +47,5 @@ void	minish_loop(char **env)
 		redirect_and_execute(commands, &exit_status, &env);
 		lst_clear(commands, tok_del);
 		free (commands);
-		//env_free(env);
 	}
 }

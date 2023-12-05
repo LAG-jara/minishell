@@ -69,7 +69,7 @@ static int	try_to_expand(t_list *node)
 	xc_next = xc_get(node->nxt);
 	if (xc.q != QUOTED && xc.c == '$'
 		&& (ft_isalpha(xc_next.c) || xc_next.c == '?'
-			|| xc_next.c == '"' || xc_next.c =='\''))
+			|| xc_next.c == '"' || xc_next.c =='\'' || xc_next.c =='_'))
 		return (TRUE);
 	return (FALSE);
 }
