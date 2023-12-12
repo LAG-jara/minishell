@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "signal_handler.h"
 
 // Frees an array of commands (as a list of tokens).
 static void	free_commands(t_list **commands)
@@ -31,6 +30,7 @@ static void set_interactive_sig(void)
 {
 	init_signals(INTER);
 	ignore_signal(SIGQUIT);
+	signals_print_handler(0);
 }
 
 // Executes the minish loop until the SIGHUP signal is received.

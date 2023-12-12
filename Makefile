@@ -9,6 +9,7 @@ SRC			= main.c \
 			parse.c \
 			quote_utils.c \
 			signal_handler.c \
+			singals_print_handler.c \
 			token_utils.c \
 			tokenize.c \
 			arrstr/arrstr_add.c \

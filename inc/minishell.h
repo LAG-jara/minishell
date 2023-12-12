@@ -18,6 +18,7 @@
 # include "parse_tokens.h"
 # include "expand_and_split.h"
 # include "redirect_and_execute.h"
+# include "signal_handler.h"
 
 void	minish_loop(char **env);
 

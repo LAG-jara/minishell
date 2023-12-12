@@ -61,6 +61,7 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**e;
 
 	init_signals(NON_INTER);
+	
 	args = get_args_from_cmd(cmd);
 	if (is_builtin_name(args[0]))
 	{
