@@ -26,6 +26,9 @@ export name=value ...
 	variable.
 */
 
+
+// TODO: error en caso de no validos
+// TODO (?) printear env en caso de no haber args
 int	export_builtin(char **args, char ***env)
 {
 	char	*word;
