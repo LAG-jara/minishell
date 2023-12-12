@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 17:21:35 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:02:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	minish_loop(char **env)
 		ignore_signal(SIGINT);
 		if (!input)
 		{
-			write(2, "exit\n", 5);
+			ft_putendl_fd("exit", STDERR_FILENO);
 			exit(exit_status);
 		}
 		tokens = tokenize(input);
