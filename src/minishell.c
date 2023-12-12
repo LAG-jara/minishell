@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 16:02:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:04:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_tokens(t_list **tokens)
 }
 
 // Set the signal handling of the loop during the parse
-static void set_interacitve_sig(void)
+static void set_interactive_sig(void)
 {
 	init_signals(INTER);
 	ignore_signal(SIGQUIT);
@@ -37,7 +37,7 @@ void	minish_loop(char **env)
 	exit_status = 0;
 	while (42)
 	{
-		set_interacitve_sig();
+		set_interactive_sig();
 		input = get_input();
 		ignore_signal(SIGINT);
 		if (!input)
