@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 18:00:47 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:51:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**e;
 
 	init_signals(NON_INTER);
-	
+	signals_print_handler(TRUE);
 	args = get_args_from_cmd(cmd);
 	if (is_builtin_name(args[0]))
 	{
