@@ -31,7 +31,6 @@ libhistory.so.*
 libreadline.so.*
 
 *.dylib
-*.log
 
 readline.pc
 

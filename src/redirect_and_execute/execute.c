@@ -14,6 +14,7 @@
 #include "token_utils.h"
 #include "builtins.h"
 #include "arrstr.h"
+#include "signal_handler.h"
 
 // Allocates and returns a NULL-terminated array of strings representing the
 // list of tokens 'cmd'.
@@ -58,9 +59,7 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**args;
 	char	**e;
 
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
-
+	init_signals(NON_INTER);
 	args = get_args_from_cmd(cmd);
 	if (is_builtin_name(args[0]))
 	{

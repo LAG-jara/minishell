@@ -12,6 +12,7 @@
 
 #include "heredoc.h"
 #include "print_error.h"
+#include "signal_handler.h"
 
 // Removes the temporary here document file.
 void	clear_heredoc(void)
@@ -31,6 +32,13 @@ static int	is_delimeter(const char *str, const char *delimeter)
 	return (FALSE);
 }
 
+static void set_heredoc_sig(void)
+{
+	init_signals(HEREDOC);
+	ignore_signal(SIGQUIT);
+}
+
+# include "readline/readline.h"
 // Creates a here document, reading the standard input until 'delimiter'.
 // If 'expand' is TRUE, the variable names are expanded.
 // Returns 0 on success, or -1 in case of failure (setting errno).
@@ -45,11 +53,11 @@ static int	read_heredoc(const char *delimiter, const int expand, char **env)
 		return (-1);
 	while (1)
 	{
-		write(STDOUT_FILENO, "> ", 2);			// TODO: use readline() ?
-		line = get_next_line(STDIN_FILENO);
-		if (line == NULL)
-			exit(EXIT_FAILURE);
-		if (is_delimeter(line, delimiter))
+		set_heredoc_sig();
+		// write(STDOUT_FILENO, "> ", 2);
+		// line = get_next_line(STDIN_FILENO);
+		line = readline("> ");
+		if (line == NULL || is_delimeter(line, delimiter))
 			break ;
 		if (expand)
 		{
@@ -57,7 +65,7 @@ static int	read_heredoc(const char *delimiter, const int expand, char **env)
 			free(line);
 			line = tmp;
 		}
-		ft_putstr_fd(line, fd_file);
+		ft_putendl_fd(line, fd_file);
 	}
 	return (close(fd_file));
 }

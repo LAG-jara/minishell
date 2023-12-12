@@ -19,6 +19,13 @@ void	free_tokens(t_list **tokens)
 	lst_clear(tokens, tok_del);
 }
 
+// Set the signal handling of the loop during the parse
+static void set_interacitve_sig(void)
+{
+	init_signals(INTER);
+	ignore_signal(SIGQUIT);
+}
+
 // Executes the minish loop until the SIGHUP signal is received.
 void	minish_loop(char **env)
 {
@@ -30,12 +37,12 @@ void	minish_loop(char **env)
 	exit_status = 0;
 	while (42)
 	{
-		signal(SIGQUIT, SIG_IGN);
-		signal(SIGINT, signal_handler);		// start_signals();
+		set_interacitve_sig();
 		input = get_input();
+		ignore_signal(SIGINT);
 		if (!input)
 		{
-			write(1, "exit\n", 5);
+			write(2, "exit\n", 5);
 			exit(exit_status);
 		}
 		tokens = tokenize(input);

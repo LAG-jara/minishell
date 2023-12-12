@@ -15,7 +15,15 @@
 
 # include <signal.h>
 # include <stdio.h>
+# include <stdlib.h>
 
-void	signal_handler(int sign_num);
+// MODES OF SETTING SIGNALS
+
+# define INTER 1
+# define NON_INTER -1
+# define HEREDOC 42
+
+int		init_signals(int mode);
+void	ignore_signal(int signum);
 
 #endif

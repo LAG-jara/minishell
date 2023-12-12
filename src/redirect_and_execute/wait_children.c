@@ -12,6 +12,7 @@
 
 #include <sys/wait.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 // Waits for 'n' children processes to finish and returns the exit status of
 // the 'last_pid' (if exited).
@@ -36,7 +37,11 @@ int	wait_children(pid_t last_pid, size_t n)
 		if (WTERMSIG(ret_status) == SIGINT)
 			return (130);
 		if (WTERMSIG(ret_status) == SIGQUIT)
+		{
+			printf("Quit: 3");
 			return (131);
+		}
 	}
+	printf("\n");
 	return (EXIT_FAILURE);
 }
