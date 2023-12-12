@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 17:01:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:05:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define MSG_SYNTERR		"syntax error near token"
 # define EXIT_SYNTERR		258
-# define MSG_WRONGAC		"wrong arguments amount"
+# define MSG_WRONGAC		"minish does not accept arguments"
 # define EXIT_WRONGAC		2
 # define MSG_CMD_NOT_FOUND	"command not found"
 # define EXIT_CMD_NOT_FOUND	127

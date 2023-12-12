@@ -6,30 +6,19 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/16 14:19:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:33:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
 #include "print_error.h"
 #include "signal_handler.h"
+#include "readline/readline.h"
 
 // Removes the temporary here document file.
 void	clear_heredoc(void)
 {
 	unlink(HEREDOC_FILENAME);
-}
-
-// Returns TRUE if 'str' is the delimeter, FALSE otherwise.
-// Works exactly as in the HereDoc.
-static int	is_delimeter(const char *str, const char *delimeter)
-{
-	int	len;
-
-	len = ft_strlen(delimeter);
-	if (ft_strncmp(str, delimeter, len) == 0 && str[len] == '\n')
-		return (TRUE);
-	return (FALSE);
 }
 
 static void set_heredoc_sig(void)
@@ -38,11 +27,10 @@ static void set_heredoc_sig(void)
 	ignore_signal(SIGQUIT);
 }
 
-# include "readline/readline.h"
-// Creates a here document, reading the standard input until 'delimiter'.
+// Creates a here document, reading the standard input until 'delim'.
 // If 'expand' is TRUE, the variable names are expanded.
 // Returns 0 on success, or -1 in case of failure (setting errno).
-static int	read_heredoc(const char *delimiter, const int expand, char **env)
+int	read_heredoc(const char *delim, int expand, char **env)
 {
 	int		fd_file;
 	char	*line;
@@ -54,10 +42,8 @@ static int	read_heredoc(const char *delimiter, const int expand, char **env)
 	while (1)
 	{
 		set_heredoc_sig();
-		// write(STDOUT_FILENO, "> ", 2);
-		// line = get_next_line(STDIN_FILENO);
 		line = readline("> ");
-		if (line == NULL || is_delimeter(line, delimiter))
+		if (line == NULL || !ft_strncmp(line, delim, ft_strlen(delim) + 1))
 			break ;
 		if (expand)
 		{
@@ -70,21 +56,18 @@ static int	read_heredoc(const char *delimiter, const int expand, char **env)
 	return (close(fd_file));
 }
 
-// Opens a here document and links it to the standard input.
+// Links the read here document to the standard input.
 // If 'expand' is TRUE, expands the environment variables of its content.
 // Returns the appropriate exit code after printing any error message.
-int	link_heredoc(const char *delimeter, const int expand, char **env)
+int	link_heredoc(void)
 {
 	int	fd_file;
 	int	err;
 
-	err = read_heredoc(delimeter, expand, env);
-	if (err)
-		return (print_err_heredoc());
 	fd_file = open_file(HEREDOC_FILENAME, O_RDONLY);
 	if (fd_file == -1)
 		return (print_err_heredoc());
-	dup2(fd_file, STDIN_FILENO);
+	err = dup2(fd_file, STDIN_FILENO);
 	if (!err)
 		err = close(fd_file);
 	if (err)
