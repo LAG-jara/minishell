@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 18:51:11 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:32:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+# include "debug.h"
 
 // Frees an array of commands (as a list of tokens).
 static void	free_commands(t_list **commands)
@@ -55,11 +56,19 @@ void	minish_loop(char **env)
 		tokens = tokenize(input);
 		free(input);
 		commands = parse(tokens, &exit_status);
+
+		// printf("\nCOMMANDS[0]:\n");
+		// print_lst(commands[0], pr_token);
+		// printf("\nTOKENS:\n");
+		// print_lst(tokens, pr_token);
+
+		lst_clear(&tokens, tok_del);
+		
+		// printf("\nCOMMANDS[0]:\n");
+		// print_lst(commands[0], pr_token);
+		
 		if (!commands)
-		{
-			lst_clear(&tokens, tok_del);
 			continue ;
-		}
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);

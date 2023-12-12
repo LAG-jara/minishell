@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 18:49:59 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 20:29:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,35 +74,39 @@ static int	count_commands_checking_syntax(t_list *tokens)
 	return (cmd_amount);
 }
 
-static void	hardcoding_foo(t_list *node)
-{
-	t_list	*prev;
-	t_list	*next;
+// static void	hardcoding_foo(t_list *node)
+// {
+// 	t_list	*prev;
+// 	t_list	*next;
 
-	prev = node->pre;
-	next = node->nxt;
-	lst_delone(node, tok_del);
-	lst_link(prev, next);
-}
+// 	prev = node->pre;
+// 	next = node->nxt;
+// 	lst_delone(node, tok_del);
+// 	lst_link(prev, next);
+// }
 
 // Creates and adds a new command to the 'cmd' list, adding all the tokens from
-// 'node' until a PIPE is found.
-// At the end, 'node' points to the node after the PIPE.
+// 'node' until a PIPE is found (or there are no more tokens).
+// At the end, 'node' points to the node after the PIPE (or NULL).
 static void	add_cmd(t_list **cmd, t_list **node)
 {
 	t_list	*next_node;
 	t_token	*tok;
+	t_token tok_copy;
 
 	*cmd = NULL;
 	while (*node)
 	{
 		tok = tok_get(*node);
 		if (tok->type != PIPE)
-			lst_add(cmd, lst_new(tok, sizeof(*tok)));
+		{
+			tok_copy = tok_create(tok->val);
+			lst_add(cmd, lst_new(&tok_copy, sizeof(tok_copy)));
+		}
 		else
 		{
 			next_node = (*node)->nxt;
-			hardcoding_foo(*node);
+			// hardcoding_foo(*node);
 			*node = next_node;
 			return ;
 		}
