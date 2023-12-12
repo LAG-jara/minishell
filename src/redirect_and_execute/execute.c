@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:40:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:00:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	execute_builtin(t_list *cmd, int exit_status, char ***env)
 
 	args = get_args_from_cmd(cmd);
 	exit_stat = exec_builtin(args, exit_status, env);
+	arrstr_free(args);
 	return (exit_stat);
 }
 

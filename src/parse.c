@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:31:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:49:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,17 @@ static int	count_commands_checking_syntax(t_list *tokens)
 	return (cmd_amount);
 }
 
+static void	hardcoding_foo(t_list *node)
+{
+	t_list	*prev;
+	t_list	*next;
+
+	prev = node->pre;
+	next = node->nxt;
+	lst_delone(node, tok_del);
+	lst_link(prev, next);
+}
+
 // Creates and adds a new command to the 'cmd' list, adding all the tokens from
 // 'node' until a PIPE is found.
 // At the end, 'node' points to the node after the PIPE.
@@ -91,7 +102,7 @@ static void	add_cmd(t_list **cmd, t_list **node)
 		else
 		{
 			next_node = (*node)->nxt;
-			lst_delone(*node, tok_del);
+			hardcoding_foo(*node);
 			*node = next_node;
 			return ;
 		}

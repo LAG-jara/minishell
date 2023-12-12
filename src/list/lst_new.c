@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 14:13:59 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:06:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:23:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 // Allocates (with malloc(3)) and returns a new node.
 // The member variable 'val' is initialized with the value of the parameter
-// 'value'. The variables 'nxt' and 'pre' is initialized to NULL.
+// 'value'. 'nxt' and 'pre' are initialized to NULL.
 t_list	*lst_new(void *value, size_t size)
 {
 	t_list	*lstnode;
