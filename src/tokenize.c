@@ -6,12 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 16:39:17 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokenize.h"
-#include "debug.h"
 
 // Given that 'str' points to a quote character, returns the distance to the
 // next quote character of the same kind.

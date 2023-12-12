@@ -6,12 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 18:55:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_and_split.h"
-# include "debug.h"
 
 // Expands the variables of the command 'cmd' (as a list of tokens) and splits
 // words if needed. Finally, performs quote removal and returns the result.

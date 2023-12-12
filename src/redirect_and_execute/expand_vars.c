@@ -6,12 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:07:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand_vars.h"
-# include "debug.h"
 
 // Allocates and returns a copy of 'str' with its $VARIABLES expanded.
 char	*expand_vars(const char *str, char **env)

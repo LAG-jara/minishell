@@ -6,17 +6,24 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 16:04:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:47:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "signal_handler.h"
 
-// Frees a list of tokens
-void	free_tokens(t_list **tokens)
+// Frees an array of commands (as a list of tokens).
+static void	free_commands(t_list **commands)
 {
-	lst_clear(tokens, tok_del);
+	int	i;
+	
+	i = -1;
+	while (commands[++i])
+	{
+		lst_clear(&commands[i], tok_del);
+	}
+	free(commands);
 }
 
 // Set the signal handling of the loop during the parse
@@ -52,7 +59,6 @@ void	minish_loop(char **env)
 			continue ;
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
-		lst_clear(commands, tok_del);
-		free (commands);
+		free_commands(commands);
 	}
 }

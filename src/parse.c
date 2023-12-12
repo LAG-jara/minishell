@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 19:43:01 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:31:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static int	count_commands_checking_syntax(t_list *tokens)
 // At the end, 'node' points to the node after the PIPE.
 static void	add_cmd(t_list **cmd, t_list **node)
 {
+	t_list	*next_node;
 	t_token	*tok;
 
 	*cmd = NULL;
@@ -89,7 +90,9 @@ static void	add_cmd(t_list **cmd, t_list **node)
 			lst_add(cmd, lst_new(tok, sizeof(*tok)));
 		else
 		{
-			*node = (*node)->nxt;
+			next_node = (*node)->nxt;
+			lst_delone(*node, tok_del);
+			*node = next_node;
 			return ;
 		}
 		*node = (*node)->nxt;

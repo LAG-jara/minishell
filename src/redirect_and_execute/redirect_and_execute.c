@@ -6,13 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 17:24:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:53 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "redirect_and_execute.h"
-
-# include "debug.h"
 
 // Redirects and executes the given command 'cmd' on the current shell
 // environment, returning the exit status.

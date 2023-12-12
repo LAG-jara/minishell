@@ -6,12 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:13 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:00:36 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:15:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
-# include "debug.h"
 
 // Given that 'str' points to the first character of a variable name,
 // returns its length.
