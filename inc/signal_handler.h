@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <termios.h>
+# include "definitions.h"
 
 // MODES OF SETTING SIGNALS
 
