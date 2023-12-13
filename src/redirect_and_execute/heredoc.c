@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 18:36:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:44:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	clear_heredoc(void)
 
 static void set_heredoc_sig(void)
 {
-	init_signals(HEREDOC);
-	// signal(SIGINT, SIG_DFL);
+	// init_signals(HEREDOC);
+	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_IGN);
 }
 
@@ -43,7 +43,6 @@ int	read_heredoc(const char *delim, int expand, char **env)
 	while (1)
 	{
 		set_heredoc_sig();
-		// ignore_signal(SIGQUIT);
 		line = readline("> ");
 		if (line == NULL)
 			ft_putstr_fd("\033[A\033[2K> ", STDOUT_FILENO);
