@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 15:33:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 17:27:12 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 void	clear_heredoc(void)
 {
 	unlink(HEREDOC_FILENAME);
-}
-
-static void set_heredoc_sig(void)
-{
-	init_signals(HEREDOC);
-	ignore_signal(SIGQUIT);
 }
 
 // Creates a here document, reading the standard input until 'delim'.
@@ -41,8 +35,10 @@ int	read_heredoc(const char *delim, int expand, char **env)
 		return (-1);
 	while (1)
 	{
-		set_heredoc_sig();
+		ignore_signal(SIGQUIT);
 		line = readline("> ");
+		if (line == NULL)
+			ft_putstr_fd("\033[A\033[2K> ", STDOUT_FILENO);
 		if (line == NULL || !ft_strncmp(line, delim, ft_strlen(delim) + 1))
 			break ;
 		if (expand)
