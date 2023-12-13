@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:18:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 12:58:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:03:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int	wait_children(pid_t last_pid, size_t n)
 		return (WEXITSTATUS(ret_status));
 	else if (WIFSIGNALED(ret_status))
 	{
-		ft_putendl_fd("Quit: 3", STDERR_FILENO);
+		if (WTERMSIG(ret_status) == SIGQUIT)
+			ft_putstr_fd("Quit: 3", STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 		return (WTERMSIG(ret_status) + 128);
 	}
-	ft_putstr_fd("\n", STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
