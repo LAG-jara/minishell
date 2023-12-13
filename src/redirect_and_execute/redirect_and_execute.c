@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 18:34:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:55:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // Redirects and executes the given command 'cmd' on the current shell
 // environment, returning the exit status.
-static int	process_builtin_here(t_list *cmd, int exit_status, char ***env)
+static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 {
 	int	exit_stat;
 	int	saved_stdin;
@@ -23,11 +23,11 @@ static int	process_builtin_here(t_list *cmd, int exit_status, char ***env)
 
 	saved_stdin = dup(STDIN_FILENO);
 	saved_stdout = dup(STDOUT_FILENO);
-	exit_stat = redirect(&cmd, *env);
+	exit_stat = redirect(cmd, *env);
 	if (exit_stat != 0)
 		return (exit_stat);
-	if (lst_size(cmd) > 0)
-		exit_stat = execute_builtin(cmd, exit_status, env, FALSE);
+	if (lst_size(*cmd) > 0)
+		exit_stat = execute_builtin(*cmd, exit_status, env, FALSE);
 	dup2(saved_stdout, STDOUT_FILENO);
 	close(saved_stdout);
 	dup2(saved_stdin, STDIN_FILENO);
@@ -109,7 +109,7 @@ void	redirect_and_execute(t_list **commands, int *exit_status, char ***env)
 	if (p.cmds_amount == 0)
 	 	*exit_status = 0;
 	else if (p.cmds_amount == 1 && is_builtin_cmd(commands[0]))
-		*exit_status = process_builtin_here(commands[0], *exit_status, env);
+		*exit_status = process_builtin_here(commands, *exit_status, env);
 	else
 		*exit_status = process_commands(commands, &p, *exit_status, *env);
 }
