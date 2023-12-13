@@ -12,12 +12,15 @@
 
 #include "print_error.h"
 
-int	print_err_identifier(const char *identifier)
+int	print_err_identifier(const char *identifier, const char *builtin)
 {
 	// Error from unset
+	//bash: export: `42=asd': not a valid identifier
 	//bash: unset: `_aaaa222asd=pepe': not a valid identifier
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": unset: '", STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(builtin, STDERR_FILENO);
+	ft_putstr_fd(": '", STDERR_FILENO);
 	ft_putstr_fd(identifier, STDERR_FILENO);
 	ft_putstr_fd("': ", STDERR_FILENO);
 	ft_putendl_fd(MSG_IDENTERR, STDERR_FILENO);

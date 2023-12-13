@@ -13,6 +13,9 @@
 #include "basic_utils.h"
 #include "env.h"
 #include "list.h"
+#include "print_error.h"
+#include <unistd.h>
+
 /*
 export name=value ...
 	The value of the environment variable name is set to value. 
@@ -26,15 +29,47 @@ export name=value ...
 	variable.
 */
 
+static void	printvar_quoted(const char *var)
+{
+	while (*var != '=')
+	{
+		write(1, var, 1);
+		++var;
+	}
+	write(1, "=\"", 2);
+	++var;
+	while (*var)
+	{
+		write(1, var, 1);
+		++var;
+	}
+	write(1, "\"\n", 2);
+}
 
-// TODO: error en caso de no validos
-// TODO (?) printear env en caso de no haber args
+static int export_noargs(char **env)
+{
+	int i;
+
+	i = -1;
+	while (env[0][++i])
+	{
+		if (ft_strchr(env[i], '='))
+		{
+			ft_putstr_fd("declare -x ", STDOUT_FILENO);
+			printvar_quoted(env[i]);
+		}
+	}
+	return (0);
+}
+
 int	export_builtin(char **args, char ***env)
 {
 	char	*word;
 	char	*varname;
 	int		i;
 
+	if (!*args)
+		return (export_noargs(*env));
 	while (*args)
 	{
 		i = 0;
@@ -42,8 +77,13 @@ int	export_builtin(char **args, char ***env)
 		varname = get_varname(word);
 		while (word[i] && word[i] != '=')
 			++i;
-		if (valid_varname(varname) && word[i++] == '=')
-			set_env_var(varname, word + i, env);
+		if (word[i++] == '=')
+		{
+			if(!valid_varname(varname))
+				print_err_identifier(word, "export");
+			else
+				set_env_var(varname, word + i, env);
+		}
 		++args;
 	}
 	return (0);

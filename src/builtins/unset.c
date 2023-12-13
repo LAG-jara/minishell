@@ -33,7 +33,7 @@ int	unset_builtin(char **args, char ***env)
 		if (valid_varname(args[i]))
 			rm_env_var(args[i], env);
 		else
-			ret_status = print_err_identifier(args[i]); // "bash: unset: `_a=pepe': not a valid identifier"
+			ret_status = print_err_identifier(args[i], "unset");
 	}
 	return (ret_status);
 }
