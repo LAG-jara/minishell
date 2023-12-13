@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 20:14:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:17:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 static void	exit_null_cmd()
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(":  : ", STDERR_FILENO);
+	ft_putstr_fd(": : ", STDERR_FILENO);
 	ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
 	exit(EXIT_CMD_NOT_FOUND);
 }
