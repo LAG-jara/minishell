@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 18:51:11 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:09:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,9 @@ void	minish_loop(char **env)
 		tokens = tokenize(input);
 		free(input);
 		commands = parse(tokens, &exit_status);
+		lst_clear(&tokens, tok_del);
 		if (!commands)
-		{
-			lst_clear(&tokens, tok_del);
 			continue ;
-		}
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);

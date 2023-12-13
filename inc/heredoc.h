@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:19:43 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 15:21:03 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:06:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 # include "definitions.h"
 # include "expand_vars.h"
-# include "get_next_line.h"
 # include "list.h"
 # include "open_file.h"
 # include "quote_utils.h"
