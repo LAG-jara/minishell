@@ -27,6 +27,7 @@ SRC			= main.c \
 			basic_utils/utils_split.c \
 			basic_utils/utils_str.c \
 			basic_utils/utils_strjoin.c \
+			basic_utils/utils_strjoin_free.c \
 			basic_utils/utils_strlcat.c \
 			basic_utils/utils_substr.c \
 			builtins/builtin_utils.c \
@@ -47,8 +48,6 @@ SRC			= main.c \
 			expand_and_split/normalize.c \
 			expand_and_split/remove_quotes.c \
 			expand_and_split/split_words.c \
-			get_next_line/get_next_line.c \
-			get_next_line/gnl_utils.c \
 			list/lst_add.c \
 			list/lst_add_many.c \
 			list/lst_clear.c \

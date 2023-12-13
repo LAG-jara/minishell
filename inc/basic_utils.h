@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:37:42 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/22 12:36:39 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:47:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ char		*ft_strdup(const char *s1);
 char		*ft_strchr(const char *str, char c);
 char		**ft_split(const char *s, char c);
 char		*ft_strjoin(char const *s1, char const *s2);
+void		ft_strjoin_free(char **s1, const char *s2);
 size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strtrim(char const *s1, char const *set);

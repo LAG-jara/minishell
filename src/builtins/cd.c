@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:03:05 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:46:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 #include "env.h"
 #include <unistd.h>
 #include <errno.h>
-
-#include "get_next_line.h" // TODO : ver leaks porque no se yo
 
 static int	is_relativepath(char *str)
 {
@@ -53,7 +51,7 @@ static int	try_cdpath(char *str, char **env)
 		return (FALSE);
 	while (path[++i])
 	{
-		gnl_strjoin_free(&path[i], str);
+		ft_strjoin_free(&path[i], str);
 		if (chdir(path[i]) == 0)
 		{
 			arrstr_free(path);
