@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 16:39:37 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 19:41:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static int	try_to_expand(t_list *node)
 	xc = xc_get(node);
 	xc_next = xc_get(node->nxt);
 	if (xc.q != QUOTED && xc.c == '$'
-		&& (ft_isalpha(xc_next.c) || xc_next.c == '?'
-			|| xc_next.c == '"' || xc_next.c =='\'' || xc_next.c =='_'))
+		&& (ft_isalpha(xc_next.c) || xc_next.c == '?' || xc_next.c == '_'
+			/*|| xc_next.c == '"' || xc_next.c == '\''*/))
 		return (TRUE);
 	return (FALSE);
 }
