@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:54 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 17:50:56 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:38:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../readline/readline.h"
 #include "../readline/history.h"
 
-static void	norm_handler(int sig, siginfo_t *data, void *non_used_data)
+static void	inter_handler(int sig, siginfo_t *data, void *non_used_data)
 {
 	(void) data;
 	(void) non_used_data;
@@ -34,8 +34,8 @@ static void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	(void) non_used_data;
 	if (sig == SIGINT)
 	{
-		printf("\n");
 		rl_replace_line("", 1);
+		printf("\n");
 		rl_on_new_line();
 		rl_redisplay();
 		exit(1);
@@ -43,14 +43,13 @@ static void	heredoc_handler(int sig, siginfo_t *data, void *non_used_data)
 	return ;
 }
 
+// TODO: Seguro que esto se usa? sospecho que no...
 static void	ninter_handler(int sig, siginfo_t *data, void *non_used_data)
 {
 	(void) data;
 	(void) non_used_data;
-	if (sig == SIGINT)
-		exit(130);
-	else if (sig == SIGQUIT)
-		exit(131);
+	if (sig == SIGINT || sig == SIGQUIT)
+		exit(42);
 	return ;
 }
 
@@ -61,7 +60,7 @@ int	init_signals(int mode)
 	signal.sa_flags = SA_RESTART;
 	sigemptyset(&signal.sa_mask);
 	if (mode == INTER)
-		signal.sa_sigaction = norm_handler;
+		signal.sa_sigaction = inter_handler;
 	if (mode == NON_INTER)
 		signal.sa_sigaction = ninter_handler;
 	if (mode == HEREDOC)

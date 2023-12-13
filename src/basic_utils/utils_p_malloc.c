@@ -6,10 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:56:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:46:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 15:25:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "basic_utils.h"
 #include <stdlib.h>
 
 // Allocates 'size' bytes of memory and returns a pointer to it.
@@ -20,6 +21,6 @@ void	*p_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (ptr == NULL)
-		exit(EXIT_FAILURE);
+		restore_exit(EXIT_FAILURE);
 	return (ptr);
 }
