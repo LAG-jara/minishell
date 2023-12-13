@@ -24,6 +24,7 @@ SRC			= main.c \
 			basic_utils/utils_itoa.c \
 			basic_utils/utils_p_malloc.c \
 			basic_utils/utils_putstr.c \
+			basic_utils/utils_restore_exit.c \
 			basic_utils/utils_split.c \
 			basic_utils/utils_str.c \
 			basic_utils/utils_strjoin.c \

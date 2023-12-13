@@ -38,7 +38,7 @@ static void set_interactive_sig(void)
 {
 	init_signals(INTER);
 	ignore_signal(SIGQUIT);
-	signals_print_handler(0);
+	signals_print_handler(FALSE);
 }
 
 // Executes the minish loop until the SIGHUP signal is received.

@@ -39,6 +39,7 @@ long long	ft_atoll(char *str);
 
 // Other
 
+void		restore_exit(int exit_status);
 void		*p_malloc(size_t size);
 char		*ft_itoa(int n);
 void		ft_putstr_fd(const char *s, int fd);
