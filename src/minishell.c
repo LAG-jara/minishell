@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 15:20:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:27:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static void	free_commands(t_list **commands)
 	
 	i = -1;
 	while (commands[++i])
-	{
 		lst_clear(&commands[i], tok_del);
-	}
 	free(commands);
 }
 
@@ -38,6 +36,7 @@ static void set_interactive_sig(void)
 {
 	init_signals(INTER);
 	ignore_signal(SIGQUIT);
+	// signal(SIGQUIT, SIG_IGN);
 	signals_print_handler(FALSE);
 }
 
@@ -55,6 +54,7 @@ void	minish_loop(char **env)
 		set_interactive_sig();
 		input = get_input();
 		ignore_signal(SIGINT);
+		// signal(SIGINT, SIG_IGN);
 		if (!input)
 		{
 			if (rl_eof_found)

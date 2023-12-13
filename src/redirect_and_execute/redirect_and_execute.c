@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:15:53 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/13 18:34:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	pid_t	last_child;
 
 	i = 0;
-	//stop_signals();
+	// TODO: stop_signals();
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	while (i < p->cmds_amount)
@@ -106,7 +106,9 @@ void	redirect_and_execute(t_list **commands, int *exit_status, char ***env)
 	t_pipe	p;
 
 	p.cmds_amount = arr_size((void *)commands);
-	if (p.cmds_amount == 1 && is_builtin_cmd(commands[0]))
+	if (p.cmds_amount == 0)
+	 	*exit_status = 0;
+	else if (p.cmds_amount == 1 && is_builtin_cmd(commands[0]))
 		*exit_status = process_builtin_here(commands[0], *exit_status, env);
 	else
 		*exit_status = process_commands(commands, &p, *exit_status, *env);
