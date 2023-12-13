@@ -16,7 +16,7 @@
 # include "list.h"
 
 void	exec_cmd(char **cmd, char **env);
-int		execute_builtin(t_list *cmd, int exit_status, char ***env);
+int		execute_builtin(t_list *cmd, int exit_status, char ***env, int is_child);
 void	execute_command(t_list *cmd, int exit_status, char **env);
 
 #endif

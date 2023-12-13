@@ -40,13 +40,13 @@ static char	**get_args_from_cmd(t_list *cmd)
 
 // Executes the builtin defined by 'cmd' assuming there are no redirections and
 // modifying the 'env' if required. Returns the exit status.
-int	execute_builtin(t_list *cmd, int exit_status, char ***env)
+int	execute_builtin(t_list *cmd, int exit_status, char ***env, int is_child)
 {
 	char	**args;
 	int		exit_stat;
 
 	args = get_args_from_cmd(cmd);
-	exit_stat = exec_builtin(args, exit_status, env);
+	exit_stat = exec_builtin(args, exit_status, env, is_child);
 	arrstr_free(args);
 	return (exit_stat);
 }
@@ -66,7 +66,7 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	if (is_builtin_name(args[0]))
 	{
 		e = arrstr_dup(env);
-		exit_stat = exec_builtin(args, exit_status, &e);
+		exit_stat = exec_builtin(args, exit_status, &e, TRUE);
 		arrstr_free(e);
 		exit(exit_stat);
 	}

@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "get_input.h"
-
-# include "readline/readline.h"
-# include "readline/history.h"
+#include "readline/readline.h"
+#include "readline/history.h"
 
 // Prints the prompt and waits for user input (managing the history).
 // Allocates and returns the string provided by the user.

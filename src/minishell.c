@@ -57,7 +57,7 @@ void	minish_loop(char **env)
 		ignore_signal(SIGINT);
 		if (!input)
 		{
-			if(rl_eof_found)
+			if (rl_eof_found)
 				ft_putendl_fd(SIGNAL_EXIT_PROMPT, STDERR_FILENO);
 			exit(exit_status);
 		}

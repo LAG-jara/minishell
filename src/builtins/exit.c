@@ -76,12 +76,13 @@ exit
 	If a number(long long) is passed as argument, exits with the % 256 of that
 	number.
 */
-int	exit_builtin(char **args, int exit_status)
+int	exit_builtin(char **args, int exit_status, int is_child)
 {
-	long long	exit_s;
+	long long	exit_stat;
 	char		*str;
 
-	write(1, "exit\n", 5);
+	if (!is_child)
+		ft_putendl_fd("exit", STDERR_FILENO);
 	if (*args == NULL)
 		exit(exit_status);
 	str = ft_strtrim(args[0], " \n\t\v\f\r");
@@ -92,9 +93,9 @@ int	exit_builtin(char **args, int exit_status)
 	}
 	if (args[1] == NULL)
 	{
-		exit_s = ft_atoll(str);
+		exit_stat = ft_atoll(str);
 		free(str);
-		exit(exit_s % 256);
+		exit(exit_stat % 256);
 	}
 	free(str);
 	return (print_err_too_many_arg());

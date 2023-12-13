@@ -11,14 +11,15 @@
 /* ************************************************************************** */
 
 #include "redirect_and_execute.h"
+#include "definitions.h"
 
 // Redirects and executes the given command 'cmd' on the current shell
 // environment, returning the exit status.
 static int	process_builtin_here(t_list *cmd, int exit_status, char ***env)
 {
-	int		exit_stat;
-	int		saved_stdin;
-	int		saved_stdout;
+	int	exit_stat;
+	int	saved_stdin;
+	int	saved_stdout;
 
 	saved_stdin = dup(STDIN_FILENO);
 	saved_stdout = dup(STDOUT_FILENO);
@@ -26,7 +27,7 @@ static int	process_builtin_here(t_list *cmd, int exit_status, char ***env)
 	if (exit_stat != 0)
 		return (exit_stat);
 	if (lst_size(cmd) > 0)
-		exit_stat = execute_builtin(cmd, exit_status, env);
+		exit_stat = execute_builtin(cmd, exit_status, env, FALSE);
 	dup2(saved_stdout, STDOUT_FILENO);
 	close(saved_stdout);
 	dup2(saved_stdin, STDIN_FILENO);
