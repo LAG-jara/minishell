@@ -16,4 +16,7 @@
 # define TRUE 1
 # define FALSE 0
 
+# define LLINT_MIN_STR "9223372036854775808"
+# define LLINT_MAX_STR "9223372036854775807"
+
 #endif

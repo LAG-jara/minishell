@@ -20,6 +20,7 @@
 static int	ft_check_llong(char *arg)
 {
 	int		len;
+	int		diff;
 	char	sign;
 
 	sign = '+';
@@ -36,15 +37,15 @@ static int	ft_check_llong(char *arg)
 	if (len == 19)
 	{
 		if (sign == '-')
-			len = ft_strncmp(arg, "9223372036854775808", 19);
+			diff = ft_strncmp(arg, LLINT_MIN_STR, 19);
 		else
-			len = ft_strncmp(arg, "9223372036854775807", 19);
-		if (len > 0)
+			diff = ft_strncmp(arg, LLINT_MAX_STR, 19);
+		if (diff > 0)
 			return (FALSE);
 	}
 	return (TRUE);
 }
-// -9223372036854775808 > 9223372036854775807
+// Long long range: -9223372036854775808 > 9223372036854775807
 
 static int	is_longlong(char *arg)
 {
