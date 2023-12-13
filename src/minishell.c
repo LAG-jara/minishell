@@ -11,10 +11,14 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "../readline/readline.h"
 
-#define READLINE_LIBRARY
 
-# include "../readline/readline.h"
+#define SIGNAL_EXIT_PROMPT "\033[A\033[2Kminish$ exit"
+
+
+
+
 
 // Frees an array of commands (as a list of tokens).
 static void	free_commands(t_list **commands)
@@ -54,7 +58,7 @@ void	minish_loop(char **env)
 		if (!input)
 		{
 			if(rl_eof_found)
-				ft_putendl_fd("\033[A\033[2Kminish$ exit", STDERR_FILENO);
+				ft_putendl_fd(SIGNAL_EXIT_PROMPT, STDERR_FILENO);
 			exit(exit_status);
 		}
 		tokens = tokenize(input);

@@ -128,6 +128,7 @@ LIBS		= -lreadline -ltermcap
 RM			= rm -fr
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
+DEFS		= -DREADLINE_LIBRARY
 DFLAGS		= -MT $@ -MMD -MP
 #XFLAGS		= -fsanitize=address
 
@@ -147,13 +148,13 @@ all:		$(READLINE) $(NAME)
 
 $(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
 			@mkdir -p $(@D)
-			@$(CC) $(CFLAGS) $(XFLAGS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
+			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
 			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
 #			@mkdir -p $(DEPDIR) $(DEPDIRS)
 #			@mv $(OBJDIR)*.d $(DEPDIR)
 
 $(NAME)::	$(OBJS) $(MKF) $(READLINE)
-			@$(CC) $(CFLAGS) $(XFLAGS) $(LIBS) $(READLINE) $(OBJS) -o $(NAME)  
+			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(LIBS) $(READLINE) $(OBJS) -o $(NAME)  
 			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
 
 $(NAME)::	

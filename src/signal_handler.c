@@ -11,11 +11,8 @@
 /* ************************************************************************** */
 
 #include "signal_handler.h"
-
-#define READLINE_LIBRARY
-
-# include "../readline/readline.h"
-# include "../readline/history.h"
+#include "../readline/readline.h"
+#include "../readline/history.h"
 
 static void	norm_handler(int sig, siginfo_t *data, void *non_used_data)
 {
