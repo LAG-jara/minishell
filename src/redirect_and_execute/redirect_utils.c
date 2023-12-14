@@ -6,13 +6,35 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 19:17:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:00:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "open_file.h"
 #include "print_error.h"
 #include <stdlib.h>
+#include "redirect.h"
+
+// When 'mode' is set to SAVE: Saves the standard input and output.
+// When set to RESTORE: Restores the previously saved standard input and output.
+void	save_restore_stdio(int std_in, int std_out, int mode)
+{
+	static int	saved_stdin;
+	static int	saved_stdout;
+
+	if (mode == SAVE)
+	{
+		saved_stdin = dup(std_in);
+		saved_stdout = dup(std_out);
+	}
+	if (mode == RESTORE)
+	{
+		dup2(saved_stdin, std_in);
+		close(saved_stdin);
+		dup2(saved_stdout, std_out);
+		close(saved_stdout);
+	}
+}
 
 // Opens the file 'filename' and links it to the standard input.
 // Returns the appropriate exit code after printing any error message.

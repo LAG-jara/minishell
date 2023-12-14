@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 18:55:40 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:02:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@
 static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 {
 	int	exit_stat;
-	int	saved_stdin;
-	int	saved_stdout;
 
-	saved_stdin = dup(STDIN_FILENO);
-	saved_stdout = dup(STDOUT_FILENO);
+	save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, SAVE);
 	exit_stat = redirect(cmd, *env);
 	if (exit_stat != 0)
+	{
+		save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, RESTORE);
 		return (exit_stat);
+	}
 	if (lst_size(*cmd) > 0)
 		exit_stat = execute_builtin(*cmd, exit_status, env, FALSE);
-	dup2(saved_stdout, STDOUT_FILENO);
-	close(saved_stdout);
-	dup2(saved_stdin, STDIN_FILENO);
-	close(saved_stdin);
+	save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, RESTORE);
 	return (exit_stat);
 }
 
