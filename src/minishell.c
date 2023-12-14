@@ -6,19 +6,20 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 18:40:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:19:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "get_input.h"
+#include "tokenize.h"
+#include "parse_tokens.h"
+#include "expand_and_split.h"
+#include "redirect_and_execute.h"
+#include "signal_handler.h"
+#include "basic_utils.h"
+#include "token.h"
+#include <unistd.h>
 #include "../readline/readline.h"
-
-
-#define SIGNAL_EXIT_PROMPT "\033[A\033[2Kminish$ exit"
-
-
-
-
 
 // Frees an array of commands (as a list of tokens).
 static void	free_commands(t_list **commands)
@@ -55,8 +56,8 @@ void	minish_loop(char **env)
 		signal(SIGINT, SIG_IGN);
 		if (!input)
 		{
-			if (rl_eof_found)
-				ft_putendl_fd(SIGNAL_EXIT_PROMPT, STDERR_FILENO);
+			if (isatty(STDOUT_FILENO))
+				ft_putendl_fd("\033[A\033[2Kminish$ exit", STDERR_FILENO);
 			restore_exit(exit_status);
 		}
 		tokens = tokenize(input);

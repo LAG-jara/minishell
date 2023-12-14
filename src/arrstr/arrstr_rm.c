@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:07:22 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:57:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:52:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arrstr.h"
+#include "basic_utils.h"
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'
 // with the 'i'th string removed from it. The original array 'arr' is freed.

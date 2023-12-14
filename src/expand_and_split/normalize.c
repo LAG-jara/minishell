@@ -6,10 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 13:11:43 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:15:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:06:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "list.h"
 #include "xtoken.h"
 
 // Recives the expanded, splited, quote-removed xtokens and converts them into a

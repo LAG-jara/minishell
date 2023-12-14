@@ -5,12 +5,12 @@ MKF			= Makefile
 SRC			= main.c \
 			minishell.c \
 			get_input.c \
-			input_utils.c \
-			parse.c \
+			open_file.c \
+			parse_tokens.c \
 			quote_utils.c \
 			signal_handler.c \
 			singals_print_handler.c \
-			token_utils.c \
+			token.c \
 			tokenize.c \
 			arrstr/arrstr_add.c \
 			arrstr/arrstr_dup.c \
@@ -35,7 +35,6 @@ SRC			= main.c \
 			builtins/cd.c \
 			builtins/echo.c \
 			builtins/env.c \
-			builtins/exec_builtin.c \
 			builtins/exit.c \
 			builtins/export.c \
 			builtins/pwd.c \
@@ -44,11 +43,25 @@ SRC			= main.c \
 			env/env_get.c \
 			env/env_set.c \
 			env/env_utils.c \
-			expand_and_split/expand.c \
+			execute/exec_cmd.c \
+			execute/execute_builtin.c \
+			execute/execute_command.c \
+			execute/get_args_from_cmd.c \
 			expand_and_split/expand_and_split.c \
+			expand_and_split/expand.c \
 			expand_and_split/normalize.c \
 			expand_and_split/remove_quotes.c \
 			expand_and_split/split_words.c \
+			heredoc/clear_heredoc.c \
+			heredoc/expand_vars.c \
+			heredoc/link_heredoc.c \
+			heredoc/read_heredoc.c \
+			input_utils/is_blankchr.c \
+			input_utils/is_metachr.c \
+			input_utils/is_operatorchr.c \
+			input_utils/is_quotechr.c \
+			input_utils/is_redirectionchr.c \
+			input_utils/is_word.c \
 			list/lst_add.c \
 			list/lst_add_many.c \
 			list/lst_clear.c \
@@ -65,22 +78,23 @@ SRC			= main.c \
 			print_error/print_err_builtin.c \
 			print_error/print_err_exec.c \
 			print_error/print_err_misc.c \
-			redirect_and_execute/delim_quote_remove.c \
-			redirect_and_execute/exec_cmd.c \
-			redirect_and_execute/execute.c \
-			redirect_and_execute/expand_vars.c \
-			redirect_and_execute/heredoc.c \
-			redirect_and_execute/open_file.c \
-			redirect_and_execute/pipe_utils.c \
-			redirect_and_execute/redirect.c \
+			redirect/delim_quote_remove.c \
+			redirect/has_quotes.c \
+			redirect/link_input_file.c \
+			redirect/link_output_file.c \
+			redirect/redirect.c \
+			redirect/save_restore_stdio.c \
+			redirect_and_execute/fork_or_die.c \
+			redirect_and_execute/link_read_end.c \
+			redirect_and_execute/link_write_end.c \
+			redirect_and_execute/pipe_or_die.c \
 			redirect_and_execute/redirect_and_execute.c \
-			redirect_and_execute/redirect_utils.c \
 			redirect_and_execute/wait_children.c \
-			xtoken/str_to_xclst.c \
+			xchar/str_to_xclst.c \
+			xchar/xc_get.c \
+			xchar/xc_new.c \
+			xchar/xclst_to_str.c \
 			xtoken/tok_to_xtok.c \
-			xtoken/xc_get.c \
-			xtoken/xc_new.c \
-			xtoken/xclst_to_str.c \
 			xtoken/xtok_add_many.c \
 			xtoken/xtok_addc.c \
 			xtoken/xtok_adds.c \

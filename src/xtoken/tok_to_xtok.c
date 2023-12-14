@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:56:28 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 19:39:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:50:18 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
+#include "quote_utils.h"
 
 // Converts the given token to a xtoken, keeping the token type and setting the
 // appropriate xchar flags.

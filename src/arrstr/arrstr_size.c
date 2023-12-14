@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <arrstr.h>
+#include "basic_utils.h"
 
 // Counts and returns the amount of elements in the NULL-terminated array 'arr'.
 size_t	arrstr_size(char **arr)

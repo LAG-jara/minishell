@@ -1,6 +1,11 @@
 
 
 #include "debug.h"
+#include "quote_utils.h"
+#include "token.h"
+#include "xtoken.h"
+#include "print_fx.h"
+#include <stdio.h>
 
 // DEBUG ONLY! 
 void	print_arrint(int *arr)

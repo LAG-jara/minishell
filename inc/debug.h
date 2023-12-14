@@ -2,10 +2,8 @@
 #ifndef DEBUG_H
 # define DEBUG_H
 
-# include <stdio.h>
-# include "token_utils.h"
+# include "token.h"
 # include "xtoken.h"
-# include "print_fx.h"
 
 void	print_arrint(int *arr);
 void	print_arrstr(char **arr);

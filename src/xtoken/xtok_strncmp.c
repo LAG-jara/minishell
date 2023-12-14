@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 18:10:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/14 18:17:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:07:10 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xtoken.h"
+#include "basic_utils.h"
 
 // Returns an integer greater than, equal to, or less than 0, according as the 
 // string the value of 'xtok' is greater than, equal to, or less than 'str',

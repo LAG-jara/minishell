@@ -6,19 +6,16 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 11:46:03 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:11:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
-#include "builtins.h"
-#include "definitions.h"
+#include "arrstr.h"
+#include "builtins_private.h"
 #include "env.h"
 #include "print_error.h"
-#include <unistd.h>
-#include <errno.h>
-#include <string.h>
-#include <stdio.h>
+#include <errno.h>					// TODO: REFACTOR move to print_error.h
 
 static int	is_relativepath(char *str)
 {
@@ -106,18 +103,3 @@ int	cd_builtin(char **word, char **env)
 		return (print_err_cd(*word, strerror(errno)));
 	return (EXIT_SUCCESS);
 }
-
-// # include "debug.h"
-// # include "builtins.h"
-// # include "parse_tokens.h"
-// int	main(int ac, char **av, char **e)
-// {
-// 	char **env = arrstr_dup(e);
-// 	ac += 0;
-// 	av += 0;
-// 	printf("-=-=-=-=-=-=-=-=-=-=--=-=-=-=\n");
-// 	pwd_builtin();
-// 	int err = cd_builtin(++av, env);
-// 	pwd_builtin();
-// 	printf("\t%d\n", err);
-// }

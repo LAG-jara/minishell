@@ -13,7 +13,7 @@
 #ifndef ARRSTR_H
 # define ARRSTR_H
 
-# include "basic_utils.h"
+#include <unistd.h>
 
 char	**arrstr_add(char **arr, const char *str);
 char	**arrstr_dup(char **arr);

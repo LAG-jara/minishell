@@ -6,11 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 15:59:32 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:56:15 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "basic_utils.h"
+#include "arrstr.h"
+#include <unistd.h>
 
 // Allocates and returns a string consisting of 'varname' + "=" + 'value'.
 static char	*join_varline(const char *varname, const char *value)

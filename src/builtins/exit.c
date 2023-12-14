@@ -6,16 +6,15 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:10 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/03 19:57:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:55:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "definitions.h"
+#include "builtins_private.h"
 #include "print_error.h"
-#include "input_utils.h"
 #include "basic_utils.h"
+#include <stdlib.h>
+#include <unistd.h>
 
 static int	ft_check_llong(char *arg)
 {
@@ -102,26 +101,3 @@ int	exit_builtin(char **args, int exit_status, int is_child)
 	free(str);
 	return (print_err_too_many_arg());
 }
-
-// # include "debug.h"
-// # include "arrstr.h"
-// # include "parse_tokens.h"
-// int	main(int ac, char **av, char **e)
-// {
-// 	char **env = arrstr_dup(e);
-// 	ac += 0;
-// 	av += 0;
-// 	env += 0;
-// 	char *pre_toks[] = \
-// 	{ "hola", "final", NULL};
-
-// 	t_list	**cmds;
-// 	cmds = parse(pre_toks);
-// 	if (cmds)
-// 		print_cmds(cmds);
-
-// 	//env_free(env);
-// 	lst_clear(cmds, tok_del);
-// 	free(cmds);
-// 	exit_builtin();
-// }

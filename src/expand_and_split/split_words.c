@@ -6,11 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 19:20:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:58:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand_and_split.h"
+#include "xtoken.h"
+#include "boolean.h"
+#include "quote_utils.h"
+#include "input_utils.h"
 
 // Returns TRUE if the value of 'xc_node' is a blank char (space or tab) that 
 // is also expanded and non-double-quoted.

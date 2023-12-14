@@ -6,11 +6,15 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 19:41:09 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:11:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand_and_split.h"
+#include "xtoken.h"
+#include "env.h"
+#include "quote_utils.h"
+#include <stdlib.h>				// free
+#include "basic_utils.h"		// ft_itoa
 
 // Given that the xchar list 'node' points to the '$' character of an 
 // environment variable name, expands its value updating the list 'lst'.
@@ -68,8 +72,7 @@ static int	try_to_expand(t_list *node)
 	xc = xc_get(node);
 	xc_next = xc_get(node->nxt);
 	if (xc.q != QUOTED && xc.c == '$'
-		&& (ft_isalpha(xc_next.c) || xc_next.c == '?' || xc_next.c == '_'
-			/*|| xc_next.c == '"' || xc_next.c == '\''*/))
+		&& (ft_isalpha(xc_next.c) || xc_next.c == '?' || xc_next.c == '_'))
 		return (TRUE);
 	return (FALSE);
 }

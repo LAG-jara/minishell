@@ -6,12 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 14:55:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:11:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "basic_utils.h"
 #include "arrstr.h"
-#include "definitions.h"
 
 // Checks and returns TRUE if the given 'word' us a valid variable name.
 // A valid name consists only of alphanumeric characters and underscores, and

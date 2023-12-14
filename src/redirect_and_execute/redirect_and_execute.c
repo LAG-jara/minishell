@@ -6,12 +6,16 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 12:02:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:02:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirect_and_execute.h"
-#include "definitions.h"
+#include "redirect_and_execute_private.h"
+#include "redirect.h"
+#include "execute.h"
+#include "builtins.h"
+#include "basic_utils.h"
+#include <unistd.h>
 
 // Redirects and executes the given command 'cmd' on the current shell
 // environment, returning the exit status.
@@ -78,8 +82,7 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	pid_t	last_child;
 
 	i = 0;
-	// TODO: stop_signals();
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
 	signal(SIGQUIT, SIG_IGN);
 	while (i < p->cmds_amount)
 	{

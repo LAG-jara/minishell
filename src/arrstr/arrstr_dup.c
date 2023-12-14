@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:39:09 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 15:05:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:52:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arrstr.h"
+#include "basic_utils.h"
 
 // Allocates and returns a copy of the NULL-terminated array of strings 'arr'.
 // Exits properly if memory allocation fails.

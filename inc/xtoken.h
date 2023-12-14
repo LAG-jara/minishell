@@ -6,14 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 13:13:46 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/28 19:18:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:49:28 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef XTOKEN_H
 # define XTOKEN_H
 
-# include "token_utils.h"
+# include "token.h"
 # include "xchar.h"
 
 // A stoken can be of type word, redirection, pipe or invalid.

@@ -6,11 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/04 14:27:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:37:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "print_error.h"
+#include "arrstr.h"
 
 int	main(int ac, char **av, char **e)
 {

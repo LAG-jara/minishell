@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:25 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/23 17:50:31 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:59:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <termios.h>
-# include "definitions.h"
+# include "boolean.h"
 
 // MODES OF SETTING SIGNALS
 
 # define INTER 1
 # define NON_INTER -1
-# define HEREDOC 42
 
 int		init_signals(int mode);
 void	ignore_signal(int signum);

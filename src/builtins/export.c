@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:03:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,3 @@ int	export_builtin(char **args, char ***env)
 	}
 	return (exit_status);
 }
-// # include "debug.h"
-// # include "builtins.h"
-// # include "parse_tokens.h"
-// int	main(int ac, char **av, char **e)
-// {
-// 	char **env = arrstr_dup(e);
-// 	ac += 0;
-// 	av += 0;
-// 	export_builtin(++av, &env);
-// 	env_builtin(env);
-// }

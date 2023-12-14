@@ -6,11 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:03:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 17:42:52 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:53:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arrstr.h"
+#include "basic_utils.h"
 
 // Sets the value of the 'i'th string in the NULL-terminated array of strings
 // 'arr' to the string 'str'. Returns 'arr'.

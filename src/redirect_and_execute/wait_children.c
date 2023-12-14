@@ -6,12 +6,10 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 16:18:17 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 13:03:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:04:21 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/wait.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include "basic_utils.h"
 

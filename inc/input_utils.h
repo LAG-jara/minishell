@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:02:33 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/18 12:54:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:24:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ int	is_metachr(int c);
 int	is_operatorchr(int c);
 int	is_redirectionchr(int c);
 int	is_quotechr(int c);
+int	is_word(const char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:54 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/13 18:40:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:56:51 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,3 @@ int	init_signals(int mode)
 	sigaction(SIGQUIT, &signal, NULL);
 	return (0);
 }
-
-// void	ignore_signal(int signum)
-// {
-// 	struct sigaction	signal;
-
-// 	signal.sa_handler = SIG_IGN;
-// 	signal.sa_flags = SA_RESTART;
-// 	sigemptyset(&signal.sa_mask);
-// 	if (sigaction(signum, &signal, NULL) < 0)
-// 		exit (1);
-// }

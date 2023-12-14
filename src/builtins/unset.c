@@ -6,12 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:52 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/26 12:26:06 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:05:34 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "print_error.h"
+
 /*
 unset [name ...]
 	For each name, remove the corresponding variable. 

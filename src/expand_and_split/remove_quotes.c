@@ -6,11 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:25:02 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:15:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:59:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "expand_and_split.h"
+#include "xtoken.h"
+#include "quote_utils.h"
+#include "boolean.h"
 
 // Removes all unquoted ocurrences of ' and " that didn't result form expansion.
 static void	remove_quotes_xtok(t_xtoken *xtok)

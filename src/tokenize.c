@@ -6,11 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:44:44 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 17:15:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:24:09 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokenize.h"
+#include "token.h"
+#include "input_utils.h"
+#include "basic_utils.h"
+#include "list.h"
 
 // Given that 'str' points to a quote character, returns the distance to the
 // next quote character of the same kind.
@@ -51,7 +54,7 @@ static int	toklen(const char *str)
 // Given that the i-th character of 'str' represents the beginning of a token,
 // allocates and returns a string representing the token.
 // At the end, 'i' points to character after the token.
-char	*pop_token(const char *str, int *i)
+static char	*pop_token(const char *str, int *i)
 {
 	char	*str_tok;
 	int		len;
@@ -83,7 +86,6 @@ t_list	*tokenize(const char *input)
 		tok = tok_create(str);
 		free(str);
 		lst_add(&tokens, lst_new(&tok, sizeof(tok)));
-		//free(tok.val);
 	}
 	return (tokens);
 }

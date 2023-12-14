@@ -6,12 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:02:50 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:12:03 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 19:01:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
-#include "definitions.h"
 #include <unistd.h>
 #include <stdio.h>
 
@@ -65,13 +64,3 @@ int	echo_builtin(char **word)
 		printf("\n");
 	return (0);
 }
-
-// # include "debug.h"
-// # include "builtins.h"
-
-// int	main(int ac, char **av)
-// {
-// 	ac += 0;
-// 	av += 0;
-// 	echo_builtin(++av);
-// }

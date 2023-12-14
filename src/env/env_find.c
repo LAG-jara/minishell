@@ -6,11 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 14:59:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 16:12:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:08:39 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "basic_utils.h"
 
 // Returns a pointer to the first character of the line containing the
 // environment variable 'varname'. If 'varname' is not found returns NULL.

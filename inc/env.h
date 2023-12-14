@@ -6,15 +6,12 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 14:36:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/15 14:11:28 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:10:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
-
-# include <stdlib.h>
-# include "arrstr.h"
 
 char	**get_vars(const char *varname, char **env);
 char	*get_var(const char *varname, char **env);
