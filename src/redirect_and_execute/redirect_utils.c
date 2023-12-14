@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:25:26 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 12:00:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/14 12:14:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include <stdlib.h>
 #include "redirect.h"
 
-// When 'mode' is set to SAVE: Saves the standard input and output.
-// When set to RESTORE: Restores the previously saved standard input and output.
+// If 'mode' = SAVE: Saves the standard input and output.
+// If 'mode' = RESTORE: Restores the previously saved standard input and output.
 void	save_restore_stdio(int std_in, int std_out, int mode)
 {
 	static int	saved_stdin;
