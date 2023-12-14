@@ -14,8 +14,11 @@
 #include "builtins.h"
 #include "definitions.h"
 #include "env.h"
+#include "print_error.h"
 #include <unistd.h>
 #include <errno.h>
+#include <string.h>
+#include <stdio.h>
 
 static int	is_relativepath(char *str)
 {
@@ -85,30 +88,23 @@ HOME
 	builtin	command. The value of this variable is also used when performing 
 	tilde expansion. 
 */
+
 int	cd_builtin(char **word, char **env)
 {
-	int	i;
-	int	ret;
-
-	i = -1;
 	if (*word == NULL)
 	{
-		ret = access(get_var("HOME", env), X_OK);
-		ret = chdir(get_var("HOME", env));
-		if (ret != 0)
-			return (errno);
-		return (ret);
+		if (chdir(get_var("HOME", env)) < 0)
+			return (print_err_cd(*word, strerror(errno)));
+		return (EXIT_SUCCESS);
 	}
 	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
 	{
 		if (try_cdpath(*word, env))
 			return (pwd_builtin());
 	}
-	ret = access(*word, X_OK);
-	ret = chdir(*word);
-	if (ret != 0)
-		return (errno);
-	return (ret);
+	if (chdir(*word) < 0)
+		return (print_err_cd(*word, strerror(errno)));
+	return (EXIT_SUCCESS);
 }
 
 // # include "debug.h"

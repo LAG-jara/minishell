@@ -48,4 +48,14 @@ int	print_err_numeric_arg(const char *arg)
 	return (EXIT_NUMARG);
 }
 
+int	print_err_cd(const char *arg, const char *err_msg)
+{
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": cd: ", STDERR_FILENO);
+	ft_putstr_fd(arg, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(err_msg, STDERR_FILENO);
+	return (EXIT_FAILURE);
+}
+
 
