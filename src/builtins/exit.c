@@ -52,6 +52,8 @@ static int	is_longlong(char *arg)
 	int	i;
 
 	i = 0;
+	if (!*arg)
+		return (FALSE);
 	if (arg[i] == '-' || arg[i] == '+')
 	{
 		if (arg[i + 1] == 0)

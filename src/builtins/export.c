@@ -67,7 +67,9 @@ int	export_builtin(char **args, char ***env)
 	char	*word;
 	char	*varname;
 	int		i;
+	int		exit_status;
 
+	exit_status = 0;
 	if (!*args)
 		return (export_noargs(*env));
 	while (*args)
@@ -80,13 +82,13 @@ int	export_builtin(char **args, char ***env)
 		if (word[i++] == '=')
 		{
 			if(!valid_varname(varname))
-				print_err_identifier(word, "export");
+				exit_status = print_err_identifier(word, "export");
 			else
 				set_env_var(varname, word + i, env);
 		}
 		++args;
 	}
-	return (0);
+	return (exit_status);
 }
 // # include "debug.h"
 // # include "builtins.h"
