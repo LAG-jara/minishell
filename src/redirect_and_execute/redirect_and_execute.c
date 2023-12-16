@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 18:12:07 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/16 19:17:45 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "execute.h"
 #include "builtins.h"
 #include "basic_utils.h"
+#include "signal_utils.h"
 #include <unistd.h>
 
 // Redirects and executes the given command 'cmd' on the current shell
@@ -80,10 +81,12 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	int		i;
 	pid_t	pid;
 	pid_t	last_child;
+	int		ret;
 
 	read_all_heredocs(cmds, p->cmds_amount, env);
-	signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
-	signal(SIGQUIT, SIG_IGN);
+	// signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
+	// signal(SIGQUIT, SIG_IGN);
+	stop_signals();
 	i = -1;
 	while (++i < p->cmds_amount)
 	{
@@ -95,8 +98,9 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 		parent_pipe_update(p, i);
 		last_child = pid;
 	}
-	//clear_heredocs(p->cmds_amount);	// TODO: test this part
-	return (wait_children(last_child, p->cmds_amount));
+	ret = wait_children(last_child, p->cmds_amount);
+	clear_heredocs(p->cmds_amount);
+	return (ret);
 }
 
 // Performs all redirections and command/builtin executions defined by the array

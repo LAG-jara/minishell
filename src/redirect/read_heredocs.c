@@ -6,23 +6,15 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 17:58:29 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/16 19:15:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "redirect_private.h"
-#include <signal.h>
 #include "token.h"
 #include "quote_utils.h"
 #include "basic_utils.h"
 #include "print_error.h"
-
-// Sets the signal handlers for the here document.
-static void set_heredoc_sig(void)
-{
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_IGN);
-}
 
 // Reads the here document for the 'n'-th command, assuming 'str' is the word
 // right next to the << token.
@@ -54,7 +46,6 @@ int	read_heredocs(t_list *cmd, int n, char **env)
 	t_list	*node;
 	t_token	*tok;
 
-	set_heredoc_sig();
 	node = cmd;
 	while (node)
 	{
