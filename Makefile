@@ -8,7 +8,7 @@ SRC			= main.c \
 			open_file.c \
 			parse_tokens.c \
 			quote_utils.c \
-			signal_handler.c \
+			signal_utils.c \
 			token.c \
 			tokenize.c \
 			arrstr/arrstr_add.c \

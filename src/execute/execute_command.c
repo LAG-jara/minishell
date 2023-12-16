@@ -14,7 +14,7 @@
 #include "token.h"
 #include "builtins.h"
 #include "arrstr.h"
-#include "signal_handler.h"
+#include "signal_utils.h"
 #include "print_error.h"			// Remove when unused
 
 // Prints an error message when trying to execute a null command and exits.

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "boolean.h"
-#include "signal_handler.h"
+#include "signal_utils.h"
 
 // Restores the default print signal config and exits returning 'exit_status'.
 void	restore_exit(int exit_status)

@@ -15,7 +15,7 @@
 #include "parse_tokens.h"
 #include "expand_and_split.h"
 #include "redirect_and_execute.h"
-#include "signal_handler.h"
+#include "signal_utils.h"
 #include "basic_utils.h"
 #include "token.h"
 #include <errno.h>
@@ -31,15 +31,7 @@ static void	free_commands(t_list **commands)
 	while (commands[++i])
 		lst_clear(&commands[i], tok_del);
 	free(commands);
-}
-
-// Set the signal handling of the loop during the parse
-static void set_interactive_sig(void)
-{
-	g_signal = 0;
-	init_signals(INTER);
-	signal(SIGQUIT, SIG_IGN);
-	signals_print_handler(FALSE);
+	//*commands = NULL;
 }
 
 static void force_exit(int exit_status)
@@ -77,13 +69,13 @@ void	minish_loop(char **env)
 		free(input);
 		commands = parse(tokens, &exit_status);
 		lst_clear(&tokens, tok_del);
-		if (commands && !*commands)
+		if (!commands)
+			continue ;
+		if (!*commands)
 		{
 			free_commands(commands);
 			continue ;
 		}
-		if (!commands)
-			continue ;
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);

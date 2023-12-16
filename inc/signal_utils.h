@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SIGNAL_HANDLER_H
-# define SIGNAL_HANDLER_H
+#ifndef SIGNAL_UTILS_H
+# define SIGNAL_UTILS_H
 
 # include <signal.h>
 # include <stdio.h>
@@ -27,6 +27,8 @@
 int		init_signals(int mode);
 void	ignore_signal(int signum);
 void	signals_print_handler(int foo);
+void	set_interactive_sig(void);
+void	stop_signals(void);
 
 // GLOBAL VARIABLE
 
