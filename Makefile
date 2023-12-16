@@ -51,10 +51,6 @@ SRC			= main.c \
 			expand_and_split/normalize.c \
 			expand_and_split/remove_quotes.c \
 			expand_and_split/split_words.c \
-			heredoc/clear_heredoc.c \
-			heredoc/expand_vars.c \
-			heredoc/link_heredoc.c \
-			heredoc/read_heredoc.c \
 			input_utils/is_blankchr.c \
 			input_utils/is_metachr.c \
 			input_utils/is_operatorchr.c \
@@ -77,16 +73,24 @@ SRC			= main.c \
 			print_error/print_err_builtin.c \
 			print_error/print_err_exec.c \
 			print_error/print_err_misc.c \
+			redirect/clear_heredoc.c \
+			redirect/clear_heredocs.c \
 			redirect/delim_quote_remove.c \
+			redirect/expand_vars.c \
 			redirect/has_quotes.c \
+			redirect/heredoc_filename.c \
+			redirect/link_heredoc.c \
 			redirect/link_input_file.c \
 			redirect/link_output_file.c \
+			redirect/read_heredoc.c \
+			redirect/read_heredocs.c \
 			redirect/redirect.c \
 			redirect/save_restore_stdio.c \
 			redirect_and_execute/fork_or_die.c \
 			redirect_and_execute/link_read_end.c \
 			redirect_and_execute/link_write_end.c \
 			redirect_and_execute/pipe_or_die.c \
+			redirect_and_execute/read_all_heredocs.c \
 			redirect_and_execute/redirect_and_execute.c \
 			redirect_and_execute/wait_children.c \
 			xchar/str_to_xclst.c \

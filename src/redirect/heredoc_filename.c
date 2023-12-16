@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_private.h                                  :+:      :+:    :+:   */
+/*   heredoc_filename.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 17:19:43 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 20:02:59 by glajara-         ###   ########.fr       */
+/*   Created: 2023/12/16 17:01:27 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/16 17:04:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEREDOC_PRIVATE_H
-# define HEREDOC_PRIVATE_H
+#include "redirect_private.h"
+#include "basic_utils.h"
 
-# define HEREDOC_FILENAME "/tmp/heredoc_temp"
+// Allocates and returns a string representing the here document temp filename
+// for the 'n'-th command.
+char	*heredoc_filename(int n)
+{
+	char	*tmp;
+	char	*filename;
 
-char	*expand_vars(const char *str, char **env);
-
-#endif
+	filename = ft_strdup(HEREDOC_FILENAME);
+	tmp = ft_itoa(n);
+	ft_strjoin_free(&filename, tmp);
+	free(tmp);
+	return (filename);
+}

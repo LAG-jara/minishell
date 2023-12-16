@@ -6,24 +6,26 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 17:11:19 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/16 17:49:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "heredoc_private.h"
+#include "redirect_private.h"
 #include "open_file.h"
 #include "print_error.h"
 #include <fcntl.h>
 
-// Links the read here document to the standard input.
-// If 'expand' is TRUE, expands the environment variables of its content.
+// Links the 'n'-th command's here document to the standard input.
 // Returns the appropriate exit code after printing any error message.
-int	link_heredoc(void)
+int	link_heredoc(int n)
 {
-	int	fd_file;
-	int	err;
+	char	*filename;
+	int		fd_file;
+	int		err;
 
-	fd_file = open_file(HEREDOC_FILENAME, O_RDONLY);
+	filename = heredoc_filename(n);
+	fd_file = open_file(filename, O_RDONLY);
+	free(filename);
 	if (fd_file == -1)
 		return (print_err_heredoc());
 	err = dup2(fd_file, STDIN_FILENO);

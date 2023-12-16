@@ -2,6 +2,7 @@
 #ifndef DEBUG_H
 # define DEBUG_H
 
+# include <stdio.h>
 # include "token.h"
 # include "xtoken.h"
 

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 13:27:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/16 18:12:07 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 	int	exit_stat;
 
 	save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, SAVE);
-	exit_stat = redirect(cmd, *env);
+	exit_stat = redirect(cmd, 0);
 	if (exit_stat != 0)
 	{
 		save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, RESTORE);
@@ -47,7 +47,7 @@ static int	process_command(t_pipe *p, int i, t_list *cmd, int e_stat, char **env
 		link_read_end(p->prev_fds);
 	if (i < p->cmds_amount - 1)
 		link_write_end(p->next_fds);
-	exit_stat = redirect(&cmd, env);
+	exit_stat = redirect(&cmd, i);
 	if (exit_stat != 0)
 		exit(exit_stat);
 	if (lst_size(cmd) == 0)
@@ -81,9 +81,10 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	pid_t	pid;
 	pid_t	last_child;
 
-	i = -1;
+	read_all_heredocs(cmds, p->cmds_amount, env);
 	signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
 	signal(SIGQUIT, SIG_IGN);
+	i = -1;
 	while (++i < p->cmds_amount)
 	{
 		if (i < p->cmds_amount - 1)
@@ -94,6 +95,7 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 		parent_pipe_update(p, i);
 		last_child = pid;
 	}
+	//clear_heredocs(p->cmds_amount);	// TODO: test this part
 	return (wait_children(last_child, p->cmds_amount));
 }
 
