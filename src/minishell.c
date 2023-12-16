@@ -77,11 +77,13 @@ void	minish_loop(char **env)
 		free(input);
 		commands = parse(tokens, &exit_status);
 		lst_clear(&tokens, tok_del);
-		if (!*commands)
+		if (commands && !*commands)
 		{
 			free_commands(commands);
 			continue ;
 		}
+		if (!commands)
+			continue ;
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);
