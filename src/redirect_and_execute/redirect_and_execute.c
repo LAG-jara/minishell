@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:02:29 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/16 13:27:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	pid_t	pid;
 	pid_t	last_child;
 
-	i = 0;
+	i = -1;
 	signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
 	signal(SIGQUIT, SIG_IGN);
-	while (i < p->cmds_amount)
+	while (++i < p->cmds_amount)
 	{
 		if (i < p->cmds_amount - 1)
 			pipe_or_die(p->next_fds);
@@ -93,7 +93,6 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 			return (process_command(p, i, cmds[i], e_stat, env));
 		parent_pipe_update(p, i);
 		last_child = pid;
-		i++;
 	}
 	return (wait_children(last_child, p->cmds_amount));
 }
