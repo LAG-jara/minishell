@@ -72,21 +72,21 @@ int	export_builtin(char **args, char ***env)
 	exit_status = 0;
 	if (!*args)
 		return (export_noargs(*env));
-	while (*args)
+	--args;
+	while (++args && *args)
 	{
 		i = 0;
 		word = *args;
 		varname = get_varname(word);
+		if(!valid_varname(varname))
+		{
+			exit_status = print_err_identifier("export", word);
+			continue ;
+		}
 		while (word[i] && word[i] != '=')
 			++i;
 		if (word[i++] == '=')
-		{
-			if(!valid_varname(varname))
-				exit_status = print_err_identifier(word, "export");
-			else
-				set_env_var(varname, word + i, env);
-		}
-		++args;
+			set_env_var(varname, word + i, env);
 	}
 	return (exit_status);
 }

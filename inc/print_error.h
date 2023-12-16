@@ -45,10 +45,11 @@ int		print_err_heredoc(void);
 
 // BUILTIN ERRORS
 
-int		print_err_cd(const char *arg, const char *err_msg);
+// int		print_err_cd(const char *arg, const char *err_msg);
 int		print_err_identifier(const char *identifier, const char *builtin);
 int		print_err_too_many_arg(void);
 int		print_err_numeric_arg(const char *arg);
+int		print_err_builtin(const char *builtin, const char *arg);
 
 // EXEC ERRORS
 void	print_err_exec(const char *cmdname);
