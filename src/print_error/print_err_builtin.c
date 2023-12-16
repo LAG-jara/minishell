@@ -20,23 +20,19 @@ int	print_err_builtin(const char *builtin, const char *arg)
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(builtin, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
 	if (arg)
 	{
-		ft_putstr_fd(": '", STDERR_FILENO);
+		ft_putstr_fd("'", STDERR_FILENO);
 		ft_putstr_fd(arg, STDERR_FILENO);
 		ft_putstr_fd("': ", STDERR_FILENO);
 	}
-	else
-	{
-		ft_putstr_fd(builtin, STDERR_FILENO);
-		ft_putstr_fd(": ", STDERR_FILENO);
-	}	
 	ft_putendl_fd(strerror(errno), STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
 
 
-int  print_err_too_many_arg(void)
+int	print_err_too_many_arg(void)
 {
   // Error form exit
   // bash: exit: too many arguments
@@ -45,7 +41,7 @@ int  print_err_too_many_arg(void)
   return (EXIT_FAILURE);
 }
 
-int  print_err_identifier(const char *builtin, const char *identifier)
+int	print_err_identifier(const char *builtin, const char *identifier)
 {
   //bash: export: `42=asd': not a valid identifier
   //bash: unset: `_aaaa222asd=pepe': not a valid identifier

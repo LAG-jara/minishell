@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "basic_utils.h"
+#include "print_error.h"
 #include <unistd.h>
 
 /*
@@ -26,7 +27,10 @@ int	pwd_builtin(void)
 	buffer = NULL;
 	buffer = getcwd(buffer, 42);
 	if (!buffer)
+	{
+		print_err_builtin("pwd", NULL);
 		return (2);
+	}
 	write(1, buffer, ft_strlen(buffer));
 	write(1, "\n", 1);
 	free(buffer);
