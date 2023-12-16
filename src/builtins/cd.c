@@ -91,7 +91,7 @@ int	cd_builtin(char **word, char **env)
 	if (*word == NULL)
 	{
 		if (chdir(get_var("HOME", env)) < 0)
-			return (print_err_cd(*word, strerror(errno)));
+			return (print_err_builtin("cd", *word));
 		return (EXIT_SUCCESS);
 	}
 	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
@@ -100,6 +100,6 @@ int	cd_builtin(char **word, char **env)
 			return (pwd_builtin());
 	}
 	if (chdir(*word) < 0)
-		return (print_err_cd(*word, strerror(errno)));
+		return (print_err_builtin("cd", *word));
 	return (EXIT_SUCCESS);
 }

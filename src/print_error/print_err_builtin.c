@@ -12,7 +12,7 @@
 
 #include "print_error.h"
 
-int	print_err_identifier(const char *identifier, const char *builtin)
+int	print_err_builtin(const char *builtin, const char *arg)
 {
 	// Error from unset
 	//bash: export: `42=asd': not a valid identifier
@@ -20,20 +20,43 @@ int	print_err_identifier(const char *identifier, const char *builtin)
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(builtin, STDERR_FILENO);
-	ft_putstr_fd(": '", STDERR_FILENO);
-	ft_putstr_fd(identifier, STDERR_FILENO);
-	ft_putstr_fd("': ", STDERR_FILENO);
-	ft_putendl_fd(MSG_IDENTERR, STDERR_FILENO);
+	if (arg)
+	{
+		ft_putstr_fd(": '", STDERR_FILENO);
+		ft_putstr_fd(arg, STDERR_FILENO);
+		ft_putstr_fd("': ", STDERR_FILENO);
+	}
+	else
+	{
+		ft_putstr_fd(builtin, STDERR_FILENO);
+		ft_putstr_fd(": ", STDERR_FILENO);
+	}	
+	ft_putendl_fd(strerror(errno), STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
 
-int	print_err_too_many_arg(void)
+
+int  print_err_too_many_arg(void)
 {
-	// Error form exit
-	// bash: exit: too many arguments
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putendl_fd(": exit: too many arguments", STDERR_FILENO);
-	return (EXIT_FAILURE);
+  // Error form exit
+  // bash: exit: too many arguments
+  ft_putstr_fd(SH_NAME, STDERR_FILENO);
+  ft_putendl_fd(": exit: too many arguments", STDERR_FILENO);
+  return (EXIT_FAILURE);
+}
+
+int  print_err_identifier(const char *builtin, const char *identifier)
+{
+  //bash: export: `42=asd': not a valid identifier
+  //bash: unset: `_aaaa222asd=pepe': not a valid identifier
+  ft_putstr_fd(SH_NAME, STDERR_FILENO);
+  ft_putstr_fd(": ", STDERR_FILENO);
+  ft_putstr_fd(builtin, STDERR_FILENO);
+  ft_putstr_fd(": '", STDERR_FILENO);
+  ft_putstr_fd(identifier, STDERR_FILENO);
+  ft_putstr_fd("': ", STDERR_FILENO);
+  ft_putendl_fd(MSG_IDENTERR, STDERR_FILENO);
+  return (EXIT_FAILURE);
 }
 
 int	print_err_numeric_arg(const char *arg)
@@ -48,14 +71,14 @@ int	print_err_numeric_arg(const char *arg)
 	return (EXIT_NUMARG);
 }
 
-int	print_err_cd(const char *arg, const char *err_msg)
-{
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": cd: ", STDERR_FILENO);
-	ft_putstr_fd(arg, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(err_msg, STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+// int	print_err_cd(const char *arg, const char *err_msg)
+// {
+// 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+// 	ft_putstr_fd(": cd: ", STDERR_FILENO);
+// 	ft_putstr_fd(arg, STDERR_FILENO);
+// 	ft_putstr_fd(": ", STDERR_FILENO);
+// 	ft_putendl_fd(err_msg, STDERR_FILENO);
+// 	return (EXIT_FAILURE);
+// }
 
 

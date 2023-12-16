@@ -34,7 +34,7 @@ int	unset_builtin(char **args, char ***env)
 		if (valid_varname(args[i]))
 			rm_env_var(args[i], env);
 		else
-			ret_status = print_err_identifier(args[i], "unset");
+			ret_status = print_err_identifier("unset", args[i]);
 	}
 	return (ret_status);
 }
