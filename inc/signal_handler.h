@@ -28,4 +28,8 @@ int		init_signals(int mode);
 void	ignore_signal(int signum);
 void	signals_print_handler(int foo);
 
+// GLOBAL VARIABLE
+
+int 	g_signal;
+
 #endif

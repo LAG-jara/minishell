@@ -18,6 +18,7 @@
 #include "signal_handler.h"
 #include "basic_utils.h"
 #include "token.h"
+#include <errno.h>
 #include <unistd.h>
 #include "../readline/readline.h"
 
@@ -35,9 +36,25 @@ static void	free_commands(t_list **commands)
 // Set the signal handling of the loop during the parse
 static void set_interactive_sig(void)
 {
+	g_signal = 0;
 	init_signals(INTER);
 	signal(SIGQUIT, SIG_IGN);
 	signals_print_handler(FALSE);
+}
+
+static void force_exit(int exit_status)
+{
+	if (isatty(STDOUT_FILENO))
+		ft_putendl_fd("\033[A\033[2Kminish$ exit", STDERR_FILENO);
+	restore_exit(exit_status);
+}
+
+static int control_and_c(int exit_status)
+{
+	if (g_signal == SIGINT)
+		exit_status = EXIT_FAILURE;
+	signal(SIGINT, SIG_IGN);
+	return (exit_status);
 }
 
 // Executes the minish loop until the SIGHUP signal is received.
@@ -53,13 +70,9 @@ void	minish_loop(char **env)
 	{
 		set_interactive_sig();
 		input = get_input();
-		signal(SIGINT, SIG_IGN);
+		exit_status = control_and_c(exit_status);
 		if (!input)
-		{
-			if (isatty(STDOUT_FILENO))
-				ft_putendl_fd("\033[A\033[2Kminish$ exit", STDERR_FILENO);
-			restore_exit(exit_status);
-		}
+			force_exit(exit_status);
 		tokens = tokenize(input);
 		free(input);
 		commands = parse(tokens, &exit_status);

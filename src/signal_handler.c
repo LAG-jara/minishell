@@ -18,6 +18,7 @@ static void	inter_handler(int sig, siginfo_t *data, void *non_used_data)
 {
 	(void) data;
 	(void) non_used_data;
+	g_signal = sig;
 	if (sig == SIGINT)
 	{
 		printf("\n");
@@ -41,4 +42,16 @@ int	init_signals(int mode)
 	sigaction(SIGINT, &signal, NULL);
 	sigaction(SIGQUIT, &signal, NULL);
 	return (0);
+}
+
+// If print is TRUE signals will be printed, otherwise they won't. 
+void	signals_print_handler(int print)
+{
+	struct termios	tc;
+
+	tcgetattr(0, &tc);
+	tc.c_lflag &= ~ECHOCTL;
+	if (print == TRUE)
+		tc.c_lflag |= ECHOCTL;
+	tcsetattr(0, TCSANOW, &tc);
 }
