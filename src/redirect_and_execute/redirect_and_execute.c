@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 14:04:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:37:47 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 	int	exit_stat;
 
 	save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, SAVE);
-	read_heredocs(*cmd, 0, *env);
+	exit_stat = read_heredocs(*cmd, 0, *env);
+	if (exit_stat)
+		return (exit_stat);
 	exit_stat = redirect(cmd, 0);
 	if (exit_stat != 0)
 	{
@@ -79,12 +81,14 @@ static void	parent_pipe_update(t_pipe *p, int i)
 // subprocesses. Returns the exit status of the last command.
 static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 {
+	int		exit_stat;
 	int		i;
 	pid_t	pid;
 	pid_t	last_child;
-	int		ret;
 
-	read_all_heredocs(cmds, p->cmds_amount, env);
+	exit_stat = read_all_heredocs(cmds, p->cmds_amount, env);
+	if (exit_stat)
+		return (exit_stat);
 	stop_signals();
 	i = -1;
 	while (++i < p->cmds_amount)
@@ -97,9 +101,9 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 		parent_pipe_update(p, i);
 		last_child = pid;
 	}
-	ret = wait_children(last_child, p->cmds_amount);
+	exit_stat = wait_children(last_child, p->cmds_amount);
 	clear_heredocs(p->cmds_amount);
-	return (ret);
+	return (exit_stat);
 }
 
 // Performs all redirections and command/builtin executions defined by the array

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:54 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 14:14:45 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:50:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <signal.h>
 #include <termios.h>
 #include "boolean.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 static void	inter_handler(int sig)
 {
@@ -35,36 +37,13 @@ static void	heredoc_handler(int sig)
 	g_signal = sig;
 	if (sig == SIGINT)
 	{
-		printf("\n");
-		rl_replace_line("\0", 1);
+		rl_replace_line("", 1);
 		rl_on_new_line();
 		rl_redisplay();
+		printf("\n");
+		exit(EXIT_FAILURE);
 	}
 }
-
-// Set the signal handling of the loop during the parse
-// void set_interactive_sig(void)
-// {
-// 	g_signal = 0;
-// 	init_signals(INTER);
-// 	signal(SIGQUIT, SIG_IGN);
-// 	signals_print_handler(FALSE);
-// }
-
-// int	init_signals(int mode)
-// {
-// 	struct sigaction	signal;
-
-// 	signal.sa_flags = SA_RESTART;
-// 	sigemptyset(&signal.sa_mask);
-// 	if (mode == INTER)
-// 		signal.sa_sigaction = inter_handler;
-// 	if (mode == NON_INTER)
-// 		signal.sa_handler = SIG_DFL;
-// 	sigaction(SIGINT, &signal, NULL);
-// 	sigaction(SIGQUIT, &signal, NULL);
-// 	return (0);
-// }
 
 // If print is TRUE signals will be printed, otherwise they won't. 
 void	signals_print_handler(int print)
@@ -78,12 +57,14 @@ void	signals_print_handler(int print)
 	tcsetattr(0, TCSANOW, &tc);
 }
 
+// Stops listening to SIGINT and SIGQUIT signals.
 void	stop_signals()
 {
-	signal(SIGINT, SIG_IGN);			// TODO: stop_signals() ?
+	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 }
 
+// Sets the signal mode.
 void	set_signals(int mode)
 {
 	if (mode == INTER)

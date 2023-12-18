@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 14:01:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:55:40 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,7 @@
 #include "readline.h"
 #include "signal_utils.h"
 
-// Returns 1 after closing fd_file.
-int	cancel_heredoc(int fd_file)
-{
-	close(fd_file);
-	return (1);
-}
-
-// Creates a here document, reading the standard input until 'delim' is found
-// and saving the content into the specified temp 'file'.
-// If 'exp' is TRUE, the variable names are expanded.
-// Returns 0 on success, 1 on SIGINT received, or -1 in case of failure
-// (setting errno).
-int	read_heredoc(const char *delim, int exp, const char *file, char **env)
+static int	read_hd_child(const char *delim, int exp, const char *file, char **env)
 {
 	int		fd_file;
 	char	*line;
@@ -44,10 +32,8 @@ int	read_heredoc(const char *delim, int exp, const char *file, char **env)
 	while (1)
 	{
 		line = readline("> ");
-		if (g_signal == SIGINT)
-			return (cancel_heredoc(fd_file));
 		if (line == NULL)
-			ft_putstr_fd("\033[A\033[2K> ", STDOUT_FILENO);
+			ft_putendl_fd("\033[A\033[2K> ", STDOUT_FILENO);
 		if (line == NULL || !ft_strncmp(line, delim, ft_strlen(delim) + 1))
 			break ;
 		if (exp)
@@ -59,4 +45,31 @@ int	read_heredoc(const char *delim, int exp, const char *file, char **env)
 		ft_putendl_fd(line, fd_file);
 	}
 	return (close(fd_file));
+}
+
+// Creates a here document, reading the standard input until 'delim' is found
+// and saving the content into the specified temp 'file'.
+// If 'exp' is TRUE, the variable names are expanded.
+// Returns 0 on success, 1 on SIGINT received, or -1 in case of failure
+// (setting errno).
+int read_heredoc(const char *delim, int exp, const char *file, char **env)
+{
+	pid_t	pid;
+	int		status;
+
+	pid = fork();
+	if (pid == -1)
+		exit (EXIT_FAILURE);
+	if (pid == 0)
+	{
+		set_signals(HEREDOC);
+		read_hd_child(delim, exp, file, env);
+		exit(0);
+	}
+	wait(&status);
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status) && (WTERMSIG(status) == SIGINT))
+		return (EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }
