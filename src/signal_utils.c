@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:54 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 17:50:44 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:59:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	signals_print_handler(int print)
 }
 
 // Stops listening to SIGINT and SIGQUIT signals.
-void	stop_signals()
+void	stop_signals(void)
 {
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);

@@ -15,7 +15,8 @@
 
 # include "list.h"
 
-enum e_token_type {
+enum e_token_type
+{
 	WORD,
 	REDIR,
 	PIPE,

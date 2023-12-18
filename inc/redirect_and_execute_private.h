@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:36:12 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 17:52:00 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:01:35 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@
 # define READ_END		0				// pipe's read end index
 # define WRITE_END		1				// pipe's write end index
 
-typedef struct s_pipe {
+typedef struct s_pipe
+{
 	int	cmds_amount;
 	int	prev_fds[2];
 	int	next_fds[2];
+	int	i;
 }	t_pipe;
 
 int		read_all_heredocs(t_list **cmds, int cmds_amount, char **env);

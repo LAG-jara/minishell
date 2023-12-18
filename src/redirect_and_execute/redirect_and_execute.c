@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 17:37:47 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:58:24 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 // Redirects and executes the command 'cmd' in a subshell, taking into account
 // it is the i-th command of the pipeline.
 // It exits with the appropriate exit status, or returns with a non-zero value.
-static int	process_command(t_pipe *p, int i, t_list *cmd, int e_stat, char **env)
+static int	process_command(t_pipe *p, t_list *cmd, int e_stat, char **env)
 {
 	int		exit_stat;
 
-	if (i > 0)
+	if (p->i > 0)
 		link_read_end(p->prev_fds);
-	if (i < p->cmds_amount - 1)
+	if (p->i < p->cmds_amount - 1)
 		link_write_end(p->next_fds);
-	exit_stat = redirect(&cmd, i);
+	exit_stat = redirect(&cmd, p->i);
 	if (exit_stat != 0)
 		exit(exit_stat);
 	if (lst_size(cmd) == 0)
@@ -93,11 +93,12 @@ static int	process_commands(t_list **cmds, t_pipe *p, int e_stat, char **env)
 	i = -1;
 	while (++i < p->cmds_amount)
 	{
+		p->i = i;
 		if (i < p->cmds_amount - 1)
 			pipe_or_die(p->next_fds);
 		pid = fork_or_die();
 		if (pid == 0)
-			return (process_command(p, i, cmds[i], e_stat, env));
+			return (process_command(p, cmds[i], e_stat, env));
 		parent_pipe_update(p, i);
 		last_child = pid;
 	}
@@ -115,7 +116,7 @@ void	redirect_and_execute(t_list **commands, int *exit_status, char ***env)
 
 	p.cmds_amount = arr_size((void *)commands);
 	if (p.cmds_amount == 0)
-	 	*exit_status = 0;
+		*exit_status = 0;
 	else if (p.cmds_amount == 1 && is_builtin_cmd(commands[0]))
 		*exit_status = process_builtin_here(commands, *exit_status, env);
 	else

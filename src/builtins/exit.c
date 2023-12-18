@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:04:10 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:55:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:25:03 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static int	is_longlong(char *arg)
 		return (FALSE);
 	return (ft_check_llong(arg));
 }
-
 
 /*
 exit 

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:52 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:05:34 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:28:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ unset [name ...]
 	commands. 
 	The exit status is true unless a name is readonly.
 */
-
 int	unset_builtin(char **args, char ***env)
 {
 	int	i;
-	int ret_status;
+	int	ret_status;
 
 	i = -1;
 	ret_status = 0;

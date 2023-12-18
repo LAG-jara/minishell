@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:03:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:27:55 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ export name=value ...
 	(but NO word splitting after expansion) before being assigned to the 
 	variable.
 */
-
 static void	printvar_quoted(const char *var)
 {
 	while (*var != '=')
@@ -46,9 +45,9 @@ static void	printvar_quoted(const char *var)
 	write(1, "\"\n", 2);
 }
 
-static int export_noargs(char **env)
+static int	export_noargs(char **env)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (env[0][++i])
@@ -78,7 +77,7 @@ int	export_builtin(char **args, char ***env)
 		i = 0;
 		word = *args;
 		varname = get_varname(word);
-		if(!valid_varname(varname))
+		if (!valid_varname(varname))
 		{
 			exit_status = print_err_identifier("export", word);
 			continue ;

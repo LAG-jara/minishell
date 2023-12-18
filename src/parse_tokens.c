@@ -6,15 +6,14 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:09:34 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:07:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:42:33 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "list.h"
-# include "boolean.h"
-# include "token.h"
-# include "basic_utils.h"
-# include "print_error.h"
+#include "list.h"
+#include "basic_utils.h"
+#include "token.h"
+#include "print_error.h"
 
 // Returns TRUE if the token at 'node' is a valid redirection token,
 // returns FALSE otherwise.
@@ -85,7 +84,7 @@ static void	add_cmd(t_list **cmd, t_list **node)
 {
 	t_list	*next_node;
 	t_token	*tok;
-	t_token tok_copy;
+	t_token	tok_copy;
 
 	*cmd = NULL;
 	while (*node)

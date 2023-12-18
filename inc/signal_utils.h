@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:25 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 13:27:51 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:01:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	stop_signals(void);
 
 // GLOBAL VARIABLE
 
-int 	g_signal;
+int	g_signal;
 
 #endif

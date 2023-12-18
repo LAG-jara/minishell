@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_atoll.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alajara- <alajara-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/10/22 13:03:05 by alajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:24:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (newstring);
 }
 
-
 long long	ft_atoll(char *str)
 {
 	long long	res;
@@ -74,8 +73,8 @@ long long	ft_atoll(char *str)
 	res = 0;
 	sign = '+';
 	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n') ||
-			(str[i] == '\v') || (str[i] == '\r') || (str[i] == '\f'))
+	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n')
+		|| (str[i] == '\v') || (str[i] == '\r') || (str[i] == '\f'))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -86,7 +85,7 @@ long long	ft_atoll(char *str)
 	{
 		res = (res * 10) + (long long)str[i] - '0';
 		i++;
-		if (res == LONG_MAX/10 && str[i] == '8')
+		if (res == LONG_MAX / 10 && str[i] == '8')
 			return (LONG_MIN);
 	}
 	if (sign == '-')

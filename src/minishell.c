@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 13:27:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:02:50 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,35 @@
 static void	free_commands(t_list **commands)
 {
 	int	i;
-	
+
 	i = -1;
 	while (commands[++i])
 		lst_clear(&commands[i], tok_del);
 	free(commands);
-	//*commands = NULL;
 }
 
-static void force_exit(int exit_status)
+// Returns TRUE if there are no 'commands', freeing the referenced
+// 'commands' array of commands if needed.
+static int	not_commands(t_list	**commands)
+{
+	if (!commands)
+		return (TRUE);
+	if (!*commands)
+	{
+		free_commands(commands);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+static void	force_exit(int exit_status)
 {
 	if (isatty(STDOUT_FILENO))
 		ft_putendl_fd("\033[A\033[2Kminish$ exit", STDERR_FILENO);
 	restore_exit(exit_status);
 }
 
-static int control_and_c(int exit_status)
+static int	control_and_c(int exit_status)
 {
 	if (g_signal == SIGINT)
 		exit_status = EXIT_FAILURE;
@@ -70,13 +83,15 @@ void	minish_loop(char **env)
 		free(input);
 		commands = parse(tokens, &exit_status);
 		lst_clear(&tokens, tok_del);
-		if (!commands)
+		if (not_commands(commands))
 			continue ;
-		if (!*commands)
-		{
-			free_commands(commands);
-			continue ;
-		}
+		// if (!commands)
+		// 	continue ;
+		// if (!*commands)
+		// {
+		// 	free_commands(commands);
+		// 	continue ;
+		// }
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);
