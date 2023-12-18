@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/12 16:05:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:01:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 int		print_err_syntax(const char *token, int ret);
 int		print_err_argc(void);
 void	print_err_filename(const char *filename);
-int		print_err_heredoc(void);
+// int		print_err_heredoc(void);
 
 // BUILTIN ERRORS
 

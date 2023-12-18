@@ -6,10 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 20:19:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:27:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "get_input.h"
 #include "tokenize.h"
 #include "parse_tokens.h"
@@ -18,9 +19,9 @@
 #include "signal_utils.h"
 #include "basic_utils.h"
 #include "token.h"
+#include "readline.h"
 #include <errno.h>
 #include <unistd.h>
-#include "../readline/readline.h"
 
 // Frees an array of commands (as a list of tokens).
 static void	free_commands(t_list **commands)
@@ -60,7 +61,7 @@ void	minish_loop(char **env)
 	exit_status = 0;
 	while (42)
 	{
-		set_interactive_sig();
+		set_signals(INTER);
 		input = get_input();
 		exit_status = control_and_c(exit_status);
 		if (!input)

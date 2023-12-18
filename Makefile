@@ -109,7 +109,7 @@ SRC			= main.c \
 			xtoken/xtok_strncmp.c \
 			xtoken/xtok_to_tok.c \
 			xtoken/xtoklst_clear.c \
-			debug.c						# Remove before submitting
+			debug.c						# TODO: Remove before submitting
 
 DEPDIRS		= $(DEPDIR)arrstr/ \
 			$(DEPDIR)basic_utils/ \
@@ -130,7 +130,7 @@ OBJS		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
 
 # Libraries
 RL_LIB		= readline/
-#INCFLAG		:= -I $(RL_INC)
+INCFLAG		:= -I $(RL_LIB)
 READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
 
 # Dependencies

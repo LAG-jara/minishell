@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 19:15:24 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:02:52 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "token.h"
 #include "quote_utils.h"
 #include "basic_utils.h"
-#include "print_error.h"
+// #include "print_error.h"
 
 // Reads the here document for the 'n'-th command, assuming 'str' is the word
 // right next to the << token.
@@ -53,7 +53,7 @@ int	read_heredocs(t_list *cmd, int n, char **env)
 		if (tok->type == REDIR && !ft_strncmp(tok->val, "<<", 3))
 		{
 			if (read_heredoc_n(tok_get(node->nxt)->val, n, env))
-				return (print_err_heredoc());
+				return (EXIT_FAILURE);
 			node = node->nxt;
 		}
 		node = node->nxt;

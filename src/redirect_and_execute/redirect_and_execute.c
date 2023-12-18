@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 12:23:44 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 19:19:58 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:04:43 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	process_builtin_here(t_list **cmd, int exit_status, char ***env)
 	int	exit_stat;
 
 	save_restore_stdio(STDIN_FILENO, STDOUT_FILENO, SAVE);
+	read_heredocs(*cmd, 0, *env);
 	exit_stat = redirect(cmd, 0);
 	if (exit_stat != 0)
 	{

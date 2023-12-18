@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 17:12:12 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:59:44 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	print_err_filename(const char *filename)
 
 // Prints an error message regarding the here document and returns a non-zero
 // exit code.
-int	print_err_heredoc(void)
-{
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+// int	print_err_heredoc(void)
+// {
+// 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+// 	ft_putstr_fd(": ", STDERR_FILENO);
+// 	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
+// 	return (EXIT_FAILURE);
+// }

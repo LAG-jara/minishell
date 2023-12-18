@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 18:15:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:26:38 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**args;
 	char	**e;
 
-	init_signals(NON_INTER);
-	signals_print_handler(TRUE);
+	set_signals(NON_INTER);
+	// signals_print_handler(TRUE);
 	args = get_args_from_cmd(cmd);
 	if (ft_strlen(tok_get(cmd)->val) == 0)
 		exit_null_cmd();
