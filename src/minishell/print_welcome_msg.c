@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minish_consts.h                                    :+:      :+:    :+:   */
+/*   print_welcome_msg.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:42:56 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 19:48:33 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/18 19:48:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISH_CONSTS_H
-# define MINISH_CONSTS_H
+#include "basic_utils.h"
+#include "minish_consts.h"
+#include <unistd.h>
 
-# define SH_NAME "minish"
-
-# define LINE_1 "\nWelcome to minish - the bare minimum minishell project"
-# define LINE_2 "Our code: https://github.com/lag-jara/minishell"
-# define LINE_3 "Our manual: https://github.com/Liam-McHara/minishell-manual"
-
-#endif
+// Prints the minish welcome message to the standard output.
+void	print_welcome_msg(void)
+{
+	ft_putendl_fd(LINE_1, STDOUT_FILENO);
+	ft_putendl_fd(LINE_2, STDOUT_FILENO);
+	ft_putendl_fd(LINE_3, STDOUT_FILENO);
+}

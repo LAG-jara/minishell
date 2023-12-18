@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:37:33 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:35:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av, char **e)
 		return (print_err_argc());
 	av += 0;
 	env = arrstr_dup(e);
+	print_welcome_msg();
 	minish_loop(env);
 	return (EXIT_SUCCESS);
 }
