@@ -50,7 +50,7 @@ static int	export_noargs(char **env)
 	int	i;
 
 	i = -1;
-	while (env[0][++i])
+	while (env[++i])
 	{
 		if (ft_strchr(env[i], '='))
 		{

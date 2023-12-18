@@ -94,6 +94,8 @@ int	cd_builtin(char **word, char **env)
 			return (print_err_builtin("cd", *word));
 		return (EXIT_SUCCESS);
 	}
+	if (**word == '\0')
+		return (EXIT_SUCCESS);
 	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
 	{
 		if (try_cdpath(*word, env))
