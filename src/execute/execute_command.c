@@ -6,25 +6,17 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 13:26:38 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:14:14 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute_private.h"
+#include "basic_utils.h"
 #include "token.h"
 #include "builtins.h"
 #include "arrstr.h"
 #include "signal_utils.h"
-#include "print_error.h"			// Remove when unused
-
-// Prints an error message when trying to execute a null command and exits.
-static void	exit_null_cmd()
-{
-	ft_putstr_fd(SH_NAME, STDERR_FILENO);			// TODO: move to print_error.h
-	ft_putstr_fd(": : ", STDERR_FILENO);			//
-	ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);//
-	exit(EXIT_CMD_NOT_FOUND);
-}
+#include "print_error.h"
 
 // Executes the command 'cmd' (which might be a builtin) assuming there are no
 // redirections and exits with the appropriate exit status.
@@ -35,10 +27,12 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**e;
 
 	set_signals(NON_INTER);
-	// signals_print_handler(TRUE);
 	args = get_args_from_cmd(cmd);
 	if (ft_strlen(tok_get(cmd)->val) == 0)
-		exit_null_cmd();
+	{
+		print_err_null_cmd();
+		exit(EXIT_CMD_NOT_FOUND);
+	}
 	if (is_builtin_name(args[0]))
 	{
 		e = arrstr_dup(env);

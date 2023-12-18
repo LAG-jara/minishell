@@ -6,17 +6,19 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by alajara-          #+#    #+#             */
-/*   Updated: 2023/11/29 17:11:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:16:41 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print_error.h"
+#include "basic_utils.h"
+#include "minish_consts.h"
+#include <string.h>
+#include <unistd.h>
+#include <errno.h>
 
 int	print_err_builtin(const char *builtin, const char *arg)
 {
-	// Error from unset
-	//bash: export: `42=asd': not a valid identifier
-	//bash: unset: `_aaaa222asd=pepe': not a valid identifier
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putstr_fd(builtin, STDERR_FILENO);
@@ -31,11 +33,8 @@ int	print_err_builtin(const char *builtin, const char *arg)
 	return (EXIT_FAILURE);
 }
 
-
 int	print_err_too_many_arg(void)
 {
-  // Error form exit
-  // bash: exit: too many arguments
   ft_putstr_fd(SH_NAME, STDERR_FILENO);
   ft_putendl_fd(": exit: too many arguments", STDERR_FILENO);
   return (EXIT_FAILURE);
@@ -43,8 +42,6 @@ int	print_err_too_many_arg(void)
 
 int	print_err_identifier(const char *builtin, const char *identifier)
 {
-  //bash: export: `42=asd': not a valid identifier
-  //bash: unset: `_aaaa222asd=pepe': not a valid identifier
   ft_putstr_fd(SH_NAME, STDERR_FILENO);
   ft_putstr_fd(": ", STDERR_FILENO);
   ft_putstr_fd(builtin, STDERR_FILENO);
@@ -57,24 +54,10 @@ int	print_err_identifier(const char *builtin, const char *identifier)
 
 int	print_err_numeric_arg(const char *arg)
 {
-	// Error from exit
-	// bash: exit: --1: numeric argument required
-		ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": exit: ", STDERR_FILENO);
 	ft_putstr_fd(arg, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(MSG_NUMARG, STDERR_FILENO);
 	return (EXIT_NUMARG);
 }
-
-// int	print_err_cd(const char *arg, const char *err_msg)
-// {
-// 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-// 	ft_putstr_fd(": cd: ", STDERR_FILENO);
-// 	ft_putstr_fd(arg, STDERR_FILENO);
-// 	ft_putstr_fd(": ", STDERR_FILENO);
-// 	ft_putendl_fd(err_msg, STDERR_FILENO);
-// 	return (EXIT_FAILURE);
-// }
-
-

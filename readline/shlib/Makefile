@@ -32,7 +32,7 @@ datarootdir = ${prefix}/share
 srcdir = .
 VPATH = ..
 topdir = ..
-BUILD_DIR = /Users/glajara-/Desktop/projects/minishell/readline
+BUILD_DIR = /Users/glajara-/Desktop/projects/minishbien/readline
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}

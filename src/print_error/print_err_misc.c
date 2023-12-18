@@ -6,11 +6,17 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 13:59:44 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:19:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "print_error.h"
+#include "basic_utils.h"
+#include "minish_consts.h"
+#include <unistd.h>
+#include <errno.h>
+#include <stdio.h>
+#include <string.h>
 
 // Prints the a syntax error message regarding 'token' and returns 'ret'.
 int	print_err_syntax(const char *token, int ret)
@@ -28,7 +34,9 @@ int	print_err_syntax(const char *token, int ret)
 // the corresponding exit code.
 int	print_err_argc(void)
 {
-	printf("%s: %s\n", SH_NAME, MSG_WRONGAC);
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(MSG_WRONGAC, STDERR_FILENO);
 	return (EXIT_WRONGAC);
 }
 
@@ -41,13 +49,3 @@ void	print_err_filename(const char *filename)
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(strerror(errno), STDERR_FILENO);
 }
-
-// Prints an error message regarding the here document and returns a non-zero
-// exit code.
-// int	print_err_heredoc(void)
-// {
-// 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-// 	ft_putstr_fd(": ", STDERR_FILENO);
-// 	ft_putendl_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
-// 	return (EXIT_FAILURE);
-// }

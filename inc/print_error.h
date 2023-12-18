@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 14:01:48 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 18:15:25 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,18 @@
 # define EXIT_NOPATH		127
 # define MSG_NOPATH			"No such file or directory"
 
+// BUILTIN
 
-//BUITIN DEFINITIONS
 # define MSG_NUMARG 		"numeric argument required"
 # define EXIT_NUMARG 		255
-//# define MSG_MANY_ARGS 		"too many arguments"
 # define MSG_IDENTERR 		"not a valid identifier"
-
-# include "basic_utils.h"
-# include "minish_consts.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <string.h>
-# include <errno.h>
-# include <stdlib.h>
 
 int		print_err_syntax(const char *token, int ret);
 int		print_err_argc(void);
 void	print_err_filename(const char *filename);
-// int		print_err_heredoc(void);
 
 // BUILTIN ERRORS
 
-// int		print_err_cd(const char *arg, const char *err_msg);
 int		print_err_identifier(const char *identifier, const char *builtin);
 int		print_err_too_many_arg(void);
 int		print_err_numeric_arg(const char *arg);
@@ -54,5 +43,6 @@ int		print_err_builtin(const char *builtin, const char *arg);
 // EXEC ERRORS
 void	print_err_exec(const char *cmdname);
 void	print_err_nopath(const char *cmdname);
+void	print_err_null_cmd(void);
 
 #endif
