@@ -201,8 +201,12 @@ norm:
 			@norminette $(SRCDIR)* $(INCDIR)*
 
 
-$(READLINE): 
-			@cd ./$(RL_LIB) && ./configure && make
+$(READLINE):
+			ZIP=readline.tar.gz
+			curl -k http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-bfe9c573a9e376323929c80b2b71c59727fab0cc.tar.gz > $ZIP
+			tar -xf $ZIP && mv readline-bfe* readline
+			rm -rf $ZIP
+			cd ./$(RL_LIB) && ./configure && make
 
 -include $(DEPS)
 
