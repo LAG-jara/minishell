@@ -21,7 +21,7 @@ void	delim_quote_remove(char **word)
 	int		j;
 	char	*str;
 
-	str = (char *)p_malloc(sizeof(char) * (ft_strlen(word[0])));
+	str = (char *)p_malloc(sizeof(char) * (ft_strlen(word[0]) + 1));
 	i = -1;
 	j = -1;
 	last_quote = 0;
