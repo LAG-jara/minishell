@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:48:30 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:38:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static int	read_hd_child(const char *d, int x, const char *file, char **env)
 	{
 		line = readline("> ");
 		if (line == NULL)
-			ft_putendl_fd("\033[A\033[2K> ", STDOUT_FILENO);
+		{
+			ft_putstr_fd("\033[A\033[2K> ", STDOUT_FILENO);
+		}
 		if (line == NULL || !ft_strncmp(line, d, ft_strlen(d) + 1))
 			break ;
 		if (x)
