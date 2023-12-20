@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_welcome_msg.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 12:55:53 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 19:35:56 by glajara-         ###   ########.fr       */
+/*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/20 12:14:32 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "print_error.h"
-#include "arrstr.h"
+#include "basic_utils.h"
+#include "minish_consts.h"
+#include <unistd.h>
+#include "print_fx.h"
 
-int	main(int ac, char **av, char **e)
+// Prints the minish welcome message to the standard output.
+void	print_welcome_msg(void)
 {
-	char	**env;
-
-	if (ac != 1)
-		return (print_err_argc());
-	av += 0;
-	env = arrstr_dup(e);
-	print_welcome_msg();
-	minish_loop(env);
-	return (EXIT_SUCCESS);
+	ft_putendl_fd(LINE_1, STDOUT_FILENO);
+	ft_putendl_fd(LINE_2, STDOUT_FILENO);
+	ft_putendl_fd(LINE_3, STDOUT_FILENO);
+	ft_putendl_fd(LINE_4, STDOUT_FILENO);
 }

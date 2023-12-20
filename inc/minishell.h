@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:09:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:45:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:35:29 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "redirect_and_execute.h"
 # include "signal_utils.h"
 
+void	print_welcome_msg(void);
 void	minish_loop(char **env);
 
 #endif

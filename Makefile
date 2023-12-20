@@ -3,7 +3,8 @@ MKF			= Makefile
 
 # Sources
 SRC			= main.c \
-			minishell.c \
+			minishell/minish_loop.c \
+			minishell/print_welcome_msg.c \
 			get_input.c \
 			open_file.c \
 			parse_tokens.c \
