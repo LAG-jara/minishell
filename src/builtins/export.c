@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:27:55 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 14:13:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,18 @@ int	export_builtin(char **args, char ***env)
 	{
 		i = 0;
 		word = *args;
-		varname = get_varname(word);
-		if (!valid_varname(varname))
+		varname = env_get_varname(word);
+		if (!env_valid_varname(varname))
 		{
 			exit_status = print_err_identifier("export", word);
+			free(varname);
 			continue ;
 		}
 		while (word[i] && word[i] != '=')
 			++i;
 		if (word[i++] == '=')
-			set_env_var(varname, word + i, env);
+			env_set_var(varname, word + i, env);
+		free(varname);
 	}
 	return (exit_status);
 }
