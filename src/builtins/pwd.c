@@ -14,12 +14,7 @@
 #include "print_error.h"
 #include <unistd.h>
 
-/*
-pwd
-	Print the absolute pathname of the current working directory.
-	The return status is 0 unless an error occurs while reading the name of the
-	current directory or an invalid option is supplied.
-*/
+// Prints the actual path. Returns 0.
 int	pwd_builtin(void)
 {
 	char	*buffer;

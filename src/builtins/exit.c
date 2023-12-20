@@ -68,16 +68,10 @@ static int	is_longlong(char *arg)
 	return (ft_check_llong(arg));
 }
 
-/*
-exit 
-	Prints “exit” followed by a newline before closing the shell. 
-	If no arguments are passed, the exit status is that of the last command
-	executed.
-	If a number(long long) is passed as argument, exits with the % 256 of that
-	number.
-	If args[0] is out of the long long range or it does not contain a numeric
-	value or there are more args, print the necesary error. 
-*/
+// Exits the program. If is_child does not print exit when executed.
+// If no args exits with the previous exit_status.
+// If args is only one value inside long long range, returns its module of 256.
+// Does its error behaviour.
 int	exit_builtin(char **args, int exit_status, int is_child)
 {
 	long long	exit_stat;
@@ -86,18 +80,18 @@ int	exit_builtin(char **args, int exit_status, int is_child)
 	if (!is_child)
 		ft_putendl_fd("exit", STDERR_FILENO);
 	if (*args == NULL)
-		exit(exit_status);
+		restore_exit(exit_status);
 	str = ft_strtrim(args[0], " \n\t\v\f\r");
 	if (is_longlong(str) == FALSE)
 	{
 		free(str);
-		exit(print_err_numeric_arg(args[0]));
+		restore_exit(print_err_numeric_arg(args[0]));
 	}
 	if (args[1] == NULL)
 	{
 		exit_stat = ft_atoll(str);
 		free(str);
-		exit(exit_stat % 256);
+		restore_exit(exit_stat % 256);
 	}
 	free(str);
 	return (print_err_too_many_arg());

@@ -13,14 +13,9 @@
 #include "env.h"
 #include "print_error.h"
 
-/*
-unset [name ...]
-	For each name, remove the corresponding variable. 
-	Each name refers to a shell variable. Read-only variables may not be unset.
-	Each unset variable is removed from the environment passed to subsequent 
-	commands. 
-	The exit status is true unless a name is not a valid variable.
-*/
+// Unset every variable in args from env. 
+// If no errors are found, returns 0.
+// Otherwise returns error with the proper message and exit_status.
 int	unset_builtin(char **args, char ***env)
 {
 	int	i;

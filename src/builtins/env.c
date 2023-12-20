@@ -13,7 +13,7 @@
 #include "basic_utils.h"
 #include <unistd.h>
 
-// Lists the enviroment variables with its values.
+// Lists the enviroment variables with its values. Returns 0
 int	env_builtin(char **env)
 {
 	while (*env)

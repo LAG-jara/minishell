@@ -24,5 +24,5 @@ int	main(int ac, char **av, char **e)
 	env = arrstr_dup(e);
 	print_welcome_msg();
 	minish_loop(env);
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }
