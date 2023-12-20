@@ -149,6 +149,8 @@ INCFLAG		:= -I $(INCDIR)
 RL_LIB		= readline/
 INCFLAG		+= -I $(RL_LIB)
 READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
+RL_ZIP		= readline.tar.gz
+RL_URL		= http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-bfe9c573a9e376323929c80b2b71c59727fab0cc.tar.gz
 
 LIBS		= -lreadline -ltermcap
 RM			= rm -fr
@@ -201,12 +203,13 @@ norm:
 			@norminette $(SRCDIR)* $(INCDIR)*
 
 
-$(READLINE):
-			ZIP=readline.tar.gz
-			curl -k http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-bfe9c573a9e376323929c80b2b71c59727fab0cc.tar.gz > $ZIP
-			tar -xf $ZIP && mv readline-bfe* readline
-			rm -rf $ZIP
-			cd ./$(RL_LIB) && ./configure && make
+$(RL_LIB):
+			@curl -k $(RL_URL) > $(RL_ZIP)
+			@tar -xf $(RL_ZIP) && mv readline-* readline
+			@rm -rf $(RL_ZIP)
+
+$(READLINE): $(RL_LIB)
+			@cd ./$(RL_LIB) && ./configure && make
 
 -include $(DEPS)
 
