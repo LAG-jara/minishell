@@ -6,14 +6,13 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 12:26:21 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:57:19 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "basic_utils.h"
 #include "minish_consts.h"
 #include <unistd.h>
-#include "print_fx.h"
 
 // Prints the minish welcome message to the standard output.
 void	print_welcome_msg(void)
