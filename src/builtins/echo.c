@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:02:50 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:01:50 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:20:45 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,34 @@ static int	is_flag(char *word)
 	return (TRUE);
 }
 
-static int	get_flag(char **word)
+static int	get_flag(char **args)
 {
 	int	idx;
 
 	idx = 0;
-	while (word[idx] && is_flag(word[idx]))
+	while (args[idx] && is_flag(args[idx]))
 		++idx;
 	return (idx);
 }
 
-// Output the words, separated by spaces, followed by a newline. 
+// Output the 'args', separated by spaces, followed by a newline. 
 // The return status is always 0. 
 // If -n is specified, the trailing newline is suppressed.
-int	echo_builtin(char **word)
+int	echo_builtin(char **args)
 {
 	int	first;
 	int	flag;
 
 	first = 0;
-	flag = get_flag(word);
-	word += flag;
-	while (*word)
+	flag = get_flag(args);
+	args += flag;
+	while (*args)
 	{
 		if (first)
 			printf(" ");
-		printf("%s", *word);
+		printf("%s", *args);
 		first = 1;
-		word++;
+		args++;
 	}
 	if (!flag)
 		printf("\n");

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:34 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 14:13:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:23:54 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "list.h"
 #include "print_error.h"
 #include <unistd.h>
-
 
 static void	printvar_quoted(const char *var)
 {
@@ -51,12 +50,11 @@ static int	export_noargs(char **env)
 	return (0);
 }
 
-// Export every variable in args to env. 
+// Export every variable in 'args' to env. 
 // If no errors are found, returns 0.
 // Otherwise returns error with the proper message and exit_status.
 int	export_builtin(char **args, char ***env)
 {
-	char	*word;
 	char	*varname;
 	int		i;
 	int		exit_status;
@@ -68,18 +66,17 @@ int	export_builtin(char **args, char ***env)
 	while (++args && *args)
 	{
 		i = 0;
-		word = *args;
-		varname = env_get_varname(word);
+		varname = env_get_varname(*args);
 		if (!env_valid_varname(varname))
 		{
-			exit_status = print_err_identifier("export", word);
+			exit_status = print_err_identifier("export", *args);
 			free(varname);
 			continue ;
 		}
-		while (word[i] && word[i] != '=')
+		while ((*args)[i] && (*args)[i] != '=')
 			++i;
-		if (word[i++] == '=')
-			env_set_var(varname, word + i, env);
+		if ((*args)[i++] == '=')
+			env_set_var(varname, (*args) + i, env);
 		free(varname);
 	}
 	return (exit_status);

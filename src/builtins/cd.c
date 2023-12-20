@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 12:51:13 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 17:18:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,27 @@ static int	try_cdpath(char *str, char **env)
 }
 
 // Changes the actual dir. 
-// If no arg is set, search for the variable PATH.
-// If there is a relative path and its in dir, tries with variable CDPATH
-// If it can perform the operation with CDPATH prints pwd.
-// If some error is found exits with the proper message asociated.
-int	cd_builtin(char **word, char **env)
+// If no 'args' is set, search for the env variable PATH.
+// The first element of 'args' is taken as the new path.
+// It it is a relative path tries appending CDPATH values, printing the current
+// working dir on success.
+// If some error is found returns after printing an error message.
+int	cd_builtin(char **args, char **env)
 {
-	if (*word == NULL)
+	if (*args == NULL)
 	{
 		if (chdir(env_get_var("HOME", env)) < 0)
-			return (print_err_builtin("cd", *word));
+			return (print_err_builtin("cd", *args));
 		return (EXIT_SUCCESS);
 	}
-	if (**word == '\0')
+	if (**args == '\0')
 		return (EXIT_SUCCESS);
-	if (is_relativepath(*word) && is_same_or_parent_dir(*word) == FALSE)
+	if (is_relativepath(*args) && is_same_or_parent_dir(*args) == FALSE)
 	{
-		if (try_cdpath(*word, env))
+		if (try_cdpath(*args, env))
 			return (pwd_builtin());
 	}
-	if (chdir(*word) < 0)
-		return (print_err_builtin("cd", *word));
+	if (chdir(*args) < 0)
+		return (print_err_builtin("cd", *args));
 	return (EXIT_SUCCESS);
 }
