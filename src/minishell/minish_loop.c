@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 19:45:15 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:30:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,6 @@ void	minish_loop(char **env)
 		lst_clear(&tokens, tok_del);
 		if (not_commands(commands))
 			continue ;
-		// if (!commands)
-		// 	continue ;
-		// if (!*commands)
-		// {
-		// 	free_commands(commands);
-		// 	continue ;
-		// }
 		commands = expand_and_split(commands, exit_status, env);
 		redirect_and_execute(commands, &exit_status, &env);
 		free_commands(commands);

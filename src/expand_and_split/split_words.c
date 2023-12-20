@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:14:14 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:58:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:29:58 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static void	split_words_xtok(t_list **xtokens, t_list **xtoken)
 		lst_add(&split_words, lst_new(&split_word, sizeof(split_word)));
 		split_word = pop_word(&xtok_orig->val);
 	}
-	lst_rm_one(xtokens, *xtoken, free);		// TODO: xtok_del function
+	lst_rm_one(xtokens, *xtoken, free);
 	lst_add_many(xtokens, next_node, split_words);
 	*xtoken = next_node;
 }
