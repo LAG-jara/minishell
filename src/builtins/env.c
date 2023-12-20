@@ -13,7 +13,7 @@
 #include "basic_utils.h"
 #include <unistd.h>
 
-// TODO: descripcion SI, descripCion :D
+// Lists the enviroment variables with its values.
 int	env_builtin(char **env)
 {
 	while (*env)

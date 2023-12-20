@@ -24,7 +24,7 @@ static int	is_relativepath(char *str)
 	return (FALSE);
 }
 
-// If the string 'str' uses the dir . or .. returns TRUE.
+// If the string 'str' uses the dir "." or ".." returns TRUE.
 // Otherwise returns FALSE.
 static int	is_same_or_parent_dir(char *str)
 {

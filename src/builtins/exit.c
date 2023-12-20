@@ -75,6 +75,8 @@ exit
 	executed.
 	If a number(long long) is passed as argument, exits with the % 256 of that
 	number.
+	If args[0] is out of the long long range or it does not contain a numeric
+	value or there are more args, print the necesary error. 
 */
 int	exit_builtin(char **args, int exit_status, int is_child)
 {

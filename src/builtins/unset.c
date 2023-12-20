@@ -19,7 +19,7 @@ unset [name ...]
 	Each name refers to a shell variable. Read-only variables may not be unset.
 	Each unset variable is removed from the environment passed to subsequent 
 	commands. 
-	The exit status is true unless a name is readonly.
+	The exit status is true unless a name is not a valid variable.
 */
 int	unset_builtin(char **args, char ***env)
 {
