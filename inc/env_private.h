@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_filename.c                                 :+:      :+:    :+:   */
+/*   env_private.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 17:01:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 13:10:53 by glajara-         ###   ########.fr       */
+/*   Created: 2023/09/26 14:36:25 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/20 12:48:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirect_private.h"
-#include "basic_utils.h"
+#ifndef ENV_PRIVATE_H
+# define ENV_PRIVATE_H
 
-// Allocates and returns a string representing the here document temp filename
-// for the 'n'-th command.
-char	*heredoc_filename(int n)
-{
-	char	*tmp;
-	char	*filename;
+int		env_find_var_index(const char *varname, char **env);
+char	*env_find_var_line(const char *varname, char **env);
 
-	filename = ft_strdup(HEREDOC_FILENAME_PREFIX);
-	tmp = ft_itoa(n);
-	ft_strjoin_free(&filename, tmp);
-	free(tmp);
-	return (filename);
-}
+#endif

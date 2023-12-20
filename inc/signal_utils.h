@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 17:50:25 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 19:01:56 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 13:15:17 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	signals_print_handler(int foo);
 void	set_interactive_sig(void);
 void	stop_signals(void);
 
-// GLOBAL VARIABLE
-
+// Number of the received signal.
 int	g_signal;
 
 #endif

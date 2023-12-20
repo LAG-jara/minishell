@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 20:11:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:51:13 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	try_cdpath(char *str, char **env)
 	int		i;
 
 	i = -1;
-	path = get_vars("CDPATH", env);
+	path = env_get_vars("CDPATH", env);
 	if (path == NULL)
 		return (FALSE);
 	while (path[++i])
@@ -90,7 +90,7 @@ int	cd_builtin(char **word, char **env)
 {
 	if (*word == NULL)
 	{
-		if (chdir(get_var("HOME", env)) < 0)
+		if (chdir(env_get_var("HOME", env)) < 0)
 			return (print_err_builtin("cd", *word));
 		return (EXIT_SUCCESS);
 	}

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 19:04:19 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 19:01:54 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:41:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "token.h"
 
 // Returns TRUE if the string 'str' is the name of a builtin.
-int	is_builtin_name(char *str)
+int	is_builtin_name(const char *str)
 {
 	if (!ft_strncmp(str, "cd", 3) || !ft_strncmp(str, "echo", 5) || \
 	!ft_strncmp(str, "env", 4) || !ft_strncmp(str, "exit", 5) || \

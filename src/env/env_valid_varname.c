@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_filename.c                                 :+:      :+:    :+:   */
+/*   env_valid_varname.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 17:01:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 13:10:53 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/24 12:50:08 by alajara-          #+#    #+#             */
+/*   Updated: 2023/12/20 13:01:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirect_private.h"
 #include "basic_utils.h"
 
-// Allocates and returns a string representing the here document temp filename
-// for the 'n'-th command.
-char	*heredoc_filename(int n)
+// Checks and returns TRUE if the given 'word' us a valid variable name.
+// A valid name consists only of alphanumeric characters and underscores, and
+// begins with an alphabetic character or an underscore.
+int	env_valid_varname(char *word)
 {
-	char	*tmp;
-	char	*filename;
-
-	filename = ft_strdup(HEREDOC_FILENAME_PREFIX);
-	tmp = ft_itoa(n);
-	ft_strjoin_free(&filename, tmp);
-	free(tmp);
-	return (filename);
+	if (!word)
+		return (FALSE);
+	if (*word == '_' || ft_isalpha(*word))
+	{
+		++word;
+		while (*word == '_' || ft_isalnum(*word))
+			++word;
+	}
+	if (!*word)
+		return (TRUE);
+	return (FALSE);
 }

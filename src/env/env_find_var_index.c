@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_filename.c                                 :+:      :+:    :+:   */
+/*   env_find_var_index.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 17:01:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 13:10:53 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/15 14:59:27 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/20 12:55:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirect_private.h"
+#include "env.h"
 #include "basic_utils.h"
 
-// Allocates and returns a string representing the here document temp filename
-// for the 'n'-th command.
-char	*heredoc_filename(int n)
+// Returns the index of the environment variable 'varname'.
+// If 'varname' is not found, returns -1.
+int	env_find_var_index(const char *varname, char **env)
 {
-	char	*tmp;
-	char	*filename;
+	int	name_len;
+	int	i;
 
-	filename = ft_strdup(HEREDOC_FILENAME_PREFIX);
-	tmp = ft_itoa(n);
-	ft_strjoin_free(&filename, tmp);
-	free(tmp);
-	return (filename);
+	name_len = env_name_len(varname);
+	if (name_len == 0)
+		return (-1);
+	i = -1;
+	while (env[++i])
+	{
+		if (ft_strncmp(env[i], varname, name_len) == 0 && \
+			env[i][name_len] == '=')
+			return (i);
+	}
+	return (-1);
 }

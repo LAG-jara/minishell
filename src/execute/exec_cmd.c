@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:10:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:42:23 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	exec_cmd(char **cmd, char **env)
 	args = cmd;
 	if (!ft_strchr(path, '/'))
 	{
-		paths = get_vars("PATH", env);
+		paths = env_get_vars("PATH", env);
 		if (!paths)
 			err_nopath(path);
 		i = -1;

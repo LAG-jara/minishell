@@ -39,10 +39,15 @@ SRC			= main.c \
 			builtins/export.c \
 			builtins/pwd.c \
 			builtins/unset.c \
-			env/env_find.c \
-			env/env_get.c \
-			env/env_set.c \
-			env/env_utils.c \
+			env/env_find_var_index.c \
+			env/env_find_var_line.c \
+			env/env_get_var.c \
+			env/env_get_varname.c \
+			env/env_get_vars.c \
+			env/env_name_len.c \
+			env/env_rm_var.c \
+			env/env_set_var.c \
+			env/env_valid_varname.c \
 			execute/exec_cmd.c \
 			execute/execute_builtin.c \
 			execute/execute_command.c \
@@ -109,38 +114,41 @@ SRC			= main.c \
 			xtoken/xtok_rm_xcs.c \
 			xtoken/xtok_strncmp.c \
 			xtoken/xtok_to_tok.c \
-			xtoken/xtoklst_clear.c \
-			debug.c						# TODO: Remove before submitting
+			xtoken/xtoklst_clear.c
 
-DEPDIRS		= $(DEPDIR)arrstr/ \
-			$(DEPDIR)basic_utils/ \
-			$(DEPDIR)builtins/ \
-			$(DEPDIR)env/ \
-			$(DEPDIR)expand_and_split/ \
-			$(DEPDIR)get_next_line/ \
-			$(DEPDIR)list/ \
-			$(DEPDIR)redirect_and_execute/ \
-			$(DEPDIR)xtoken/
-
-SRCDIR		= src/
-SRCS		= $(addprefix $(SRCDIR), $(SRC))
+SRCDIR		= src
+SRCS		= $(addprefix $(SRCDIR)/, $(SRC))
 
 # Objects
-OBJDIR		= .obj/
-OBJS		= $(addprefix $(OBJDIR), $(SRC:.c=.o))
-
-# Libraries
-RL_LIB		= readline/
-INCFLAG		:= -I $(RL_LIB)
-READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
+OBJDIR		= .obj
+OBJS		= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 # Dependencies
 DEPDIR		= .dep/
 DEPS		= $(addprefix $(DEPDIR), $(SRC:.c=.d))
+DEPDIRS		= $(DEPDIR)arrstr/ \
+			$(DEPDIR)/basic_utils/ \
+			$(DEPDIR)/builtins/ \
+			$(DEPDIR)/env/ \
+			$(DEPDIR)/execute/ \
+			$(DEPDIR)/expand_and_split/ \
+			$(DEPDIR)/input_utils/ \
+			$(DEPDIR)/list/ \
+			$(DEPDIR)/minishell/ \
+			$(DEPDIR)/print_error/ \
+			$(DEPDIR)/redirect/ \
+			$(DEPDIR)/redirect_and_execute/ \
+			$(DEPDIR)/xchar/ \
+			$(DEPDIR)/xtoken/
 
 # Includes
-INCDIR		= inc/
-INCFLAG		+= -I $(INCDIR)
+INCDIR		= inc
+INCFLAG		:= -I $(INCDIR)
+
+# Libraries
+RL_LIB		= readline/
+INCFLAG		+= -I $(RL_LIB)
+READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
 
 LIBS		= -lreadline -ltermcap
 RM			= rm -fr
@@ -148,7 +156,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 DEFS		= -DREADLINE_LIBRARY
 DFLAGS		= -MT $@ -MMD -MP
-XFLAGS		= -fsanitize=address
+# XFLAGS		= -fsanitize=address
 
 # Colors
 WHITE		= \033[0;37m
@@ -164,23 +172,23 @@ BYELLOW		= \033[1;33m
 
 all:		$(READLINE) $(NAME)
 
-$(OBJDIR)%.o:	$(SRCDIR)%.c $(MKF)
+$(OBJDIR)/%.o:	$(SRCDIR)/%.c $(MKF)
 			@mkdir -p $(@D)
 			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
 			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
-#			@mkdir -p $(DEPDIR) $(DEPDIRS)
-#			@mv $(OBJDIR)*.d $(DEPDIR)
+			@mkdir -p $(DEPDIR) $(DEPDIRS)
+			@mv $(patsubst %.o,%.d,$@) $(subst $(OBJDIR),$(DEPDIR),$(@D))/
 
 $(NAME)::	$(OBJS) $(MKF) $(READLINE)
 			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(LIBS) $(READLINE) $(OBJS) -o $(NAME)  
 			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
 
-$(NAME)::	
+$(NAME)::
 			@echo "$(BLUE)[ All done already ]$(DEFAULT)"
 
 clean:
 			@$(RM) $(OBJDIR) $(DEPDIR)
-			@echo "$(BRED)[ Object files cleared ]$(DEFAULT)"
+			@echo "$(BRED)[ Object and dep files cleared ]$(DEFAULT)"
 
 fclean:		clean
 			@$(RM) $(NAME) $(READLINE)
@@ -196,36 +204,6 @@ norm:
 $(READLINE): 
 			@cd ./$(RL_LIB) && ./configure && make
 
-
-# rl_install:
-# 			LIB_FOLDER=vendor
-
-# 			mkdir $(LIB_FOLDER)
-
-# 			TEMP_FOLDER=$(LIB_FOLDER)/.tmp_readline-install/
-# 			READLINE_PATH=$(LIB_FOLDER)/readline/
-
-# 			ARCHIVE=$(LIB_FOLDER)/readline-8.1.tar.gz
-# 			INSTALLER=$(LIB_FOLDER)/readline-8.1
-# 			BASEDIR=$(pwd)
-# 			curl -k https://ftp.gnu.org/gnu/readline/readline-8.2.tar.gz > $ARCHIVE
-
-# 			tar -xf $(ARCHIVE) -C $(LIB_FOLDER)/
-# 			mkdir -p $(READLINE_PATH)
-# 			cd $(READLINE_PATH)
-# 			(READLINE_PATH)=$(pwd)
-# 			cd $(BASEDIR)
-# 			mkdir -p $(TEMP_FOLDER)
-
-# 			cd $(TEMP_FOLDER)
-# 			../../$(INSTALLER)/configure --prefix=$(READLINE_PATH)
-
-# 			cd $(BASEDIR)
-# 			make -C $(TEMP_FOLDER)
-# 			make -C $(TEMP_FOLDER) install
-# 			make -C $(TEMP_FOLDER) clean
-# 			rm -rf $(TEMP_FOLDER) $(ARCHIVE) $(INSTALLER)
-
 -include $(DEPS)
 
-.PHONY: 	clean fclean re norm rl_install
+.PHONY: 	clean fclean re norm

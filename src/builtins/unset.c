@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:52 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:28:26 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:44:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	unset_builtin(char **args, char ***env)
 	ret_status = 0;
 	while (args[++i])
 	{
-		if (valid_varname(args[i]))
-			rm_env_var(args[i], env);
+		if (env_valid_varname(args[i]))
+			env_rm_var(args[i], env);
 		else
 			ret_status = print_err_identifier("unset", args[i]);
 	}

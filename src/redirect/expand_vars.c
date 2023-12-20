@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 18:46:55 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 20:11:43 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:55:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ char	*expand_vars(const char *str, char **env)
 			tmp_str = ft_substr(str, 0, i - 1);
 			ft_strjoin_free(&ret_str, tmp_str);
 			free(tmp_str);
-			var = get_var(str + i, env);
+			var = env_get_var(str + i, env);
 			if (var)
 				ft_strjoin_free(&ret_str, var);
-			str += i + get_name_len(str + i);
+			str += i + env_name_len(str + i);
 			i = 0;
 		}
 		else

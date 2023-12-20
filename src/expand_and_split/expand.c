@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:49:48 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/14 20:11:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 12:55:42 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static void	expand_var(t_list **lst, t_list **node, char **env)
 
 	*node = (*node)->nxt;
 	name = xclst_to_str(*node);
-	value = get_var(name, env);
+	value = env_get_var(name, env);
 	expanded_lst = str_to_xclst(value, EXPANDED, xc_get(*node).q);
 	lst_add_many(lst, (*node)->pre, expanded_lst);
-	len = get_name_len(name);
+	len = env_name_len(name);
 	free(name);
 	*node = lst_move(*node, len);
 	if (!*node)

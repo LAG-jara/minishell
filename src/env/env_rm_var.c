@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc_filename.c                                 :+:      :+:    :+:   */
+/*   env_rm_var.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 17:01:27 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 13:10:53 by glajara-         ###   ########.fr       */
+/*   Created: 2023/10/14 16:29:05 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/20 13:00:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "redirect_private.h"
-#include "basic_utils.h"
+#include "env_private.h"
+#include "arrstr.h"
 
-// Allocates and returns a string representing the here document temp filename
-// for the 'n'-th command.
-char	*heredoc_filename(int n)
+// Removes the environment variable 'varname'.
+void	env_rm_var(const char *varname, char ***env)
 {
-	char	*tmp;
-	char	*filename;
+	int		var_index;
 
-	filename = ft_strdup(HEREDOC_FILENAME_PREFIX);
-	tmp = ft_itoa(n);
-	ft_strjoin_free(&filename, tmp);
-	free(tmp);
-	return (filename);
+	var_index = env_find_var_index(varname, *env);
+	if (var_index >= 0)
+		*env = arrstr_rm(*env, var_index);
 }
