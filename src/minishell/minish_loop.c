@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 12:30:22 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/20 16:56:22 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ static int	control_and_c(int exit_status)
 	return (exit_status);
 }
 
-// Executes the minish loop until the SIGHUP signal is received.
+// Executes the minish loop forever, until the exit builtin is
+// executed or a null input is received.
+// The minish loop will then exit returning the exit status of the
+// last command executed.
 void	minish_loop(char **env)
 {
 	char	*input;
