@@ -86,8 +86,8 @@ SRC			= main.c \
 			print_error/print_err_exec.c \
 			print_error/print_err_filename.c \
 			print_error/print_err_heredoc.c \
-			print_error/print_err_is_dir.c \
-			print_error/print_err_nopath.c \
+			print_error/print_err_isdir.c \
+			print_error/print_err_nofile.c \
 			print_error/print_err_perm_denied.c \
 			print_error/print_err_redir.c \
 			print_error/print_err_syntax.c \

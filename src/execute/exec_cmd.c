@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 16:01:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:06:02 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,17 @@
 #include <errno.h>
 #include <unistd.h>
 
-// Exits with the appropriate exit code after printing an error message.
-static void	err_exec(const char *cmdname)
-{
-	print_err_exec(cmdname);
-	if (errno == ENOENT)
-		exit(EXIT_CMD_NOT_FOUND);
-	exit(errno);
-}
-
 // If the given 'path' is not executable, prints an error message and exits.
 static void	check_path(const char *path)
 {
+	if (!path_exists(path))
+	{
+		print_err_nofile(path);
+		exit(EXIT_NOFILE);
+	}
 	if (is_directory(path))
 	{
-		print_err_is_dir(path);
+		print_err_isdir(path);
 		exit(EXIT_IS_DIR);
 	}
 	if (!can_execute(path))
@@ -57,5 +53,6 @@ void	exec_cmd(char **cmd, char **env)
 	else
 		check_path(path);
 	execve(path, args, env);
-	err_exec(cmd[0]);
+	print_err_exec(cmd[0]);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 16:33:05 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:57:49 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # define EXIT_PERM_DENIED	126
 # define MSG_IS_DIR			"is a directory"
 # define EXIT_IS_DIR		126
-# define MSG_HEREDOC_ERR	"cannot create temp file for here document"
-# define EXIT_NOPATH		127
-# define MSG_NOPATH			"No such file or directory"
-# define EXIT_AMBIG_REDIR	1
+# define MSG_NOFILE			"No such file or directory"
+# define EXIT_NOFILE		127
 # define MSG_AMBIG_REDIR	"ambiguous redirect"
+# define EXIT_AMBIG_REDIR	1
+# define MSG_HEREDOC_ERR	"cannot create temp file for here document"
 
 // BUILTIN
 
@@ -48,11 +48,12 @@ int		print_err_numeric_arg(const char *arg);
 int		print_err_builtin(const char *builtin, const char *arg);
 
 // EXEC ERRORS
+
 void	print_err_exec(const char *cmdname);
-void	print_err_nopath(const char *cmdname);
+void	print_err_nofile(const char *cmdname);
 void	print_err_cmd_not_found(const char *cmdname);
 void	print_err_perm_denied(const char *cmdname);
-void	print_err_is_dir(const char *path);
+void	print_err_isdir(const char *path);
 void	print_err_redir(void);
 
 #endif

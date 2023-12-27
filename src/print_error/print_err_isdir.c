@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err_exec copy 4.c                            :+:      :+:    :+:   */
+/*   print_err_isdir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:11:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 16:39:30 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:53:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 
 // Prints an error message when the given path is a directory.
-void	print_err_is_dir(const char *path)
+void	print_err_isdir(const char *path)
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
