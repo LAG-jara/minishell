@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err_exec.c                                   :+:      :+:    :+:   */
+/*   print_err_exec copy 4.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:11:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 16:40:18 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:39:30 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 #include "basic_utils.h"
 #include "minish_consts.h"
 #include <unistd.h>
-#include <errno.h>
-#include <string.h>
 
-// Prints the corresponding execution error message (according to errno).
-void	print_err_exec(const char *cmdname)
+// Prints an error message when the given path is a directory.
+void	print_err_is_dir(const char *path)
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putstr_fd(cmdname, STDERR_FILENO);
+	ft_putstr_fd(path, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	if (errno == ENOENT)
-		ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
-	else
-		ft_putendl_fd(strerror(errno), STDERR_FILENO);
+	ft_putendl_fd(MSG_IS_DIR, STDERR_FILENO);
 }

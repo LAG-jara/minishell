@@ -80,9 +80,17 @@ SRC			= main.c \
 			list/lst_rm_one.c \
 			list/lst_size.c \
 			list/lst_split.c \
+			print_error/print_err_argc.c \
 			print_error/print_err_builtin.c \
+			print_error/print_err_cmd_not_found.c \
 			print_error/print_err_exec.c \
-			print_error/print_err_misc.c \
+			print_error/print_err_filename.c \
+			print_error/print_err_heredoc.c \
+			print_error/print_err_is_dir.c \
+			print_error/print_err_nopath.c \
+			print_error/print_err_perm_denied.c \
+			print_error/print_err_redir.c \
+			print_error/print_err_syntax.c \
 			redirect/clear_heredoc.c \
 			redirect/clear_heredocs.c \
 			redirect/delim_quote_remove.c \
