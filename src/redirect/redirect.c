@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 17:49:31 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 18:10:31 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:29:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,20 @@
 #include "print_error.h"
 #include <stdlib.h>
 
-// Performs the redirection defined by 'redir', taking 'str' as the following 
+// Performs the redirection defined by 'redir', taking 'next' as the following 
 // token, knowing it's the 'n'-th command.
-// In the case of here documents, quote-removal is performed to 'str'.
+// In the case of here documents, quote-removal is performed.
 // Returns the appropriate exit code after printing any error message.
-static int	redirect_one(char *redir, char *str, int n)
+static int	redirect_one(char *redir, t_list *next, int n)
 {
+	char	*str;
+
+	if (!next)
+	{
+		print_err_redir();
+		return (EXIT_AMBIG_REDIR);
+	}
+	str = tok_get(next)->val;
 	if (!ft_strncmp(redir, ">", 2))
 		return (link_output_file(str, FALSE));
 	else if (!ft_strncmp(redir, ">>", 3))
@@ -50,7 +58,7 @@ int	redirect(t_list **cmd, int n)
 		tok = tok_get(node);
 		if (tok->type == REDIR)
 		{
-			exit_stat = redirect_one(tok->val, tok_get(node->nxt)->val, n);
+			exit_stat = redirect_one(tok->val, node->nxt, n);
 			nxt_node = lst_move(node, 2);
 			lst_rm_many(cmd, node, 2, tok_del);
 			node = nxt_node;

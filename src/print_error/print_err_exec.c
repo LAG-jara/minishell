@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:11:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 15:59:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:32:59 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,12 @@ void	print_err_is_dir(const char *path)
 	ft_putstr_fd(path, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(MSG_IS_DIR, STDERR_FILENO);
+}
+
+// Prints an error message when the redirecion is ambiguous.
+void	print_err_redir(void)
+{
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(MSG_AMBIG_REDIR, STDERR_FILENO);
 }

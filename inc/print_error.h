@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/21 20:44:27 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:33:05 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define MSG_HEREDOC_ERR	"cannot create temp file for here document"
 # define EXIT_NOPATH		127
 # define MSG_NOPATH			"No such file or directory"
+# define EXIT_AMBIG_REDIR	1
+# define MSG_AMBIG_REDIR	"ambiguous redirect"
 
 // BUILTIN
 
@@ -51,5 +53,6 @@ void	print_err_nopath(const char *cmdname);
 void	print_err_cmd_not_found(const char *cmdname);
 void	print_err_perm_denied(const char *cmdname);
 void	print_err_is_dir(const char *path);
+void	print_err_redir(void);
 
 #endif

@@ -153,7 +153,7 @@ INCFLAG		:= -I $(INCDIR)
 RL_DIR		= readline/
 INCFLAG		+= -I $(RL_DIR)
 READLINE	:= $(RL_DIR)libreadline.a $(RL_DIR)libhistory.a
-RL_ZIP		= readline.tar.gz
+RL_FILE		= readline.tar.gz
 RL_URL		= http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-bfe9c573a9e376323929c80b2b71c59727fab0cc.tar.gz
 
 LIBS		= -lreadline -ltermcap
@@ -162,7 +162,7 @@ CC			= cc
 CFLAGS		= -Wall -Wextra -Werror -g
 DEFS		= -DREADLINE_LIBRARY
 DFLAGS		= -MT $@ -MMD -MP
-# XFLAGS		= -fsanitize=address
+XFLAGS		= -fsanitize=address
 
 # Colors
 WHITE		= \033[0;37m
@@ -179,9 +179,9 @@ BYELLOW		= \033[1;33m
 all:		$(READLINE) $(NAME)
 
 $(RL_DIR):
-			@curl -k $(RL_URL) > $(RL_ZIP)
-			@tar -xf $(RL_ZIP) && mv readline-* readline
-			@rm -rf $(RL_ZIP)
+			@curl -k $(RL_URL) > $(RL_FILE)
+			@tar -xf $(RL_FILE) && mv readline-* readline
+			@rm -rf $(RL_FILE)
 
 $(READLINE): $(RL_DIR)
 			@if [ ! -f $(RL_DIR)config.status ] ; then \
