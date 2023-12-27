@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 16:57:49 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:28:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define EXIT_NOFILE		127
 # define MSG_AMBIG_REDIR	"ambiguous redirect"
 # define EXIT_AMBIG_REDIR	1
+# define MSG_PIPE_ERR		"pipe error"
+# define EXIT_PIPE_ERR		1
 # define MSG_HEREDOC_ERR	"cannot create temp file for here document"
 
 // BUILTIN
@@ -38,7 +40,8 @@
 int		print_err_syntax(const char *token, int ret);
 int		print_err_argc(void);
 void	print_err_filename(const char *filename);
-int		print_err_heredoc(int ret);
+void	print_err_heredoc(void);
+void	print_err_pipe(void);
 
 // BUILTIN ERRORS
 

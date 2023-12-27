@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 17:03:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 13:11:42 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:17:01 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include "readline.h"
 #include "signal_utils.h"
+#include "print_error.h"
 
 // Creates a here document, reading the standard input until 'd' is found and
 // saving the content into the specified temp 'file'.
@@ -33,7 +34,10 @@ static int	read_hd_child(const char *d, int x, const char *file, char **env)
 	set_signals(HEREDOC);
 	fd_file = open_file(file, O_CREAT | O_WRONLY | O_TRUNC);
 	if (fd_file == -1)
+	{
+		print_err_heredoc();
 		return (-1);
+	}
 	while (1)
 	{
 		line = readline("> ");

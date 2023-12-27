@@ -89,6 +89,7 @@ SRC			= main.c \
 			print_error/print_err_isdir.c \
 			print_error/print_err_nofile.c \
 			print_error/print_err_perm_denied.c \
+			print_error/print_err_pipe.c \
 			print_error/print_err_redir.c \
 			print_error/print_err_syntax.c \
 			redirect/clear_heredoc.c \

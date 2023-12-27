@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_or_die.c                                      :+:      :+:    :+:   */
+/*   print_err_pipe.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 16:52:16 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/27 17:28:00 by glajara-         ###   ########.fr       */
+/*   Created: 2023/12/27 17:23:16 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/27 17:25:56 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "print_error.h"
+#include "basic_utils.h"
+#include "minish_consts.h"
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
 
-// Creates a pipe and allocates a pair of file descriptors at 'fd_pipe'.
-// On failure, prints an error message and exits.
-void	pipe_or_die(int fd_pipe[2])
+// Prints a pipe error message.
+void	print_err_pipe(void)
 {
-	if (pipe(fd_pipe) == -1)
-	{
-		print_err_pipe();
-		exit (EXIT_PIPE_ERR);
-	}
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(MSG_PIPE_ERR, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(strerror(errno), STDERR_FILENO);
 }
