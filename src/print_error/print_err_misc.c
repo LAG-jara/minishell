@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:00:00 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:19:59 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:29:26 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,15 @@ void	print_err_filename(const char *filename)
 	ft_putstr_fd(filename, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(strerror(errno), STDERR_FILENO);
+}
+
+// Prints the here document error when creating temp file and returns 'ret'.
+int	print_err_heredoc(int ret)
+{
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(MSG_HEREDOC_ERR, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(strerror(errno), STDERR_FILENO);
+	return (ret);
 }

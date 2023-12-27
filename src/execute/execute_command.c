@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 12:21:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:14:14 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:44:36 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ void	execute_command(t_list *cmd, int exit_status, char **env)
 	char	**e;
 
 	set_signals(NON_INTER);
+	if (tok_get(cmd)->type == NULL_TOK)
+		exit(EXIT_SUCCESS);
 	args = get_args_from_cmd(cmd);
-	if (ft_strlen(tok_get(cmd)->val) == 0)
-	{
-		print_err_null_cmd();
-		exit(EXIT_CMD_NOT_FOUND);
-	}
 	if (is_builtin_name(args[0]))
 	{
 		e = arrstr_dup(env);

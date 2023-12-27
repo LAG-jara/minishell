@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 13:03:02 by alajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 17:18:20 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:16:37 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 #include "builtins_private.h"
 #include "env.h"
 #include "print_error.h"
+
+// Makes sure the pointed 'path' string ends in '/'
+static void	end_in_slash(char **path)
+{
+	if ((*path)[ft_strlen(*path)] != '/')
+		ft_strjoin_free(path, "/");
+}
 
 static int	is_relativepath(char *str)
 {
@@ -50,6 +57,7 @@ static int	try_cdpath(char *str, char **env)
 		return (FALSE);
 	while (path[++i])
 	{
+		end_in_slash(&path[i]);
 		ft_strjoin_free(&path[i], str);
 		if (chdir(path[i]) == 0)
 		{

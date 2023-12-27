@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_private.h                                  :+:      :+:    :+:   */
+/*   is_directory.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 12:20:23 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/21 20:18:13 by glajara-         ###   ########.fr       */
+/*   Created: 2023/12/21 20:13:15 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/21 20:46:48 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_PRIVATE_H
-# define EXECUTE_PRIVATE_H
+#include <sys/stat.h>
+#include "boolean.h"
 
-# include "list.h"
+// Returns TRUE if the given 'path' is a directory. Otherwise, returns FALSE.
+int	is_directory(const char *path)
+{
+	struct stat	stats;
 
-char	**get_args_from_cmd(t_list *cmd);
-void	exec_cmd(char **cmd, char **env);
-char	*get_executable(const char *file, char **env);
-int		can_execute(const char *path);
-int		is_directory(const char *path);
-int		path_exists(const char *path);
-
-#endif
+	stat(path, &stats);
+	if (S_ISDIR(stats.st_mode))
+		return (TRUE);
+	return (FALSE);
+}

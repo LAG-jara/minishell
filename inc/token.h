@@ -20,7 +20,8 @@ enum e_token_type
 	WORD,
 	REDIR,
 	PIPE,
-	INVALID
+	INVALID,
+	NULL_TOK
 };
 
 // A token can be of type WORD, REDIRection, PIPE or INVALID.
@@ -28,12 +29,13 @@ enum e_token_type
 typedef struct s_token
 {
 	char			*val;
-	unsigned int	type : 2;
+	unsigned int	type : 3;
 }	t_token;
 
 void	tok_del(void *token);
 int		tok_type(const char *str);
 t_token	tok_create(const char *str);
 t_token	*tok_get(t_list *node);
+t_token	tok_create_null(void);
 
 #endif

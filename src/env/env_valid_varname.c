@@ -17,7 +17,7 @@
 // begins with an alphabetic character or an underscore.
 int	env_valid_varname(char *word)
 {
-	if (!word)
+	if (!word || !*word)
 		return (FALSE);
 	if (*word == '_' || ft_isalpha(*word))
 	{

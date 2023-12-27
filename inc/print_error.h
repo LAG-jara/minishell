@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:04:05 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:15:25 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:44:27 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 # define EXIT_WRONGAC		2
 # define MSG_CMD_NOT_FOUND	"command not found"
 # define EXIT_CMD_NOT_FOUND	127
-# define MSG_HEREDOC_ERR	"here document error"
+# define MSG_PERM_DENIED	"Permission denied"
+# define EXIT_PERM_DENIED	126
+# define MSG_IS_DIR			"is a directory"
+# define EXIT_IS_DIR		126
+# define MSG_HEREDOC_ERR	"cannot create temp file for here document"
 # define EXIT_NOPATH		127
 # define MSG_NOPATH			"No such file or directory"
 
@@ -32,6 +36,7 @@
 int		print_err_syntax(const char *token, int ret);
 int		print_err_argc(void);
 void	print_err_filename(const char *filename);
+int		print_err_heredoc(int ret);
 
 // BUILTIN ERRORS
 
@@ -43,6 +48,8 @@ int		print_err_builtin(const char *builtin, const char *arg);
 // EXEC ERRORS
 void	print_err_exec(const char *cmdname);
 void	print_err_nopath(const char *cmdname);
-void	print_err_null_cmd(void);
+void	print_err_cmd_not_found(const char *cmdname);
+void	print_err_perm_denied(const char *cmdname);
+void	print_err_is_dir(const char *path);
 
 #endif

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_welcome_msg.c                                :+:      :+:    :+:   */
+/*   can_execute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:28:03 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 17:54:40 by glajara-         ###   ########.fr       */
+/*   Created: 2023/12/21 20:12:34 by glajara-          #+#    #+#             */
+/*   Updated: 2023/12/21 20:46:04 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "basic_utils.h"
-#include "minish_consts.h"
 #include <unistd.h>
+#include "boolean.h"
 
-// Prints the minish welcome message to the standard output.
-void	print_welcome_msg(void)
+// Returns TRUE if 'path' is an executable file. Otherwise, returns FALSE.
+int	can_execute(const char *path)
 {
-	ft_putstr_fd("\n", STDOUT_FILENO);
-	ft_putstr_fd(TRIFORCE_1, STDOUT_FILENO);
-	ft_putendl_fd(LINE_1, STDOUT_FILENO);
-	ft_putstr_fd(TRIFORCE_2, STDOUT_FILENO);
-	ft_putendl_fd(LINE_2, STDOUT_FILENO);
-	ft_putendl_fd(LINE_3, STDOUT_FILENO);
-	ft_putendl_fd(LINE_4, STDOUT_FILENO);
+	if (access(path, X_OK) == -1)
+		return (FALSE);
+	return (TRUE);
 }

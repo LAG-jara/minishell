@@ -6,10 +6,11 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 15:44:25 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/20 12:42:23 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:01:08 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "execute_private.h"
 #include "basic_utils.h"
 #include "env.h"
 #include "print_error.h"
@@ -25,24 +26,19 @@ static void	err_exec(const char *cmdname)
 	exit(errno);
 }
 
-// Exits with the appropriate exit code after printing an error message.
-static void	err_nopath(const char *cmdname)
+// If the given 'path' is not executable, prints an error message and exits.
+static void	check_path(const char *path)
 {
-	print_err_nopath(cmdname);
-	exit(EXIT_NOPATH);
-}
-
-// Allocates and returns a string containing the full path of 'file' in 'dir'.
-// Example: if 'dir' is /folder and 'file' is myfile, returns "/folder/myfile".
-static char	*get_full_path(const char *dir, const char *file)
-{
-	char	*tmp;
-	char	*full_path;
-
-	tmp = ft_strjoin(dir, "/");
-	full_path = ft_strjoin(tmp, file);
-	free(tmp);
-	return (full_path);
+	if (is_directory(path))
+	{
+		print_err_is_dir(path);
+		exit(EXIT_IS_DIR);
+	}
+	if (!can_execute(path))
+	{
+		print_err_perm_denied(path);
+		exit(EXIT_PERM_DENIED);
+	}
 }
 
 // Executes the shell command 'cmd' and exits, assuming 'cmd' is a non-empty
@@ -51,27 +47,15 @@ static char	*get_full_path(const char *dir, const char *file)
 // On error, prints an error message and exits with the appropriate exit code.
 void	exec_cmd(char **cmd, char **env)
 {
-	char	**paths;
 	char	**args;
 	char	*path;
-	int		i;
 
 	path = cmd[0];
 	args = cmd;
 	if (!ft_strchr(path, '/'))
-	{
-		paths = env_get_vars("PATH", env);
-		if (!paths)
-			err_nopath(path);
-		i = -1;
-		while (paths && paths[++i])
-		{
-			path = get_full_path(paths[i], args[0]);
-			execve(path, args, env);
-			free(path);
-		}
-	}
+		path = get_executable(path, env);
 	else
-		execve(path, args, env);
+		check_path(path);
+	execve(path, args, env);
 	err_exec(cmd[0]);
 }

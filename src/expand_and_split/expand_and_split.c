@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 13:34:54 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/16 17:49:08 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:47:00 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,18 @@ static t_list	*expand_and_split_cmd(t_list *cmd, int exit_status, char **env)
 // Finally, performs quote removal and returns the result.
 t_list	**expand_and_split(t_list **commands, int exit_status, char **env)
 {
-	int	i;
+	int		i;
+	t_token	tok;
 
 	i = -1;
 	while (commands[++i])
+	{
 		commands[i] = expand_and_split_cmd(commands[i], exit_status, env);
+		if (commands[i] == NULL)
+		{
+			tok = tok_create_null();
+			commands[i] = lst_new(&tok, sizeof(t_token));
+		}
+	}
 	return (commands);
 }

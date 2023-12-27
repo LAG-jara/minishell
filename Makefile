@@ -48,10 +48,14 @@ SRC			= main.c \
 			env/env_rm_var.c \
 			env/env_set_var.c \
 			env/env_valid_varname.c \
+			execute/can_execute.c \
 			execute/exec_cmd.c \
 			execute/execute_builtin.c \
 			execute/execute_command.c \
 			execute/get_args_from_cmd.c \
+			execute/get_executable.c \
+			execute/is_directory.c \
+			execute/path_exists.c \
 			expand_and_split/expand_and_split.c \
 			expand_and_split/expand.c \
 			expand_and_split/normalize.c \
@@ -146,9 +150,9 @@ INCDIR		= inc
 INCFLAG		:= -I $(INCDIR)
 
 # Libraries
-RL_LIB		= readline/
-INCFLAG		+= -I $(RL_LIB)
-READLINE	:= $(RL_LIB)libreadline.a $(RL_LIB)libhistory.a
+RL_DIR		= readline/
+INCFLAG		+= -I $(RL_DIR)
+READLINE	:= $(RL_DIR)libreadline.a $(RL_DIR)libhistory.a
 RL_ZIP		= readline.tar.gz
 RL_URL		= http://git.savannah.gnu.org/cgit/readline.git/snapshot/readline-bfe9c573a9e376323929c80b2b71c59727fab0cc.tar.gz
 
@@ -174,16 +178,32 @@ BYELLOW		= \033[1;33m
 
 all:		$(READLINE) $(NAME)
 
+$(RL_DIR):
+			@curl -k $(RL_URL) > $(RL_ZIP)
+			@tar -xf $(RL_ZIP) && mv readline-* readline
+			@rm -rf $(RL_ZIP)
+
+$(READLINE): $(RL_DIR)
+			@if [ ! -f $(RL_DIR)config.status ] ; then \
+				printf "\t$(YELLOW)Configuring READLINE...$(DEFAULT)" && \
+				cd ./$(RL_DIR) && \
+				./configure &> /dev/null && \
+				echo ✅; \
+			fi
+			@printf "\t$(YELLOW)Making READLINE...$(DEFAULT)"
+			@cd ./$(RL_DIR) && make &> /dev/null
+			@echo ✅
+
 $(OBJDIR)/%.o:	$(SRCDIR)/%.c $(MKF)
 			@mkdir -p $(@D)
 			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(DFLAGS) $(INCFLAG) -c $< -o $@ 
-			@printf "\r\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)                             \r"
+			@printf "\t$(YELLOW)$< $(GREEN)compiled$(DEFAULT)\n"
 			@mkdir -p $(DEPDIR) $(DEPDIRS)
 			@mv $(patsubst %.o,%.d,$@) $(subst $(OBJDIR),$(DEPDIR),$(@D))/
 
-$(NAME)::	$(OBJS) $(MKF) $(READLINE)
+$(NAME)::	$(OBJS) $(READLINE) $(MKF)
 			@$(CC) $(CFLAGS) $(XFLAGS) $(DEFS) $(LIBS) $(READLINE) $(OBJS) -o $(NAME)  
-			@echo "\n$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
+			@echo "$(GREEN)[ $(BGREEN)MINISH $(GREEN)created! ]$(DEFAULT)"
 
 $(NAME)::
 			@echo "$(BLUE)[ All done already ]$(DEFAULT)"
@@ -192,8 +212,8 @@ clean:
 			@$(RM) $(OBJDIR) $(DEPDIR)
 			@echo "$(BRED)[ Object and dep files cleared ]$(DEFAULT)"
 
-fclean:		clean
-			@$(RM) $(NAME) $(READLINE)
+fclean:
+			@$(RM) $(OBJDIR) $(DEPDIR) $(NAME) $(READLINE)
 			@echo "$(RED)[ All created files cleared ]$(DEFAULT)"
 
 re:			fclean all
@@ -201,15 +221,6 @@ re:			fclean all
 
 norm:
 			@norminette $(SRCDIR)* $(INCDIR)*
-
-
-$(RL_LIB):
-			@curl -k $(RL_URL) > $(RL_ZIP)
-			@tar -xf $(RL_ZIP) && mv readline-* readline
-			@rm -rf $(RL_ZIP)
-
-$(READLINE): $(RL_LIB)
-			@cd ./$(RL_LIB) && ./configure && make
 
 -include $(DEPS)
 

@@ -41,6 +41,16 @@ t_token	tok_create(const char *str)
 	return (token);
 }
 
+// Returns a token of type NULL_TOK (used on special cases).
+t_token	tok_create_null(void)
+{
+	t_token	token;
+
+	token.val = ft_strdup("");
+	token.type = NULL_TOK;
+	return (token);
+}
+
 // Frees the 'token' node and its content.
 void	tok_del(void *token)
 {

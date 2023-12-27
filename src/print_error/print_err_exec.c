@@ -6,7 +6,7 @@
 /*   By: glajara- <glajara-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:11:53 by glajara-          #+#    #+#             */
-/*   Updated: 2023/12/18 18:18:04 by glajara-         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:59:20 by glajara-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,31 @@ void	print_err_nopath(const char *cmdname)
 }
 
 // Prints an error message when trying to execute a null command.
-void	print_err_null_cmd(void)
+void	print_err_cmd_not_found(const char *cmdname)
 {
 	ft_putstr_fd(SH_NAME, STDERR_FILENO);
-	ft_putstr_fd(": : ", STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(cmdname, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(MSG_CMD_NOT_FOUND, STDERR_FILENO);
+}
+
+// Prints an error message when user is not allowed to execute 'cmdname'.
+void	print_err_perm_denied(const char *cmdname)
+{
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(cmdname, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(MSG_PERM_DENIED, STDERR_FILENO);
+}
+
+// Prints an error message when the given path is a directory.
+void	print_err_is_dir(const char *path)
+{
+	ft_putstr_fd(SH_NAME, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(path, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(MSG_IS_DIR, STDERR_FILENO);
 }
